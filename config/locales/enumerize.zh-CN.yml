@@ -1,0 +1,33 @@
+zh-CN:
+  enumerize:
+    patient:
+      is_menopause: &yes_no
+        "no": 否
+        "yes": 是
+      is_smoker:
+        <<: *yes_no
+      is_diphosphonate:
+        <<: *yes_no
+      is_fracture:
+        <<: *yes_no
+      has_tumour:
+        <<: *yes_no
+      is_ct:
+        <<: *yes_no
+      is_rt:
+        <<: *yes_no
+      is_tt:
+        <<: *yes_no
+      is_neo_adjuvant:
+        <<: *yes_no
+    
+    user:
+      role:
+        user: 用户
+        admin: 护士
+        superadmin: 管理员
+        moderator: 主持人
+      status:
+        in_use: 有效
+        deprecated: 已弃用
+

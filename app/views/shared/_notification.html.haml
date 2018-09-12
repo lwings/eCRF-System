@@ -1,0 +1,11 @@
+- if notice
+  .success.callout.notification{'data-closable' => ''}
+    %p= notice
+    %button.close-button{'aria-label' => 'Dismiss alert', 'data-close' => '', :type => 'button'}
+      %span{'aria-hidden' => 'true'} ×
+
+- if alert
+  .alert.callout.notification{'data-closable' => ''}
+    %p= alert
+    %button.close-button{'aria-label' => 'Dismiss alert', 'data-close' => '', :type => 'button'}
+      %span{'aria-hidden' => 'true'} ×

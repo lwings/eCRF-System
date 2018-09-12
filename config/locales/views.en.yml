@@ -1,0 +1,42 @@
+en:
+  views:
+    sign_in: Sign In
+    sign_out: Sign OUt
+    edit_profile: Edit User Profile
+    update_profile: Update User Profile 
+    alter_profile_info: Edit User Information
+
+    title:
+      site: MDT
+    element:
+      home: Home
+      document: Document
+      community: Community
+      team: Team
+      about_us: About us
+      features: Features
+      demo: Demo
+
+    home:
+      overview: Overview
+      contact: Contact us
+      cooperator: Cooperator
+      features: Features
+      long_title: 'MDT: Multi-Disciplinary Treatment Solutions'
+      abstract: 'A newly emerging trend in the healthcare field is for multi-disciplinary medical teams to collaborate to devise personal medical treatment programs. Argumentative discourse and collaboration among experts can help decision makers make more reliable medical treatment decisions, but they also challenge the efficiency of the decision-making process. With the development of machine learning technologies, recommendations can be automatically made by learning from historical data. In addition, cases can be categorized so that different process models can be applied to different cases so that more time can be allocated to intractable cases. We provide a real-world decision support system for multi-disciplinary treatment. The recommendation approaches together with flexible process control are presented. Moreover, how to present the recommendation results so that human knowledge and machine knowledge can be integrated is also discussed. The evaluation results from the experiments and an empirical study based on real data and systems demonstrate that the system is efficient.'  
+
+      process_control: Process control
+      right_control: Right control
+      role_assignment: Role assignment
+      evaluation: Performance evaluation
+      accuracy: Accuracy
+      efficiency: Efficiency
+
+      recommender: Recommender system
+      ml_based: Machine learing
+      rule_based: Rule Engine
+
+      integration: Man-machine integration
+      vote_intervention: Vote intervention
+      recommend_way: Recommendation ways
+      user_behavior: User behavior

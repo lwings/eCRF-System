@@ -1,0 +1,26 @@
+.top-bar{class: controller_name}
+  .top-bar-title
+    %strong
+      = image_tag 'logo_red.png', class: :logo
+      %a{href: root_path}= vt('title.site') 
+  #responsive-menu
+    .top-bar-right
+      %ul.dropdown.menu{'data-dropdown-menu' => ''}
+        %li
+          = link_to vt('element.home'), root_path
+        -# %li
+          -# = link_to vt('element.document'), root_path
+        %li
+          = link_to vt('element.community'), root_path
+        -# %li
+          -# = link_to vt('element.team'), root_path
+        %li
+          = link_to vt('element.features'), root_path
+        %li
+          = link_to vt('element.demo'), root_path
+        %li
+          = link_to vt('element.about_us'), root_path
+        %li
+          %a{href: root_path('en')} English |
+        %li
+          %a{href: root_path('zh-CN')} 中文

@@ -1,0 +1,31 @@
+zh-CN:
+  controllers:
+    alert:
+      existed: '%{obj}已存在'
+      not_existed: '%{obj}不存在'
+      not_existed_or_connection_fail: '%{obj}不存在或者BCDB连接失败'
+      result_unrecorded: 未填写治疗方案
+      result_not_recordable: 治疗方案不能填写待定
+      add_doctors_failed: 添加医生失败
+      drop_doctors_failed: 删除医生失败
+      edit_result_failed: 修改治疗方案失败
+      update_rank_failed: 修改排序失败
+      report_error: 未知错误,请告知管理员,谢谢!
+      unauthorized: 无权访问,请联系管理员!
+      apiclosed: 该功能已经关闭，请联系管理员！
+      not_found: 无相关记录,请检查是否输入错误,或者请联系医院确认已经进行过多学科讨论!
+      unfinished: 针对该患者的讨论还未结束，请稍后再试!
+    notice:
+      no_outside_tasks: 无跨医院任务！
+      proceeded: 已开始决议投票
+      finished: 讨论结束成功
+      updated: '%{obj}更新成功'
+      created: '%{obj}创建成功'
+      deleted: '%{obj}删除成功'
+      deprecated: '%{obj}弃用成功'
+      deprecated: '%{obj}弃用成功'
+      add_doctors_succeed: 添加医生成功
+      drop_doctors_succeed: 删除医生成功
+      report_success: 提交成功,我们会尽快核实,谢谢!
+      report_exist: '%{obj}已经提交过该申请,请勿重复提交,谢谢!'
+      proceeding: '正在进行%{obj}操作...请刷新相关页面'

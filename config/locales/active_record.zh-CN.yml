@@ -1,0 +1,31 @@
+zh-CN:
+  activerecord:
+    models:
+      user: 用户
+      attending: 主诊医生
+      nuser: 专科护士
+      switch: 功能列表
+
+    attr_common: &attr_common
+      created_at: 创建时间
+      updated_at: 更新时间
+
+    attributes:
+      user:
+        status: 状态
+        role: "角色"
+        employee_no: "工号"
+        username: "用户名"
+        name: "姓名"
+        phone: "手机号"
+        email: "邮箱"
+        is_reminded: 开启弹窗推荐提醒
+        current_password: "当前密码"
+        password_confirmation: "重复密码"
+
+        <<: *attr_common
+
+    errors:
+      models:
+        case:
+          sides_should_conform: 患者没有讨论填写的那侧

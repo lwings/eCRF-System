@@ -1,0 +1,32 @@
+- icon_map ={delete: 'fi-x', show: 'fi-magnifying-glass', complement: 'fi-pencil',
+             edit: 'fi-pencil', add_adjuvant: 'fi-plus', add_followup: 'fi-plus'}
+%table
+  %thead
+    %tr
+      - columns.each do |column|
+        %th
+          = sort_link column, collection
+
+      %th{ colspan: operations.size}= vt 'operations'
+
+  %tbody
+    - collection.each do |row|
+      - next if columns.include?(:status) && (row.send :status) == "not_for_vote"
+      %tr
+        - columns.each do |column|
+          - val = row.send column
+          - case val
+            - when Time, Date
+              %td= l val, format: :long
+            - when ::Enumerize::Value
+              %td= val.text
+            - else
+              %td= val
+
+        - operations.each do |key, value|
+          %td
+            - if url_method[key].is_a? Proc
+              = url_method[key].call row
+            - else
+              %a{:href => send(url_method[key], row), class: icon_map[key], :data => value }
+                = vt key

@@ -1,0 +1,33 @@
+zh-CN:
+  simple_form:
+
+    "yes": '是'
+    "no": '否'
+
+   
+    required:
+#      html: '<abbr class="required">&#xf1ee;</abbr>'
+
+    labels:
+      user:
+        login_name: 用户名/工号
+        password: 密码
+        remember_me: 记住我
+      export:
+        start_date: 开始日期
+        end_date: 结束日期
+
+     # todo: translate for label do not work. f.label is not a input func for simple form
+    
+     # options
+    options:
+      case:
+        place: 
+          rj_room21: MDT会议室
+          rj_room22: 瑞金医院门诊大楼22楼会议室
+      patient:
+        gender:
+          female: 女
+          male: 男
+
+    placeholders:

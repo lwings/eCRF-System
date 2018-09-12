@@ -1,0 +1,85 @@
+.row.section-title
+  %h1= vt('home.long_title')
+.row.section-abstract
+  -# = vt('home.abstract')
+  .columns.medium-8.small-7.img-big
+    =image_tag('mdt-main-page.png')
+  .columns.medium-4.small-5.img-small
+    .row
+      =image_tag('mdt-rec.png')
+    .row{style: 'margin-top:1rem'}
+      =image_tag('mdt-voting.png')
+.row{style: "margin-top: 3rem;text-align: center"}
+  %h2=vt('home.overview')
+  %hr
+.row.section-overview{style: "margin-top: 3rem"}
+  = vt('home.abstract')
+  .columns.medium-5.large-4
+    -# = image_tag('nccn.png')
+  .columns.medium-7.large-8
+
+.row{style: "margin-top: 3rem;text-align: center"}
+  %h2=vt('home.features')
+  %hr
+  .row{style: 'text-align: left;margin-left: 5rem'}
+    .columns.medium-3
+
+      %h5=vt('home.process_control')
+      %ul
+        %li=vt('home.role_assignment')
+        %li=vt('home.right_control')
+    .columns.medium-3
+      %h5=vt('home.recommender')
+      %ul
+        %li=vt('home.ml_based')
+        %li=vt('home.rule_based')
+    .columns.medium-3
+      %h5=vt('home.integration')
+      %ul
+        %li=vt('home.vote_intervention')
+        %li=vt('home.recommend_way')
+        %li=vt('home.user_behavior')
+    .columns.medium-3
+      %h5=vt('home.evaluation')
+      %ul
+        %li=vt('home.accuracy')
+        %li=vt('home.efficiency')
+
+.row{style: "margin-top: 3rem;text-align: center"}
+  %h2=vt('home.cooperator')
+  %hr
+  .row
+    .columns.medium-4
+      = link_to '上海交通大学附属瑞金医院', 'http://rj.mdt.team'
+    .columns.medium-4
+      = link_to '浙江上虞人民医院', 'http://sy.mdt.team'
+    .columns.medium-4
+      = link_to '遵义第一人民医院', 'http://zy.mdt.team'
+  .row
+    .columns.medium-4
+      = link_to '绍兴第二人民医院', 'http://sx.mdt.team'
+    .columns.medium-4
+      = link_to '宁波第一人民医院', 'http://nb.mdt.team'
+    .columns.medium-4
+      = link_to '嘉兴妇保院', 'http://jx.mdt.team'
+
+.row{style: "margin-top: 3rem;text-align: center"}
+  %h2=vt('home.contact')
+  %hr
+  .row
+    .columns.medium-6
+      .row
+        上海交通大学计算机系CIT实验
+      -# .row
+        -# Phone: (086) 13162069132
+      .row
+        Email: cao-jian@sjtu.edu.cn
+      .row
+        Copyright ©2018-2019 沪ICP备17034470号-2
+    .columns.medium-6
+      .row
+        上海交通大学附属瑞金医院乳腺中心
+      .row
+        Phone: (021)64370045总机,转601968
+      .row
+        Email: sjtu_bcdb@163.com

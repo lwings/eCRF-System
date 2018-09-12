@@ -1,0 +1,8 @@
+zh-CN:
+  form_errors:
+    accepted: 必须是可被接受的
+    blank: 必填
+    present: 必须是空白
+    confirmation: 与确认值不匹配
+    empty: 不能留空
+    invalid: 是无效的
