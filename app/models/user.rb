@@ -1,4 +1,10 @@
 class User < ActiveRecord::Base
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable and :omniauthable
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable and :omniauthable
+
+
   extend Enumerize
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -11,7 +17,7 @@ class User < ActiveRecord::Base
 
 
   # Enum
-  enumerize :role, in: [:superadmin, :admin, :user, :moderator], predicates: true, scope: true
+  # enumerize :role, in: [:superadmin, :admin, :user, :moderator], predicates: true, scope: true
   enumerize :status, in: {
     deprecated:   0,
     in_use:       1,

@@ -2,11 +2,12 @@ class DeviseCreateUsers < ActiveRecord::Migration
   def change
     create_table(:users) do |t|
       ## others
+      t.belongs_to :center, index: true
+      t.belongs_to :role, index: true
       t.string  :employee_no, null: false # employee number
       t.string  :username, null: false
       t.string  :name, null: false
       t.string  :phone
-      t.string  :role, null: false
       t.integer :status, null: false
 
       ## Database authenticatable

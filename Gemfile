@@ -17,7 +17,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc         # `rake doc:rails` -- generate API u
 ## {{
 gem 'mysql2', '~> 0.3.18'                   # mysql adapter
 gem 'enumerize', '~> 0.10.1'                # enum type
-# gem 'flag_shih_tzu', '~> 0.3.13'            # bit field
+gem 'flag_shih_tzu', '~> 0.3.13'            # bit field
 # gem 'paperclip', '~> 4.2.1'                 # file attach
 gem 'ransack', '~> 1.6.6'                   # search
 gem 'faker', '~> 1.4.3'                     # fake data
