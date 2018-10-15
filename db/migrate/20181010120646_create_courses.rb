@@ -8,7 +8,6 @@ class CreateCourses < ActiveRecord::Migration
       t.float :weight
       t.float :body_surface_area
 
-      t.integer :drugs
       t.float :dose
       t.date :date_of_administration
       t.boolean :if_delay_administration

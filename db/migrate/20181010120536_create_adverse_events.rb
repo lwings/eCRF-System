@@ -9,7 +9,7 @@ class CreateAdverseEvents < ActiveRecord::Migration
       t.text :remark
       t.integer :NCI_CTCAE_V_4
       t.boolean :is_SAE
-      t.boolean :is_related_to_drugs
+      t.integer :is_related_to_drugs
 
       t.timestamps null: false
     end

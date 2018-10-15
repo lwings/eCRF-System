@@ -4,7 +4,7 @@ class CreateClinicalPathologies < ActiveRecord::Migration
       t.belongs_to :patient, index: true
       t.integer :primary_lesion
       t.integer :regional_lympth_node
-      t.integer :matastasis
+      t.boolean :matastasis
       t.integer :histological_type
       t.integer :histological_grading
       t.integer :vascular_invasion

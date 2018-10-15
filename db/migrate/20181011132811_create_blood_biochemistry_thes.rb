@@ -1,4 +1,4 @@
-class CreateBloodBiochemistryThe < ActiveRecord::Migration
+class CreateBloodBiochemistryThes < ActiveRecord::Migration
   def change
     create_table :blood_biochemistry_thes do |t|
       t.belongs_to :course, index: true

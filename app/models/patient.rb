@@ -3,9 +3,11 @@ class Patient < ActiveRecord::Base
 
   enumerize :status,
             in: {
-                a:  0,
-                b:  1,
-                c:  2,
+                established:  0,
+                researching:  1,
+                followup:  2,
+                end:3,
+                quit:4
             },
             predicates: true,
             scope: true

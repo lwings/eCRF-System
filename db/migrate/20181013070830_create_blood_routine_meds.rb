@@ -1,6 +1,6 @@
 class CreateBloodRoutineMeds < ActiveRecord::Migration
   def change
-    create_table :blood_routine_after_meds do |t|
+    create_table :blood_routine_meds do |t|
       t.belongs_to :medication_completion, index: true
       t.string :name,null: true
       t.float :value

@@ -8,6 +8,16 @@ class CreateMedicationCompletions < ActiveRecord::Migration
       t.integer :ECOG
       t.integer :physical_examination
       t.text :description
+      t.boolean :if_followup
+
+      t.date :breast_Bultra_date
+      t.integer :breast_Bultra_diagnose
+      t.string :breast_abnormal
+
+      t.date :abdo_Bultra_date
+      t.integer :abdo_Bultra_diagnose
+      t.string :abdo_abnormalt
+
 
       t.timestamps null: false
     end
