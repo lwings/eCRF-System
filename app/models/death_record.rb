@@ -5,4 +5,5 @@ class DeathRecord < ActiveRecord::Base
   enumerize :relation_with_medication, in: RELAITHDRUGS_OPT
   enumerize :cause_of_death, in: DEATH_OPT
 
+  belongs_to :patient
 end

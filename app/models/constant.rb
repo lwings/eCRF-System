@@ -2,7 +2,6 @@ module Constant
   TWOTUPLE_OPT={normal:0,abnormal:1}
   TRIPLET_OPT_I={yes:0,no:1,unknown:2}
   TRIPLET_OPT_II={neg:0,pos:1,unknown:2}
-  # PREGTEST_OPT={neg:0,pos:1}
   DIAGNOSE_OPT={normal:0,abnormal_withsigni:1,abnormal_outsigni:2,unevaluable:3}
   PRILESION_OPT={"1a":0,"1b":1,"1c":2,"2":3,"3":4,"4":5,"is":6,"x":7}
   LYMNODE_OPT={"0":0,"1":1,"2":2,"3":3,unknown:4}

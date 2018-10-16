@@ -10,4 +10,9 @@ class ClinicalPathology < ActiveRecord::Base
   enumerize :HER2_IHC, in: HER2IHC_OPT
   enumerize :HER2_FISH, in:TRIPLET_OPT_II
 
+  belongs_to :patient
+
+  has_many :family_histories, dependent: :destroy
+  has_many :history_of_nonbreast_cancers, dependent: :destroy
+
 end

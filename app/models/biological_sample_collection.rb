@@ -5,4 +5,6 @@ class BiologicalSampleCollection < ActiveRecord::Base
   enumerize :interview, in: INTERVIEW_OPT
   enumerize :biological_sample, in: BIOSAMPLE_OPT
 
+  belongs_to :patient
+
 end

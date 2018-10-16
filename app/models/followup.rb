@@ -4,4 +4,6 @@ class Followup < ActiveRecord::Base
 
   enumerize :cause_of_death, in:DEATH_OPT
 
+  belongs_to :patient
+
 end

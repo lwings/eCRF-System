@@ -15,6 +15,9 @@ class User < ActiveRecord::Base
   # Associations
   # has_many :instances, through: :tasks
 
+  belongs_to :role
+  belongs_to :center
+  has_many :projects , through:  :relationships
 
   # Enum
   # enumerize :role, in: [:superadmin, :admin, :user, :moderator], predicates: true, scope: true

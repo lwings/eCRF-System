@@ -4,4 +4,6 @@ class HistoryOfNonbreastCancer < ActiveRecord::Base
 
   enumerize :disease_status, in:DIEASESTAT_OPT
 
+  belongs_to :clinical_pathology
+
 end

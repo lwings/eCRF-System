@@ -7,7 +7,10 @@ class CreatePatients < ActiveRecord::Migration
       t.belongs_to :research, index: true
       t.belongs_to :research_group, index:true
 
+      t.integer :followup_left
+
       t.string :name, null:false
+      t.string :pid
       t.string :hosptalization_number
       t.date :date_of_birth
       t.string :ID_number
