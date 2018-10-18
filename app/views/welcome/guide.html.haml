@@ -1,0 +1,94 @@
+- content_for :side_bar do
+  %ul.side-nav.welcome
+    %li.divider
+    %li
+      %h3= current_user.realname
+    %li.divider
+    %li
+      %span.fi-results-demographics
+        角色：
+      %b= current_user.role.name
+    %li
+      %span.fi-marker
+        所属中心：
+      %b= current_user.center.try(:name) || t('exist.none')
+    %li.divider
+    %li 登录信息
+    %ul
+      %li 第#{current_user.sign_in_count || 0}次登录
+      %li 上次登录时间：#{ l(current_user.last_sign_in_at) }
+
+
+%h2.page-header
+  %i.fi-bookmark
+  = t :welcome
+
+.row
+
+  .columns.medium-6.guide{}
+    %a{href:'#'}
+      %h2
+        = image_tag 'guide_patient.png'
+        病例维护
+    %ul
+      %li
+        %a{href: '#'} 新建病例
+      %li
+        %a{href: '#'} 添加辅助治疗信息
+      %li
+        %a{href: '#'} 添加随访信息
+
+
+  .columns.medium-6.guide{}
+    %a{href: '#'}
+      %h2
+        = image_tag 'guide_stats.png'
+        病例查询
+    %ul
+      %li
+        %a{href:'#'}基本查询
+      %li
+        %a{href: '#'}高级查询
+      %li
+        %a{href: '#'} 自定义查询
+
+
+  .columns.medium-6.guide{class: nil}
+    %a{href:'#'}
+      %h2
+        = image_tag 'guide_search.png'
+        数据分析
+    %ul
+      %li
+        %a{href:'#'}病例数量统计
+      %li
+        %a{href:'#'} 专业统计
+      %li
+        %a{href: '#'} 数据库情况统计
+  -## TODO: inputer can enter user index??
+
+
+  .columns.medium-6.guide{class: nil}
+    %a{href: '#'}
+      %h2
+        = image_tag 'guide_system.png'
+        系统管理
+    %ul
+      %li
+        %a{href:'#'} 用户管理
+      %li
+        %a{href: '#'} 角色和中心管理
+      %li
+        %a{href:'#'} 数据库备份
+
+  .columns.medium-6.guide{class: nil}
+    %a{href: '#'}
+      %h2
+        = image_tag 'guide_system.png'
+        项目与研究管理
+    %ul
+      %li
+        %a{href:'#'} 项目管理
+      %li
+        %a{href: '#'} 研究管理
+

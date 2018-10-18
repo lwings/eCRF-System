@@ -1,0 +1,55 @@
+# Welcome top nav
+.contain-to-grid
+  %nav.welcome-top-bar{:role => 'navigation'}
+    %ul.title-area
+      %li.name
+        %h1
+          %a{:href => '#'}
+            =image_tag 'logo_with_name_01.jpg', alt: 'logo'
+            %span
+
+    %section.top-bar-section
+      / Right Nav Section
+      %ul.right
+        - if user_signed_in?
+          %li
+            %a{href: welcome_guide_path}= current_user.realname
+          %li
+            = link_to t('sign_out'), destroy_user_session_path, method: :delete
+        - else
+          %li
+            -# TODO test if with turbolink
+            %a{:href => new_user_session_path, "data-no-turbolink": ''}
+              %i.fi-torsos
+              %span= t :sign_in
+
+-# banner
+%section#home
+  .row
+    =image_tag 'guide_title1.png', alt: 'logo'
+
+-# introduction
+%section.intro
+  .row
+    .columns.medium-8
+      %h2 关于本数据库...
+      %p 本数据库以上海交通大学医学院附属瑞金医院为核心，联合国内多家医院共同开发，旨在为国内医院的乳腺癌研究提供高质量的数据和服务。
+
+    .columns.medium-offset-1.medium-3
+      %ul.square
+        %li
+          目前数据库总病例量：
+          %span.radius.secondary.label
+            %b= @count_stat[:total]
+        %li
+          近一个月病例新增量：
+          %span.radius.secondary.label
+            %b= @count_stat[:month]
+        %li
+          近一个周病例新增量：
+          %span.radius.secondary.label
+            %b= @count_stat[:week]
+        %li
+          中心总数量：
+          %span.radius.secondary.label
+            %b= @count_stat[:center]

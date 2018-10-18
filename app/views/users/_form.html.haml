@@ -17,8 +17,8 @@
   %fieldset
     -#%legend= current_user.role.try(:global?) ?  '角色与中心' : '角色'
     .row
-      = f.input :role_id, label: Role.model_name.human, collection: @available_roles, as: :select, required: true
-      = f.input :center_id, label: Center.model_name.human, collection: @available_centers, as: :select, required: true
+      = f.input :role_id, label: Role.model_name.human, collection: @available_roles, as: :select, required: true,include_blank: false
+      = f.input :center_id, label: Center.model_name.human, collection: @available_centers, as: :select, required: true,include_blank: false
       -#- if current_user.role.try(:global?)
         = f.association :role, label: Role.model_name.human, required: true
         = f.association :center, label: Center.model_name.human, required: true

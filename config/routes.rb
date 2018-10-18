@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  get 'welcome/new'
+  get 'welcome/guide'
+
   scope "(:locale)", locale: /en|zh-CN/ do
     root to: "home#home"
   end

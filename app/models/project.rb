@@ -4,5 +4,6 @@ class Project < ActiveRecord::Base
 
   has_many :patients, dependent: :destroy
   has_many :user, through:  :relationships
+  has_many :researchs, dependent: :destroy
 
 end

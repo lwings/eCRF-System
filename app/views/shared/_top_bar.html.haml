@@ -15,12 +15,16 @@
       -# Right Nav Section
       %ul.right
         - if user_signed_in?
-          -#%li
-          -#  %a{:href => welcome_guide_path }= t :guide
+          %li
+            %a{:href => welcome_guide_path }= t :guide
+          %li.divider
+          - if !current_project_name.nil?
+            %li
+              %a= "Current Croject:"+current_project_name
           %li.divider
           - if current_user.center
             %li
-              %a= current_user.center.name
+              %a= "Center:"+current_user.center.name
             %li.divider
           %li.has-dropdown
             %a{:href => '#'}
