@@ -12,8 +12,17 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require foundation
+//= require jquery-ui/autocomplete
+//= require autocomplete-rails
 //= require turbolinks
-//= require_tree .
+//= require cocoon
+//= require highcharts
+//= require highcharts-more
+//= require modules/drilldown
+//= require modules/exporting
+//= require jquery.tablesorter
+//= require jquery.noty.packaged
 
-$(function(){ $(document).foundation(); });
+// require_tree .
+
+Turbolinks.enableProgressBar();

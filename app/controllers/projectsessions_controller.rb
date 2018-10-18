@@ -6,7 +6,7 @@ class ProjectsessionsController < ApplicationController
     if current_user.any_accessable_projects?
 
     else
-      redirect_to controller: :excption, notice:nil
+      redirect_to action: :exception
     end
 
   end
