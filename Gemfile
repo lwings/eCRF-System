@@ -37,7 +37,7 @@ gem 'erb2haml', '~> 0.1.5', group: :development
 gem 'kaminari', '~> 0.16.3'                 # pagination
 gem 'simple_form', '~> 3.1.0'               # form
 gem 'cocoon', '~> 1.2.0'                    # nested form
-gem 'foundation-rails', '~> 6.2'            # zurb-foundation
+gem 'foundation-rails', '~> 5.5.2.1'        # zurb-foundation
 gem 'autosize', '~> 1.1'                    # autosize for textarea
 ## }}
 

@@ -1,0 +1,20 @@
+- content_for :side_bar do
+  = render 'shared/sidebar_system'
+
+%h2
+  用户管理
+  %small 共有#{@users.total_count}位
+
+- operations = { alter: {'reveal-id': :alter, 'reveal-ajax': :true}, delete: {method: :delete, confirm: '你确定要删除该用户吗？！'}}
+
+= render partial: 'shared/table', locals:{columns: [:username, :realname, :email, :phone],
+                                  collection: @users, operations: operations,
+                                  url_method: {alter: (method :edit_user_path), delete: (method :user_path)}}
+
+= render partial: 'shared/dialog', locals: {modal: {id: :alter, title: :alter}}
+
+= paginate @users
+
+-#= render partial: 'form', layout: 'shared/dialog', locals: {modal: {id: :delete, title: :delete}}
+
+-#TODO if @user has errors, auto open the form

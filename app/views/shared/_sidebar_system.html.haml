@@ -1,0 +1,43 @@
+%ul.side-nav
+  %li
+    %a{href: users_path } 用户管理
+  %li
+    %ul
+      %li
+        %a.fi-list-thumbnails{href: users_path }
+          用户列表
+      %li
+        %a.fi-plus{href: new_user_path }
+          新建用户
+
+  -#- if can? :read, Role
+  -#  %li.divider
+  -#  %li
+  -#    %a{href: roles_path } 角色管理
+  -#  %li
+  -#    %ul
+  -#      %li
+  -#        %a.fi-list-thumbnails{href: roles_path }
+  -#          角色列表
+  -#      %li
+  -#        %a.fi-plus{href: new_role_path }
+  -#          新建角色
+  -#- if can? :read, Center
+  -#  %li.divider
+  -#  %li
+  -#    %a{:href => centers_path } 中心管理
+  -#    %ul
+  -#      %li
+  -#        %a.fi-list-thumbnails{href: centers_path  }
+  -#          中心列表
+  -#      %li
+  -#        %a.fi-plus{href: new_center_path }
+  -#          新建中心
+  -#  %li.divider
+  -#  %li
+  -#    %a{href: backup_path} 数据管理
+  -#  %li
+  -#    %ul
+  -#      %li
+  -#        %a.fi-database{href: backup_path}
+  -#          备份数据

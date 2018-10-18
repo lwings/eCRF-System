@@ -1,23 +1,24 @@
-!!! 5
-%html{ :lang => 'zh' }
+%html
   %head
-    -# HTML 4.0.1 style
-    -# %meta{:content => "text/html; charset=UTF-8', 'http-equiv' => 'Content-Type"}
-    -# HTML 5 style, the charset attribute is added
-    %meta{ :charset => 'utf-8' }
-
-    -# foundation
-    %meta{ :name => 'viewport', :content => 'width=device-width, initial-scale=1.0' }
-
-    %title= content_for?(:title) ? yield(:title) : vt('title.site')
-
-    = stylesheet_link_tag    'application', 'data-turbolinks-track' => true
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title= t('site_name')
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
-    = csrf_meta_tag
-    -# = favicon_link_tag "apple-touch-icon.png", rel: "apple-touch-icon"
+    = csrf_meta_tags
 
   %body
-    = render 'shared/notification'
     = render 'shared/top_bar'
-    = yield
+    = render 'shared/notify'
 
+    .row.main
+      .columns.medium-3
+        = yield :side_bar
+
+      .columns.medium-9
+        = yield
+
+    .row.footer-wrap
+      = render 'shared/footer'
+
+    = javascript_include_tag 'delay', 'data-turbolinks-track' => true
+    = yield :add_js

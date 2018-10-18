@@ -4,11 +4,11 @@ class DeviseCreateUsers < ActiveRecord::Migration
       ## others
       t.belongs_to :center, index: true
       t.belongs_to :role, index: true
-      t.string  :employee_no, null: false # employee number
+      # t.string  :employee_no, null: false # employee number
       t.string  :username, null: false
-      t.string  :name, null: false
+      t.string :realname
       t.string  :phone
-      t.integer :status, null: false
+      t.integer :status
 
       ## Database authenticatable
       t.string :email,              null: false, default: ""

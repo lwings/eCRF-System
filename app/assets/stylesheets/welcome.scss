@@ -1,0 +1,142 @@
+// Place all the styles related to the Welcome controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import "foundation/functions";
+
+$border-color: #e0e0e0;
+
+//smaller row for welcome
+$row-width: rem-calc(1000);
+
+$rem-base: 16px;
+
+$topbar-height: rem-calc(120);
+$topbar-bg: white;
+$topbar-bg-color: $topbar-bg;
+$topbar-margin-bottom: 0;
+$topbar-input-height:  rem-calc(28);
+$topbar-button-font-size: 0.75rem;
+$topbar-title-font-size: rem-calc(17);
+$topbar-title-weight: normal;
+$topbar-link-color: #488cca;
+$topbar-link-padding: $topbar-height / 3;
+$topbar-dropdown-bg: white;
+$topbar-link-padding: ($topbar-height / 3);
+$topbar-divider-border-top: solid 1px scale-color($topbar-bg-color, $lightness: -50%);
+
+body {
+  background: white;
+}
+
+.contain-to-grid {
+  background: $topbar-bg;
+  .welcome-top-bar{
+    max-width: $row-width;
+    margin: 0 auto;
+  }
+}
+
+.row {
+  max-width: $row-width;
+}
+
+#home {
+  height: 480px;
+  background: image-url("banner_heart_right") no-repeat scroll center center;
+  margin-bottom: 50px;
+  img {
+    margin-top: 285px;
+    margin-left: 100px;
+    opacity: 0.8;
+  }
+}
+
+section.intro {
+  height: 250px;
+  h3, h2 {
+    color: #333;
+    //text-align: center;
+  }
+  p {
+    text-indent: 1.5em;
+    color: #6f6f6f;
+    font-size: 1.35rem;
+  }
+  img {
+    padding: 0 15px
+  }
+  ul {
+    margin-top: 25px;
+    font-size: 1rem;
+  }
+}
+
+.welcome-top-bar {
+  overflow: hidden;
+  height: $topbar-height;
+  line-height: $topbar-height;
+  position: relative;
+  background: $topbar-bg;
+  margin-bottom: $topbar-margin-bottom;
+  img {
+    height: 80px;
+  }
+  // Topbar Global list Styles
+  ul {
+    margin-bottom: 0;
+    list-style: none;
+    float: left;
+    li{
+      a{
+        line-height: $topbar-height !important;
+        background: $topbar-bg !important;
+        color: $topbar-link-color;
+        width: auto;
+      }
+    }
+  }
+
+  .name {
+    height: $topbar-height;
+    margin: 0;
+    font-size: $rem-base;
+
+    h1 {
+      line-height: $topbar-height;
+      font-size: $topbar-title-font-size;
+      margin: 0;
+      a {
+        //font-weight: $topbar-title-weight;
+        //color: $topbar-link-color;
+        width: auto;
+        display: block;
+        padding: 0;
+        font-size: 1.35rem;
+        //font-weight: bold;
+        color: #333;
+      }
+    }
+  }
+
+  .top-bar-section {
+    ul {
+      li {
+        a {
+          font-size: 16px;
+          &:hover {
+            color: darken($topbar-link-color, 20);
+          }
+        }
+      }
+    }
+  }
+}
+
+footer {
+  border-top: 1px solid $border-color;
+  padding-top: 20px;
+  ul {
+    list-style: none;
+  }
+}

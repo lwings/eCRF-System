@@ -1,26 +1,35 @@
-.top-bar{class: controller_name}
-  .top-bar-title
-    %strong
-      = image_tag 'logo_red.png', class: :logo
-      %a{href: root_path}= vt('title.site') 
-  #responsive-menu
-    .top-bar-right
-      %ul.dropdown.menu{'data-dropdown-menu' => ''}
-        %li
-          = link_to vt('element.home'), root_path
-        -# %li
-          -# = link_to vt('element.document'), root_path
-        %li
-          = link_to vt('element.community'), root_path
-        -# %li
-          -# = link_to vt('element.team'), root_path
-        %li
-          = link_to vt('element.features'), root_path
-        %li
-          = link_to vt('element.demo'), root_path
-        %li
-          = link_to vt('element.about_us'), root_path
-        %li
-          %a{href: root_path('en')} English |
-        %li
-          %a{href: root_path('zh-CN')} 中文
+.contain-to-grid
+  %nav.top-bar{'data-topbar' => '', :role => 'navigation'}
+    %ul.title-area
+      %li.name
+        %h1
+          %a{:href => root_path}
+            = image_tag 'ecrf_logo.png', alt: 'logo'
+            %span
+      -# Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone
+      %li.toggle-topbar.menu-icon
+        %a{:href => '#'}
+          %span Menu
+
+    %section.top-bar-section
+      -# Right Nav Section
+      %ul.right
+        - if user_signed_in?
+          -#%li
+          -#  %a{:href => welcome_guide_path }= t :guide
+          %li.divider
+          - if current_user.center
+            %li
+              %a= current_user.center.name
+            %li.divider
+          %li.has-dropdown
+            %a{:href => '#'}
+              %span= current_user.realname
+            %ul.dropdown
+              %li
+                = link_to  t(:edit_profile), edit_user_registration_path
+              %li
+                = link_to t(:sign_out), destroy_user_session_path, method: :delete
+        - else
+          %li
+            = link_to t(:sign_in), new_user_session_path

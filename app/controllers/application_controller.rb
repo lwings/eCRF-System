@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
     new_user_session_path
   end
   def after_sign_in_path_for(resource)
-    summary_user_path(resource)
+    project_login_path
   end
 
   def ct(key, options={})

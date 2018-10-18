@@ -1,0 +1,29 @@
+= simple_form_for @user do |f|
+
+  %fieldset
+    %legend 基本信息
+    .row
+      = f.input :username
+      = f.input :email, required: true
+      = f.input :realname
+      = f.input :phone
+
+  %fieldset
+    %legend 密码
+    .row
+      = f.input :password, required: @user.new_record? ? true : false
+      = f.input :password_confirmation, required: @user.new_record? ? true : false
+
+  %fieldset
+    -#%legend= current_user.role.try(:global?) ?  '角色与中心' : '角色'
+    .row
+      = f.input :role_id, label: Role.model_name.human, collection: @available_roles, as: :select, required: true
+      = f.input :center_id, label: Center.model_name.human, collection: @available_centers, as: :select, required: true
+      -#- if current_user.role.try(:global?)
+        = f.association :role, label: Role.model_name.human, required: true
+        = f.association :center, label: Center.model_name.human, required: true
+      -#- else
+      -#  = f.input :role_id, label: Role.model_name.human, collection: @available_roles, as: :select, required: true
+      -#  = f.hidden_field :center_id, value: current_user.center_id
+
+    = f.button :submit, class: [:tiny, :radius]
