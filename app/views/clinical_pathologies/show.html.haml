@@ -1,0 +1,5 @@
+%h3
+  = t(:show) + ClinicalPathology.model_name.human
+  = render 'shared/edit_link', ob: @patient, path: edit_patient_clinical_pathology_path
+
+= render partial: 'form_clinical_pathology'

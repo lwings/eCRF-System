@@ -1,0 +1,53 @@
+%ul.side-nav
+  - if @patient.persisted?
+    %li
+      %a.fi-x{href: patient_path(@patient), data: {method: 'delete', confirm: t('delete_confirm')}}
+        删除此病例！
+    %li.divider
+    %a.fi-check{ href: patient_path(@patient) }
+      = "基本信息"
+    %li
+      %ul
+        %li
+          %a= "ID: #{@patient.pid}"
+        %li
+          %a= "中心: #{@patient.center_id}"
+        %li
+          %a= "姓名: #{@patient.name}"
+        %li
+          %a= "研究干预: #{@patient.research.name}"
+    -#%li.divider
+    -#- [:history, :clinical, :imaging, :pathology, :neoadjuvant].each do |model|
+    -#  %li
+    -#    - ob = @patient.send model
+    -#    - flag = ob.try(:persisted?)
+    -#    %a{ href: flag ? send("patient_#{model}_path", @patient) : send("new_patient_#{model}_path", @patient),
+    -#        class: flag ? 'fi-check' : 'fi-pencil'}
+    -#      = t "activerecord.models.#{model}", default: model.to_s.humanize
+    -#%li
+    -#  %a{ href: ( flag = @patient.operation.try(:persisted?) ) ? patient_operation_path(@patient) : new_patient_operation_path(@patient),
+    -#      class: flag ? 'fi-check' : 'fi-pencil'  }
+    -#    = Operation.model_name.human
+    -#  - if @patient.operation.try(:persisted?)
+    -#    %ul
+    -#      - @patient.operation_lesions.each_with_index do |lesion, i|
+    -#        - if lesion.persisted?
+    -#          %li
+    -#            %a.fi-check{ href: patient_operation_lesion_path(@patient, lesion)}
+    -#              = OperationLesion.model_name.human + (i+1).to_s
+    -#      - if @patient.operation_lesions == nil || @patient.operation_lesions.length < @patient.operation.cancer_count
+    -#        %li
+    -#          %a{href: new_patient_operation_lesion_path(@patient)}
+    -#            %i.fi-pencil
+    -#            = t(:new) + OperationLesion.model_name.human
+    -#
+
+  %li.divider
+  %li
+    %a.fi-page-add{ href: new_patient_path }
+      添加新病例
+
+  -#%li.divider
+  -#
+  -#%li
+  -#  %a{ href: patients_path }= t :back

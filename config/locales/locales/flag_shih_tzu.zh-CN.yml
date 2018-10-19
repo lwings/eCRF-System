@@ -1,0 +1,95 @@
+zh-CN:
+  flag_shih_tzu:
+    patient:
+      addiction:
+        smoke: "吸烟"
+        drunk: "酗酒"
+        others: 其他
+    history:
+      systematic_disease:
+        'none': "无"
+        hypertension: "高血压"
+        diabetes: "糖尿病"
+        coronary_heart_disease: "冠心病"
+        thyroid: "甲状腺相关"
+        hyperlipemia: "高血脂"
+        others: "其他"
+      reproductive_history:
+        pregnancy: 孕
+        reproduction: 产
+    clinical:
+      initial_symptom:
+        lump: "肿块"
+        bleed: "出血"
+        discharge: "乳头溢液"
+        others: 其他
+    followup:
+      metastasis:
+        bone: "骨"
+        lung: "肺"
+        liver: "肝"
+        brain: "脑"
+        others: "其他"
+      recur_type:
+        after_conserve: 保乳术后复发
+        chest_wall: 胸壁复发
+        patial: 同侧腋窝及锁骨上淋巴结复发
+        metastasis: 远处转移
+        opposite_breast: 对侧乳腺癌
+        regional_lymph_node: 非同侧胸壁、区域淋巴结
+        second_primary_cancer: 第二原发癌
+
+        same_side: 同侧
+        dual_side: 双侧
+        breast: 乳房
+        node_area: 淋巴结
+        metastasis: 远处转移
+      opposite_breast_cancer:
+        original: 原位
+        invasive: 浸润
+    neoadjuvant:
+      adjuvant_type:
+        ct: "化疗"
+        rt: "放疗"
+        et: "内分泌治疗"
+        tt: 靶向治疗
+        others: 其他
+    operation_lesion:
+      op_breast_mode:
+        conserve: "保乳术"
+        mastectomy: "单纯乳房切除术"
+        radical: "根治术"
+        ex_radical: 扩大根治
+        reconstruction: "乳房一期重建术"
+        nsm: "保留乳头皮下腺体切除术"
+        NSM: "保留乳头乳晕全乳切除术"
+        SSM: "保留皮肤全乳切除术"
+      op_axilla_mode:
+        axilla: "腋清"
+        sentinel: "前哨"
+        inner_breast_ln: 内乳淋巴结活检术
+        axilla_ln_clean: 腋下群淋巴结清扫术
+        axilla_ln_low_clean: 低位组淋巴结清扫
+      op_reconstruction_mode:
+        prosthesis_implantation: "假体植入乳房重建术"
+        dilator_implantation: "扩张器植入乳房重建术"
+        ldmf: "背阔肌肌皮瓣术"
+        pedicle_TRAM: "带蒂横形腹直肌肌皮瓣乳房重建术"
+        free_TRAM: "游离横形腹直肌肌皮瓣乳房重建术"
+        DIEP: "腹壁下动脉穿支皮瓣乳房重建术"
+        S_I_GIAP: "臀上/臀下动脉穿支游离皮瓣乳房重建术"
+        dilator_prosthesis_replacement: "扩张器-假体更换术"
+        nipple_areola_reconstruction: "乳头乳晕重建术"
+        fat_transplantation: "脂肪移植术"
+        omentum_breast_reconstruction: "扩张器-假体更换术"
+        breast_reduction_on_the_lifting_surgery: "乳房缩小上提固定术"
+    operation:
+      bs_type:
+        original_leshions: "乳房原发灶"
+        breastfeeding_margin: "保乳切缘"
+        armpit_status:  "腋窝状态"
+        others: "其他"
+
+
+    
+

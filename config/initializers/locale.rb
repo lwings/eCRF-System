@@ -1,2 +1,2 @@
 # set default locale to something other than :en
-I18n.default_locale = Rails.env.test? ? :'zh-CN' : :en 
+I18n.default_locale = Rails.env.test? ? :en : :'zh-CN'

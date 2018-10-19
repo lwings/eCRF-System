@@ -16,4 +16,7 @@ module ProjectsessionsHelper
     session[:project_name]=Project.find(params[:project][:project]).name
   end
 
+  def current_project
+    Project.find(current_project_id)
+  end
 end

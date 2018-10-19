@@ -1,0 +1,45 @@
+- writable = @clinical_pathology.new_record? || action_name == 'edit' || @clinical_pathology.errors.any?
+
+= simple_form_for @clinical_pathology, url: patient_clinical_pathology_path(@patient), html: {'data-abide': '', class: writable ? nil : 'disabled'} do |f|
+  - required = "必填"
+  %fieldset
+    %legend
+      基本临床病理信息
+    .row
+
+      = f.input :primary_lesion
+      -#= f.input :regional_lympth_node
+      = f.input :matastasis
+      = f.input :histological_type
+      = f.input :histological_grading
+      = f.input :vascular_invasion
+      = f.input :ER
+      = f.input :PR
+      = f.input :HER2_IHC
+      = f.input :HER2_FISH
+      = f.input :Ki67
+      = f.input :AR
+      = f.input :date_of_operation,as: :date, start_year: Date.today.year - 10,
+                              end_year: Date.today.year
+  -#%fieldset
+  -#  %legend 病史及家族史
+  -#  .row
+  -#    -#TODO
+  -#    = f.input :has_cancer_history
+  -#    = f.input :cancer_history, as: :text, wrapper_html: {class: 'medium-8 large-9'}, input_html: {title: '患者本人恶性既往史'}
+  -#  .row
+  -#    = f.input :has_family_breast_cancer
+  -#    = f.input :family_breast_cancer, as: :text, wrapper_html: {class: 'medium-8 large-9'}
+  -#  .row
+  -#    = f.input :has_family_ovarian_cancer
+  -#    = f.input :family_ovarian_cancer, as: :text, wrapper_html: {class: 'medium-8 large-9'}
+  -#  .row
+  -#    = f.input :has_breast_disease_history
+  -#    = f.input :breast_disease_history, as: :text, wrapper_html: {class: 'medium-8 large-9'}
+  -#  .row
+  -#    = f.input :has_systematic_disease, as: :select
+  -#    = f.input :selected_systematic_disease, collection: f.object.options('systematic_disease'), as: :check_boxes, warpper: :default, wrapper_html: {class: 'medium-4 large-6'}
+  -#    = f.input :ex_systematic_disease, input_html: {title: '如系统疾病中无该疾病选项，该条目注明。'}
+
+  - if writable
+    = f.button :submit, class: [:small, :radius]

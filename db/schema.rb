@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181018124420) do
+ActiveRecord::Schema.define(version: 20181019055253) do
 
   create_table "adverse_events", force: :cascade do |t|
     t.integer  "patient_id",          limit: 4
@@ -267,6 +267,19 @@ ActiveRecord::Schema.define(version: 20181018124420) do
 
   add_index "followups", ["patient_id"], name: "index_followups_on_patient_id", using: :btree
 
+  create_table "group_informations", force: :cascade do |t|
+    t.integer  "patient_id",                 limit: 4
+    t.integer  "research_group_id",          limit: 4
+    t.boolean  "is_meet_inclusion_criteria", limit: 1
+    t.date     "inform_consent_date"
+    t.date     "random_groping_date"
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
+  end
+
+  add_index "group_informations", ["patient_id"], name: "index_group_informations_on_patient_id", using: :btree
+  add_index "group_informations", ["research_group_id"], name: "index_group_informations_on_research_group_id", using: :btree
+
   create_table "history_of_nonbreast_cancers", force: :cascade do |t|
     t.integer  "clinical_pathology_id", limit: 4
     t.string   "name",                  limit: 255, null: false
@@ -300,26 +313,25 @@ ActiveRecord::Schema.define(version: 20181018124420) do
   add_index "medication_completions", ["patient_id"], name: "index_medication_completions_on_patient_id", using: :btree
 
   create_table "patients", force: :cascade do |t|
-    t.integer  "status",                     limit: 4,   default: 0
-    t.integer  "project_id",                 limit: 4
-    t.integer  "user_id",                    limit: 4
-    t.integer  "research_id",                limit: 4
-    t.integer  "research_group_id",          limit: 4
-    t.integer  "followup_left",              limit: 4
-    t.string   "name",                       limit: 255,             null: false
-    t.string   "pid",                        limit: 255
-    t.string   "hosptalization_number",      limit: 255
+    t.integer  "status",                limit: 4,   default: 0
+    t.integer  "project_id",            limit: 4
+    t.integer  "user_id",               limit: 4
+    t.integer  "research_id",           limit: 4
+    t.integer  "research_group_id",     limit: 4
+    t.integer  "followup_left",         limit: 4
+    t.string   "name",                  limit: 255,             null: false
+    t.string   "pid",                   limit: 255
+    t.string   "hosptalization_number", limit: 255
     t.date     "date_of_birth"
-    t.string   "ID_number",                  limit: 255
-    t.string   "phone_number_1",             limit: 255
-    t.string   "phone_number_2",             limit: 255
-    t.boolean  "is_meet_inclusion_criteria", limit: 1
-    t.date     "inform_consent_date"
-    t.date     "random_groping_date"
-    t.datetime "created_at",                                         null: false
-    t.datetime "updated_at",                                         null: false
+    t.string   "ID_number",             limit: 255
+    t.string   "phone_number_1",        limit: 255
+    t.string   "phone_number_2",        limit: 255
+    t.datetime "created_at",                                    null: false
+    t.datetime "updated_at",                                    null: false
+    t.integer  "center_id",             limit: 4
   end
 
+  add_index "patients", ["center_id"], name: "index_patients_on_center_id", using: :btree
   add_index "patients", ["project_id"], name: "index_patients_on_project_id", using: :btree
   add_index "patients", ["research_group_id"], name: "index_patients_on_research_group_id", using: :btree
   add_index "patients", ["research_id"], name: "index_patients_on_research_id", using: :btree
@@ -436,5 +448,6 @@ ActiveRecord::Schema.define(version: 20181018124420) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["role_id"], name: "index_users_on_role_id", using: :btree
 
+  add_foreign_key "patients", "centers"
   add_foreign_key "researches", "projects"
 end

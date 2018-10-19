@@ -3,7 +3,7 @@ class ClinicalPathology < ActiveRecord::Base
   include Constant
 
   enumerize :primary_lesion, in: PRILESION_OPT
-  enumerize :reginoal_lympth_node, in: LYMNODE_OPT
+  enumerize :regional_lympth_node, in: LYMNODE_OPT
   enumerize :histological_type, in: HISTYPE_OPT
   enumerize :histological_grading, in: HISGRAD_OPT
   enumerize :vascular_invasion, in: TRIPLET_OPT_I

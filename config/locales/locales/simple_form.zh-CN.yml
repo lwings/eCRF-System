@@ -1,0 +1,26 @@
+zh-CN:
+  simple_form:
+    "yes": '是'
+    "no": '否'
+    required:
+      html: '<abbr class="required">&#xf1ee;</abbr>'
+    labels:
+      history:
+        menstrual_cycle: "月经周期(天)"
+        breastfed_period: "哺乳时间(月)"
+
+      user:
+        loginname: "用户名/邮箱"
+        password: "密码"
+        remember_me: "记住我"
+
+#     todo: translate for label do not work. f.label is not a input func for simple form
+      imaging_lesion:
+        lesion_size: 病灶大小
+
+    placeholders:
+      patient:
+        height: '米'
+        weight: '千克'
+      patient_history:
+        breastfeed_period: '月'

@@ -1,0 +1,33 @@
+zh-CN:
+  analysis:
+    molecular:
+      name: "分子分型"
+    staging:
+      name: "TNM分期"
+      tumor: "T分期"
+      node: "N分期"
+      metastasis: "M分期"
+    pathological_type:
+      name: 术后病理类型
+    histological_grade:
+      name: 术后组织学分级
+    breast_mode:
+      name: 乳房手术下钻统计图
+    axilla_mode:
+      name: 淋巴结手术下钻统计图
+    ihc_er:
+      name: ER统计图
+    ihc_pr:
+      name: PR统计图
+    ihc_cerbb_2:
+      name: CerbB-2统计图
+    ihc_ki67:
+      name: Ki67统计图
+    ct_scheme:
+      name: 术后辅助治疗化疗统计图
+    tt_scheme:
+      name: 术后辅助治疗靶向治疗统计图
+    et_scheme:
+      name: 术后辅助治疗内分泌治疗统计图
+    rt_scheme:
+      name: 术后辅助治疗放疗统计图

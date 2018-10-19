@@ -1,0 +1,623 @@
+zh-CN:
+  activerecord:
+    models:
+      adjuvant: "术后辅助治疗"
+      adj_cr_lesion: "临床研究"
+
+      center: "中心"
+      clinical: "患者临床特征"
+      clinical_lesion: "临床病灶"
+      contact: "联系人"
+      followup: "随访记录"
+      # for export
+      followups: "随访记录"
+
+      history: "系统回顾和既往史"
+      imaging: "影像学检查"
+      imaging_lesion: "影像学病灶"
+      imaging_side: "影像学记录"
+      img_mmg_lesion: "影像MMG病灶"
+      img_mri_lesion: "影像MRI病灶"
+      img_us_lesion: "影像US病灶"
+      neo_cu_lesion: "新辅PE病灶"
+      neo_mmg_lesion: "新辅MMG病灶"
+      neo_mri_lesion: "新辅MRI病灶"
+      neo_us_lesion: "新辅US病灶"
+      neoadjuvant: "新辅助治疗"
+      neoadjuvant_len: "新辅病灶"
+      operation: "手术及病理"
+      operation_lesion: "手术病灶"
+      pathology: "活检病理学检查"
+      pathology_lesion: "活检病灶"
+      patient: "基本信息"
+      permission: "权限"
+      role: "角色"
+      user: "用户"
+      twenty_one_gene: "21基因"
+      twenty_eight_gene: "28基因"
+      twenty_one_and_seven_gene: "21+7基因"
+      neo_mdt: "新辅助MDT意见"
+      adj_mdt: "MDT意见"
+      blood_sample: "外周血标本采样"
+      lesion_primary_sp: "原发灶标本采样"
+      lesion_blood_sp: "复发转移灶标本采样"
+      blood_spec: "外周血标本"
+      lesion_primary_spec: "原发灶标本"
+      lesion_blood_spec: "复发转移灶标本"
+
+
+    attributes_common: &common
+      remarks: "备注"
+      created_at: "创建时间"
+      updated_at: "更新时间"
+
+    attributes:
+      center:
+        name: "中心名"
+        description: "描述"
+
+      lesion_size: &lesion_size
+        size_a: 肿块大小-a(cm)
+        size_b: 肿块大小-b(cm)
+
+      aln_size: &aln_size
+        aln_size_a: ALN大小-a(cm)
+        aln_size_b: ALN大小-b(cm)
+
+      scln_size: &scln_size
+        scln_size_a: SCLN大小-a(cm)
+        scln_size_b: SCLN大小-b(cm)
+      sample_attr_common: &sp_common
+        specimen_type: 标本类型
+        sampling_time: 采血时间点
+        sampling_date: 采血日期
+        operator: 采集人
+        usage: 用途标识
+        ex_usage: 其他用途
+        remarks: 备注
+        cor_lesion: 关联病灶
+
+      specs_attr_common: &spc_common
+        specimen_type: 标本类型
+        specimen_category: 标本性质
+        collector: 收集人
+        index: 标本编码
+        volume: 标本量
+        box_code: 标本盒编码
+        storage_location: 标本存放位置
+        remarks: 备注
+        is_consumed: 是否取用
+        consume_date: 取用日期
+        consumer: 取用人
+        usage: 用途
+
+      mdt_attr_common: &mdt_common
+        mdt_type: 讨论类型
+        mdt_rt: 放疗
+        mdt_ct: 化疗
+        mdt_tt: 靶向治疗
+        mdt_et: 内分泌治疗
+        enforce_schema: 强化内分泌治疗
+        remarks: 备注
+        mdt_rt_left: 放疗(左)
+        mdt_ct_left: 化疗(左)
+        mdt_tt_left: 靶向治疗(左)
+        mdt_et_left: 内分泌治疗(左)
+        remarks_left: 备注(左)
+        mdt_rt_right: 放疗(右)
+        mdt_ct_right: 化疗(右)
+        mdt_tt_right: 靶向治疗(右)
+        mdt_et_right: 内分泌治疗(右)
+        remarks_right: 备注(右)
+
+      neo_mdt:
+        <<: *mdt_common
+      adj_mdt:
+        <<: *mdt_common
+      blood_sample:
+        <<: *sp_common
+      lesion_blood_sp:
+        <<: *sp_common
+      lesion_primary_sp:
+        <<: *sp_common
+      blood_spec:
+        <<: *spc_common
+      lesion_primary_spec:
+        <<: *spc_common
+      lesion_blood_spec:
+        <<: *spc_common
+      clinical:
+        has_initial_symptom: "有无临床首发症状"
+        is_local_excised: "外院局部切除"
+        selected_initial_symptom: "首发症状"
+        initial_symptom: "首发症状"
+        ex_initial_symptom: "其他首发症状"
+        is_pectorales_violated: "胸肌侵犯"
+        is_skin_violated: "皮肤侵犯"
+        has_aln: "腋窝淋巴结"
+        aln_size: "腋窝淋巴结大小(cm)"
+        is_aln_fused: "腋窝淋巴结融合"
+        has_scln: "锁骨上淋巴结"
+        scln_size: "锁骨上淋巴结大小(cm)"
+        tumor_phase: "cT分期"
+        node_phase: "cN分期"
+        metastasis_phase: "cM分期"
+        is_bilateral: "是否双侧病变"
+        <<: *common
+        <<: *aln_size
+        <<: *scln_size
+
+      clinical_lesion:
+        lump_position: "肿块位置"
+        lump_quadrant: "肿块象限"
+        lump_size: "肿块大小(cm)"
+        <<: *lesion_size
+
+      contact:
+        name: "姓名"
+        phone: "电话"
+        address: "地址"
+        relation: "与患者关系"
+
+      history:
+        is_period_regular: "经期正常"
+        menarche_age: "初潮年龄"
+        menstrual_cycle: "月经周期"
+        menopause_status: 月经状态
+        is_menopause: "是否绝经"
+        last_menstrucation_date: "末次月经"
+        menopause_age: "绝经年龄"
+        selected_reproductive_history: "生育史"
+        parturition_num: 生产(次)
+        gravidity_num: 怀孕(次)
+        is_breastfed: "哺乳"
+        breastfed_period: "哺乳时间"
+        has_cancer_history: "是否有恶性肿瘤既往史"
+        cancer_history: "恶性肿瘤既往史"
+        has_family_breast_cancer: "是否有乳腺癌家族史"
+        family_breast_cancer: "乳腺癌家族史"
+        has_family_ovarian_cancer: "是否有卵巢癌家族史"
+        family_ovarian_cancer: "卵巢癌家族史"
+        has_systematic_disease: "是否有系统疾病"
+        selected_systematic_disease: "系统疾病"
+        systematic_disease: "系统疾病"
+        ex_systematic_disease: "其他系统疾病"
+        has_breast_disease_history: "是否有乳腺疾病既往记录"
+        breast_disease_history: "乳腺疾病既往记录"
+        history_remarks: "既往乳腺疾病备注"
+        <<: *common
+
+      imaging:
+        image_number_1: "影像号1"
+        image_number_2: "影像号2"
+        image_number: "影像号1 或 影像号2"
+        is_dual: "是否双侧"
+
+      imaging_lesion:
+        lesion_size: 病灶大小(cm)
+        bi_rads: "BI-RADS"
+        <<: *lesion_size
+
+      imaging_side:
+        position: "位置"
+        lesion_distribution: "病灶分布"
+        us_date: "US时间"
+        us_bi_rads: "US影像评级"
+        us_aln: "US-ALN"
+        us_scln: "US-SCLN"
+        us_lesion_size: "US-L大小"
+        us_missing: 缺失
+        us_cannot_measure: 无法测量
+        mmg_date: "MMG时间"
+        mmg_lesion_size: "MMG-L大小"
+        mmg_bi_rads: "MMG影像评级"
+        mmg_aln: "MMG-ALN"
+        mmg_biopsy: "MMG活检"
+        curve_type: "曲线类型"
+        has_mmg_calcification: "MMG-钙化"
+        mri_date: "MRI时间"
+        mri_lesion_size: "MRI-L大小"
+        mri_bi_rads: "MRI影像评级"
+        mri_aln: "MRI-ALN"
+        has_mri_enhanced_lesion: "MRI-强化灶"
+        has_structure_distortion: "结构扭曲"
+        has_mmg_lump: "MMG肿块"
+        has_mmg_others: 其他
+        has_smc: "可疑恶性钙化"
+        mri_enhance_mode: "MRI强化方式"
+        has_duct_ectasia: "导管扩张"
+        lesion_distribution: "病灶分布"
+        remarks: 备注
+        us_remarks: US备注
+        mmg_remarks: MMG备注
+        mri_remarks: MRI备注
+        has_us: 是否US
+        has_mmg: 是否MMG
+        has_mri: 是否MRI
+        <<: *common
+
+      user:
+        username: "用户名"
+        email: "邮箱"
+        realname: "真实姓名"
+        phone: "手机"
+        current_password: "当前密码"
+        password_confirmation: "重复密码"
+        <<: *common
+
+      role:
+        name: "角色名"
+        description: "描述"
+        user_permissions: "用户权限"
+        patient_permissions: "病例权限"
+        system_permissions: "系统权限"
+
+      center_coverrate:
+        patient_cvr: "基本资料"
+        clinical_cvr: "临床特征"
+        history_cvr: "既往史"
+        imaging_cvr: "影像学"
+        neoadjuvant_cvr: "新辅治疗"
+        pathology_cvr: "穿刺检查"
+        operation_cvr: "手术病理"
+        operation_lesion_cvr: "手术病灶"
+        adjuvant_cvr: "辅助治疗"
+        followup_cvr: "随访"
+
+      patient:
+        pid: "ID"
+        name: "姓名"
+        gender: "性别"
+        age: "年龄"
+        height: "身高(m)"
+        weight: "体重(kg)"
+        bmi: "BMI"
+        race: "民族"
+        nationality: "国籍"
+        identity: "身份证号"
+        phone: "电话"
+        address: "地址"
+        zipcode: "邮编"
+        education: "文化程度"
+        occupation: "职业"
+        ex_occupation: "其他职业"
+        custom_occupation: "其他职业"
+        marital_status: "婚姻状况"
+        addiction: "不良嗜好"
+        selected_addiction: "不良嗜好"
+        has_religion: "有宗教信仰"
+        has_financial_aid: "有经济忧患"
+        has_addiction: "是否有不良嗜好"
+        payment: "付费方式"
+        sleep_status: "睡眠"
+        clinical_number_1: "门诊号1"
+        clinical_number_2: "门诊号2"
+        hospitalization_number: "住院号"
+        attend_doctor: "主诊医生"
+        enter_hospital_date: "入院时间"
+        leave_hospital_date: "出院时间"
+        is_in_clinical_research: "参加临床研究"
+        status: 状态
+        latest: 最近随访时间
+        surgery_date: 手术时间
+        <<: *common
+
+      pathology:
+        has_fna: 有无FNA活检
+        has_pathology: "有无穿刺活检"
+        immunity_number: 免疫组化病理号
+        cytopathology_number: "细胞病理号"
+        histopathology_number: "组织学病理号"
+        biopsy_date: "活检时间"
+        treat_method: "方法"
+        lymph_node_fna_aln: "淋巴结FNA-ALN"
+        lymph_node_fna_scln: "淋巴结FNA-SCLN"
+        fna_remarks: FNA-备注
+
+      pathology_lesion:
+        cnb_position: "活检位置"
+        lesion_size: "病灶大小(cm)"
+        cnb_remarks: "CNB病理类型备注"
+        cnb_level: "组织学分级"
+        cnb_type: "肿块病理类型"
+        ex_cnb_type: "其他肿块病理类型"
+        cnb_er_value: "ER(%)"
+        cnb_pr_value: "PR(%)"
+        cnb_cerbb_2: "CerbB-2"
+        cnb_ki67_value: "Ki67(%)"
+        cnb_her2_fish: Her2-FISH
+        cnb_her2_fish_copy: Her2-FISH Copy数
+        cnb_her2_fish_ratio: Her2-FISH Ratio
+        cnb_er_strength: ER强度
+        cnb_pr_strength: PR强度
+        remarks: 备注
+
+
+      neoadjuvant:
+        has_adjuvant: "是否新辅助治疗"
+        selected_adjuvant_type: "新辅助治疗"
+        adjuvant_type: "新辅助治疗"
+        start_date: "开始时间"
+        adjuvant_date: "辅助治疗时间"
+        ct_scheme: "化疗方案"
+        ex_ct_scheme: "其他化疗方案"
+        rt_scheme: "放疗方案"
+        ex_rt_scheme: "其他放疗方案"
+        et_scheme: "内分泌方案"
+        ex_et_scheme: "其他内分泌方案"
+        height: "身高(m)"
+        weight: "体重(kg)"
+        bmi: "BMI"
+        course: "新辅助疗程"
+        dose: "新辅助剂量"
+        remarks: "备注"
+        checkup_date: "体检时间"
+        checkup_lesion_size: "体检L大小(cm)"
+        cALN_size: "cALN大小(cm)"
+        c_efficacy: "PE-疗效评估"
+        us_date: "US时间"
+        us_efficacy: "US-疗效评估"
+        mmg_date: "MMG时间"
+        mmg_lesion_size: "MMG-L大小(cm)"
+        mmg_aln_size: "MMG-ALN大小(cm)"
+        mmg_efficacy: "MMG-疗效评估"
+        mri_date: "MRI时间"
+        mri_lesion_size: "MRL-L大小(cm)"
+        mri_aln_size: "MRL-ALN大小(cm)"
+        mri_efficacy: "MRI-疗效评估"
+        c_remarks: PE-备注
+        us_remarks: US-备注
+        mmg_remarks: MMG-备注
+        mri_remarks: MRI-备注
+        is_mdt: 是否有MDT讨论
+
+      neoadjuvant_len:
+        position: "位置"
+        lesion_size: "L大小(cm)"
+        aln_size: "ALN大小(cm)"
+        <<: *lesion_size
+        <<: *aln_size
+
+      neo_cu_lesion:
+        lesion_size: PE-L大小(cm)
+        aln_size: PE-ALN大小(cm)
+
+      neo_us_lesion:
+        lesion_size: US-L大小(cm)
+        aln_size: US-ALN大小(cm)
+
+      neo_mmg_lesion:
+        lesion_size: MMG-L大小(cm)
+        aln_size: MMG-ALN大小(cm)
+
+      neo_mri_lesion:
+        lesion_size: MRI-L大小(cm)
+        aln_size: MRI-ALN大小(cm)
+
+      operation:
+        bs_incon: "冰石不符"
+        selected_bs_type: "类型"
+        cancer_count: "病灶数量"
+        cancer_type_count: "癌种数量"
+        surgery_date: "手术时间"
+        surgeon: "手术医生"
+        histopathology_number: "组织病理号"
+        ihc_number: "免疫组化病理号"
+        has_rs_21_gene: "是否有21-gene RS"
+        rs_21_gene: "21-gene RS"
+        lesions_pathological_type: "术后病理类型"
+        lesions_histological_grade: "术后组织学分级"
+        lesions_ex_pathological_type: "其他病理类型"
+        lesions_molecular_type: 分子分型
+        lesions_er_value: "手术-ER(%)"
+        lesions_pr_value: "手术-PR(%)"
+        lesions_cerbb_2: "手术-CerbB-2"
+        lesions_ki67_value: "手术-ki67"
+        lesions_her2_fish: "手术-HER2-FISH"
+        lesions_her2_fish_copy: "her2-fish-copy"
+        lesions_her2_fish_ratio: "her2-fish-ratio"
+        lesions_is_skin_involved: "是否皮肤累及"
+        lesions_is_nerve_violated: "是否LVI"
+        lesions_tumor_phase: "pT分期"
+        lesions_node_phase: "pN分期"
+        lesions_metastasis_phase: "M分期"
+        remarks: "备注"
+
+      operation_lesion:
+        selected_op_reconstruction_mode: "乳房重建方式"
+        selected_op_breast_mode: "乳房手术方式"
+        op_breast_mode: "乳房手术方式"
+        selected_op_axilla_mode: "淋巴结手术方式"
+        op_axilla_mode: "淋巴结手术方式"
+        position: "肿块位置"
+        lump_quadrant: 肿块象限
+        pathological_type: "病理类型"
+        ex_pathological_type: "其他病理类型"
+        pathological_remarks: "其他病理类型"
+        lump_size: "肿块大小(cm)"
+        histological_grade: "组织学分级"
+        slnb_biopsy_count: "SLNB活检数"
+        slnb_metastasize_count: "SLNB转移数"
+        psln_clean_count: "pSLN清扫数"
+        psln_metastasize_count: "pSLN转移数"
+        alnd_clean_count: "ALND清扫数"
+        alnd_metastasize_count: "ALND转移数"
+        total_aln_count: 总ALN数
+        has_ihc: 有无免疫组化
+        er_value: "ER(%)"
+        pr_value: "PR(%)"
+        er_strength: ER强度
+        pr_strength: PR强度
+        cerbb_2: "CerbB-2"
+        ki67_value: "Ki67(%)"
+        her2_fish: "HER2-FISH"
+        her2_fish_copy: "HER2-FISH-COPY数"
+        her2_fish_ratio: "HER2-FISH-Ratio"
+        is_skin_involved: "是否皮肤累及"
+        is_nerve_violated: "是否LVI"
+        conservative_margin: "保乳切缘"
+        tumor_phase: "pT分期"
+        node_phase: "pN分期"
+        metastasis_phase: "M分期"
+        has_postoperative_complication: "是否有术后并发症"
+        postoperative_complication: "术后并发症"
+        ex_postoperative_complication: "其他术后并发症"
+        micro_metastasis: 前哨淋巴结微转移
+        remarks: 备注
+        molecular_type: 分子分型
+        anatomic_stage: TNM分期
+        <<: *lesion_size
+
+      adjuvant:
+        is_chemotherapy: "是否化疗"
+        ct_scheme: "化疗方案"
+        ex_ct_scheme: "其他化疗方案"
+        ct_course: "化疗疗程"
+        ct_dose: "化疗剂量"
+        ct_start_date: "开始时间"
+        ct_end_date: "结束时间"
+        is_radiotherapy: "是否放疗"
+        rt_position: "放疗部位"
+        ex_rt_position: "其他放疗部位"
+        rt_dose: "放疗剂量"
+        rt_start_date: "开始时间"
+        rt_end_date: "结束时间"
+        is_endocrinotherapy: "是否内分泌治疗"
+        et_start_date: "开始时间"
+        et_scheme: "初次内分泌方案"
+        ex_et_scheme_1: "其他内分泌治疗方案1"
+        et_course_1: "内分泌治疗疗程1"
+        et_scheme_2: "内分泌治疗方案2"
+        ex_et_scheme_2: "其他内分泌治疗方案2"
+        et_course_2: "内分泌治疗疗程2"
+        is_ai_used: "是否使用AI"
+        is_tam_used: "是否使用TAM"
+        is_adt: "是否去势治疗"
+        adt_scheme: "去势治疗方案"
+        is_target_therapy: "是否靶向治疗"
+        tt_scheme: "靶向治疗方案"
+        tt_medicine: "靶向治疗药物"
+        ex_tt_scheme: "其他靶向方案"
+        tt_dose: "靶向治疗剂量"
+        tt_start_date: "开始时间"
+        tt_end_date: "结束时间"
+        is_tras_used: "是否使用曲妥珠单抗"
+        is_per_used: "是否使用帕妥珠单抗"
+        et_remarks: "内分泌备注"
+        tt_remarks: "靶向备注"
+        rt_remarks: "放疗备注"
+        ct_remarks: "化疗备注"
+        is_rt: 是否放疗
+        is_ct: 是否化疗
+        is_et: 是否内分泌治疗
+        is_tt: 是否靶向治疗
+        is_cr: 是否参加临床研究
+        is_mdt: 是否有MDT讨论
+      adj_cr_lesion:
+        cr_code: 临床研究代码
+        cr_status: 完成情况
+        cr_quit_date: 退出临床研究时间
+        cr_remarks: 退出研究原因
+      followup:
+        isSecondPrimaryCancer: 第二原发癌
+        followup_date: "随访时间"
+        committer: "随访人"
+        event: "事件"
+        diagnosis: "诊断根据"
+        selected_metastasis: "远处转移"
+        metastasis: "远处转移"  
+        metastasis: "远处转移"
+        ex_metastasis: "其他远处转移"
+        recur_biopsy: 复发病灶活检
+        recur_pathology: 复发病灶病理
+        metastasis_biopsy: "转移病灶活检"
+        metastasis_pathology: "转移灶病理"
+        custom_metastasis: "其他远处转移"
+        subseq_treat: "后续治疗"
+        efficacy: "疗效"
+        selected_recur_type: "复发类型"
+        recur_type: "复发类型"
+        selected_opposite_breast_cancer: 对侧乳腺癌
+        opposite_breast_cancer: 对侧乳腺癌
+        cause_of_death: "死因"
+        ex_cause_of_death: "其他死因"
+        first_recur_date: 首次复发日期
+        first_metastasis_date: 首次远处转移日期
+        death_date: 死亡日期
+        second_primary_cancer: 第二原发癌
+        <<: *common
+
+      twenty_one_gene:
+        RS_type: "RS种类"
+        specimen_location: "标本位置"
+        patient_id: "姓名"
+        testing_time: "检测时间"
+        study_number: "研究编号"
+        tester: "检测人员"
+        remark: "备注"
+        GRB7_CT: "GRB7-CT值"
+        HER2_CT: "HER2-CT值"
+        ER_CT: "ER-CT值"
+        PR_CT: "PR-CT值"
+        Bcl2_CT: "Bcl2-CT值"
+        CEGP1_CT: "CEGP1-CT值"
+        CCNB1_CT: "CCNB1-CT值"
+        Ki67_CT: "Ki67-CT值"
+        MYBL2_CT: "MYBL2-CT值"
+        STK15_CT: "STK15-CT值"
+        SURV_CT: "SURV-CT值"
+        CTSL2_CT: "CTSL2-CT值"
+        STMY3_CT: "STMY3-CT值"
+        CD68_CT: "CD68-CT值"
+        GSTM1_CT: "GSTM1-CT值"
+        BAG1_CT: "BAG1-CT值"
+        ACTIN_CT: "ACTIN-CT值"
+        GAPDH_CT: "GAPDH-CT值"
+        GUS_CT: "GUS-CT值"
+        RPLPO_CT: "RPLPO-CT值"
+        TFRC_CT: "TFRC-CT值"
+        GRB7: "GRB7"
+        HER2: "HER2"
+        ER: "ER"
+        PR: "PR"
+        Bcl2: "Bcl2"
+        CEGP1: "CEGP1"
+        CCNB1: "CCNB1"
+        Ki67: "Ki67"
+        MYBL2: "MYBL2"
+        STK15: "STK15"
+        SURV: "SURV"
+        CTSL2: "CTSL2"
+        STMY3: "STMY3"
+        CD68: "CD68"
+        GSTM1: "GSTM1"
+        BAG1: "BAG1"
+        Mean_Reference: "Mean Reference"
+        HER2_Group: "HER2 Group"
+        ER_Group: "ER Group"
+        Proliferation_Group: "Proliferation Group"
+        Invasion_Group: "Invasion Group"
+        CD68_2: "CD68"
+        GSTM1_2: "GSTM1"
+        BAG1_2: "BAG1"
+        RS_Grade: "RS 评分"
+        risk_of_recurrence: "复发风险计算值"
+        has_twenty_eight_gene: "是否有28基因补充信息"
+        has_twenty_one_and_seven_gene: "是否有7基因补充信息"
+        has_twenty_one_gene: "是否填写21基因"
+
+      twenty_eight_gene:
+        AR: "AR"
+        CCND1: "CCND1"
+        CDK6: "CDK6"
+        E2F1: "E2F1"
+        GluT1: "GluT1"
+        HK2: "HK2"
+        S6K2: "S6K2"
+
+      twenty_one_and_seven_gene:
+        ACTIN: "ACTIN(7基因)"
+        RPLPO: "RPLPO(7基因)"
+        TFRC: "TFRC(7基因)"
+        GAPDH: "GAPDH(7基因)"
+        GUS: "GUS(7基因)"

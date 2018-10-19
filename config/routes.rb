@@ -27,4 +27,7 @@ Rails.application.routes.draw do
   delete '/project_logout', to: 'projectsessions#destroy'
   get '/project_exception', to: 'projectsessions#exception'
 
+  resources :patients do
+    resource :clinical_pathology
+  end
 end

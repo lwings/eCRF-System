@@ -1,0 +1,457 @@
+zh-CN:
+  enumerize:
+    neg_pos: &neg_pos
+      negative: 阴性
+      positive: 阳性
+    location: &location
+      lab: 外科实验室
+      22th: 门诊22楼
+      21th: 门诊21楼
+      15th: 门诊15楼
+      others: 其他
+    color: &color
+      zero: 0
+      low_med: "低-中"
+      medium: "中"
+      medium_strong: "中-强"
+      strong: "强"
+      weak: "弱"
+    boolean-3: &boolean-3
+      "yes": "是"
+      "no": "否"
+      "na": "未知"
+    event_log:
+      event:
+        sign_in: "登录"
+        create: "创建病例"
+        update: "修改病例"
+        check: "审查病例"
+        export: "导出数据"
+    patient:
+      status:
+        created: "已创建"
+        filled: "阶段1完成"
+        norecur: "无复发"
+        recur: "已复发"
+        dead: "已去世"
+        adjuvant_added: "阶段2完成"
+        completed: "阶段3完成"
+      gender:
+        male: "男"
+        female: "女"
+      education:
+        postgraduate: "研究生"
+        undergraduate: "本科及大专"
+        high_school: "高中及中专"
+        junior_school: "初中及以下"
+      payment:
+        medical_insurance: "医保"
+        self_financed: "自费"
+      sleep_status:
+        normal: "正常"
+        abnormal_no_drug: "异常不需用药"
+        abnormal_use_drug: "需用药入睡"
+      occupation:
+        extra: "其他"
+        retired: "退休"
+        onjob: "在职"  # todo
+      marital_status:
+        unmarried: "未婚"
+        married: "已婚"
+        divorced: "离异"
+        widowed: "丧偶"
+      has_religion:
+        <<: *boolean-3
+      has_financial_aid:
+        <<: *boolean-3
+      has_addiction:
+        <<: *boolean-3
+      is_in_clinical_research:
+        <<: *boolean-3
+    history:
+      menopause_status:
+        before: 绝经前
+        about: 围绝经
+        after: 绝经后
+        'none': "正常"
+        menopause: "绝经"
+        amenorrhoea: "化疗后闭经"
+      is_period_regular:
+        <<: *boolean-3
+      is_breastfed:
+        <<: *boolean-3
+      has_cancer_history:
+        <<: *boolean-3
+      has_family_breast_cancer:
+        <<: *boolean-3
+      has_family_ovarian_cancer:
+        <<: *boolean-3
+      has_systematic_disease:
+        <<: *boolean-3
+      has_breast_disease_history:
+        <<: *boolean-3
+    clinical_lesion:
+      lump_position:
+        left: "左乳"
+        right: "右乳"
+      lump_quadrant:
+        internal_up: "内上"
+        internal_bottom: "内下"
+        external_up: "外上"
+        external_bottom: "外下"
+        nipple_areole: "乳头乳晕区"
+    clinical:
+      initial_symptom:
+        lump: "肿块"
+        bleed: "出血"
+        discharge: "乳头溢液"
+        others: 其他
+      is_local_excised:
+        <<: *boolean-3
+      has_aln:
+        <<: *boolean-3
+      has_scln:
+        <<: *boolean-3
+    imaging:
+      is_dual:
+        left: "左乳"
+        right: "右乳"
+        dual: "双乳"
+    imaging_side:
+      position:
+        left: "左乳"
+        right: "右乳"
+      mmg_aln:
+        <<: *neg_pos
+      mri_aln:
+        <<: *neg_pos
+      us_aln:
+        <<: *neg_pos
+        suspicious: 可疑
+        not_done: 未做
+      us_scln:
+        <<: *neg_pos
+        suspicious: 可疑
+        not_done: 未做
+      lesion_distribution:
+        single: "单灶"
+        multiple: "多灶"
+      mri_enhance_mode:
+        none: "无"
+        lump: "肿块"
+        non_lump: "非肿块"
+        segment: 节段
+        others: 其他
+      mmg_biopsy:
+        none: "无"
+        crochet: "钩针定位"
+        rotary_cut: "旋切活检"
+        core_needle: "空心针活检"
+    pathology:
+      treat_method:
+        operation: "手术"
+      lymph_node_fna_aln:
+        <<: *neg_pos
+      lymph_node_fna_scln:
+        <<: *neg_pos
+
+    pathology_lesion:
+      cnb_position:
+        left: "左"
+        right: "右"
+      cnb_type:
+        solid_papillary_carcinoma: 实性乳头状癌
+        encapsulated_papillary_carcinoma: 包裹性乳头状癌
+        eccrine_cancer: 大汗腺癌
+        metaplastic_carcinoma: 化生性癌
+        sarcoma: 肉瘤
+        intraductal_papillary_carcinoma: 导管内乳头状癌
+        malignant_phyllodes_tumor: 恶性叶状肿瘤
+        occult_breast_cancer: 隐匿性乳腺癌
+        invasive_cancer: "浸润性癌"
+        mucinous_carcinomas: "粘液腺癌"
+        medullary_carcinoma: "髓样癌"
+        fibroadenoma: "纤维腺瘤"
+        adenopathy: "腺病"
+        intraductal_papilloma: "导管内乳头状瘤"
+        pagets: "Paget's"
+        idc_dcis: "IDC伴DCIS"
+        others: "其他"
+        idc: IDC
+        ilc: ILC
+        dcis: DCIS
+        lcis: LCIS
+        adh: ADH
+        udh: UDH
+        dcis_invasive:  "DCIS伴微浸润"
+      cnb_er_strength:
+        <<: *color
+      cnb_pr_strength:
+        <<: *color
+      cnb_level:
+        low: "低"
+        middle: "中"
+        high: "高"
+        none: 无
+        i: I
+        ii: II
+        iii: III
+      cnb_result:
+        <<: *neg_pos
+      cnb_her2_fish: &her2_fish
+        borderline: 交界性
+        <<: *neg_pos
+
+    neoadjuvant:
+      efficacy: &efficacy
+        sd: "病情稳定(SD)"
+        cr: "完全缓解(CR)"
+        pr: "病情部分缓解(PR)"
+        pd: "病情进展(PD)"
+        na: "无法确定"
+      c_efficacy:
+        <<: *efficacy
+      us_efficacy:
+        <<: *efficacy
+      mmg_efficacy:
+        <<: *efficacy
+      mri_efficacy:
+        <<: *efficacy
+      et_scheme: &et_scheme
+        tam*5y: TAM*5y
+        tam*10y: TAM*10y
+        tam*2-3y_seq_ai*5y: TAM*2-3y序贯AI*5y
+        tam*5y_ai*5y: TAM*5y-AI*5y
+        ai*5y: AI*5y
+        ai*2-3y_tam: AI*2-3y-TAM
+        tam+ofs: TAM+OFS
+        ai+ofs: AI+OFS
+        others: 其他
+        tam: TAM
+        ai: AI
+        tam_ofs: TAM+OFS
+        serm: SERM
+        ai_ofs: AI+OFS
+        serm_ofs: SERM+OFS
+      ct_scheme: &ct_scheme
+        cef: CEF
+        cef-p: CEF-P
+        cef-t: CEF-T
+        ec: EC
+        ec-ph: EC-PH
+        ec-t: EC-T
+        ec-th: EC-TH
+        tcbh: TCbH
+        tc: TC
+        tec: TEC
+        pcb: PCb
+        ec(ac): AC
+        ec-wp: EC-wP
+        tcb: TCb
+        cmf: CMF
+        a-p-c: A-P-C
+        ddac-ddp: ddAC-ddP
+        ddac-wp: ddAC-wP
+        p: P
+        others: 其他
+      rt_scheme: &rt_scheme
+       chest_colla: 胸壁+锁骨上/下区
+       chest_colla_inter: 胸壁+锁骨上/下区+内乳区
+       chest_colla_inter_axi: 胸壁+锁骨上/下区+内乳区+腋窝
+       whole: 全乳
+       whole_tumor: 全乳+瘤床补量
+       whole_tumor_colla: 全乳+瘤床补量+锁骨上/下区
+       whole_tumor_colla_inter: 全乳+瘤床补量+锁骨上/下区+内乳区
+       others: 其他
+    operation_lesion:
+      position:
+        left: "左乳"
+        right: "右乳"
+      lump_quadrant:
+        internal_up: "内上"
+        internal_bottom: "内下"
+        external_up: "外上"
+        external_bottom: "外下"
+        nipple_areole: "乳头乳晕区"
+      pathological_type:
+        invasive_cancer: "浸润性癌"
+        mucinous_carcinomas: "粘液腺癌"
+        medullary_carcinoma: "髓样癌"
+        fibrous_tumor: "纤维瘤"
+        adenopathy: "腺病"
+        intraductal_papilloma: "导管内乳头状瘤"
+        pagets: "Paget's"
+        idc_dcis: "IDC伴DCIS"
+        post_nac_no_cancer: "NAC后未见癌残留"
+        others: "其他"
+        dcis_invasive:  "DCIS伴微浸润"
+        idc: IDC
+        ilc: ILC
+        dcis: DCIS
+        lcis: LCIS
+        tubular: "小管癌"
+        solid_papillary_carcinoma: 实性乳头状癌
+        encapsulated_papillary_carcinoma: 包裹性乳头状癌
+        eccrine_cancer: 大汗腺癌
+        metaplastic_carcinoma: 化生性癌
+        sarcoma: 肉瘤
+        intraductal_papillary_carcinoma: 导管内乳头状癌
+        malignant_phyllodes_tumor: 恶性叶状肿瘤
+        occult_breast_cancer: 隐匿性乳腺癌
+
+      conservative_margin:
+        neg: "阴性"
+        pos: "阳性"
+        undefine: "未评估"
+        near: "最近切缘"
+      histological_grade:
+        none: "无"
+      er_strength:
+        <<: *color
+      pr_strength:
+        <<: *color
+      her2_fish:
+        <<: *her2_fish
+      has_postoperative_complication:
+        <<: *boolean-3
+      postoperative_complication:
+        'true': "有"
+        'false': "无"
+        infection: "感染"
+        effusion: "积液"
+        flap_necrosis: "皮瓣坏死"
+        others: "其他"
+      molecular_type:
+        luminal_a: "Luminal-A型"
+        luminal_b_neg: "Luminal-B型(HER2阴性)"
+        luminal_b_pos: "Luminal-B型(HER2阳性)"
+        her2_over: "HER2过表达型"
+        triple_neg: "三阴性乳腺癌"
+        unsorted: 无法分类
+        unknown: 未知
+      anatomic_stage:
+        nac: NAC
+        zero: Stage 0
+        ia: Stage IA
+        ib: Stage IB
+        iia: Stage IIA
+        iib: Stage IIB
+        iic: Stage IIC
+        iiia: Stage IIIA
+        iiib: Stage IIIB
+        iiic: Stage IIIC
+        iv: Stage IV
+        unsorted: 无法分类
+        unknown: 未知
+    adjuvant:
+      none: 无该项治疗
+      need: 需要该项治疗
+      ct_scheme:
+        <<: *ct_scheme
+      et_scheme:
+        <<: *et_scheme
+      et_scheme_1:
+        <<: *et_scheme
+      et_scheme_2:
+        <<: *et_scheme
+      rt_position:
+        <<: *rt_scheme
+      tt_scheme:
+        wait_fish: 待FISH结果
+        during_ct: 与化疗同时
+        seq_ct: 与化疗序贯
+        cont_et_after_neo: （新辅助治疗后）继续靶向治疗
+        one_year: 总时长1年
+        others: 其他
+      tt_medicine:
+        h: H
+        p: P
+        l: L
+        h_p: H+P
+        h_l: H+L
+    adj_cr_lesion:
+      cr_status:
+        ongoing: 正在进行中
+        finish: 已完成
+        dropout: 中途退出
+      cr_opt:
+        PBONY: PBONY(新辅助)
+        HLX: HLX02-BC01
+    followup:
+      event:
+        norecur: "无复发"
+        recur: "复发"
+        dead: "死亡"
+        other_cancer: 除乳腺癌外，第二原发癌恶性肿瘤
+        no_info: 无信息
+      efficacy:
+        cr: "完全缓解"
+        pr: "部分缓解"
+        stable: "疾病稳定"
+        developed: "疾病进展"
+        inestimable: "不能评估"
+      recur_type:
+        same_side: 同侧
+        dual_side: 双侧
+        breast: 乳房
+        node_area: 淋巴结
+        metastasis: 远处转移
+      cause_of_death:
+        breast_cancer: 乳腺癌
+        others: 其他
+      diagnosis:
+        clinical: 临床
+        imaging: 影像
+        pathology: 病理
+    neoadjuvant_len:
+      position:
+        left: 左侧
+        right: 右侧
+
+    twenty_one_gene:
+      specimen_location:
+        left: "左侧"
+        right: "右侧"
+      risk_of_recurrence:
+        low: "低危"
+        middle: "中危"
+        high: "高危"
+    blood_sample:
+      specimen_type:
+        serum: "血清"
+        plasma: "血浆"
+        hemocyte: "血细胞"
+      sampling_time:
+        first: 初次诊断时
+        beforeneo: 新辅助治疗后手术前
+        beforeadj: 手术后辅助治疗前
+        durct: 化疗期间
+        afteradj: 辅助化疗结束后
+        recur: 复发转移时
+        others: 其他
+    blood_spec:
+      storage_location:
+        <<: *location
+    lesion_blood_spec:
+      specimen_category:
+        spike: 穿刺
+        biopsy: 切取活检
+      specimen_type:
+        freeze: 冰冻
+        stone: 蜡块
+        roll: 蜡卷
+      storage_location:
+        <<: *location
+    lesion_primary_spec:
+      specimen_type:
+        freeze: 冰冻
+        stone: 蜡块
+        roll: 蜡卷
+      specimen_category:
+        can: 癌
+        can_beside: 癌旁
+        norm: 正常组织
+      storage_location:
+        <<: *location
+
+

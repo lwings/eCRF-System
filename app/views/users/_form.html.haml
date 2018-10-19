@@ -15,15 +15,8 @@
       = f.input :password_confirmation, required: @user.new_record? ? true : false
 
   %fieldset
-    -#%legend= current_user.role.try(:global?) ?  '角色与中心' : '角色'
     .row
-      = f.input :role_id, label: Role.model_name.human, collection: @available_roles, as: :select, required: true,include_blank: false
-      = f.input :center_id, label: Center.model_name.human, collection: @available_centers, as: :select, required: true,include_blank: false
-      -#- if current_user.role.try(:global?)
-        = f.association :role, label: Role.model_name.human, required: true
-        = f.association :center, label: Center.model_name.human, required: true
-      -#- else
-      -#  = f.input :role_id, label: Role.model_name.human, collection: @available_roles, as: :select, required: true
-      -#  = f.hidden_field :center_id, value: current_user.center_id
+      = f.association :role, label: Role.model_name.human, collection: @available_roles, as: :select, required: true,include_blank: false
+      = f.association :center, label: Center.model_name.human, collection: @available_centers, as: :select, required: true,include_blank: false
 
     = f.button :submit, class: [:tiny, :radius]

@@ -32,11 +32,8 @@
         病例维护
     %ul
       %li
-        %a{href: '#'} 新建病例
-      %li
-        %a{href: '#'} 添加辅助治疗信息
-      %li
-        %a{href: '#'} 添加随访信息
+        %a{href: new_patient_path} 新建病例
+
 
 
   .columns.medium-6.guide{}
@@ -91,4 +88,16 @@
         %a{href:'#'} 项目管理
       %li
         %a{href: '#'} 研究管理
+
+  .columns.medium-6.guide{class: nil}
+    %a{href: '#'}
+      %h2
+        = image_tag 'guide_patient.png'
+        研究监察
+    %ul
+      %li
+        %a{href:'#'} 监察列表
+      %li
+        %a{href:'#'} 新建监察
+
 

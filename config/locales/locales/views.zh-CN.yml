@@ -1,0 +1,99 @@
+zh-CN:
+  site_name: "上海交通大学乳腺癌病历数据库"
+
+  sign_in: "登录"
+  sign_out: "退出"
+  forget_password: "忘记密码"
+
+  ## common
+  create: "新建"
+  add: "添加"
+  edit: "编辑"
+  alter: "修改"
+  delete: "删除"
+  show: "查看"
+  new: "新建"
+  back: "返回"
+  operations: "操作"
+  welcome: "欢迎"
+  backup: "备份数据"
+  search: "搜索"
+  view: "查看详情"
+  export: "导出数据"
+  select_all: "全选"
+  upload: "上传"
+  destroy: "删除"
+
+  ##patient
+  add_followup: "添加随访"
+  add_adjuvant: "添加辅助治疗"
+  complement: "继续填写"
+
+  ## user
+  guide: "导航"
+  edit_profile: "编辑个人信息"
+  alter_password: "更改密码"
+  alter_password_info: "更改密码和重要资料"
+  change_avatar: "更改头像"
+  update: "更新"
+  update_profile: "更新资料"
+  update_password: "更新密码"
+  confirm: "确认"
+  crop_avatar: "剪切头像"
+
+  username: "用户名"
+  realname: "姓名"
+  email: "邮箱"
+  phone: "手机"
+
+  ## role
+  description: "描述"
+  user_permissions: "管理用户的权限"
+  patient_permissions: "管理病历的权限"
+
+  ## patient
+  # search
+  pid: "ID"
+  name: "姓名"
+  age: "年龄"
+  created_at: "入库时间"
+  no_followup: 尚未随访
+
+  cancancan:
+    error: "您没有权限访问该项目"
+  user_notice:
+    user:
+      created: "用户创建成功"
+      updated: "用户资料更新成功"
+      destroyed: "用户删除成功"
+    role:
+      created: "角色创建成功"
+      updated: "角色更新成功"
+      destroyed: "角色删除成功"
+    center:
+      created: "中心创建成功"
+      updated: "中心更新成功"
+      destroyed: "中心删除成功"
+
+  user_errors:
+    role:
+      access: "所选角色不可访问"
+      exist: "所选角色不存在"
+
+  # cocoon
+  add_contact: 添加联系人
+  remove_contact: 删除联系人
+  remove: 删除
+  add_cr_lesion: 添加临床研究记录
+  remove_cr_lesion: 删除记录
+  add_lesion: 添加病灶
+  remove_lesion: 删除病灶
+  add_side: 添加记录
+  remove_side: 删除记录
+  delete_confirm: 确认要删除吗？
+
+  # notice
+  delete_succeed: 删除成功
+  Unknown_method: 未知错误
+  Invalid_file: 文件无效
+  Successfully_imported: 导入成功

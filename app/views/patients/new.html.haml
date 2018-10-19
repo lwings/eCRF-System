@@ -1,0 +1,5 @@
+%h3
+  = t(:new) + Patient.model_name.human
+  %small.fi-asterisk (创建好基本信息才能进行其他操作)
+
+= render partial: 'form_patient'
