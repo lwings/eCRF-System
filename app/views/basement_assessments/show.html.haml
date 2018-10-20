@@ -1,0 +1,5 @@
+%h3
+  = t(:show)+"基线评估信息"
+  = render 'shared/edit_link', ob: @patient, path: edit_patient_basement_assessment_path
+
+= render partial: 'form_basement_assessment'

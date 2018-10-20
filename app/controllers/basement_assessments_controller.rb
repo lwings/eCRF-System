@@ -24,7 +24,7 @@ class BasementAssessmentsController < ApplicationController
 
   def update
     respond_to do |format|
-      if @basement_assessment.update(basement_assessmentclinical_pathology_params)
+      if @basement_assessment.update(basement_assessment_params)
         format.html { redirect_to patient_basement_assessment_path(@patient) }
       else
         format.html { render :edit }
@@ -36,12 +36,16 @@ class BasementAssessmentsController < ApplicationController
   private
   def basement_assessment_params
     params.require(:basement_assessment).permit(
-        :patient_id,:primary_lesion,:regional_lympth_node,
-        :matastasis,:histological_type,:histological_grading,
-        :vascular_invasion, :ER,:PR,:HER2_IHC,:HER2_FISH,
-        :Ki67, :AR,:date_of_operation,
-        history_nonbreast_cancers_attributes: [:id,:name, :diagnostic_date,:disease_status],
-        family_histories_attributes: [:id,:relation_with_patient,:age_at_diagnose,:treatment,:procession_of_disease]
+      :height,:weight,:BMI,:systolic_blood_pressure,:diastolic_blood_pressure,
+      :physical_state_assessment,:pregnancy_test_date,:pregnancy_test_result,:electrocardiogram_date,
+      :electrocarddiogram_diagnosis,:electrocarddiogram_description,:breast_B_ultrasound_date,
+      :breast_B_ultrasound_date_diagnosis,:breast_B_ultrasound_date_description,:Mammography_date,
+      :Mammography_diagnosis,:Mammography_description,:abdominal_B_ultrasound_date,
+      :abdominal_B_ultrasound_date_diagnosis,:abdominal_B_ultrasound_date_description,:breast_CT_date,
+      :breast_CT_diagnosis,:breast_CT_description,:echocardiography_date,:LVEF,
+      :echocardiography_diagnosis,:echocardiography_description,
+      blood_biochemistries_attributes: [:id,:name, :value,:sample_date,:unit,:_destory],
+      blood_routines: [:id,:name, :value,:sample_date,:unit,:_destory]
     )
   end
 end

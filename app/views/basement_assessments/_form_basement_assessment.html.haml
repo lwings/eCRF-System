@@ -1,0 +1,108 @@
+- writable = @basement_assessment.new_record? || action_name == 'edit' || @basement_assessment.errors.any?
+
+= simple_form_for @basement_assessment, url: patient_basement_assessment_path(@patient), html: {'data-abide': '', class: writable ? nil : 'disabled'} do |f|
+  - required = "必填"
+  %fieldset
+    %legend
+      基本信息
+    .row
+
+      = f.input :height
+      = f.input :weight
+      = f.input :BMI
+      = f.input :systolic_blood_pressure
+      = f.input :diastolic_blood_pressure
+      = f.input :physical_state_assessment
+      -#= f.input :ER
+      -#= f.input :PR
+      -#= f.input :HER2_IHC
+      -#= f.input :HER2_FISH
+      -#= f.input :Ki67
+      -#= f.input :AR
+      -#= f.input :date_of_operation,as: :date, start_year: Date.today.year - 10,
+      -#                        end_year: Date.today.year+2
+
+
+    = f.simple_fields_for :blood_biochemistries do |blood_biochemistries|
+      = render 'fields_blood_biochemistry', f: blood_biochemistries
+
+
+    - if writable
+      .links
+        = link_to_add_association "添加记录", f, :blood_biochemistries, partial: 'fields_blood_biochemistry'
+
+
+    = f.simple_fields_for :blood_routines do |blood_routines|
+      = render 'fields_blood_routine', f: blood_routines
+
+
+    - if writable
+      .links
+        = link_to_add_association "添加记录", f, :blood_routines, partial: 'fields_blood_routine'
+  %fieldset
+    %legend
+      妊娠试验
+    .row
+      = f.input :pregnancy_test_date, front_error: required,
+                                    as: :date, start_year: Date.today.year - 5,
+                                    end_year: Date.today.year
+      = f.input :pregnancy_test_result
+  %fieldset
+    %legend
+      心电图
+    .row
+      = f.input :electrocardiogram_date, front_error: required,
+                                    as: :date, start_year: Date.today.year - 5,
+                                    end_year: Date.today.year
+      = f.input :electrocarddiogram_diagnosis
+      = f.input :electrocarddiogram_description
+  %fieldset
+    %legend
+      乳房B超
+    .row
+      = f.input :breast_B_ultrasound_date, front_error: required,
+                                    as: :date, start_year: Date.today.year - 5,
+                                    end_year: Date.today.year
+      = f.input :breast_B_ultrasound_date_diagnosis
+      = f.input :breast_B_ultrasound_date_description
+  %fieldset
+    %legend
+      乳房泪靶
+    .row
+      = f.input :Mammography_date, front_error: required,
+                                    as: :date, start_year: Date.today.year - 5,
+                                    end_year: Date.today.year
+      = f.input :Mammography_diagnosis
+      = f.input :Mammography_description
+  %fieldset
+    %legend
+      腹部B超
+    .row
+      = f.input :abdominal_B_ultrasound_date, front_error: required,
+                                    as: :date, start_year: Date.today.year - 5,
+                                    end_year: Date.today.year
+      = f.input :abdominal_B_ultrasound_date_diagnosis
+      = f.input :abdominal_B_ultrasound_date_description
+  %fieldset
+    %legend
+      胸部CT
+    .row
+      = f.input :breast_CT_date, front_error: required,
+                                    as: :date, start_year: Date.today.year - 5,
+                                    end_year: Date.today.year
+      = f.input :breast_CT_diagnosis
+      = f.input :breast_CT_description
+  %fieldset
+    %legend
+      心超
+    .row
+      = f.input :echocardiography_date, front_error: required,
+                                    as: :date, start_year: Date.today.year - 5,
+                                    end_year: Date.today.year
+      = f.input :LVEF
+      = f.input :echocardiography_diagnosis
+      = f.input :echocardiography_description
+
+
+  - if writable
+    = f.button :submit, class: [:small, :radius]

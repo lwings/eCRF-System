@@ -12,5 +12,10 @@ class BasementAssessment < ActiveRecord::Base
 
   validates_presence_of :patient
 
+  # view
+  accepts_nested_attributes_for :blood_routines,
+                                reject_if: :all_blank, allow_destroy: true
+  accepts_nested_attributes_for :blood_biochemistries,
+                                reject_if: :all_blank, allow_destroy: true
 
 end
