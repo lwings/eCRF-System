@@ -1,5 +1,5 @@
 %h3
-  = t(:show) + Patient.model_name.human
+  = t(:show) + "病人基本信息"
   = render 'shared/edit_link', ob: @patient, path: edit_patient_path(@patient)
 
 = render partial: 'form_patient'

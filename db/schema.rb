@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181019055253) do
+ActiveRecord::Schema.define(version: 20181020080935) do
 
   create_table "adverse_events", force: :cascade do |t|
     t.integer  "patient_id",          limit: 4
@@ -79,72 +79,72 @@ ActiveRecord::Schema.define(version: 20181019055253) do
 
   create_table "blood_biochemistries", force: :cascade do |t|
     t.integer  "basement_assessment_id", limit: 4
-    t.string   "name",                   limit: 255
+    t.integer  "name",                   limit: 4
     t.float    "value",                  limit: 24
     t.date     "sample_date"
-    t.string   "unit",                   limit: 255
-    t.datetime "created_at",                         null: false
-    t.datetime "updated_at",                         null: false
+    t.integer  "unit",                   limit: 4
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
   end
 
   add_index "blood_biochemistries", ["basement_assessment_id"], name: "index_blood_biochemistries_on_basement_assessment_id", using: :btree
 
   create_table "blood_biochemistry_meds", force: :cascade do |t|
     t.integer  "medication_completion_id", limit: 4
-    t.string   "name",                     limit: 255
+    t.integer  "name",                     limit: 4
     t.float    "value",                    limit: 24
     t.date     "sample_date"
-    t.string   "unit",                     limit: 255
-    t.datetime "created_at",                           null: false
-    t.datetime "updated_at",                           null: false
+    t.integer  "unit",                     limit: 4
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
   end
 
   add_index "blood_biochemistry_meds", ["medication_completion_id"], name: "index_blood_biochemistry_meds_on_medication_completion_id", using: :btree
 
   create_table "blood_biochemistry_thes", force: :cascade do |t|
     t.integer  "course_id",   limit: 4
-    t.string   "name",        limit: 255
+    t.integer  "name",        limit: 4
     t.float    "value",       limit: 24
     t.date     "sample_date"
-    t.string   "unit",        limit: 255
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.integer  "unit",        limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   add_index "blood_biochemistry_thes", ["course_id"], name: "index_blood_biochemistry_thes_on_course_id", using: :btree
 
   create_table "blood_routine_meds", force: :cascade do |t|
     t.integer  "medication_completion_id", limit: 4
-    t.string   "name",                     limit: 255
+    t.integer  "name",                     limit: 4
     t.float    "value",                    limit: 24
     t.date     "sample_date"
-    t.string   "unit",                     limit: 255
-    t.datetime "created_at",                           null: false
-    t.datetime "updated_at",                           null: false
+    t.integer  "unit",                     limit: 4
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
   end
 
   add_index "blood_routine_meds", ["medication_completion_id"], name: "index_blood_routine_meds_on_medication_completion_id", using: :btree
 
   create_table "blood_routine_thes", force: :cascade do |t|
     t.integer  "course_id",   limit: 4
-    t.string   "name",        limit: 255
+    t.integer  "name",        limit: 4
     t.float    "value",       limit: 24
     t.date     "sample_date"
-    t.string   "unit",        limit: 255
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.integer  "unit",        limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   add_index "blood_routine_thes", ["course_id"], name: "index_blood_routine_thes_on_course_id", using: :btree
 
   create_table "blood_routines", force: :cascade do |t|
     t.integer  "basement_assessment_id", limit: 4
-    t.string   "name",                   limit: 255
+    t.integer  "name",                   limit: 4
     t.float    "value",                  limit: 24
     t.date     "sample_date"
-    t.string   "unit",                   limit: 255
-    t.datetime "created_at",                         null: false
-    t.datetime "updated_at",                         null: false
+    t.integer  "unit",                   limit: 4
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
   end
 
   add_index "blood_routines", ["basement_assessment_id"], name: "index_blood_routines_on_basement_assessment_id", using: :btree
@@ -192,6 +192,22 @@ ActiveRecord::Schema.define(version: 20181019055253) do
 
   add_index "concomitant_drugs", ["patient_id"], name: "index_concomitant_drugs_on_patient_id", using: :btree
 
+  create_table "course_medications", force: :cascade do |t|
+    t.integer  "course_id",               limit: 4
+    t.float    "dose",                    limit: 24
+    t.date     "date_of_administration"
+    t.boolean  "if_delay_administration", limit: 1
+    t.integer  "reason_for_delay",        limit: 4
+    t.text     "description_for_delay",   limit: 65535
+    t.boolean  "if_change_dose",          limit: 1
+    t.integer  "reason_for_change",       limit: 4
+    t.text     "description_for_change",  limit: 65535
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
+  end
+
+  add_index "course_medications", ["course_id"], name: "index_course_medications_on_course_id", using: :btree
+
   create_table "courses", force: :cascade do |t|
     t.integer  "patient_id",                 limit: 4
     t.integer  "experimental_medication_id", limit: 4
@@ -199,16 +215,8 @@ ActiveRecord::Schema.define(version: 20181019055253) do
     t.float    "height",                     limit: 24
     t.float    "weight",                     limit: 24
     t.float    "body_surface_area",          limit: 24
-    t.float    "dose",                       limit: 24
-    t.date     "date_of_administration"
-    t.boolean  "if_delay_administration",    limit: 1
-    t.integer  "reason_for_delay",           limit: 4
-    t.text     "description_for_delay",      limit: 65535
-    t.boolean  "if_change_dose",             limit: 1
-    t.integer  "reason_for_change",          limit: 4
-    t.text     "description_for_change",     limit: 65535
-    t.datetime "created_at",                               null: false
-    t.datetime "updated_at",                               null: false
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
   end
 
   add_index "courses", ["experimental_medication_id"], name: "index_courses_on_experimental_medication_id", using: :btree

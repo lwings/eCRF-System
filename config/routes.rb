@@ -29,5 +29,6 @@ Rails.application.routes.draw do
 
   resources :patients do
     resource :clinical_pathology
+    resource :basement_assessment
   end
 end

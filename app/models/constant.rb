@@ -30,4 +30,10 @@ module Constant
   QUITREASON_OPT={adverse_event:0,abnormal_val:1,abnormal_res:2,relapse_meta:3,aginst_plan:4,
   withdraw:5,loss_connextion:6,researcher_request:7,death:8}
   DEATH_OPT={die_of_breast_cancer:0,die_of_other_cancers:1,unknown:2}
+  BLOODRNAME_OPT={leukocyte:0,neutrophil_abs:1,red_blood_cell:2,platelet:3,hematocrit:4,hemoglobin:5}
+  BLOODCNAME_OPT={alanine_aminotransferase:0,aspartate_aminotransferase:1,
+                 alkaline_phosphatase:2,total_bilirubin:3,direct_bilirubin:4,creatinine:5,
+                  urea:6,transpeptidase:7,blood_sugar:8}
+  BLOODRUNIT_OPT={"X10^9/L":0,"g/L":1,"X10^12/L":2}
+  BLOODCUNIT_OPT={"IU/L":0,"umol/L":1,"mmol/L":2}
 end

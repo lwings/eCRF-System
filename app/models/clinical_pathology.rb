@@ -18,4 +18,6 @@ class ClinicalPathology < ActiveRecord::Base
   # view
   accepts_nested_attributes_for :history_of_nonbreast_cancers,
                                 reject_if: :all_blank, allow_destroy: true
+  accepts_nested_attributes_for :family_histories,
+                                reject_if: :all_blank, allow_destroy: true
 end

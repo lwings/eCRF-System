@@ -30,4 +30,15 @@
   - if writable
     .links
       = link_to_add_association "添加记录", f, :history_of_nonbreast_cancers, partial: 'fields_history_of_nonbreast_cancer'
+
+
+  = f.simple_fields_for :family_histories do |family_histories|
+    = render 'fields_family_history', f: family_histories
+
+
+  - if writable
+    .links
+      = link_to_add_association "添加记录", f, :family_histories, partial: 'fields_family_history'
+
+
     = f.button :submit, class: [:small, :radius]

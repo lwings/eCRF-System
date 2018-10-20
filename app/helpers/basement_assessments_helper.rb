@@ -1,0 +1,2 @@
+module BasementAssessmentsHelper
+end

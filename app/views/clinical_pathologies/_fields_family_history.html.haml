@@ -1,0 +1,15 @@
+- required = "必填"
+.nested-fields
+  %fieldset
+    %legend
+      家族史
+      = link_to_remove_association "delete", f, data: {confirm: "Do you wanna to delete?"}
+
+    - if f.object.persisted?
+      = f.hidden_field :id, value: f.object.id
+
+    .row
+      = f.input :relation_with_patient, front_error: required
+      = f.input :age_at_diagnose, front_error: required
+      = f.input :treatment, front_error: required
+      = f.input :procession_of_disease, front_error: required
