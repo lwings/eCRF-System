@@ -30,4 +30,6 @@ class Patient < ActiveRecord::Base
   has_many :death_records, dependent: :destroy
 
 
+
+
 end

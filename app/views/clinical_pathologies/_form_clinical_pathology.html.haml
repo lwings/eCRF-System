@@ -8,7 +8,7 @@
     .row
 
       = f.input :primary_lesion
-      -#= f.input :regional_lympth_node
+      = f.input :regional_lympth_node
       = f.input :matastasis
       = f.input :histological_type
       = f.input :histological_grading
@@ -20,26 +20,14 @@
       = f.input :Ki67
       = f.input :AR
       = f.input :date_of_operation,as: :date, start_year: Date.today.year - 10,
-                              end_year: Date.today.year
-  -#%fieldset
-  -#  %legend 病史及家族史
-  -#  .row
-  -#    -#TODO
-  -#    = f.input :has_cancer_history
-  -#    = f.input :cancer_history, as: :text, wrapper_html: {class: 'medium-8 large-9'}, input_html: {title: '患者本人恶性既往史'}
-  -#  .row
-  -#    = f.input :has_family_breast_cancer
-  -#    = f.input :family_breast_cancer, as: :text, wrapper_html: {class: 'medium-8 large-9'}
-  -#  .row
-  -#    = f.input :has_family_ovarian_cancer
-  -#    = f.input :family_ovarian_cancer, as: :text, wrapper_html: {class: 'medium-8 large-9'}
-  -#  .row
-  -#    = f.input :has_breast_disease_history
-  -#    = f.input :breast_disease_history, as: :text, wrapper_html: {class: 'medium-8 large-9'}
-  -#  .row
-  -#    = f.input :has_systematic_disease, as: :select
-  -#    = f.input :selected_systematic_disease, collection: f.object.options('systematic_disease'), as: :check_boxes, warpper: :default, wrapper_html: {class: 'medium-4 large-6'}
-  -#    = f.input :ex_systematic_disease, input_html: {title: '如系统疾病中无该疾病选项，该条目注明。'}
+                              end_year: Date.today.year+2
+
+
+  = f.simple_fields_for :history_of_nonbreast_cancers do |history_of_nonbreast_cancers|
+    = render 'fields_history_of_nonbreast_cancer', f: history_of_nonbreast_cancers
+
 
   - if writable
+    .links
+      = link_to_add_association "添加记录", f, :history_of_nonbreast_cancers, partial: 'fields_history_of_nonbreast_cancer'
     = f.button :submit, class: [:small, :radius]

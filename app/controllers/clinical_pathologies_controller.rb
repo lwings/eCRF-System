@@ -5,7 +5,7 @@ class ClinicalPathologiesController < ApplicationController
   load_resource :clinical_pathology, :through => :patient, :singleton => true
 
   def new
-
+    @clinical_pathology.history_of_nonbreast_cancers.new
   end
 
   def create

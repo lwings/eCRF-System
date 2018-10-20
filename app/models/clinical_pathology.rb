@@ -15,4 +15,7 @@ class ClinicalPathology < ActiveRecord::Base
   has_many :family_histories, dependent: :destroy
   has_many :history_of_nonbreast_cancers, dependent: :destroy
 
+  # view
+  accepts_nested_attributes_for :history_of_nonbreast_cancers,
+                                reject_if: :all_blank, allow_destroy: true
 end
