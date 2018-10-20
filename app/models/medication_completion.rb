@@ -12,4 +12,11 @@ class MedicationCompletion < ActiveRecord::Base
   has_many :blood_routine_meds, dependent: :destroy
   has_many :tumor_maker_meds, dependent: :destroy
 
+  accepts_nested_attributes_for :blood_routine_meds,
+                                reject_if: :all_blank, allow_destroy: true
+  accepts_nested_attributes_for :blood_biochemistry_meds,
+                                reject_if: :all_blank, allow_destroy: true
+  accepts_nested_attributes_for :tumor_maker_meds,
+                                reject_if: :all_blank, allow_destroy: true
+
 end

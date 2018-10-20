@@ -1,0 +1,22 @@
+- writable = @group_information.new_record? || action_name == 'edit' || @clinical_pathology.errors.any?
+
+= simple_form_for @group_information, url: patient_group_information_path(@patient), html: {'data-abide': '', class: writable ? nil : 'disabled'} do |f|
+  - required = "必填"
+  %fieldset
+    %legend
+      分组信息
+    .row
+      = f.input :research_group_id, label:"随机分组情况",collection: @available_research_groups, as: :select, required: true
+
+      = f.input :is_meet_inclusion_criteria
+      = f.input :inform_consent_date,as: :date, start_year: Date.today.year - 10,
+                              end_year: Date.today.year+2
+      = f.input :random_groping_date,as: :date, start_year: Date.today.year - 10,
+                              end_year: Date.today.year+2
+
+
+
+
+  - if writable
+
+    = f.button :submit, class: [:small, :radius]

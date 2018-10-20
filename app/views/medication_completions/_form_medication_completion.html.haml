@@ -1,0 +1,75 @@
+- writable = @medication_completion.new_record? || action_name == 'edit' || @basement_assessment.errors.any?
+
+= simple_form_for @medication_completion, url: patient_medication_completion_path(@patient), html: {'data-abide': '', class: writable ? nil : 'disabled'} do |f|
+  - required = "必填"
+  %fieldset
+    %legend
+      基本信息
+    .row
+      = f.input :visit_date,as: :date, start_year: Date.today.year - 10,
+                              end_year: Date.today.year+2
+      = f.input :height
+      = f.input :weight
+      = f.input :ECOG
+      = f.input :physical_examination
+      = f.input :description
+      = f.input :if_followup
+      -#= f.input :ER
+      -#= f.input :PR
+      -#= f.input :HER2_IHC
+      -#= f.input :HER2_FISH
+      -#= f.input :Ki67
+      -#= f.input :AR
+      -#= f.input :date_of_operation,as: :date, start_year: Date.today.year - 10,
+      -#                        end_year: Date.today.year+2
+
+
+    = f.simple_fields_for :blood_biochemistry_meds do |blood_biochemistries|
+      = render 'fields_blood_biochemistry_med', f: blood_biochemistries
+
+
+    - if writable
+      .links
+        = link_to_add_association "添加记录", f, :blood_biochemistry_meds, partial: 'fields_blood_biochemistry_med'
+
+
+    = f.simple_fields_for :blood_routine_meds do |blood_routines|
+      = render 'fields_blood_routine_med', f: blood_routines
+
+
+    - if writable
+      .links
+        = link_to_add_association "添加记录", f, :blood_routine_meds, partial: 'fields_blood_routine_med'
+
+
+    = f.simple_fields_for :tumor_maker_meds do |blood_routines|
+      = render 'fields_tumor_maker_med', f: blood_routines
+
+
+    - if writable
+      .links
+        = link_to_add_association "添加记录", f, :tumor_maker_meds, partial: 'fields_tumor_maker_med'
+
+  %fieldset
+    %legend
+      乳房B超
+    .row
+      = f.input :breast_Bultra_date, front_error: required,
+                                    as: :date, start_year: Date.today.year - 5,
+                                    end_year: Date.today.year
+      = f.input :breast_Bultra_diagnose
+      = f.input :breast_abnormal
+
+  %fieldset
+    %legend
+      腹部B超
+    .row
+      = f.input :abdo_Bultra_date, front_error: required,
+                                    as: :date, start_year: Date.today.year - 5,
+                                    end_year: Date.today.year
+      = f.input :abdo_Bultra_diagnose
+      = f.input :abdo_abnormalt
+
+
+  - if writable
+    = f.button :submit, class: [:small, :radius]

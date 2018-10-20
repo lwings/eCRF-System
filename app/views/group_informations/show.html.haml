@@ -1,0 +1,5 @@
+%h3
+  = t(:show) +"分组信息"
+  = render 'shared/edit_link', ob: @patient, path: edit_patient_clinical_pathology_path
+
+= render partial: 'form_group_information'

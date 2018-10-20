@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181020080935) do
+ActiveRecord::Schema.define(version: 20181020144901) do
 
   create_table "adverse_events", force: :cascade do |t|
     t.integer  "patient_id",          limit: 4
@@ -426,6 +426,8 @@ ActiveRecord::Schema.define(version: 20181020080935) do
     t.boolean  "is_local_hospital",        limit: 1
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.integer  "name",                     limit: 4,  null: false
+    t.integer  "unit",                     limit: 4,  null: false
   end
 
   add_index "tumor_maker_meds", ["medication_completion_id"], name: "index_tumor_maker_meds_on_medication_completion_id", using: :btree

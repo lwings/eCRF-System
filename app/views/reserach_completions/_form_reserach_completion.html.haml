@@ -1,0 +1,16 @@
+- writable = @reserach_completion.new_record? || action_name == 'edit' || @clinical_pathology.errors.any?
+
+= simple_form_for @reserach_completion, url: patient_reserach_completion_path(@patient), html: {'data-abide': '', class: writable ? nil : 'disabled'} do |f|
+  - required = "必填"
+  %fieldset
+
+    .row
+
+      = f.input :date_of_last_confirmation
+      = f.input :if_complete_therapy_according_to_plan
+      = f.input :reason_for_early_quit
+      = f.input :description
+
+  - if writable
+
+    = f.button :submit, class: [:small, :radius]

@@ -30,5 +30,8 @@ Rails.application.routes.draw do
   resources :patients do
     resource :clinical_pathology
     resource :basement_assessment
+    resource :reserach_completion
+    resource :medication_completion
+    resource :group_information
   end
 end

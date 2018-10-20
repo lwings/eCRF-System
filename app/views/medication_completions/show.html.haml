@@ -1,0 +1,5 @@
+%h3
+  = t(:show)+"用药完成终止访视表"
+  = render 'shared/edit_link', ob: @patient, path: edit_patient_basement_assessment_path
+
+= render partial: 'form_medication_completion'
