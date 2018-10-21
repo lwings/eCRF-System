@@ -3,7 +3,7 @@ class Project < ActiveRecord::Base
   belongs_to :center
 
   has_many :patients, dependent: :destroy
-  has_many :user, through:  :relationships
+  has_many :user
   has_many :researches, dependent: :destroy
   has_many :relationships, dependent: :destroy
 

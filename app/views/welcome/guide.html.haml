@@ -19,9 +19,6 @@
       %li 上次登录时间：#{ l(current_user.last_sign_in_at) }
 
 
-%h2.page-header
-  %i.fi-bookmark
-  = t :welcome
 
 .row
 
@@ -87,7 +84,7 @@
       %li
         %a{href:'#'} 项目列表
       %li
-        %a{href: '#'} 新建项目
+        %a{href: new_project_path} 新建项目
 
   .columns.medium-6.guide{class: nil}
     %a{href: '#'}
