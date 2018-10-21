@@ -1,0 +1,8 @@
+%h3
+  = "查看"+"合并用药表"
+  = render 'shared/edit_link', ob: @patient, path: edit_patient_concomitant_drug_path(@patient,@concomitant_drug)
+  %small
+    %a.fi-x{href: patient_concomitant_drug_path, data: {method: 'delete', confirm: t('delete_confirm')}}
+      删除
+
+= render partial: 'form_concomitant_drug'

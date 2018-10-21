@@ -1,0 +1,24 @@
+- required = "必填"
+.nested-fields
+  %fieldset
+    %legend
+      疗程用药
+      = link_to_remove_association "delete", f, data: {confirm: "Do you wanna to delete?"}
+
+    - if f.object.persisted?
+      = f.hidden_field :id, value: f.object.id
+
+    .row
+      = f.input :experimental_medication_id, front_error: required,
+       label:"试验用药",collection: @available_experimental_medication, as: :select, required: true
+
+      = f.input :dose, front_error: required
+      = f.input :date_of_administration, front_error: required, front_error: required,
+                                  as: :date, start_year: Date.today.year - 5,
+                                  end_year: Date.today.year
+      = f.input :if_delay_administration, front_error: required
+      = f.input :reason_for_delay, front_error: required
+      = f.input :description_for_delay, front_error: required
+      = f.input :if_change_dose, front_error: required
+      = f.input :reason_for_change, front_error: required
+      = f.input :description_for_change, front_error: required

@@ -33,5 +33,11 @@ Rails.application.routes.draw do
     resource :reserach_completion
     resource :medication_completion
     resource :group_information
+    resource :death_record
+    resources :courses
+    resources :adverse_events
+    resources :concomitant_drugs
+    resources :biological_sample_collections
+    resources :followups
   end
 end

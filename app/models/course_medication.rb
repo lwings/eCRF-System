@@ -6,4 +6,6 @@ class CourseMedication < ActiveRecord::Base
   enumerize :reason_for_change, in: DOSECHANGE_OPT
 
   belongs_to :course
+
+  has_many :experimental_medications
 end

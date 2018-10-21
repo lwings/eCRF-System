@@ -1,0 +1,8 @@
+%h3
+  = "查看"+"随访信息表"
+  = render 'shared/edit_link', ob: @patient, path: edit_patient_followup_path(@patient,@followup)
+  %small
+    %a.fi-x{href: patient_adverse_event_path, data: {method: 'delete', confirm: t('delete_confirm')}}
+      删除
+
+= render partial: 'form_followup'

@@ -1,0 +1,17 @@
+- writable = @death_record.new_record? || action_name == 'edit' || @death_record.errors.any?
+
+= simple_form_for @death_record,url:patient_death_record_path, html: {'data-abide': '', class: writable ? nil : 'disabled'} do |f|
+  - required = "必填"
+  %fieldset
+    %legend
+      基本信息
+    .row
+      = f.input :date_of_death,as: :date, start_year: Date.today.year - 10,
+                              end_year: Date.today.year+2
+      = f.input :cause_of_death
+
+      = f.input :relation_with_medication
+
+
+  - if writable
+    = f.button :submit, class: [:small, :radius]

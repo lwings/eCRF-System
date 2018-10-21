@@ -1,0 +1,8 @@
+%h3
+  = "查看"+"生物样本采集表"
+  = render 'shared/edit_link', ob: @patient, path: edit_patient_biological_sample_collection_path(@patient,@biological_sample_collection)
+  %small
+    %a.fi-x{href: patient_biological_sample_collection_path, data: {method: 'delete', confirm: t('delete_confirm')}}
+      删除
+
+= render partial: 'form_biological_sample_collection'

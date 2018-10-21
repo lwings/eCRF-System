@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181020144901) do
+ActiveRecord::Schema.define(version: 20181021063131) do
 
   create_table "adverse_events", force: :cascade do |t|
     t.integer  "patient_id",          limit: 4
@@ -66,8 +66,6 @@ ActiveRecord::Schema.define(version: 20181020144901) do
 
   create_table "biological_sample_collections", force: :cascade do |t|
     t.integer  "patient_id",        limit: 4
-    t.boolean  "if_sample",         limit: 1
-    t.integer  "interview",         limit: 4
     t.integer  "biological_sample", limit: 4
     t.date     "date_of_sampling"
     t.string   "sample_number",     limit: 255
@@ -179,7 +177,6 @@ ActiveRecord::Schema.define(version: 20181020144901) do
 
   create_table "concomitant_drugs", force: :cascade do |t|
     t.integer  "patient_id",          limit: 4
-    t.boolean  "if_concomitant",      limit: 1
     t.string   "drugs",               limit: 255
     t.string   "cause_for_this_drug", limit: 255
     t.float    "daily_dose",          limit: 24
@@ -193,20 +190,22 @@ ActiveRecord::Schema.define(version: 20181020144901) do
   add_index "concomitant_drugs", ["patient_id"], name: "index_concomitant_drugs_on_patient_id", using: :btree
 
   create_table "course_medications", force: :cascade do |t|
-    t.integer  "course_id",               limit: 4
-    t.float    "dose",                    limit: 24
+    t.integer  "course_id",                  limit: 4
+    t.float    "dose",                       limit: 24
     t.date     "date_of_administration"
-    t.boolean  "if_delay_administration", limit: 1
-    t.integer  "reason_for_delay",        limit: 4
-    t.text     "description_for_delay",   limit: 65535
-    t.boolean  "if_change_dose",          limit: 1
-    t.integer  "reason_for_change",       limit: 4
-    t.text     "description_for_change",  limit: 65535
-    t.datetime "created_at",                            null: false
-    t.datetime "updated_at",                            null: false
+    t.boolean  "if_delay_administration",    limit: 1
+    t.integer  "reason_for_delay",           limit: 4
+    t.text     "description_for_delay",      limit: 65535
+    t.boolean  "if_change_dose",             limit: 1
+    t.integer  "reason_for_change",          limit: 4
+    t.text     "description_for_change",     limit: 65535
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
+    t.integer  "experimental_medication_id", limit: 4
   end
 
   add_index "course_medications", ["course_id"], name: "index_course_medications_on_course_id", using: :btree
+  add_index "course_medications", ["experimental_medication_id"], name: "index_course_medications_on_experimental_medication_id", using: :btree
 
   create_table "courses", force: :cascade do |t|
     t.integer  "patient_id",                 limit: 4
@@ -458,6 +457,7 @@ ActiveRecord::Schema.define(version: 20181020144901) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["role_id"], name: "index_users_on_role_id", using: :btree
 
+  add_foreign_key "course_medications", "experimental_medications"
   add_foreign_key "patients", "centers"
   add_foreign_key "researches", "projects"
 end

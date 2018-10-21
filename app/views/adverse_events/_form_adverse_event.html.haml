@@ -1,0 +1,21 @@
+- writable = @adverse_event.new_record? || action_name == 'edit' || @adverse_event.errors.any?
+
+= simple_form_for [@patient,@adverse_event], html: {'data-abide': '', class: writable ? nil : 'disabled'} do |f|
+  - required = "必填"
+  %fieldset
+    %legend
+      基本信息
+    .row
+      = f.input :events
+      = f.input :occurence_date,as: :date, start_year: Date.today.year - 10,
+                              end_year: Date.today.year+2
+      = f.input :turnover
+      = f.input :recover_date,as: :date, start_year: Date.today.year - 10,
+                              end_year: Date.today.year+2
+      = f.input :remark
+      = f.input :NCI_CTCAE_V_4
+      = f.input :is_related_to_drugs
+
+
+  - if writable
+    = f.button :submit, class: [:small, :radius]

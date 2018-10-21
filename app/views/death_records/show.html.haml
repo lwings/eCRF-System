@@ -1,0 +1,5 @@
+%h3
+  = "查看"+"随访信息表"
+  = render 'shared/edit_link', ob: @death_record, path: edit_patient_death_record_path
+
+= render partial: 'form_death_record'

@@ -5,6 +5,7 @@ class CreateCourseMedications < ActiveRecord::Migration
 
       t.float :dose
       t.date :date_of_administration
+
       t.boolean :if_delay_administration
       t.integer :reason_for_delay
       t.text :description_for_delay

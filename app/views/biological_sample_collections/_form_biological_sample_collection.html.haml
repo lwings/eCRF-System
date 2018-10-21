@@ -1,0 +1,15 @@
+- writable = @biological_sample_collection.new_record? || action_name == 'edit' || @biological_sample_collection.errors.any?
+
+= simple_form_for [@patient,@biological_sample_collection], html: {'data-abide': '', class: writable ? nil : 'disabled'} do |f|
+  - required = "必填"
+  %fieldset
+    %legend
+      基本信息
+    .row
+      = f.input :biological_sample
+      = f.input :date_of_sampling,as: :date, start_year: Date.today.year - 10,
+                              end_year: Date.today.year+2
+      = f.input :sample_number
+
+  - if writable
+    = f.button :submit, class: [:small, :radius]

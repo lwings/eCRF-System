@@ -1,0 +1,47 @@
+- writable = @course.new_record? || action_name == 'edit' || @course.errors.any?
+
+= simple_form_for [@patient,@course], html: {'data-abide': '', class: writable ? nil : 'disabled'} do |f|
+  - required = "必填"
+  %fieldset
+    %legend
+      基本信息
+    .row
+      = f.input :interview,as: :date, start_year: Date.today.year - 10,
+                              end_year: Date.today.year+2
+      = f.input :height
+      = f.input :weight
+      = f.input :body_surface_area
+
+
+
+
+    = f.simple_fields_for :blood_biochemistry_thes do |blood_biochemistry_thes|
+      = render 'fields_blood_biochemistry_the', f: blood_biochemistry_thes
+
+
+    - if writable
+      .links
+        = link_to_add_association "添加记录", f, :blood_biochemistry_thes, partial: 'fields_blood_biochemistry_the'
+
+
+    = f.simple_fields_for :blood_routine_thes do |blood_routine_thes|
+      = render 'fields_blood_routine_the', f: blood_routine_thes
+
+
+    - if writable
+      .links
+        = link_to_add_association "添加记录", f, :blood_routine_thes, partial: 'fields_blood_routine_the'
+
+
+    = f.simple_fields_for :course_medications do |course_medications|
+      = render 'fields_course_medication', f: course_medications
+
+
+    - if writable
+      .links
+        = link_to_add_association "添加记录", f, :course_medications, partial: 'fields_course_medication'
+
+
+
+  - if writable
+    = f.button :submit, class: [:small, :radius]

@@ -21,13 +21,14 @@ class Patient < ActiveRecord::Base
   has_one :reserach_completion, dependent: :destroy
   has_one :medication_completion, dependent: :destroy
   has_one :group_information, dependent: :destroy
+  has_one :death_record, dependent: :destroy
   has_many :adverse_events, dependent: :destroy
   has_many :courses, dependent: :destroy
   has_many :radiation_therapies, dependent: :destroy
   has_many :concomitant_drugs, dependent: :destroy
   has_many :biological_sample_collections, dependent: :destroy
   has_many :followups, dependent: :destroy
-  has_many :death_records, dependent: :destroy
+
 
 
 
