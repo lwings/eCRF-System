@@ -1,6 +1,6 @@
 class PatientsController < ApplicationController
   before_action :authenticate_user!
-  load_resource
+  load_resource :patient
 
 
   def new

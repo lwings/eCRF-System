@@ -40,9 +40,9 @@ class ClinicalPathologiesController < ApplicationController
         :matastasis,:histological_type,:histological_grading,
         :vascular_invasion, :ER,:PR,:HER2_IHC,:HER2_FISH,
         :Ki67, :AR,:date_of_operation,
-        history_of_nonbreast_cancers_attributes: [:name, :diagnostic_date,:disease_status,:id,:_destory],
+        history_of_nonbreast_cancers_attributes: [:name, :diagnostic_date,:disease_status,:id,:_destroy],
         family_histories_attributes: [:id,:relation_with_patient,:age_at_diagnose,
-                                      :treatment,:procession_of_disease,:_destory]
+                                      :treatment,:procession_of_disease,:_destroy]
     )
   end
 end

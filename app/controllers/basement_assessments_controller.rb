@@ -44,8 +44,8 @@ class BasementAssessmentsController < ApplicationController
       :abdominal_B_ultrasound_date_diagnosis,:abdominal_B_ultrasound_date_description,:breast_CT_date,
       :breast_CT_diagnosis,:breast_CT_description,:echocardiography_date,:LVEF,
       :echocardiography_diagnosis,:echocardiography_description,
-      blood_biochemistries_attributes: [:id,:name, :value,:sample_date,:unit,:_destory],
-      blood_routines: [:id,:name, :value,:sample_date,:unit,:_destory]
+      blood_biochemistries_attributes: [:id,:name, :value,:sample_date,:unit,:_destroy],
+      blood_routines: [:id,:name, :value,:sample_date,:unit,:_destroy]
     )
   end
 end

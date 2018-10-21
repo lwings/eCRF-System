@@ -40,4 +40,6 @@ Rails.application.routes.draw do
     resources :biological_sample_collections
     resources :followups
   end
+
+  resources :projects
 end

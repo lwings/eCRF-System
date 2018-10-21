@@ -51,11 +51,11 @@ class CoursesController < ApplicationController
     params.require(:course).permit(
         :interview,:height,:weight,:body_surface_area,
 
-        blood_biochemistry_thes_attributes: [:id,:name, :value,:sample_date,:unit,:is_local_hospital,:_destory],
-        blood_routine_thes_attributes: [:id,:name, :value,:sample_date,:unit,:is_local_hospital,:_destory],
+        blood_biochemistry_thes_attributes: [:id,:name, :value,:sample_date,:unit,:is_local_hospital,:_destroy],
+        blood_routine_thes_attributes: [:id,:name, :value,:sample_date,:unit,:is_local_hospital,:_destroy],
         course_medications_attributes: [:id,:experimental_medication_id,:dose,:date_of_administration,:if_delay_administration,
                                         :reason_for_delay,:description_for_delay,:if_change_dose,:reason_for_change,
-                                        :description_for_change,:_destory]
+                                        :description_for_change,:_destroy]
     )
   end
 end

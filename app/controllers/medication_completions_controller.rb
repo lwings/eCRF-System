@@ -40,9 +40,9 @@ class MedicationCompletionsController < ApplicationController
       :visit_date,:height,:weight,:ECOG,:physical_examination,:description,
       :if_followup,:breast_Bultra_date,:breast_Bultra_diagnose,:breast_abnormal,
       :abdo_Bultra_date,:abdo_Bultra_diagnose,:abdo_abnormalt,
-        blood_biochemistry_meds_attributes: [:id,:name, :value,:sample_date,:unit,:is_local_hospital,:_destory],
-        blood_routine_meds_attributes: [:id,:name, :value,:sample_date,:unit,:is_local_hospital,:_destory],
-        tumor_maker_meds_attributes: [:id,:name, :value,:sample_date,:unit,:is_local_hospital,:_destory]
+        blood_biochemistry_meds_attributes: [:id,:name, :value,:sample_date,:unit,:is_local_hospital,:_destroy],
+        blood_routine_meds_attributes: [:id,:name, :value,:sample_date,:unit,:is_local_hospital,:_destroy],
+        tumor_maker_meds_attributes: [:id,:name, :value,:sample_date,:unit,:is_local_hospital,:_destroy]
     )
   end
 end

@@ -1,0 +1,23 @@
+- writable = @project.new_record? || action_name == 'edit' || @project.errors.any?
+
+= simple_form_for @project, html: {'data-abide': '', class: writable ? nil : 'disabled'} do |f|
+  - required = "必填"
+  %fieldset
+    %legend
+      基本信息
+    .row
+
+      = f.input :name
+      = f.association :center, label: "所属中心", required: true
+      = f.input :remark
+
+    = f.simple_fields_for :relationships do |relationships|
+      = render 'fields_relationships', f: relationships
+
+
+    - if writable
+      .links
+        = link_to_add_association "添加记录", f, :relationships, partial: 'fields_relationships'
+
+  - if writable
+    = f.button :submit, class: [:small, :radius]
