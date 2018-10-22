@@ -21,10 +21,9 @@
                               end_year: Date.today.year - 12
 
 
-    %legend 研究相关信息
-    .row
-      = f.input :research_id, label: Research.model_name.human,collection: @available_researches, as: :select, required: true
-      = f.input :followup_left, front_error: required
+    -#%legend 研究相关信息
+    -#.row
+    -# = f.input :followup_left, front_error: required
 
 
   - if writable

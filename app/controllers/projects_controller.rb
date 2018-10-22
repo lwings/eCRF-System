@@ -4,11 +4,9 @@ class ProjectsController < ApplicationController
 
   def new
     @project.relationships.new
-    @available_users=User.all
   end
 
   def show
-    @available_users=User.all
   end
 
   def create
@@ -21,7 +19,6 @@ class ProjectsController < ApplicationController
     end
   end
   def edit
-    @available_users=User.all
   end
 
   def update

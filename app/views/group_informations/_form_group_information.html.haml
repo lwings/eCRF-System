@@ -1,4 +1,4 @@
-- writable = @group_information.new_record? || action_name == 'edit' || @clinical_pathology.errors.any?
+- writable = @group_information.new_record? || action_name == 'edit' || @group_information.errors.any?
 
 = simple_form_for @group_information, url: patient_group_information_path(@patient), html: {'data-abide': '', class: writable ? nil : 'disabled'} do |f|
   - required = "必填"

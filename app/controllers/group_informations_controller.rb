@@ -5,7 +5,7 @@ class GroupInformationsController < ApplicationController
   load_resource :group_information, :through => :patient, :singleton => true
 
   def new
-    @available_research_groups=@patient.research.research_groups.all
+    @available_research_groups=@patient.project.research_groups.all
   end
 
   def create
@@ -19,7 +19,7 @@ class GroupInformationsController < ApplicationController
   end
 
   def edit
-    @available_research_groups=@patient.research.research_groups.all
+    @available_research_groups=@patient.project.research_groups.all
   end
 
   def update
@@ -32,7 +32,7 @@ class GroupInformationsController < ApplicationController
     end
   end
   def show
-    @available_research_groups=@patient.research.research_groups.all
+    @available_research_groups=@patient.project.research_groups.all
   end
 
 

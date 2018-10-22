@@ -12,6 +12,10 @@ class User < ActiveRecord::Base
   has_many :relationships
   has_many :projects , through:  :relationships
 
+  # view
+  accepts_nested_attributes_for :relationships,
+                                reject_if: :all_blank, allow_destroy: true
+
 
   enumerize :status, in: {
     deprecated:   0,

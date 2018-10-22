@@ -14,8 +14,9 @@
           %a= "中心: #{@patient.center_id}"
         %li
           %a= "姓名: #{@patient.name}"
+      -if !@patient.group_information.nil? and !@patient.group_information.research_group.nil?
         %li
-          %a= "研究干预: #{@patient.research.name}"
+          %a= "研究干预(分组情况): #{@patient.group_information.research_group.name}"
     -#%li.divider
     -#- [:history, :clinical, :imaging, :pathology, :neoadjuvant].each do |model|
     -#  %li

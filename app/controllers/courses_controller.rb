@@ -9,7 +9,7 @@ class CoursesController < ApplicationController
     @course.blood_routine_thes.new
     @course.course_medications.new
 
-    @available_experimental_medication=@patient.research.experimental_medications.all
+    @available_experimental_medication=@patient.project.experimental_medications.all
   end
 
   def create
@@ -24,7 +24,7 @@ class CoursesController < ApplicationController
   end
 
   def edit
-    @available_experimental_medication=@patient.research.experimental_medications.all
+    @available_experimental_medication=@patient.project.experimental_medications.all
   end
 
   def update
@@ -38,7 +38,7 @@ class CoursesController < ApplicationController
   end
 
   def show
-    @available_experimental_medication=@patient.research.experimental_medications.all
+    @available_experimental_medication=@patient.project.experimental_medications.all
   end
 
   def destroy

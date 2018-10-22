@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181021063131) do
+ActiveRecord::Schema.define(version: 20181022043128) do
 
   create_table "adverse_events", force: :cascade do |t|
     t.integer  "patient_id",          limit: 4
@@ -233,14 +233,14 @@ ActiveRecord::Schema.define(version: 20181021063131) do
   add_index "death_records", ["patient_id"], name: "index_death_records_on_patient_id", using: :btree
 
   create_table "experimental_medications", force: :cascade do |t|
-    t.integer  "research_id", limit: 4
-    t.string   "name",        limit: 255, null: false
-    t.string   "remark",      limit: 255
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.string   "name",       limit: 255, null: false
+    t.string   "remark",     limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.integer  "project_id", limit: 4
   end
 
-  add_index "experimental_medications", ["research_id"], name: "index_experimental_medications_on_research_id", using: :btree
+  add_index "experimental_medications", ["project_id"], name: "index_experimental_medications_on_project_id", using: :btree
 
   create_table "family_histories", force: :cascade do |t|
     t.integer  "clinical_pathology_id", limit: 4
@@ -323,7 +323,6 @@ ActiveRecord::Schema.define(version: 20181021063131) do
     t.integer  "status",                limit: 4,   default: 0
     t.integer  "project_id",            limit: 4
     t.integer  "user_id",               limit: 4
-    t.integer  "research_id",           limit: 4
     t.integer  "research_group_id",     limit: 4
     t.integer  "followup_left",         limit: 4
     t.string   "name",                  limit: 255,             null: false
@@ -341,7 +340,6 @@ ActiveRecord::Schema.define(version: 20181021063131) do
   add_index "patients", ["center_id"], name: "index_patients_on_center_id", using: :btree
   add_index "patients", ["project_id"], name: "index_patients_on_project_id", using: :btree
   add_index "patients", ["research_group_id"], name: "index_patients_on_research_group_id", using: :btree
-  add_index "patients", ["research_id"], name: "index_patients_on_research_id", using: :btree
   add_index "patients", ["user_id"], name: "index_patients_on_user_id", using: :btree
 
   create_table "projects", force: :cascade do |t|
@@ -379,14 +377,14 @@ ActiveRecord::Schema.define(version: 20181021063131) do
   add_index "relationships", ["user_id"], name: "index_relationships_on_user_id", using: :btree
 
   create_table "research_groups", force: :cascade do |t|
-    t.integer  "research_id", limit: 4
-    t.string   "name",        limit: 255, null: false
-    t.string   "remark",      limit: 255
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.string   "name",       limit: 255, null: false
+    t.string   "remark",     limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.integer  "project_id", limit: 4
   end
 
-  add_index "research_groups", ["research_id"], name: "index_research_groups_on_research_id", using: :btree
+  add_index "research_groups", ["project_id"], name: "index_research_groups_on_project_id", using: :btree
 
   create_table "researches", force: :cascade do |t|
     t.string   "name",        limit: 255,   null: false

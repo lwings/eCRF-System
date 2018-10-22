@@ -4,11 +4,11 @@ class PatientsController < ApplicationController
 
 
   def new
-    @available_researches=current_project.researches.all
+
   end
 
   def show
-    @available_researches=current_project.researches.all
+
   end
 
   def create
@@ -21,7 +21,6 @@ class PatientsController < ApplicationController
     end
   end
   def edit
-    @available_researches=current_project.researches.all
   end
 
   def update
@@ -42,7 +41,7 @@ class PatientsController < ApplicationController
   private
   def patient_params
     params.require(:patient).permit(
-        :center_id, :user_id, :research_id, :project_id,
+        :center_id, :user_id, :project_id,
 
         :pid, :name, :ID_number, :phone_number_1,:phone_number_2,
 

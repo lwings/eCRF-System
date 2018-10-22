@@ -1,5 +1,5 @@
 class ResearchGroup < ActiveRecord::Base
 
-  belongs_to :research
+  belongs_to :project
 
 end

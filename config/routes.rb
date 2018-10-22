@@ -42,4 +42,5 @@ Rails.application.routes.draw do
   end
 
   resources :projects
+
 end
