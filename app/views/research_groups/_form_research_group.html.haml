@@ -1,0 +1,21 @@
+- writable = @research_group.new_record? || action_name == 'edit' || @research_group.errors.any?
+
+= simple_form_for [@project,@research_group], html: {'data-abide': '', class: writable ? nil : 'disabled'} do |f|
+  - required = "必填"
+  %fieldset
+    %legend
+      基本信息
+    .row
+
+      = f.input :name
+      = f.input :remark
+
+    = f.simple_fields_for :course_schedules do |course_schedules|
+      = render 'fields_course_schedule', f: course_schedules
+
+    - if writable
+      .links
+        = link_to_add_association "添加疗程阶段", f, :course_schedules, partial: 'fields_course_schedule'
+
+  - if writable
+    = f.button :submit, class: [:small, :radius]
