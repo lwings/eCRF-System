@@ -41,8 +41,8 @@ Rails.application.routes.draw do
     resources :followups
   end
 
-  resources :projects do
-    resources :research_groups
-  end
+  resources :projects
+  resources :research_groups
+
 
 end

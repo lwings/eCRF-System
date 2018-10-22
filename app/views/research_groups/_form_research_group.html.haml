@@ -10,6 +10,7 @@
       = f.input :name
       = f.input :base_followup_days
       = f.input :remark
+      = f.association :project
 
     = f.simple_fields_for :course_schedules do |course_schedules|
       = render 'fields_course_schedule', f: course_schedules

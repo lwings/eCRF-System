@@ -1,8 +1,8 @@
 %h3
-  = t(:show)+"疗程表"
-  = render 'shared/edit_link', ob: @project, path: edit_project_research_group_path(@project,@research_group)
+  = "查看"+"研究干预表"
+  = render 'shared/edit_link', ob: @project, path: edit_research_group_path(@research_group)
   %small
-    %a.fi-x{href: project_research_group_path, data: {method: 'delete', confirm: t('delete_confirm')}}
+    %a.fi-x{href: research_group_path, data: {method: 'delete', confirm: t('delete_confirm')}}
       删除
 
 = render partial: 'form_research_group'
