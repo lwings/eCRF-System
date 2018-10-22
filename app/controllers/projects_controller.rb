@@ -4,6 +4,7 @@ class ProjectsController < ApplicationController
 
   def new
     @project.relationships.new
+    @project.experimental_medications.new
   end
 
   def show
@@ -36,7 +37,8 @@ class ProjectsController < ApplicationController
   def project_params
     params.require(:project).permit(
         :center_id, :name,:remark,
-        relationships_attributes: [:id,:user_id,:_destroy]
+        relationships_attributes: [:id,:user_id,:_destroy],
+        experimental_medications_attributes: [:id,:name,:remark,:_destroy]
     )
   end
 end

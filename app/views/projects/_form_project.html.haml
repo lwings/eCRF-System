@@ -19,5 +19,12 @@
       .links
         = link_to_add_association "添加记录", f, :relationships, partial: 'fields_relationships'
 
+    = f.simple_fields_for :experimental_medications do |experimental_medications|
+      = render 'fields_experimental_medications', f: experimental_medications
+
+    - if writable
+      .links
+        = link_to_add_association "添加药品", f, :experimental_medications, partial: 'fields_experimental_medications'
+
   - if writable
     = f.button :submit, class: [:small, :radius]

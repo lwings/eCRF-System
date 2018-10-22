@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181022053753) do
+ActiveRecord::Schema.define(version: 20181022110412) do
 
   create_table "adverse_events", force: :cascade do |t|
     t.integer  "patient_id",          limit: 4
@@ -335,7 +335,6 @@ ActiveRecord::Schema.define(version: 20181022053753) do
     t.integer  "project_id",            limit: 4
     t.integer  "user_id",               limit: 4
     t.integer  "research_group_id",     limit: 4
-    t.integer  "followup_left",         limit: 4
     t.string   "name",                  limit: 255,             null: false
     t.string   "pid",                   limit: 255
     t.string   "hosptalization_number", limit: 255
@@ -388,11 +387,12 @@ ActiveRecord::Schema.define(version: 20181022053753) do
   add_index "relationships", ["user_id"], name: "index_relationships_on_user_id", using: :btree
 
   create_table "research_groups", force: :cascade do |t|
-    t.string   "name",       limit: 255, null: false
-    t.string   "remark",     limit: 255
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-    t.integer  "project_id", limit: 4
+    t.string   "name",               limit: 255, null: false
+    t.string   "remark",             limit: 255
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.integer  "project_id",         limit: 4
+    t.integer  "base_followup_days", limit: 4
   end
 
   add_index "research_groups", ["project_id"], name: "index_research_groups_on_project_id", using: :btree

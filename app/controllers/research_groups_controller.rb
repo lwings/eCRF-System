@@ -35,7 +35,7 @@ class ResearchGroupsController < ApplicationController
   private
   def research_group_params
     params.require(:research_group).permit(
-        :name,:remark,
+        :name,:remark,:base_followup_days,
         course_schedules_attributes: [:id,:number_of_courses,:cure_span,:rest_span,:_destroy],
     )
   end

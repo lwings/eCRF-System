@@ -11,4 +11,6 @@ class Project < ActiveRecord::Base
   # view
   accepts_nested_attributes_for :relationships,
                                 reject_if: :all_blank, allow_destroy: true
+  accepts_nested_attributes_for :experimental_medications,
+                                reject_if: :all_blank, allow_destroy: true
 end

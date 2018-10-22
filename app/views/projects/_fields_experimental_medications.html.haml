@@ -1,0 +1,15 @@
+- required = "必填"
+.nested-fields
+  %fieldset
+    %legend
+      本项目试验用药
+      = link_to_remove_association "delete", f, data: {confirm: "Do you wanna to delete?"}
+
+    - if f.object.persisted?
+      = f.hidden_field :id, value: f.object.id
+
+    .row
+      = f.input :name
+      = f.input :remark
+
+

@@ -43,7 +43,6 @@ Rails.application.routes.draw do
 
   resources :projects do
     resources :research_groups
-    resources :experimental_medications
   end
 
 end
