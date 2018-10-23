@@ -7,7 +7,7 @@
         %th
           = sort_link column, collection
 
-      %th{ colspan: operations.size}= vt 'operations'
+      %th{ colspan: operations.size}= "相关操作"
 
   %tbody
     - collection.each do |row|
@@ -25,8 +25,6 @@
 
         - operations.each do |key, value|
           %td
-            - if url_method[key].is_a? Proc
-              = url_method[key].call row
-            - else
-              %a{:href => send(url_method[key], row), class: icon_map[key], :data => value }
-                = vt key
+            %a{:href => url_method[key].call(row), class: icon_map[key], :data => value, :target => defined?(tar).nil?? :_self : tar }
+              = t key
+

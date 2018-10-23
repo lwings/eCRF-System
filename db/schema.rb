@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181022110412) do
+ActiveRecord::Schema.define(version: 20181022120909) do
 
   create_table "adverse_events", force: :cascade do |t|
     t.integer  "patient_id",          limit: 4
@@ -214,6 +214,7 @@ ActiveRecord::Schema.define(version: 20181022110412) do
     t.integer  "rest_span",         limit: 4
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
+    t.integer  "seq",               limit: 4, null: false
   end
 
   add_index "course_schedules", ["research_group_id"], name: "index_course_schedules_on_research_group_id", using: :btree

@@ -2,7 +2,7 @@ class ResearchGroupsController < ApplicationController
   layout 'projects'
   before_action :authenticate_user!
   load_resource :research_group
-
+  helper_method :sort_column, :sort_direction
   def new
     @research_group.course_schedules.new
   end
@@ -31,11 +31,25 @@ class ResearchGroupsController < ApplicationController
     redirect_to research_group_path(params[:project_id]),  notice: "删除成功"
   end
 
+  def index
+    @research_groups = @research_groups.order(:created_at).page(params[:page])
+    @research_groups.each{|research_group|
+      research_group.set_all_count
+    }
+  end
+
   private
   def research_group_params
     params.require(:research_group).permit(
         :name,:remark,:base_followup_days,:project_id,
-        course_schedules_attributes: [:id,:number_of_courses,:cure_span,:rest_span,:_destroy],
+        course_schedules_attributes: [:id,:seq,:number_of_courses,:cure_span,:rest_span,:_destroy],
     )
+  end
+  def sort_column(c = "created_at")
+    Project.column_names.include?(params[:sort]) ? params[:sort] : c
+  end
+
+  def sort_direction(d = "desc")
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : d
   end
 end
