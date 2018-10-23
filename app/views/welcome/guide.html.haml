@@ -69,9 +69,9 @@
         系统管理
     %ul
       %li
-        %a{href:'#'} 用户管理
+        %a{href:users_path} 用户管理
       %li
-        %a{href: '#'} 角色和中心管理
+        %a{href: roles_path} 角色和中心管理
       %li
         %a{href:'#'} 数据库备份
 
@@ -82,9 +82,13 @@
         项目管理
     %ul
       %li
-        %a{href:'#'} 项目列表
+        %a{href:projects_path} 项目列表
       %li
         %a{href: new_project_path} 新建项目
+      %li
+        %a{href:research_groups_path} 研究干预列表
+      %li
+        %a{href: new_research_group_path} 新建研究干预
 
 
   .columns.medium-6.guide{class: nil}

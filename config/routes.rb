@@ -7,8 +7,6 @@ Rails.application.routes.draw do
     root to: "home#home"
   end
 
-
-
   devise_for :users, controllers: { sessions: 'users/sessions' }, skip: :registration
   devise_scope :user do
     resource :registration,
@@ -43,6 +41,7 @@ Rails.application.routes.draw do
 
   resources :projects
   resources :research_groups
-
+  resources :roles
+  resources :centers
 
 end

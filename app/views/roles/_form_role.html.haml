@@ -1,0 +1,15 @@
+- writable = @role.new_record? || action_name == 'edit' || @role.errors.any?
+
+= simple_form_for @role, html: {'data-abide': '', class: writable ? nil : 'disabled'} do |f|
+  - required = "必填"
+  %fieldset
+    %legend
+      角色基本信息
+    .row
+
+      = f.input :name
+      = f.input :description
+      = f.input :pri
+
+  - if writable
+    = f.button :submit, class: [:small, :radius]

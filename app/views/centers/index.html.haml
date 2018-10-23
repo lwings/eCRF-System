@@ -1,0 +1,14 @@
+- content_for :side_bar do
+  = render 'shared/sidebar_project'
+
+%h2
+  中心列表
+  %small 共有#{@centers.total_count}个
+
+- operations = {view:{ }}
+
+= render partial: 'shared/table', locals: { columns: [:name,:created_at], collection: @centers, operations: operations,
+                                        url_method: {view: (method :center_path)} }
+
+= paginate @centers
+
