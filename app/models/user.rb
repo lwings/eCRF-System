@@ -40,7 +40,7 @@ class User < ActiveRecord::Base
       "无"
     else
       self.centers.each{|c|
-        self.center_name+=(c.name+"\n")
+        self.center_name+=(c.name+"\\")
       }
     end
   end

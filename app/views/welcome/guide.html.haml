@@ -11,7 +11,7 @@
     %li
       %span.fi-marker
         所属中心：
-      -#%b= current_user.center.try(:name) || t('exist.none')
+      %b= @allCenter
     %li.divider
     %li 登录信息
     %ul

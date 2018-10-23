@@ -6,7 +6,7 @@
     = f.hidden_field :user_id, value: current_user.id
     = f.hidden_field :project_id, value: current_project_id
     = f.hidden_field :status, value: 0
-    = f.hidden_field :center_id, value: current_user.center_id
+    = f.hidden_field :center_id, value: current_user.centers.first.id
 
   %fieldset
     %legend 本人信息

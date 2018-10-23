@@ -24,7 +24,7 @@ class CentersController < ApplicationController
   def update
     respond_to do |format|
       if @center.update(center_params)
-        format.html { redirect_to({ action: :show }, notice: "中心资料更新成功") }
+        format.html { redirect_to({ action: :index }, notice: "中心资料更新成功") }
       else
         format.html { render :edit }
       end

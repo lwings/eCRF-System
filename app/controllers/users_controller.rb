@@ -12,6 +12,9 @@ class UsersController < ApplicationController
     }
   end
 
+  def show
+
+  end
 
   def new
     @user.relationships.new
@@ -20,7 +23,7 @@ class UsersController < ApplicationController
   def create
     respond_to do |format|
       if @user.save
-        format.html { redirect_to({ action: :show }, notice: "用户创建成功") }
+        format.html { redirect_to({ action: :index }, notice: "用户创建成功") }
       else
         format.html {
           render :new
@@ -34,9 +37,9 @@ class UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update_without_password(user_params)
-        format.html { redirect_to({ action: :show }, notice: "用户资料更新成功") }
+        format.html { redirect_to({ action: :index }, notice: "用户资料更新成功") }
       else
-        format.html { redirect_to({ action: :show }, alert: @user.errors.full_messages.to_sentence) }
+        format.html { redirect_to({ action: :index }, alert: @user.errors.full_messages.to_sentence) }
       end
     end
   end

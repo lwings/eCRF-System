@@ -4,5 +4,9 @@ class WelcomeController < ApplicationController
   end
 
   def guide
+    @allCenter=""
+    current_user.centers.all.each{|center|
+      @allCenter+=(center.name+"\\")
+    }
   end
 end
