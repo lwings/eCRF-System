@@ -1,5 +1,7 @@
 %h3
   = "查看"+"用户信息"
   = render 'shared/edit_link', ob: @project, path: edit_user_path
-
+  %small
+    %a.fi-x{href: user_path, data: {method: 'delete', confirm: "确认要删除吗"}}
+      删除
 = render partial: 'form_user'

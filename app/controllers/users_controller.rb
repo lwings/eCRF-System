@@ -6,50 +6,35 @@ class UsersController < ApplicationController
   # helper_method :sort_column, :sort_direction
 
   def index
-    @users = @users.order("#{sort_column} #{sort_direction}").page(params[:page])
+    @users = @users.order(:created_at).page(params[:page])
+    @users.each{|user|
+      user.set_all_count
+    }
   end
 
-  def show
-    @available_roles = Role.all
-    @available_centers=Center.all
-  end
 
   def new
-    @available_roles = Role.all
-    @available_centers=Center.all
     @user.relationships.new
   end
 
   def create
     respond_to do |format|
       if @user.save
-        format.html { redirect_to({ action: :index }, notice: t('user_notice.user.created')) }
+        format.html { redirect_to({ action: :show }, notice: "用户创建成功") }
       else
         format.html {
-          @available_roles = available_roles(current_user)
           render :new
         }
       end
     end
   end
 
-  def edit
-    @available_roles = Role.all
-    @available_centers=Center.all
-    # # TODO: only ajax request are allowed, define 404 view
-    # if request.xhr?
-    #   render layout: false
-    #   # respond to Ajax request
-    # else
-    #   render layout: false
-    #   # respond to normal request
-    # end
-  end
+
 
   def update
     respond_to do |format|
       if @user.update_without_password(user_params)
-        format.html { redirect_to({ action: :show }, notice: t('user_notice.user.updated')) }
+        format.html { redirect_to({ action: :show }, notice: "用户资料更新成功") }
       else
         format.html { redirect_to({ action: :show }, alert: @user.errors.full_messages.to_sentence) }
       end
@@ -57,9 +42,11 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user.destroy
-    respond_to do |format|
-      format.html { redirect_to({ action: :index }, notice: t('user_notice.user.destroyed')) }
+    if @user.is_superintendent?
+      redirect_to({ action: :index },alert:"超级管理员无法删除" )
+    else
+      @user.destroy
+      redirect_to({ action: :index },notice: "删除成功")
     end
   end
 
@@ -72,15 +59,11 @@ class UsersController < ApplicationController
     )
   end
 
-  def available_roles(user)
-    Role.available(user.role.priv)
-  end
-
-  def sort_column(c = "created_at")
-    User.column_names.include?(params[:sort]) ? params[:sort] : c
-  end
-
-  def sort_direction(d = "desc")
-    %w[asc desc].include?(params[:direction]) ? params[:direction] : d
-  end
+  # def sort_column(c = "created_at")
+  #   User.column_names.include?(params[:sort]) ? params[:sort] : c
+  # end
+  #
+  # def sort_direction(d = "desc")
+  #   %w[asc desc].include?(params[:direction]) ? params[:direction] : d
+  # end/
 end

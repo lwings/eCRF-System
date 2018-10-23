@@ -16,6 +16,8 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :relationships,
                                 reject_if: :all_blank, allow_destroy: true
 
+  attr_accessor :projects_count
+  attr_accessor :center_name
 
   enumerize :status, in: {
     deprecated:   0,
@@ -26,12 +28,34 @@ class User < ActiveRecord::Base
 
    validates :username, presence: true, uniqueness: { case_insensitive: true }, length: { in: 4..20 }
 
+
+
+
+
+  def set_projects_count
+    self.projects_count=self.relationships.size
+  end
+
+  def set_center_name
+    self.center_name=self.center.name
+  end
+
+  def set_all_count
+    self.set_projects_count
+    self.set_center_name
+  end
+
+
   def login_name
     @login_name || self.username
   end
 
   def login_name=(name)
     @login_name = name
+  end
+
+  def is_superintendent?
+    self.role.name=="superintendent"
   end
 
   def any_accessable_projects?
