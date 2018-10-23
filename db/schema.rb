@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181022120909) do
+ActiveRecord::Schema.define(version: 20181023120959) do
 
   create_table "adverse_events", force: :cascade do |t|
     t.integer  "patient_id",          limit: 4
@@ -153,6 +153,14 @@ ActiveRecord::Schema.define(version: 20181022120909) do
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
   end
+
+  create_table "centers_users", id: false, force: :cascade do |t|
+    t.integer "center_id", limit: 4
+    t.integer "user_id",   limit: 4
+  end
+
+  add_index "centers_users", ["center_id"], name: "index_centers_users_on_center_id", using: :btree
+  add_index "centers_users", ["user_id"], name: "index_centers_users_on_user_id", using: :btree
 
   create_table "clinical_pathologies", force: :cascade do |t|
     t.integer  "patient_id",           limit: 4
@@ -442,7 +450,6 @@ ActiveRecord::Schema.define(version: 20181022120909) do
   add_index "tumor_maker_meds", ["medication_completion_id"], name: "index_tumor_maker_meds_on_medication_completion_id", using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.integer  "center_id",              limit: 4
     t.integer  "role_id",                limit: 4
     t.string   "username",               limit: 255,              null: false
     t.string   "realname",               limit: 255
@@ -462,7 +469,6 @@ ActiveRecord::Schema.define(version: 20181022120909) do
     t.datetime "updated_at"
   end
 
-  add_index "users", ["center_id"], name: "index_users_on_center_id", using: :btree
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["role_id"], name: "index_users_on_role_id", using: :btree

@@ -12,7 +12,7 @@ class CentersController < ApplicationController
   def create
     respond_to do |format|
       if @center.save
-        format.html { redirect_to({ action: :show }, notice: "中心创建成功") }
+        format.html { redirect_to({ action: :index }, notice: "中心创建成功") }
       else
         format.html { render :new }
       end

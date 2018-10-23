@@ -5,10 +5,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,
          :authentication_keys => [ :username]
 
-  # attr_accessor :current_project
-
   belongs_to :role
-  belongs_to :center
+  has_and_belongs_to_many :centers
   has_many :relationships
   has_many :projects , through:  :relationships
 
@@ -37,7 +35,14 @@ class User < ActiveRecord::Base
   end
 
   def set_center_name
-    self.center_name=self.center.name
+    self.center_name=""
+    if self.centers.size==0
+      "无"
+    else
+      self.centers.each{|c|
+        self.center_name+=(c.name+"\n")
+      }
+    end
   end
 
   def set_all_count
@@ -66,14 +71,6 @@ class User < ActiveRecord::Base
    end
   end
 
-  def self.find_first_by_auth_conditions(warden_conditions)
-    conditions = warden_conditions.dup
-    if ( login_name = conditions.delete(:login_name) )
-      where('lower(username) = :val OR lower(employee_no) = :val', val: login_name).first
-    else
-      where(conditions).first
-    end
-  end
 
 
 end

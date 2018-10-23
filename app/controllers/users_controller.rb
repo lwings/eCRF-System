@@ -55,8 +55,7 @@ class UsersController < ApplicationController
     params.require(:user).permit(
         :username, :email, :password, :password_confirmation,
         :realname, :phone,:role_id, :center_id,
-        relationships_attributes: [:id,:project_id,:_destroy]
-    )
+        relationships_attributes: [:id,:project_id,:_destroy],center_ids: [])
   end
 
   # def sort_column(c = "created_at")

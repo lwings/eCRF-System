@@ -22,10 +22,10 @@
             %li
               %a= "Current Croject:"+current_project_name
           %li.divider
-          - if current_user.center
-            %li
-              %a= "Center:"+current_user.center.name
-            %li.divider
+          -#- if current_user.center
+          -#  %li
+          -#    %a= "Center:"+current_user.center.name
+          -#  %li.divider
           %li.has-dropdown
             %a{:href => '#'}
               %span= current_user.realname
