@@ -17,6 +17,23 @@
       -if !@patient.group_information.nil? and !@patient.group_information.research_group.nil?
         %li
           %a= "研究干预(分组情况): #{@patient.group_information.research_group.name}"
+    %li.divider
+      %li
+        -flag=@patient.group_information.try(:persisted?)
+        %a{ href: flag ? send("patient_group_information_path", @patient) :send("new_patient_group_information_path", @patient) ,
+              class: flag ? 'fi-check' : 'fi-pencil'}
+          = "分组信息表"
+      %li
+        -flag=@patient.basement_assessment.try(:persisted?)
+        %a{ href: flag ? send("patient_basement_assessment_path", @patient) :send("new_patient_basement_assessment_path", @patient) ,
+              class: flag ? 'fi-check' : 'fi-pencil'}
+          = "基线评估"
+
+
+
+
+
+
     -#%li.divider
     -#- [:history, :clinical, :imaging, :pathology, :neoadjuvant].each do |model|
     -#  %li
@@ -44,9 +61,9 @@
     -#
 
   %li.divider
-  %li
-    %a.fi-page-add{ href: new_patient_path }
-      添加新病例
+    %li
+      %a.fi-page-add{ href: new_patient_path }
+        添加新病例
 
   -#%li.divider
   -#

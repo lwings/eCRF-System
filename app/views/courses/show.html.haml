@@ -1,5 +1,5 @@
 %h3
-  = t(:show)+"疗程表"
+  = "查看"+"疗程表"
   = render 'shared/edit_link', ob: @patient, path: edit_patient_course_path(@patient,@course)
   %small
     %a.fi-x{href: patient_course_path, data: {method: 'delete', confirm: t('delete_confirm')}}

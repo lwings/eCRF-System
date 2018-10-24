@@ -1,0 +1,2 @@
+module RadiationTherapiesHelper
+end
