@@ -4,7 +4,7 @@ class CourseMonitor < ActiveRecord::Base
   belongs_to :patient
   belongs_to :research_group
 
-  def renew_record_and_current(recordDate)
+  def renewByRecord(recordDate,)
     curPhase = self.current_phase_seq
     curCourse = self.current_course_seq
     curDay = self.current_day_seq
@@ -24,17 +24,19 @@ class CourseMonitor < ActiveRecord::Base
     if !curIfRest #unrest
       curDay+=1
       if curDay>scheduleChart[curPhase][1]
-        curDay=1
+        curDay-=1
         if scheduleChart[curPhase][2]>0
           curIfRest=true
           curRestDay=1
         else
+          curDay=1
           curCourse+=1
           if curCourse > scheduleChart[curPhase][0]
             curCourse=1
             if curPhase+=1
               if curPhase>scheduleChart.size()-1
-                curPhase-=1
+                return [scheduleChart.size(),scheduleChart[scheduleChart.size()-1][0],
+                        scheduleChart[scheduleChart.size()-1][1],false,0]
               end
 
             end
@@ -52,7 +54,8 @@ class CourseMonitor < ActiveRecord::Base
           curCourse=1
           if curPhase+=1
             if curPhase>scheduleChart.size()-1
-              curPhase-=1
+              return [scheduleChart.size(),scheduleChart[scheduleChart.size()-1][0],
+                      scheduleChart[scheduleChart.size()-1][1],false,0]
             end
 
           end
@@ -63,7 +66,7 @@ class CourseMonitor < ActiveRecord::Base
   end
 
   def priorCurList(curList,scheduleChart)
-
+    
   end
   # private
 
