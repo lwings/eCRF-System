@@ -28,6 +28,22 @@
         %a{ href: flag ? send("patient_basement_assessment_path", @patient) :send("new_patient_basement_assessment_path", @patient) ,
               class: flag ? 'fi-check' : 'fi-pencil'}
           = "基线评估"
+      %li
+        -flag=@patient.medication_completion.try(:persisted?)
+        %a{ href: flag ? send("patient_medication_completion_path", @patient) :send("new_patient_medication_completion_path", @patient) ,
+              class: flag ? 'fi-check' : 'fi-pencil'}
+          = "用药完成/终止访视表"
+      %li
+        -flag=@patient.research_completion.try(:persisted?)
+        %a{ href: flag ? send("patient_research_completion_path", @patient) :send("new_patient_research_completion_path", @patient) ,
+              class: flag ? 'fi-check' : 'fi-pencil'}
+          = "研究完成终止访视表"
+      -#%li
+      -#  -flag=@patient.research_completion.try(:persisted?)
+      -#  %a{ href: flag ? send("patient_research_completion_path", @patient) :send("new_patient_research_completion_path", @patient) ,
+      -#        class: flag ? 'fi-check' : 'fi-pencil'}
+      -#    = "疗程监视表"
+
 
 
 

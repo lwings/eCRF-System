@@ -2,6 +2,9 @@ class ResearchGroup < ActiveRecord::Base
 
   belongs_to :project
   has_many :course_schedules
+  has_many :course_monitors
+  has_many :followup_monitors
+
 
   # view
   accepts_nested_attributes_for :course_schedules,

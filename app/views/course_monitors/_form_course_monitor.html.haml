@@ -1,0 +1,24 @@
+- writable = action_name == 'edit' || @clinical_pathology.errors.any?
+
+= simple_form_for @course_monitor, url: patient_course_monitor_path(@patient), html: {'data-abide': '', class: writable ? nil : 'disabled'} do |f|
+  - required = "必填"
+  %fieldset
+
+    .row
+
+      = f.input :if_under_research
+      = f.input :current_phase_seq
+      = f.input :current_course_seq
+      = f.input :current_day_seq
+      = f.input :if_rest
+      = f.input :current_rest_seq
+
+  - if writable
+
+    = f.button :submit, class: [:small, :radius]
+  %fieldset
+
+    .row
+      %b2 疗程计划
+
+

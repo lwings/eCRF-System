@@ -1,4 +1,4 @@
-- writable = @reserach_completion.new_record? || action_name == 'edit' || @clinical_pathology.errors.any?
+- writable = @reserach_completion.new_record? || action_name == 'edit' || @reserach_completion.errors.any?
 
 = simple_form_for @reserach_completion, url: patient_reserach_completion_path(@patient), html: {'data-abide': '', class: writable ? nil : 'disabled'} do |f|
   - required = "必填"

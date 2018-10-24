@@ -1,0 +1,2 @@
+class FollowupMonitorsController < ApplicationController
+end

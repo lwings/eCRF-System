@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181023120959) do
+ActiveRecord::Schema.define(version: 20181024052848) do
 
   create_table "adverse_events", force: :cascade do |t|
     t.integer  "patient_id",          limit: 4
@@ -215,6 +215,22 @@ ActiveRecord::Schema.define(version: 20181023120959) do
   add_index "course_medications", ["course_id"], name: "index_course_medications_on_course_id", using: :btree
   add_index "course_medications", ["experimental_medication_id"], name: "index_course_medications_on_experimental_medication_id", using: :btree
 
+  create_table "course_monitors", force: :cascade do |t|
+    t.integer  "patient_id",         limit: 4
+    t.integer  "research_group_id",  limit: 4
+    t.boolean  "if_under_research",  limit: 1, default: false
+    t.integer  "current_phase_seq",  limit: 4, default: 0
+    t.integer  "current_course_seq", limit: 4, default: 0
+    t.integer  "current_day_seq",    limit: 4, default: 0
+    t.boolean  "if_rest",            limit: 1, default: false
+    t.integer  "current_rest_seq",   limit: 4, default: 0
+    t.datetime "created_at",                                   null: false
+    t.datetime "updated_at",                                   null: false
+  end
+
+  add_index "course_monitors", ["patient_id"], name: "index_course_monitors_on_patient_id", using: :btree
+  add_index "course_monitors", ["research_group_id"], name: "index_course_monitors_on_research_group_id", using: :btree
+
   create_table "course_schedules", force: :cascade do |t|
     t.integer  "research_group_id", limit: 4
     t.integer  "number_of_courses", limit: 4
@@ -273,6 +289,18 @@ ActiveRecord::Schema.define(version: 20181023120959) do
   end
 
   add_index "family_histories", ["clinical_pathology_id"], name: "index_family_histories_on_clinical_pathology_id", using: :btree
+
+  create_table "followup_monitors", force: :cascade do |t|
+    t.integer  "patient_id",        limit: 4
+    t.integer  "research_group_id", limit: 4
+    t.boolean  "if_under_followup", limit: 1, default: false
+    t.integer  "day_seq",           limit: 4, default: 0
+    t.datetime "created_at",                                  null: false
+    t.datetime "updated_at",                                  null: false
+  end
+
+  add_index "followup_monitors", ["patient_id"], name: "index_followup_monitors_on_patient_id", using: :btree
+  add_index "followup_monitors", ["research_group_id"], name: "index_followup_monitors_on_research_group_id", using: :btree
 
   create_table "followups", force: :cascade do |t|
     t.integer  "patient_id",                          limit: 4

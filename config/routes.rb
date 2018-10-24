@@ -32,6 +32,8 @@ Rails.application.routes.draw do
     resource :medication_completion
     resource :group_information
     resource :death_record
+    resource :followup_monitor
+    resource :course_monitor
     resources :radiation_therapies
     resources :courses
     resources :adverse_events
