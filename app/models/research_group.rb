@@ -27,4 +27,13 @@ class ResearchGroup < ActiveRecord::Base
     self.set_courses_schedules_count
     self.set_project_name_count
   end
+
+  def getCourseScheduleChart
+    chart=[[]]
+    self.course_schedules.order("seq").each_with_index { |cs, index|
+      chart[index]=[cs.number_of_courses,cs.cure_span,cs.rest_span]
+    }
+    chart
+  end
+
 end

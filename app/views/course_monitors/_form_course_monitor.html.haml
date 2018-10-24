@@ -1,24 +1,55 @@
-- writable = action_name == 'edit' || @clinical_pathology.errors.any?
+- writable = action_name == 'edit' || @course_monitor.errors.any?
 
 = simple_form_for @course_monitor, url: patient_course_monitor_path(@patient), html: {'data-abide': '', class: writable ? nil : 'disabled'} do |f|
   - required = "必填"
   %fieldset
 
     .row
-
       = f.input :if_under_research
+    .row
       = f.input :current_phase_seq
       = f.input :current_course_seq
       = f.input :current_day_seq
+    .row
       = f.input :if_rest
       = f.input :current_rest_seq
+    .row
+      = f.input :record_phase_seq
+      = f.input :record_course_seq
+      = f.input :record_day_seq
 
   - if writable
 
     = f.button :submit, class: [:small, :radius]
-  %fieldset
 
+
+  .row
+    %h3 疗程计划
+  %fieldset
     .row
-      %b2 疗程计划
+      病人所属研究干预：
+      %b=@patient.group_information.research_group.name
+    .row
+      疗程额定阶段数：
+      %b="#{@patient.group_information.research_group.course_schedules.size}"
+    .row
+      疗程计划:
+    -@patient.group_information.research_group.course_schedules.each_with_index do |s,index|
+      .row
+        第
+        %b="#{index+1}"
+        阶段, 额定进行
+        %b="#{s.number_of_courses}"
+        疗程, 每疗程
+        %b="#{s.cure_span}"
+        天, 阶段结束后
+        -if s.rest_span==0
+          不休息
+        -else
+          休息
+          %b="#{s.rest_span}"
+          天
+
+
 
 

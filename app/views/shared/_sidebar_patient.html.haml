@@ -17,32 +17,35 @@
       -if !@patient.group_information.nil? and !@patient.group_information.research_group.nil?
         %li
           %a= "研究干预(分组情况): #{@patient.group_information.research_group.name}"
-    %li.divider
-      %li
-        -flag=@patient.group_information.try(:persisted?)
-        %a{ href: flag ? send("patient_group_information_path", @patient) :send("new_patient_group_information_path", @patient) ,
-              class: flag ? 'fi-check' : 'fi-pencil'}
-          = "分组信息表"
-      %li
-        -flag=@patient.basement_assessment.try(:persisted?)
-        %a{ href: flag ? send("patient_basement_assessment_path", @patient) :send("new_patient_basement_assessment_path", @patient) ,
-              class: flag ? 'fi-check' : 'fi-pencil'}
-          = "基线评估"
-      %li
-        -flag=@patient.medication_completion.try(:persisted?)
-        %a{ href: flag ? send("patient_medication_completion_path", @patient) :send("new_patient_medication_completion_path", @patient) ,
-              class: flag ? 'fi-check' : 'fi-pencil'}
-          = "用药完成/终止访视表"
-      %li
-        -flag=@patient.research_completion.try(:persisted?)
-        %a{ href: flag ? send("patient_research_completion_path", @patient) :send("new_patient_research_completion_path", @patient) ,
-              class: flag ? 'fi-check' : 'fi-pencil'}
-          = "研究完成终止访视表"
-      -#%li
-      -#  -flag=@patient.research_completion.try(:persisted?)
-      -#  %a{ href: flag ? send("patient_research_completion_path", @patient) :send("new_patient_research_completion_path", @patient) ,
-      -#        class: flag ? 'fi-check' : 'fi-pencil'}
-      -#    = "疗程监视表"
+
+      %li.divider
+        %li
+          -flag=@patient.group_information.try(:persisted?)
+          %a{ href: flag ? send("patient_group_information_path", @patient) :send("new_patient_group_information_path", @patient) ,
+                class: flag ? 'fi-check' : 'fi-pencil'}
+            = "分组信息表"
+
+      -if !@patient.group_information.nil? and !@patient.group_information.research_group.nil?
+        %li
+          -flag=@patient.basement_assessment.try(:persisted?)
+          %a{ href: flag ? send("patient_basement_assessment_path", @patient) :send("new_patient_basement_assessment_path", @patient) ,
+                class: flag ? 'fi-check' : 'fi-pencil'}
+            = "基线评估"
+        %li
+          -flag=@patient.medication_completion.try(:persisted?)
+          %a{ href: flag ? send("patient_medication_completion_path", @patient) :send("new_patient_medication_completion_path", @patient) ,
+                class: flag ? 'fi-check' : 'fi-pencil'}
+            = "用药完成/终止访视表"
+        %li
+          -flag=@patient.reserach_completion.try(:persisted?)
+          %a{ href: flag ? send("patient_reserach_completion_path", @patient) :send("new_patient_reserach_completion_path", @patient) ,
+                class: flag ? 'fi-check' : 'fi-pencil'}
+            = "研究完成/终止访视表"
+        %li
+          -flag=@patient.course_monitor.try(:persisted?)
+          %a{ href: flag ? send("patient_course_monitor_path", @patient) :'#',
+                class: flag ? 'fi-check' : 'fi-pencil'}
+            = "疗程监视表"
 
 
 

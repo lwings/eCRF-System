@@ -224,6 +224,10 @@ ActiveRecord::Schema.define(version: 20181024052848) do
     t.integer  "current_day_seq",    limit: 4, default: 0
     t.boolean  "if_rest",            limit: 1, default: false
     t.integer  "current_rest_seq",   limit: 4, default: 0
+    t.integer  "record_phase_seq",   limit: 4, default: 0
+    t.integer  "record_course_seq",  limit: 4, default: 0
+    t.integer  "record_day_seq",     limit: 4, default: 0
+    t.integer  "course_diff",        limit: 4, default: 0
     t.datetime "created_at",                                   null: false
     t.datetime "updated_at",                                   null: false
   end
