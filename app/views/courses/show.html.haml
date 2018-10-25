@@ -2,7 +2,8 @@
   = "查看"+"疗程表"
   = render 'shared/edit_link', ob: @patient, path: edit_patient_course_path(@patient,@course)
   %small
-    %a.fi-x{href: patient_course_path, data: {method: 'delete', confirm: t('delete_confirm')}}
-      删除
+    -if @course.id==@patient.courses.all.last.id
+      %a.fi-x{href: patient_course_path, data: {method: 'delete', confirm: "危险操作！是否确认删除？"}}
+        删除
 
 = render partial: 'form_course'

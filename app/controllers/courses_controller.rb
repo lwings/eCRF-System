@@ -29,7 +29,7 @@ class CoursesController < ApplicationController
 
   def update
     respond_to do |format|
-      if @course.update(course_params)
+      if @course.update(course_update_params)
         format.html { redirect_to patient_course_path(@patient, @course) }
       else
         format.html { render :edit }
@@ -50,6 +50,17 @@ class CoursesController < ApplicationController
   def course_params
     params.require(:course).permit(
         :interview,:height,:weight,:body_surface_area,
+
+        blood_biochemistry_thes_attributes: [:id,:name, :value,:sample_date,:unit,:is_local_hospital,:_destroy],
+        blood_routine_thes_attributes: [:id,:name, :value,:sample_date,:unit,:is_local_hospital,:_destroy],
+        course_medications_attributes: [:id,:experimental_medication_id,:dose,:date_of_administration,:if_delay_administration,
+                                        :reason_for_delay,:description_for_delay,:if_change_dose,:reason_for_change,
+                                        :description_for_change,:_destroy]
+    )
+  end
+  def course_update_params
+    params.require(:course).permit(
+        :height,:weight,:body_surface_area,
 
         blood_biochemistry_thes_attributes: [:id,:name, :value,:sample_date,:unit,:is_local_hospital,:_destroy],
         blood_routine_thes_attributes: [:id,:name, :value,:sample_date,:unit,:is_local_hospital,:_destroy],

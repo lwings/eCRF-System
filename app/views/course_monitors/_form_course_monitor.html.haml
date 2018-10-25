@@ -5,17 +5,13 @@
   %fieldset
 
     .row
-      = f.input :if_under_research
-    .row
-      = f.input :current_phase_seq
-      = f.input :current_course_seq
-      = f.input :current_day_seq
-    .row
-      = f.input :if_rest
-      = f.input :current_rest_seq
-    .row
       = f.input :record_phase_seq
       = f.input :record_course_seq
+    .row
+      = f.input :overdue_course, input_html: {disabled: :disabled}
+    .row
+      = f.input :last_record_date
+
 
   - if writable
 

@@ -15,4 +15,13 @@ class Course < ActiveRecord::Base
                                 reject_if: :all_blank, allow_destroy: true
   accepts_nested_attributes_for :course_medications,
                                 reject_if: :all_blank, allow_destroy: true
+
+  after_create :setCourseMonitor
+
+  def setCourseMonitor
+    numOfCourses=self.patient.courses.size()
+    self.patient.course_monitor.setRecord numOfCourses , self.interview
+  end
+
+
 end

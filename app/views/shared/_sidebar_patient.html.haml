@@ -41,18 +41,23 @@
           %a{ href: flag ? send("patient_reserach_completion_path", @patient) :send("new_patient_reserach_completion_path", @patient) ,
                 class: flag ? 'fi-check' : 'fi-pencil'}
             = "研究完成/终止访视表"
+        - if @patient.courses.size>0
+          %li
+            -flag=@patient.course_monitor.try(:persisted?)
+            %a{ href: flag ? send("patient_course_monitor_path", @patient) :'#',
+                  class: flag ? 'fi-check' : 'fi-pencil'}
+              = "疗程监视表"
         %li
-          -flag=@patient.course_monitor.try(:persisted?)
-          %a{ href: flag ? send("patient_course_monitor_path", @patient) :'#',
-                class: flag ? 'fi-check' : 'fi-pencil'}
-            = "疗程监视表"
+          %a.fi-check{ href: '#'}
+            = "疗程表"
         %ul
+
           - @patient.courses.each_with_index do |course, i|
             - if course.persisted?
               %li
                 %a.fi-check{ href: patient_course_path(@patient, course)}
                   = "疗程"+ (i+1).to_s
-          -if @patient.courses.nil?||@patient.courses.size()<@patient.group_information.research_group.total_courses
+          -if @patient.courses == nil || @patient.courses.size()<@patient.group_information.research_group.total_courses
             %li
               %a{href: new_patient_course_path(@patient)}
                 %i.fi-pencil

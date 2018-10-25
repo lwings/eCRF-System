@@ -13,7 +13,6 @@ class Patient < ActiveRecord::Base
             scope: true
 
   belongs_to :project
-  # belongs_to :research
   belongs_to :research_group
   belongs_to :user
   has_one :basement_assessment, dependent: :destroy
@@ -31,7 +30,11 @@ class Patient < ActiveRecord::Base
   has_many :biological_sample_collections, dependent: :destroy
   has_many :followups, dependent: :destroy
 
+  before_create :setStatus
 
+  def setStatus
+    self.status=0
+  end
 
 
 end

@@ -4,16 +4,26 @@ class CourseMonitor < ActiveRecord::Base
   belongs_to :patient
   belongs_to :research_group
 
-  def renewByRecord(recordDate)
-    curPhase = self.current_phase_seq
-    curCourse = self.current_course_seq
-    curDay = self.current_day_seq
-    curIfRest = self.if_rest
-    curRestDay = self.current_rest_seq
-    curList=[curPhase,curCourse,curDay,curIfRest,curRestDay]
 
-    scheduleChart=self.research_group.getCourseScheduleChart
+  before_save :setOverdueCourse
+
+  def setOverdueCourse
+    res=0
+    scheduleChart=self.getScheduleChart
+    curList=[self.record_phase_seq,self.record_course_seq,1,false,0]
+    delayedDays=days_till_now(self.last_record_date)
+    # debugger
+    while delayedDays>0
+      delayedDays-=1
+      oldCourseSeq=curList[1]
+      curList=nextCurList(curList,scheduleChart)
+      if oldCourseSeq != curList[1]
+        res+=1
+      end
+    end
+    self.overdue_course=res
   end
+
 
   def nextCurList(curList,scheduleChart)
     curPhase = curList[0]-1
@@ -25,21 +35,28 @@ class CourseMonitor < ActiveRecord::Base
       curDay+=1
       if curDay>scheduleChart[curPhase][1]
         curDay-=1
-        if scheduleChart[curPhase][2]>0
-          curIfRest=true
-          curRestDay=1
+        curCourse+=1
+        if curCourse > scheduleChart[curPhase][0]
+          curCourse-=1
+          if scheduleChart[curPhase][2]>0
+            curIfRest=true
+            curRestDay=1
+          else
+            curPhase+=1
+            if curPhase>=scheduleChart.size()
+              return [scheduleChart.size(),scheduleChart[scheduleChart.size()-1][0],
+                              scheduleChart[scheduleChart.size()-1][1],false,0]
+            else
+              curCourse=1
+              curDay=1
+            end
+
+          end
+
         else
           curDay=1
-          curCourse+=1
-          if curCourse > scheduleChart[curPhase][0]
-            curCourse=1
-            if curPhase+=1
-              if curPhase>scheduleChart.size()-1
-                return [scheduleChart.size(),scheduleChart[scheduleChart.size()-1][0],
-                        scheduleChart[scheduleChart.size()-1][1],false,0]
-              end
-            end
-          end
+          curIfRest=false
+          curRestDay=0
         end
       end
     else #rest
@@ -48,27 +65,16 @@ class CourseMonitor < ActiveRecord::Base
         curRestDay=0
         curIfRest=false
         curDay=1
-        curCourse+=1
-        if curCourse > scheduleChart[curPhase][0]
-          curCourse=1
-          if curPhase+=1
-            if curPhase>scheduleChart.size()-1
-              return [scheduleChart.size(),scheduleChart[scheduleChart.size()-1][0],
-                      scheduleChart[scheduleChart.size()-1][1],false,0]
-            end
-          end
+        curCourse=1
+        curPhase+=1
+        if curPhase>=scheduleChart.size()
+          return [scheduleChart.size(),scheduleChart[scheduleChart.size()-1][0],
+                  scheduleChart[scheduleChart.size()-1][1],false,0]
         end
       end
     end
     [curPhase+1,curCourse,curDay,curIfRest,curRestDay]
   end
-
-  def priorCurList(curList,scheduleChart)
-    
-  end
-  # private
-
-
 
   def days_till_now(date)
     date=date.strftime("%Y-%m-%d")
@@ -76,4 +82,9 @@ class CourseMonitor < ActiveRecord::Base
     d2 = Date.parse(Time.now.strftime("%Y-%m-%d"))
     (d2 - d1).to_i
   end
+
+  def getScheduleChart
+    self.research_group.getCourseScheduleChart
+  end
+
 end

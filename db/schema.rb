@@ -216,20 +216,14 @@ ActiveRecord::Schema.define(version: 20181025015330) do
   add_index "course_medications", ["experimental_medication_id"], name: "index_course_medications_on_experimental_medication_id", using: :btree
 
   create_table "course_monitors", force: :cascade do |t|
-    t.integer  "patient_id",         limit: 4
-    t.integer  "research_group_id",  limit: 4
-    t.boolean  "if_under_research",  limit: 1, default: false
-    t.integer  "current_phase_seq",  limit: 4, default: 0
-    t.integer  "current_course_seq", limit: 4, default: 0
-    t.integer  "current_day_seq",    limit: 4, default: 0
-    t.boolean  "if_rest",            limit: 1, default: false
-    t.integer  "current_rest_seq",   limit: 4, default: 0
-    t.integer  "record_phase_seq",   limit: 4, default: 0
-    t.integer  "record_course_seq",  limit: 4, default: 0
-    t.integer  "course_diff",        limit: 4, default: 0
-    t.datetime "created_at",                                   null: false
-    t.datetime "updated_at",                                   null: false
-    t.date     "start_date"
+    t.integer  "patient_id",        limit: 4
+    t.integer  "research_group_id", limit: 4
+    t.integer  "record_phase_seq",  limit: 4, default: 0
+    t.integer  "record_course_seq", limit: 4, default: 0
+    t.integer  "overdue_course",    limit: 4, default: 0
+    t.date     "last_record_date"
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
   end
 
   add_index "course_monitors", ["patient_id"], name: "index_course_monitors_on_patient_id", using: :btree

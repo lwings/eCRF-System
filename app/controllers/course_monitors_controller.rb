@@ -11,7 +11,7 @@ class CourseMonitorsController < ApplicationController
 
   def update
     respond_to do |format|
-      if @course_monitor.update(group_information_params)
+      if @course_monitor.update(course_monitor_params)
         format.html { redirect_to patient_course_monitor_path(@patient) }
       else
         format.html { render :edit }
@@ -26,9 +26,8 @@ class CourseMonitorsController < ApplicationController
   private
   def course_monitor_params
     params.require(:course_monitor).permit(
-     :if_under_research,:current_phase_seq,:current_course_seq,
-     :current_day_seq, :if_rest,:current_rest_seq,:record_phase_seq,
-     :record_course_seq,:course_diff
+      :record_phase_seq,:record_course_seq,:record_day_seq,
+      :delayed_courses, :last_record_date
     )
   end
 end
