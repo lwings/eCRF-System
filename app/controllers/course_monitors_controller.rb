@@ -28,7 +28,7 @@ class CourseMonitorsController < ApplicationController
     params.require(:course_monitor).permit(
      :if_under_research,:current_phase_seq,:current_course_seq,
      :current_day_seq, :if_rest,:current_rest_seq,:record_phase_seq,
-     :record_course_seq,:record_day_seq,:course_diff
+     :record_course_seq,:course_diff
     )
   end
 end

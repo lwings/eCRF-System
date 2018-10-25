@@ -16,7 +16,6 @@
     .row
       = f.input :record_phase_seq
       = f.input :record_course_seq
-      = f.input :record_day_seq
 
   - if writable
 
@@ -33,6 +32,9 @@
       疗程额定阶段数：
       %b="#{@patient.group_information.research_group.course_schedules.size}"
     .row
+      疗程总数：
+      %b="#{@patient.group_information.research_group.total_courses}"
+    .row
       疗程计划:
     -@patient.group_information.research_group.course_schedules.each_with_index do |s,index|
       .row
@@ -42,7 +44,7 @@
         %b="#{s.number_of_courses}"
         疗程, 每疗程
         %b="#{s.cure_span}"
-        天, 阶段结束后
+        天, 本阶段疗程结束后
         -if s.rest_span==0
           不休息
         -else

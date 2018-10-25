@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181024052848) do
+ActiveRecord::Schema.define(version: 20181025015330) do
 
   create_table "adverse_events", force: :cascade do |t|
     t.integer  "patient_id",          limit: 4
@@ -226,10 +226,10 @@ ActiveRecord::Schema.define(version: 20181024052848) do
     t.integer  "current_rest_seq",   limit: 4, default: 0
     t.integer  "record_phase_seq",   limit: 4, default: 0
     t.integer  "record_course_seq",  limit: 4, default: 0
-    t.integer  "record_day_seq",     limit: 4, default: 0
     t.integer  "course_diff",        limit: 4, default: 0
     t.datetime "created_at",                                   null: false
     t.datetime "updated_at",                                   null: false
+    t.date     "start_date"
   end
 
   add_index "course_monitors", ["patient_id"], name: "index_course_monitors_on_patient_id", using: :btree
@@ -434,6 +434,7 @@ ActiveRecord::Schema.define(version: 20181024052848) do
     t.datetime "updated_at",                     null: false
     t.integer  "project_id",         limit: 4
     t.integer  "base_followup_days", limit: 4
+    t.integer  "total_courses",      limit: 4
   end
 
   add_index "research_groups", ["project_id"], name: "index_research_groups_on_project_id", using: :btree

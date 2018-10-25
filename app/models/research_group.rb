@@ -5,6 +5,7 @@ class ResearchGroup < ActiveRecord::Base
   has_many :course_monitors
   has_many :followup_monitors
 
+  before_save :set_total_courses
 
   # view
   accepts_nested_attributes_for :course_schedules,
@@ -34,6 +35,16 @@ class ResearchGroup < ActiveRecord::Base
       chart[index]=[cs.number_of_courses,cs.cure_span,cs.rest_span]
     }
     chart
+  end
+
+  private
+  def set_total_courses
+    res=0
+
+    self.course_schedules.each{|cs|
+      res+= cs.number_of_courses
+    }
+    self.total_courses=res
   end
 
 end

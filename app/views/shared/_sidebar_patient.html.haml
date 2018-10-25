@@ -46,6 +46,17 @@
           %a{ href: flag ? send("patient_course_monitor_path", @patient) :'#',
                 class: flag ? 'fi-check' : 'fi-pencil'}
             = "疗程监视表"
+        %ul
+          - @patient.courses.each_with_index do |course, i|
+            - if course.persisted?
+              %li
+                %a.fi-check{ href: patient_course_path(@patient, course)}
+                  = "疗程"+ (i+1).to_s
+          -if @patient.courses.nil?||@patient.courses.size()<@patient.group_information.research_group.total_courses
+            %li
+              %a{href: new_patient_course_path(@patient)}
+                %i.fi-pencil
+                = "新建疗程"
 
 
 

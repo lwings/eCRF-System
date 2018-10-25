@@ -4,7 +4,7 @@ class CourseMonitor < ActiveRecord::Base
   belongs_to :patient
   belongs_to :research_group
 
-  def renewByRecord(recordDate,)
+  def renewByRecord(recordDate)
     curPhase = self.current_phase_seq
     curCourse = self.current_course_seq
     curDay = self.current_day_seq
@@ -38,7 +38,6 @@ class CourseMonitor < ActiveRecord::Base
                 return [scheduleChart.size(),scheduleChart[scheduleChart.size()-1][0],
                         scheduleChart[scheduleChart.size()-1][1],false,0]
               end
-
             end
           end
         end
@@ -57,7 +56,6 @@ class CourseMonitor < ActiveRecord::Base
               return [scheduleChart.size(),scheduleChart[scheduleChart.size()-1][0],
                       scheduleChart[scheduleChart.size()-1][1],false,0]
             end
-
           end
         end
       end
