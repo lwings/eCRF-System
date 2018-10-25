@@ -41,17 +41,19 @@
           %a{ href: flag ? send("patient_reserach_completion_path", @patient) :send("new_patient_reserach_completion_path", @patient) ,
                 class: flag ? 'fi-check' : 'fi-pencil'}
             = "研究完成/终止访视表"
-        - if @patient.courses.size>0
-          %li
-            -flag=@patient.course_monitor.try(:persisted?)
-            %a{ href: flag ? send("patient_course_monitor_path", @patient) :'#',
-                  class: flag ? 'fi-check' : 'fi-pencil'}
-              = "疗程监视表"
+
         %li
           %a.fi-check{ href: '#'}
             = "疗程表"
+
         %ul
 
+          - if @patient.courses.size>0
+            %li
+              -flag=@patient.course_monitor.try(:persisted?)
+              %a{ href: flag ? send("patient_course_monitor_path", @patient) :'#',
+                    class: flag ? 'fi-check' : 'fi-pencil'}
+                = "疗程监视表"
           - @patient.courses.each_with_index do |course, i|
             - if course.persisted?
               %li
@@ -62,6 +64,69 @@
               %a{href: new_patient_course_path(@patient)}
                 %i.fi-pencil
                 = "新建疗程"
+        %li
+          %a.fi-check{ href: '#'}
+            = "不良事件报告"
+          %ul
+            - @patient.adverse_events.each_with_index do |adverse_event, i|
+              - if adverse_event.persisted?
+                %li
+                  %a.fi-check{ href: patient_adverse_event_path(@patient, adverse_event)}
+                    = "不良事件"+ (i+1).to_s
+            %li
+              %a{href: new_patient_adverse_event_path(@patient)}
+                %i.fi-pencil
+                = "新建不良事件"
+        %li
+          %a.fi-check{ href: '#'}
+            = "合并用药表"
+          %ul
+            - @patient.concomitant_drugs.each_with_index do |concomitant_drug, i|
+              - if concomitant_drug.persisted?
+                %li
+                  %a.fi-check{ href: patient_concomitant_drug_path(@patient, concomitant_drug)}
+                    = "合并用药"+ (i+1).to_s
+            %li
+              %a{href: new_patient_concomitant_drug_path(@patient)}
+                %i.fi-pencil
+                = "新建合并用药记录"
+
+        %li
+          %a.fi-check{ href: '#'}
+            = "生物样本采集表"
+          %ul
+            - @patient.biological_sample_collections.each_with_index do |biological_sample_collection, i|
+              - if biological_sample_collection.persisted?
+                %li
+                  %a.fi-check{ href: patient_biological_sample_collection_path(@patient, biological_sample_collection)}
+                    = "采集记录"+ (i+1).to_s
+            %li
+              %a{href: new_patient_biological_sample_collection_path(@patient)}
+                %i.fi-pencil
+                = "新建采集记录"
+
+        %li
+          %a.fi-check{ href: '#'}
+            = "生存随访表"
+          %ul
+            - @patient.followups.each_with_index do |followup, i|
+              - if followup.persisted?
+                %li
+                  %a.fi-check{ href: patient_followup_path(@patient,followup)}
+                    = "随访记录"+ (i+1).to_s
+            %li
+              %a{href: new_patient_followup_path(@patient)}
+                %i.fi-pencil
+                = "新建随访记录"
+        %li
+          -flag=@patient.death_record.try(:persisted?)
+          %a{ href: flag ? send("patient_death_record_path", @patient) :send("new_patient_death_record_path", @patient) ,
+                class: flag ? 'fi-check' : 'fi-pencil'}
+            = "死亡记录表"
+
+
+
+
 
 
 

@@ -1,6 +1,6 @@
 %h3
   = "查看"+"不良事件表"
-  = render 'shared/edit_link', ob: @patient, path: edit_adverse_event_path(@patient,@adverse_event)
+  = render 'shared/edit_link', ob: @patient, path: edit_patient_adverse_event_path(@patient,@adverse_event)
   %small
     %a.fi-x{href: patient_adverse_event_path, data: {method: 'delete', confirm: t('delete_confirm')}}
       删除
