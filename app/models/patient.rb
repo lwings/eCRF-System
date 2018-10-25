@@ -36,5 +36,4 @@ class Patient < ActiveRecord::Base
     self.status=0
   end
 
-
 end

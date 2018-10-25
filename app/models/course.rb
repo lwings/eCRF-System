@@ -2,7 +2,6 @@ class Course < ActiveRecord::Base
   extend Enumerize
   include Constant
 
-
   belongs_to :patient
 
   has_many :course_medications,dependent: :destroy
@@ -17,11 +16,18 @@ class Course < ActiveRecord::Base
                                 reject_if: :all_blank, allow_destroy: true
 
   after_create :setCourseMonitor
+  before_destroy :rollBackMonitor
 
   def setCourseMonitor
     numOfCourses=self.patient.courses.size()
     self.patient.course_monitor.setRecord numOfCourses , self.interview
   end
 
+  def rollBackMonitor
+    if self.patient.courses.size() >0
+      numOfCourses=self.patient.courses.size()
+      self.patient.course_monitor.setRecord numOfCourses-1 , self.patient.courses.last(2).first.interview
+    end
+  end
 
 end

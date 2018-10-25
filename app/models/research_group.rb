@@ -6,6 +6,7 @@ class ResearchGroup < ActiveRecord::Base
   has_many :followup_monitors
 
   before_save :set_total_courses
+  after_save :setLastScheduleRestSpan
 
   # view
   accepts_nested_attributes_for :course_schedules,
@@ -45,6 +46,10 @@ class ResearchGroup < ActiveRecord::Base
       res+= cs.number_of_courses
     }
     self.total_courses=res
+  end
+  def setLastScheduleRestSpan
+    # debugger
+    self.course_schedules.all.last.update(rest_span:0)
   end
 
 end

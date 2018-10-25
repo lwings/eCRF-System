@@ -12,7 +12,6 @@ class CourseMonitor < ActiveRecord::Base
     scheduleChart=self.getScheduleChart
     curList=[self.record_phase_seq,self.record_course_seq,1,false,0]
     delayedDays=days_till_now(self.last_record_date)
-    # debugger
     while delayedDays>0
       delayedDays-=1
       oldCourseSeq=curList[1]
@@ -24,6 +23,26 @@ class CourseMonitor < ActiveRecord::Base
     self.overdue_course=res
   end
 
+  def setRecord(numOfCourses,interview)
+    self.last_record_date=interview
+    scheduleChart=self.getScheduleChart()
+    curPhase = 1
+    curCourse = 1
+    while numOfCourses>1
+      numOfCourses -=1
+      curCourse+=1
+      if curCourse>scheduleChart[curPhase-1][0]
+        curCourse=1
+        curPhase+=1
+        if curPhase>scheduleChart.size()
+          break
+        end
+      end
+    end
+    self.record_course_seq=curCourse
+    self.record_phase_seq=curPhase
+    self.save
+  end
 
   def nextCurList(curList,scheduleChart)
     curPhase = curList[0]-1
