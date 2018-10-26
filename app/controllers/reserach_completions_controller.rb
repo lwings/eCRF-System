@@ -22,7 +22,7 @@ class ReserachCompletionsController < ApplicationController
 
   def update
     respond_to do |format|
-      if @reserach_completion.update(group_information_params)
+      if @reserach_completion.update(update_reserach_completion_params)
         format.html { redirect_to patient_reserach_completion_path(@patient) }
       else
         format.html { render :edit }
@@ -39,6 +39,12 @@ class ReserachCompletionsController < ApplicationController
     params.require(:reserach_completion).permit(
      :date_of_last_confirmation,:if_complete_therapy_according_to_plan,
      :reason_for_early_quit,:description
+    )
+  end
+  def update_reserach_completion_params
+    params.require(:reserach_completion).permit(
+        :date_of_last_confirmation,
+        :reason_for_early_quit,:description
     )
   end
 end

@@ -1,0 +1,20 @@
+- writable = action_name == 'edit' || @followup.errors.any?
+
+= simple_form_for @followup, url: patient_followup_path(@patient), html: {'data-abide': '', class: writable ? nil : 'disabled'} do |f|
+  - required = "必填"
+  %fieldset
+
+    .row
+      = f.input :start_date
+    .row
+      = f.input :base_followup_days
+
+
+  - if writable
+
+    = f.button :submit, class: [:small, :radius]
+
+
+
+
+

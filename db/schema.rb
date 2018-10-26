@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181025015330) do
+ActiveRecord::Schema.define(version: 20181026013652) do
 
   create_table "adverse_events", force: :cascade do |t|
     t.integer  "patient_id",          limit: 4
@@ -289,12 +289,14 @@ ActiveRecord::Schema.define(version: 20181025015330) do
   add_index "family_histories", ["clinical_pathology_id"], name: "index_family_histories_on_clinical_pathology_id", using: :btree
 
   create_table "followup_monitors", force: :cascade do |t|
-    t.integer  "patient_id",        limit: 4
-    t.integer  "research_group_id", limit: 4
-    t.boolean  "if_under_followup", limit: 1, default: false
-    t.integer  "day_seq",           limit: 4, default: 0
-    t.datetime "created_at",                                  null: false
-    t.datetime "updated_at",                                  null: false
+    t.integer  "patient_id",         limit: 4
+    t.integer  "research_group_id",  limit: 4
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
+    t.integer  "base_followup_days", limit: 4, default: 0
+    t.date     "start_date"
+    t.date     "last_followup_date"
+    t.integer  "base_interval",      limit: 4
   end
 
   add_index "followup_monitors", ["patient_id"], name: "index_followup_monitors_on_patient_id", using: :btree
@@ -429,6 +431,7 @@ ActiveRecord::Schema.define(version: 20181025015330) do
     t.integer  "project_id",         limit: 4
     t.integer  "base_followup_days", limit: 4
     t.integer  "total_courses",      limit: 4
+    t.integer  "base_interval",      limit: 4
   end
 
   add_index "research_groups", ["project_id"], name: "index_research_groups_on_project_id", using: :btree

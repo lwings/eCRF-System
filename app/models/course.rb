@@ -16,6 +16,7 @@ class Course < ActiveRecord::Base
                                 reject_if: :all_blank, allow_destroy: true
 
   after_create :setCourseMonitor
+  after_create :convertStatusToResearching
   before_destroy :rollBackMonitor
 
   def setCourseMonitor
@@ -28,6 +29,10 @@ class Course < ActiveRecord::Base
       numOfCourses=self.patient.courses.size()
       self.patient.course_monitor.setRecord numOfCourses-1 , self.patient.courses.last(2).first.interview
     end
+  end
+
+  def convertStatusToResearching
+      self.patient.update(status:1)
   end
 
 end

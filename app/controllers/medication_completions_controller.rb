@@ -25,7 +25,7 @@ class MedicationCompletionsController < ApplicationController
 
   def update
     respond_to do |format|
-      if @basement_assessment.update(medication_completion_params)
+      if @basement_assessment.update(update_medication_completion_params)
         format.html { redirect_to patient_medication_completion_path(@patient) }
       else
         format.html { render :edit }
@@ -40,6 +40,17 @@ class MedicationCompletionsController < ApplicationController
       :visit_date,:height,:weight,:ECOG,:physical_examination,:description,
       :if_followup,:breast_Bultra_date,:breast_Bultra_diagnose,:breast_abnormal,
       :abdo_Bultra_date,:abdo_Bultra_diagnose,:abdo_abnormalt,
+        blood_biochemistry_meds_attributes: [:id,:name, :value,:sample_date,:unit,:is_local_hospital,:_destroy],
+        blood_routine_meds_attributes: [:id,:name, :value,:sample_date,:unit,:is_local_hospital,:_destroy],
+        tumor_maker_meds_attributes: [:id,:name, :value,:sample_date,:unit,:is_local_hospital,:_destroy]
+    )
+  end
+
+  def update_medication_completion_params
+    params.require(:basement_assessment).permit(
+        :visit_date,:height,:weight,:ECOG,:physical_examination,:description,
+        :breast_Bultra_date,:breast_Bultra_diagnose,:breast_abnormal,
+        :abdo_Bultra_date,:abdo_Bultra_diagnose,:abdo_abnormalt,
         blood_biochemistry_meds_attributes: [:id,:name, :value,:sample_date,:unit,:is_local_hospital,:_destroy],
         blood_routine_meds_attributes: [:id,:name, :value,:sample_date,:unit,:is_local_hospital,:_destroy],
         tumor_maker_meds_attributes: [:id,:name, :value,:sample_date,:unit,:is_local_hospital,:_destroy]
