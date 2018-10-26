@@ -5,6 +5,7 @@ class ProjectsController < ApplicationController
   def new
     @project.relationships.new
     @project.experimental_medications.new
+    @project.center_project_relationships.new
   end
 
   def show
@@ -44,7 +45,8 @@ class ProjectsController < ApplicationController
     params.require(:project).permit(
         :center_id, :name,:remark,
         relationships_attributes: [:id,:user_id,:_destroy],
-        experimental_medications_attributes: [:id,:name,:remark,:_destroy]
+        experimental_medications_attributes: [:id,:name,:remark,:_destroy],
+        center_project_relationships_attributes: [:id,:center_id,:planned_patients_count,:_destroy]
     )
   end
   # def sort_column(c = "created_at")

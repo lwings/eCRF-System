@@ -1,17 +1,22 @@
 class Project < ActiveRecord::Base
 
-  belongs_to :center
+
 
   has_many :patients, dependent: :destroy
-  has_many :user
+  has_many :users, through:  :relationships
   has_many :relationships, dependent: :destroy
   has_many :research_groups, dependent: :destroy
   has_many :experimental_medications, dependent: :destroy
+  has_many :centers, through: :center_project_relationships
+  has_many :center_project_relationships
+
 
   # view
   accepts_nested_attributes_for :relationships,
                                 reject_if: :all_blank, allow_destroy: true
   accepts_nested_attributes_for :experimental_medications,
+                                reject_if: :all_blank, allow_destroy: true
+  accepts_nested_attributes_for :center_project_relationships,
                                 reject_if: :all_blank, allow_destroy: true
   attr_accessor :groups_count
   attr_accessor :drugs_count

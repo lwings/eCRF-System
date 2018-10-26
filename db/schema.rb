@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181026013652) do
+ActiveRecord::Schema.define(version: 20181026131903) do
 
   create_table "adverse_events", force: :cascade do |t|
     t.integer  "patient_id",          limit: 4
@@ -146,6 +146,17 @@ ActiveRecord::Schema.define(version: 20181026013652) do
   end
 
   add_index "blood_routines", ["basement_assessment_id"], name: "index_blood_routines_on_basement_assessment_id", using: :btree
+
+  create_table "center_project_relationships", force: :cascade do |t|
+    t.integer  "project_id",             limit: 4
+    t.integer  "center_id",              limit: 4
+    t.integer  "planned_patients_count", limit: 4, default: 0
+    t.datetime "created_at",                                   null: false
+    t.datetime "updated_at",                                   null: false
+  end
+
+  add_index "center_project_relationships", ["center_id"], name: "index_center_project_relationships_on_center_id", using: :btree
+  add_index "center_project_relationships", ["project_id"], name: "index_center_project_relationships_on_project_id", using: :btree
 
   create_table "centers", force: :cascade do |t|
     t.string   "name",        limit: 255,   null: false
@@ -390,14 +401,11 @@ ActiveRecord::Schema.define(version: 20181026013652) do
   add_index "patients", ["user_id"], name: "index_patients_on_user_id", using: :btree
 
   create_table "projects", force: :cascade do |t|
-    t.integer  "center_id",  limit: 4
     t.string   "name",       limit: 255,   null: false
     t.text     "remark",     limit: 65535
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
   end
-
-  add_index "projects", ["center_id"], name: "index_projects_on_center_id", using: :btree
 
   create_table "radiation_therapies", force: :cascade do |t|
     t.integer  "patient_id",              limit: 4

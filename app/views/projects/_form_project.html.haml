@@ -8,20 +8,22 @@
     .row
 
       = f.input :name
-      = f.association :center, label: "创建中心", required: true
       = f.input :remark
+
+    = f.simple_fields_for :center_project_relationships do |relationships|
+      = render 'fields_center_project_relationships', f: relationships
+    - if writable
+      .links
+        = link_to_add_association "添加中心", f, :center_project_relationships, partial: 'fields_center_project_relationships'
 
     = f.simple_fields_for :relationships do |relationships|
       = render 'fields_relationships', f: relationships
-
-
     - if writable
       .links
         = link_to_add_association "添加记录", f, :relationships, partial: 'fields_relationships'
 
     = f.simple_fields_for :experimental_medications do |experimental_medications|
       = render 'fields_experimental_medications', f: experimental_medications
-
     - if writable
       .links
         = link_to_add_association "添加药品", f, :experimental_medications, partial: 'fields_experimental_medications'
