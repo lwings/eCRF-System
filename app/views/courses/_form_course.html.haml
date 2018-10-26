@@ -7,11 +7,9 @@
       基本信息
     .row
       -if action_name=='edit'
-        = f.input :interview,as: :date, start_year: Date.today.year - 10,
-                                end_year: Date.today.year+2, input_html: {disabled: :disabled}
+        = f.input :interview, input_html: {disabled: :disabled}
       -else
-        = f.input :interview,as: :date, start_year: Date.today.year - 10,
-                                end_year: Date.today.year+2
+        = f.input :interview
       = f.input :height
       = f.input :weight
       = f.input :body_surface_area

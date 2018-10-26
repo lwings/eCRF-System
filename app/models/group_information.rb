@@ -2,8 +2,8 @@ class GroupInformation < ActiveRecord::Base
   belongs_to :patient
   belongs_to :research_group
 
-  after_save :set_course_monitor
-  after_save :set_followup_monitor
+  after_create :set_course_monitor
+  after_create :set_followup_monitor
 
 
   # private

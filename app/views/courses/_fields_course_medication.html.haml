@@ -13,9 +13,7 @@
        label:"试验用药",collection: @available_experimental_medication, as: :select, required: true
 
       = f.input :dose, front_error: required
-      = f.input :date_of_administration, front_error: required, front_error: required,
-                                  as: :date, start_year: Date.today.year - 5,
-                                  end_year: Date.today.year
+      = f.input :date_of_administration
       = f.input :if_delay_administration, front_error: required
       = f.input :reason_for_delay, front_error: required
       = f.input :description_for_delay, front_error: required

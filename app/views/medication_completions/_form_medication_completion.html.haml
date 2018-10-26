@@ -1,4 +1,4 @@
-- writable = @medication_completion.new_record? || action_name == 'edit' || @basement_assessment.errors.any?
+- writable = @medication_completion.new_record? || action_name == 'edit' || @medication_completion.errors.any?
 
 = simple_form_for @medication_completion, url: patient_medication_completion_path(@patient), html: {'data-abide': '', class: writable ? nil : 'disabled'} do |f|
   - required = "必填"
@@ -6,18 +6,20 @@
     %legend
       基本信息
     .row
-      = f.input :visit_date,as: :date, start_year: Date.today.year - 10,
-                              end_year: Date.today.year+2
+      -if action_name=='edit'
+        = f.input :visit_date, input_html: {disabled: :disabled}
+        = f.input :if_followup, input_html: {disabled: :disabled}
+      -else
+        = f.input :visit_date
+        = f.input :if_followup
       = f.input :height
       = f.input :weight
       = f.input :ECOG
       = f.input :physical_examination
       = f.input :description
-      = f.input :if_followup
 
 
-    %legend
-      血生化
+
     = f.simple_fields_for :blood_biochemistry_meds do |blood_biochemistries|
       = render 'fields_blood_biochemistry_med', f: blood_biochemistries
 
@@ -47,9 +49,7 @@
     %legend
       乳房B超
     .row
-      = f.input :breast_Bultra_date, front_error: required,
-                                    as: :date, start_year: Date.today.year - 5,
-                                    end_year: Date.today.year
+      = f.input :breast_Bultra_date
       = f.input :breast_Bultra_diagnose
       = f.input :breast_abnormal
 
@@ -57,9 +57,7 @@
     %legend
       腹部B超
     .row
-      = f.input :abdo_Bultra_date, front_error: required,
-                                    as: :date, start_year: Date.today.year - 5,
-                                    end_year: Date.today.year
+      = f.input :abdo_Bultra_date
       = f.input :abdo_Bultra_diagnose
       = f.input :abdo_abnormalt
 

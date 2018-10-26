@@ -14,6 +14,9 @@
           %a= "中心: #{@patient.center_id}"
         %li
           %a= "姓名: #{@patient.name}"
+        %li
+          %a= "病人状态: #{@patient.status}"
+
       -if !@patient.group_information.nil? and !@patient.group_information.research_group.nil?
         %li
           %a= "研究干预(分组情况): #{@patient.group_information.research_group.name}"
@@ -48,7 +51,7 @@
 
         %ul
 
-          - if @patient.courses.size>0
+          - if @patient.status.value==1
             %li
               -flag=@patient.course_monitor.try(:persisted?)
               %a{ href: flag ? send("patient_course_monitor_path", @patient) :'#',
@@ -59,7 +62,7 @@
               %li
                 %a.fi-check{ href: patient_course_path(@patient, course)}
                   = "疗程"+ (i+1).to_s
-          -if @patient.courses == nil || @patient.courses.size()<@patient.group_information.research_group.total_courses
+          -if (@patient.courses == nil || @patient.courses.size()<@patient.group_information.research_group.total_courses) and @patient.status.value==1
             %li
               %a{href: new_patient_course_path(@patient)}
                 %i.fi-pencil
@@ -105,7 +108,7 @@
                 %i.fi-pencil
                 = "新建采集记录"
 
-        -if @patient.status.value>=3
+        -if @patient.status.value==2
           %li
             %a.fi-check{ href: '#'}
               = "生存随访表"

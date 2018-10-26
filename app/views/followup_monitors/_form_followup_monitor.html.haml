@@ -1,13 +1,14 @@
-- writable = action_name == 'edit' || @followup.errors.any?
+- writable = action_name == 'edit' || @followup_monitor.errors.any?
 
-= simple_form_for @followup, url: patient_followup_path(@patient), html: {'data-abide': '', class: writable ? nil : 'disabled'} do |f|
+= simple_form_for @followup_monitor, url: patient_followup_monitor_path(@patient), html: {'data-abide': '', class: writable ? nil : 'disabled'} do |f|
   - required = "必填"
   %fieldset
 
     .row
       = f.input :start_date
+      = f.input :last_followup_date
     .row
-      = f.input :base_followup_days
+      = f.input :base_interval
 
 
   - if writable
