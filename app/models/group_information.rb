@@ -6,7 +6,7 @@ class GroupInformation < ActiveRecord::Base
   after_save :set_followup_monitor
 
 
-  private
+  # private
   def set_course_monitor
     if self.patient.course_monitor.nil?
       self.patient.create_course_monitor(research_group_id:self.research_group_id)

@@ -14,19 +14,12 @@
       = f.input :physical_examination
       = f.input :description
       = f.input :if_followup
-      -#= f.input :ER
-      -#= f.input :PR
-      -#= f.input :HER2_IHC
-      -#= f.input :HER2_FISH
-      -#= f.input :Ki67
-      -#= f.input :AR
-      -#= f.input :date_of_operation,as: :date, start_year: Date.today.year - 10,
-      -#                        end_year: Date.today.year+2
 
 
+    %legend
+      血生化
     = f.simple_fields_for :blood_biochemistry_meds do |blood_biochemistries|
       = render 'fields_blood_biochemistry_med', f: blood_biochemistries
-
 
     - if writable
       .links

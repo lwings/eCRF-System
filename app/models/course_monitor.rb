@@ -8,6 +8,9 @@ class CourseMonitor < ActiveRecord::Base
   before_save :setOverdueCourse
 
   def setOverdueCourse
+    if self.patient.status.value==0
+      return
+    end
     res=0
     scheduleChart=self.getScheduleChart
     curList=[self.record_phase_seq,self.record_course_seq,1,false,0]
@@ -41,6 +44,7 @@ class CourseMonitor < ActiveRecord::Base
     end
     self.record_course_seq=curCourse
     self.record_phase_seq=curPhase
+    self.last_record_date=interview
     self.save
   end
 

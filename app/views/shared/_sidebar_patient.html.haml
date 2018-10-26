@@ -105,19 +105,28 @@
                 %i.fi-pencil
                 = "新建采集记录"
 
-        %li
-          %a.fi-check{ href: '#'}
-            = "生存随访表"
-          %ul
-            - @patient.followups.each_with_index do |followup, i|
-              - if followup.persisted?
+        -if @patient.status.value>=3
+          %li
+            %a.fi-check{ href: '#'}
+              = "生存随访表"
+            %ul
+
+              - if @patient.status.value==3
                 %li
-                  %a.fi-check{ href: patient_followup_path(@patient,followup)}
-                    = "随访记录"+ (i+1).to_s
-            %li
-              %a{href: new_patient_followup_path(@patient)}
-                %i.fi-pencil
-                = "新建随访记录"
+                  -flag=@patient.followup_monitor.try(:persisted?)
+                  %a{ href: flag ? send("patient_followup_monitor_path", @patient) :'#',
+                        class: flag ? 'fi-check' : 'fi-pencil'}
+                    = "随访监视表"
+
+              - @patient.followups.each_with_index do |followup, i|
+                - if followup.persisted?
+                  %li
+                    %a.fi-check{ href: patient_followup_path(@patient,followup)}
+                      = "随访记录"+ (i+1).to_s
+              %li
+                %a{href: new_patient_followup_path(@patient)}
+                  %i.fi-pencil
+                  = "新建随访记录"
         %li
           -flag=@patient.death_record.try(:persisted?)
           %a{ href: flag ? send("patient_death_record_path", @patient) :send("new_patient_death_record_path", @patient) ,

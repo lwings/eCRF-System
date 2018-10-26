@@ -15,8 +15,9 @@ class Course < ActiveRecord::Base
   accepts_nested_attributes_for :course_medications,
                                 reject_if: :all_blank, allow_destroy: true
 
-  after_create :setCourseMonitor
+
   after_create :convertStatusToResearching
+  after_create :setCourseMonitor
   before_destroy :rollBackMonitor
 
   def setCourseMonitor

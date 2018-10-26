@@ -8,7 +8,9 @@ class ResearchGroupsController < ApplicationController
   end
   def create
     respond_to do |format|
-      if @research_group.save
+      if @research_group.course_schedules.size==0
+        format.html { redirect_to({ action: :new }, alert: "疗程计划不能为空") }
+      elsif @research_group.save
         format.html { redirect_to research_group_path( @research_group) }
       else
         format.html { render :new }
@@ -18,7 +20,10 @@ class ResearchGroupsController < ApplicationController
 
   def update
     respond_to do |format|
-      if @research_group.update(research_group_params)
+      # debugger
+      if @research_group.course_schedules.size==0
+        format.html { redirect_to({ action: :edit }, alert: "疗程计划不能为空") }
+      elsif @research_group.update(research_group_params)
         format.html { redirect_to research_group_path( @research_group) }
       else
         format.html { render :edit }

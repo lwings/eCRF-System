@@ -1,4 +1,5 @@
 class FollowupMonitor < ActiveRecord::Base
+  require 'date'
   belongs_to :patient
   belongs_to :research_group
 
