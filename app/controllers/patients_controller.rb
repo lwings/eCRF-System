@@ -1,4 +1,5 @@
 class PatientsController < ApplicationController
+  layout 'application', only: [:index]
   before_action :authenticate_user!
   load_resource :patient
 

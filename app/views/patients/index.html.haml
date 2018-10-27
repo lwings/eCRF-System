@@ -1,0 +1,55 @@
+- content_for :side_bar do
+  = render 'shared/sidebar_patient_overview'
+
+.row
+  .columns
+    %h3.page-header
+      总体情况
+  .columns.medium-6.border-right
+    %ul.square
+      %li
+        本研究计划入组病例数：
+        %span.radius.secondary.label
+          %b= 0
+      %li
+        本研究实际入组病例数：
+        %span.radius.secondary.label
+          %b= 0
+      %li
+        已添加术后辅助的记录条数：
+        %span.radius.secondary.label
+          %b= 0
+      %li
+        随访过的患者数：
+        %span.radius.secondary.label
+          %b= 0
+      %ul.square
+        %li
+          其中未复发患者数
+          %span.radius.secondary.label
+            %b= 0
+        %li
+          其中复发患者数
+          %span.radius.secondary.label
+            -#%b= @stat[:recur]
+        %li
+          其中去世患者数
+          %span.radius.secondary.label
+            %b= 0
+      %li
+        最近一周添加的病例数：
+        %span.radius.secondary.label
+          %b= 0
+    %h3.page-header 任务表
+    %ul.square
+      %li
+        %span 截止今日需进行研究干预的患者数：
+        %a{:href => '#'}
+          %i.fi-clipboard-pencil
+          %b= 0
+      %li
+        %span 截止今日需进行随访的患者数：
+        %a{:href => '#'}
+          %i.fi-clipboard-pencil
+          %b= 0
+

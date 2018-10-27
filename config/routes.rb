@@ -26,6 +26,9 @@ Rails.application.routes.draw do
   get '/project_exception', to: 'projectsessions#exception'
 
   resources :patients do
+    collection do
+
+    end
     resource :clinical_pathology
     resource :basement_assessment
     resource :reserach_completion

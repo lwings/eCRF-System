@@ -1,0 +1,40 @@
+%ul.side-nav
+  %li
+    %a{ href: patients_path}
+      项目信息总览
+      -#%span.badge 9
+  %ul
+    %li
+      %a.fi-info{:href => '#'}
+        所有病例
+      %a.fi-info{:href => '#'}
+        研究干预中
+      %a.fi-info{:href => '#'}
+        随访中
+      %a.fi-info{:href => '#'}
+        结束随访
+      %a.fi-info{:href => '#'}
+        已出组
+  %li.divider
+  %li
+    %a{ href: '#'}
+      病例输入
+  %ul
+    -#%li
+    -#  %a.fi-asterisk{:href => complement_patients_path}
+    -#    未完成的病例
+    -#    -#%span.label.round.alert 2
+    %li
+      %a.fi-plus{ href: new_patient_path}
+        新建病例
+  %li.divider
+  %li
+    %a{:href => "#"}
+      研究干预
+  %ul
+    %li
+      %a.fi-calendar{:href => '#'}
+        ？？？
+    %li
+      %a.fi-download{:href => '#'}
+        ？？？
