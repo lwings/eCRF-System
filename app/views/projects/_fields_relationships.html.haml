@@ -9,6 +9,6 @@
       = f.hidden_field :id, value: f.object.id
 
     .row
-      = f.association :user ,label_method: :realname, value_method: :id, include_blank: false
-
+      = f.association :user ,label_method: :realname, value_method: :id
+      = f.input :center_id,collection:Center.all, label:"桥接中心"
 

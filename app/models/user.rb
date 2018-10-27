@@ -6,9 +6,10 @@ class User < ActiveRecord::Base
          :authentication_keys => [ :username]
 
   belongs_to :role
-  has_and_belongs_to_many :centers
+  # has_and_belongs_to_many :centers
   has_many :relationships
   has_many :projects , through:  :relationships
+  has_many :centers, through: :relationships
 
   # view
   accepts_nested_attributes_for :relationships,

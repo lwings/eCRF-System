@@ -20,7 +20,8 @@
     %legend 角色与中心
     .row
       = f.association :role, label: "角色",as: :select, required: true,include_blank: false
-      = f.association :centers,collection:Center.all, label: "中心", as: :check_boxes, required: true,value_method: :id
+      = f.association :centers,collection:Center.all, label: "中心",
+       as: :check_boxes, required: true,value_method: :id, input_html: {disabled: :disabled}
 
 
     .row

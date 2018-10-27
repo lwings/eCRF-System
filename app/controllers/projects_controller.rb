@@ -44,7 +44,7 @@ class ProjectsController < ApplicationController
   def project_params
     params.require(:project).permit(
         :center_id, :name,:remark,
-        relationships_attributes: [:id,:user_id,:_destroy],
+        relationships_attributes: [:id,:user_id,:center_id,:_destroy],
         experimental_medications_attributes: [:id,:name,:remark,:_destroy],
         center_project_relationships_attributes: [:id,:center_id,:planned_patients_count,:_destroy]
     )
