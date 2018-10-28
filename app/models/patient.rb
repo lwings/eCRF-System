@@ -6,7 +6,7 @@ class Patient < ActiveRecord::Base
                 established:  0,
                 researching:  1,
                 followup:  2,
-                end:3,
+                followup_end:3,
                 quit:4
             },
             predicates: true,
@@ -30,10 +30,34 @@ class Patient < ActiveRecord::Base
   has_many :biological_sample_collections, dependent: :destroy
   has_many :followups, dependent: :destroy
 
+  attr_accessor :center_name
+  attr_accessor :overdue_courses
+  attr_accessor :overdue_followups
+
   before_create :convertStatusToEstablished
 
   def convertStatusToEstablished
     self.status=0
+  end
+
+  def set_center_name
+    self.center_name=self.center.name
+  end
+
+  def set_overdue_courses
+    if self.status.value==1
+      self.overdue_courses=self.course_monitor.overdue_course
+    else
+      self.overdue_courses="未干预"
+    end
+  end
+
+  def set_overdue_followups
+    if self.status.value==2
+      self.overdue_followups=self.followup_monitor.overdue_followup
+    else
+      self.overdue_followups="未随访"
+    end
   end
 
 end

@@ -1,0 +1,14 @@
+- content_for :side_bar do
+  = render 'shared/sidebar_patient_overview'
+
+%h2
+  病人列表
+  %small 共有#{@patients.total_count}个
+
+- operations = {view:{ }}
+
+= render partial: 'shared/table', locals: { columns: [:name,:center_name,:status,:overdue_courses,:overdue_followups,:created_at], collection: @patients, operations: operations,
+                                        url_method: {view: (method :patient_path)} }
+
+= paginate @patients
+

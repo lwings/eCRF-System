@@ -5,10 +5,10 @@ class CourseMonitor < ActiveRecord::Base
   belongs_to :research_group
 
 
-  before_save :setOverdueCourse
+  before_save :set_overdue_course
 
-  def setOverdueCourse
-    if self.patient.status.value==0
+  def set_overdue_course
+    if self.patient.status.value!=1
       return
     end
     res=0

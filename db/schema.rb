@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181028055534) do
+ActiveRecord::Schema.define(version: 20181028115630) do
 
   create_table "adverse_events", force: :cascade do |t|
     t.integer  "patient_id",          limit: 4
@@ -300,6 +300,7 @@ ActiveRecord::Schema.define(version: 20181028055534) do
     t.date     "start_date"
     t.date     "last_followup_date"
     t.integer  "base_interval",      limit: 4
+    t.integer  "overdue_followup",   limit: 4
   end
 
   add_index "followup_monitors", ["patient_id"], name: "index_followup_monitors_on_patient_id", using: :btree

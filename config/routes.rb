@@ -29,7 +29,13 @@ Rails.application.routes.draw do
 
   resources :patients do
     collection do
-
+      get 'all_patients'
+      get 'under_research'
+      get 'under_followup'
+      get 'quit_followup'
+      get 'quited'
+      get 'research_queue'
+      get 'followup_queue'
     end
     resource :clinical_pathology
     resource :basement_assessment

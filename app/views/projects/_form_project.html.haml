@@ -21,7 +21,7 @@
       = render 'fields_relationships', f: relationships
     - if writable
       .links
-        = link_to_add_association "添加记录", f, :relationships, partial: 'fields_relationships'
+        = link_to_add_association "添加用户", f, :relationships, partial: 'fields_relationships'
 
     = f.simple_fields_for :experimental_medications do |experimental_medications|
       = render 'fields_experimental_medications', f: experimental_medications

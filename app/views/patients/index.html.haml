@@ -10,17 +10,13 @@
       %li
         本研究计划入组病例数：
         %span.radius.secondary.label
-          %b= 0
+          %b= "#{@project_total_planned_patients}"
       %li
         本研究实际入组病例数：
         %span.radius.secondary.label
-          %b= 0
+          %b= "#{@project_total_patients}"
       %li
-        已添加术后辅助的记录条数：
-        %span.radius.secondary.label
-          %b= 0
-      %li
-        随访过的患者数：
+        本项目已授权各中心计划入组病例数：
         %span.radius.secondary.label
           %b= 0
       %ul.square
@@ -36,10 +32,7 @@
           其中去世患者数
           %span.radius.secondary.label
             %b= 0
-      %li
-        最近一周添加的病例数：
-        %span.radius.secondary.label
-          %b= 0
+
     %h3.page-header 任务表
     %ul.square
       %li

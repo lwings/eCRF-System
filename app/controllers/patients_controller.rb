@@ -1,19 +1,66 @@
 class PatientsController < ApplicationController
-  layout 'application', only: [:index]
+  layout 'application', only: [:index,:all_patients,:under_research,:under_followup,:quit_followup,:quited]
   before_action :authenticate_user!
   before_action :authenticate_project
   load_and_authorize_resource :patient
-  before_action :loadAvailableCenters,only:[:new,:edit]
+  before_action :load_available_centers,only:[:new,:edit]
 
-  def index
-
-  end
-  def new
+  def followup_queue
 
   end
 
-  def show
+  def research_queue
 
+  end
+
+  def all_patients
+    @patients=Patient.accessible_by current_ability,:read
+    @patients = @patients.order(:created_at).page(params[:page])
+    @patients.each{|patient|
+      patient.set_center_name
+      patient.set_overdue_courses
+      patient.set_overdue_followups
+    }
+  end
+
+  def under_research
+    @patients=Patient.accessible_by(current_ability,:read).where('
+    status=1').order(:created_at).page(params[:page])
+    @patients.each{|patient|
+      patient.set_center_name
+      patient.set_overdue_courses
+      patient.set_overdue_followups
+    }
+  end
+
+  def under_followup
+    @patients=Patient.accessible_by(current_ability,:read).where('
+    status=2').order(:created_at).page(params[:page])
+    @patients.each{|patient|
+      patient.set_center_name
+      patient.set_overdue_courses
+      patient.set_overdue_followups
+    }
+  end
+
+  def quit_followup
+    @patients=Patient.accessible_by(current_ability,:read).where('
+    status=3').order(:created_at).page(params[:page])
+    @patients.each{|patient|
+      patient.set_center_name
+      patient.set_overdue_courses
+      patient.set_overdue_followups
+    }
+  end
+
+  def quited
+    @patients=Patient.accessible_by(current_ability,:read).where('
+    status=4').order(:created_at).page(params[:page])
+    @patients.each{|patient|
+      patient.set_center_name
+      patient.set_overdue_courses
+      patient.set_overdue_followups
+    }
   end
 
   def create
@@ -25,7 +72,13 @@ class PatientsController < ApplicationController
       end
     end
   end
-  def edit
+
+  def index
+    @project_total_planned_patients=0
+    current_project.center_project_relationships.all.each{|cpr|
+      @project_total_planned_patients+=cpr.planned_patients_count
+    }
+    @project_total_patients=Patient.where(project_id:current_project.id).size()
   end
 
   def update
@@ -53,11 +106,24 @@ class PatientsController < ApplicationController
         :hosptalization_number,:followup_left
     )
   end
-  def loadAvailableCenters
+
+  def load_available_centers
     centers_list=[]
     current_user.relationships.where(project_id:current_project.id).each{|re|
       centers_list.append(re.center_id)
     }
     @available_centers=Center.find(centers_list)
   end
+
+  # def load_patients
+  #   @patients=Patient.accessible_by current_ability,:read
+  #   @patients = @patients.order(:created_at).page(params[:page])
+  #
+  #   @patients.each{|patient|
+  #     patient.set_center_name
+  #     patient.set_overdue_courses
+  #     patient.set_overdue_followups
+  #   }
+  # end
+
 end

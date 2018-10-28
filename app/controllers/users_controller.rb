@@ -6,6 +6,7 @@ class UsersController < ApplicationController
   # helper_method :sort_column, :sort_direction
 
   def index
+    @users = User.accessible_by(current_ability,:read)
     @users = @users.order(:created_at).page(params[:page])
     @users.each{|user|
       user.set_all_count
@@ -62,7 +63,7 @@ class UsersController < ApplicationController
   end
 
   def get_available_roles
-    if current_user.role.pri=0
+    if current_user.role.pri==0
       @available_roles=Role.all
     else
       @available_roles=Role.where('pri>?',current_user.role.pri)
