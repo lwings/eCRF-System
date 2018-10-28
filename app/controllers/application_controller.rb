@@ -7,6 +7,10 @@ class ApplicationController < ActionController::Base
 
   include ProjectsessionsHelper
 
+  def current_ability
+    @current_ability||=Ability.new(current_user,current_project)
+  end
+
   protected
 
   def set_locale
@@ -29,7 +33,7 @@ class ApplicationController < ActionController::Base
   rescue_from CanCan::AccessDenied do |exception|
     respond_to do |format|
       format.json { head :forbidden, content_type: 'text/html' }
-      format.html { redirect_to welcome_guide_path, notice: exception.message }
+      format.html { redirect_to '/infringement', notice: exception.message }
       format.js   { head :forbidden, content_type: 'text/html' }
     end
   end

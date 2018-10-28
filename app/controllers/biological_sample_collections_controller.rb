@@ -1,8 +1,8 @@
 class BiologicalSampleCollectionsController < ApplicationController
   layout 'patients'
   before_action :authenticate_user!
-  load_resource :patient
-  load_resource :biological_sample_collection, :through => :patient
+  load_and_authorize_resource :patient
+  load_and_authorize_resource :biological_sample_collection, :through => :patient
 
 
 

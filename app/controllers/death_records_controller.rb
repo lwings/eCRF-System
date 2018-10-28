@@ -1,8 +1,8 @@
 class DeathRecordsController < ApplicationController
   layout 'patients'
   before_action :authenticate_user!
-  load_resource :patient
-  load_resource :death_record, :through => :patient, :singleton => true
+  load_and_authorize_resource :patient
+  load_and_authorize_resource :death_record, :through => :patient, :singleton => true
 
 
 

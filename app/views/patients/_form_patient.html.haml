@@ -6,13 +6,14 @@
     = f.hidden_field :user_id, value: current_user.id
     = f.hidden_field :project_id, value: current_project_id
     = f.hidden_field :status, value: 0
-    = f.hidden_field :center_id, value: current_user.centers.first.id
+    -#= f.hidden_field :center_id, value: current_user.centers.first.id
 
   %fieldset
     %legend 本人信息
     .row
       = f.input :pid, front_error: required, input_html: {title: "示例：A201501001，医院代码/年份/月份/该月患者序号"}
       = f.input :name, front_error: required
+      = f.association :center,collection:@available_centers
       = f.input :hosptalization_number, front_error: required
       = f.input :ID_number, front_error: required, input_html: {title: '如外籍护照，请用15个“X”表示'}
       = f.input :phone_number_1

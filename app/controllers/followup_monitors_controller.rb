@@ -1,8 +1,8 @@
 class FollowupMonitorsController < ApplicationController
     layout 'patients'
     before_action :authenticate_user!
-    load_resource :patient
-    load_resource :followup_monitor, :through => :patient, :singleton => true
+    load_and_authorize_resource :patient
+    load_and_authorize_resource :followup_monitor, :through => :patient, :singleton => true
 
 
     def update

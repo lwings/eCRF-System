@@ -14,6 +14,7 @@ class Patient < ActiveRecord::Base
 
   belongs_to :project
   belongs_to :user
+  belongs_to :center
   has_one :basement_assessment, dependent: :destroy
   has_one :clinical_pathology, dependent: :destroy
   has_one :reserach_completion, dependent: :destroy

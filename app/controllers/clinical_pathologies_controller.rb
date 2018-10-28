@@ -1,8 +1,8 @@
 class ClinicalPathologiesController < ApplicationController
   layout 'patients'
   before_action :authenticate_user!
-  load_resource :patient
-  load_resource :clinical_pathology, :through => :patient, :singleton => true
+  load_and_authorize_resource :patient
+  load_and_authorize_resource :clinical_pathology, :through => :patient, :singleton => true
 
   def new
     @clinical_pathology.history_of_nonbreast_cancers.new

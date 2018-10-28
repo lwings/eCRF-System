@@ -1,8 +1,8 @@
 class GroupInformationsController < ApplicationController
   layout 'patients'
   before_action :authenticate_user!
-  load_resource :patient
-  load_resource :group_information, :through => :patient, :singleton => true
+  load_and_authorize_resource :patient
+  load_and_authorize_resource :group_information, :through => :patient, :singleton => true
 
   def new
     @available_research_groups=@patient.project.research_groups.all

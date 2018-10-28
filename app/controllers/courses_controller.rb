@@ -1,8 +1,8 @@
 class CoursesController < ApplicationController
   layout 'patients'
   before_action :authenticate_user!
-  load_resource :patient
-  load_resource :course, :through => :patient
+  load_and_authorize_resource :patient
+  load_and_authorize_resource :course, :through => :patient
 
   def new
     @course.blood_biochemistry_thes.new

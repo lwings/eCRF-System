@@ -1,8 +1,8 @@
 class RadiationTherapiesController < ApplicationController
   layout 'patients'
   before_action :authenticate_user!
-  load_resource :patient
-  load_resource :radiation_therapy, :through => :patient
+  load_and_authorize_resource :patient
+  load_and_authorize_resource :radiation_therapy, :through => :patient
 
 
 

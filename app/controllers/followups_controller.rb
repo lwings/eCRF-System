@@ -1,8 +1,8 @@
 class FollowupsController < ApplicationController
   layout 'patients'
   before_action :authenticate_user!
-  load_resource :patient
-  load_resource :followup, :through => :patient
+  load_and_authorize_resource :patient
+  load_and_authorize_resource :followup, :through => :patient
 
 
 

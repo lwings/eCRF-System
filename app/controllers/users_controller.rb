@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   layout 'systems'
   before_action :authenticate_user!
-  load_resource :user
+  load_and_authorize_resource :user
 
   # helper_method :sort_column, :sort_direction
 
@@ -58,7 +58,7 @@ class UsersController < ApplicationController
     params.require(:user).permit(
         :username, :email, :password, :password_confirmation,
         :realname, :phone,:role_id,
-        relationships_attributes: [:id,:project_id,:center_id,:_destroy])
+        relationships_attributes: [:id,:project_id,:enter_id,:_destroy])
   end
 
   # def sort_column(c = "created_at")

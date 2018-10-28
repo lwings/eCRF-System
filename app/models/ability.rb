@@ -1,34 +1,45 @@
 class Ability
   include CanCan::Ability
 
-  def initialize(user)
-    user ||= User.new # guest user (not logged in)
-    can :read, :all
-    # Define abilities for the passed in user here. For example:
-    #
-    #   user ||= User.new # guest user (not logged in)
-    #   if user.admin?
-    #     can :manage, :all
-    #   else
-    #     can :read, :all
-    #   end
-    #
-    # The first argument to `can` is the action you are giving the user
-    # permission to do.
-    # If you pass :manage it will apply to every action. Other common actions
-    # here are :read, :create, :update and :destroy.
-    #
-    # The second argument is the resource the user can perform the action on.
-    # If you pass :all it will apply to every resource. Otherwise pass a Ruby
-    # class of the resource.
-    #
-    # The third argument is an optional hash of conditions to further filter the
-    # objects.
-    # For example, here the user can only update published articles.
-    #
-    #   can :update, Article, :published => true
-    #
-    # See the wiki for details:
-    # https://github.com/CanCanCommunity/cancancan/wiki/Defining-Abilities
+  def initialize(user,project)
+    #must login before any action
+    if user.present? and project.present?
+      #super_intendent:
+      if user.role.pri==0
+        can :manage,:all
+      end
+
+      # system relevant
+      if user.role.pri==1
+        can :manage,User
+        can :read,Role
+        can :manage,Center
+      end
+
+      # project relevant
+      if user.role.pri==1
+        can [:create,:read,:update],Project
+        can [:create,:read,:update],ResearchGroup
+      end
+
+      patient_model_list=[AdverseEvent,BasementAssessment,GroupInformation,ClinicalPathology,
+                          Course,RadiationTherapy,ConcomitantDrug,BiologicalSampleCollection,
+                          MedicationCompletion,ReserachCompletion,Followup,DeathRecord,
+                          FollowupMonitor,CourseMonitor]
+      #patient relevant
+      user.relationships.where(project_id:project.id).each{|re|
+        center_id=re.center_id
+        privelege={:user_id => user.id, :center_id => center_id,:project_id=>project.id}
+        can :manage,Patient,privelege
+        can :manage,patient_model_list,:patient=>privelege
+      }
+
+
+
+
+
+
+
+    end
   end
 end

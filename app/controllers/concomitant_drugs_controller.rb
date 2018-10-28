@@ -1,8 +1,8 @@
 class ConcomitantDrugsController < ApplicationController
   layout 'patients'
   before_action :authenticate_user!
-  load_resource :patient
-  load_resource :concomitant_drug, :through => :patient
+  load_and_authorize_resource :patient
+  load_and_authorize_resource :concomitant_drug, :through => :patient
 
   def create
     respond_to do |format|

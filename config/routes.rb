@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get 'welcome/guide'
 
   scope "(:locale)", locale: /en|zh-CN/ do
-    root to: "home#home"
+    root to: "welcome#guide"
   end
 
   devise_for :users, controllers: { sessions: 'users/sessions' }, skip: :registration
@@ -24,6 +24,8 @@ Rails.application.routes.draw do
   post '/project_login', to: 'projectsessions#create'
   delete '/project_logout', to: 'projectsessions#destroy'
   get '/project_exception', to: 'projectsessions#exception'
+
+  get '/infringement', to: 'infringements#index'
 
   resources :patients do
     collection do

@@ -1,8 +1,8 @@
 class MedicationCompletionsController < ApplicationController
   layout 'patients'
   before_action :authenticate_user!
-  load_resource :patient
-  load_resource :medication_completion, :through => :patient, :singleton => true
+  load_and_authorize_resource :patient
+  load_and_authorize_resource :medication_completion, :through => :patient, :singleton => true
 
   def new
     @medication_completion.blood_biochemistry_meds.new

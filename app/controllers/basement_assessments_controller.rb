@@ -1,8 +1,8 @@
 class BasementAssessmentsController < ApplicationController
   layout 'patients'
   before_action :authenticate_user!
-  load_resource :patient
-  load_resource :basement_assessment, :through => :patient, :singleton => true
+  load_and_authorize_resourceload_resource :patient
+  load_and_authorize_resource :basement_assessment, :through => :patient, :singleton => true
 
   def new
     @basement_assessment.blood_biochemistries.new

@@ -1,9 +1,12 @@
 class PatientsController < ApplicationController
   layout 'application', only: [:index]
   before_action :authenticate_user!
-  load_resource :patient
+  load_and_authorize_resource :patient
+  before_action :loadAvailableCenters,only:[:new,:edit]
 
+  def index
 
+  end
   def new
 
   end
@@ -48,5 +51,12 @@ class PatientsController < ApplicationController
 
         :hosptalization_number,:followup_left
     )
+  end
+  def loadAvailableCenters
+    centers_list=[]
+    current_user.relationships.where(project_id:current_project.id).each{|re|
+      centers_list.append(re.center_id)
+    }
+    @available_centers=Center.find(centers_list)
   end
 end

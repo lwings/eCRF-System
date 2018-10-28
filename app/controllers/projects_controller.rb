@@ -1,6 +1,7 @@
 class ProjectsController < ApplicationController
   before_action :authenticate_user!
   load_resource :except=>[:destroy]
+  authorize_resource
   # helper_method :sort_column, :sort_direction
   def new
     @project.relationships.new

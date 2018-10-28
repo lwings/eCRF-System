@@ -1,7 +1,7 @@
 class RolesController < ApplicationController
   layout 'systems'
   before_action :authenticate_user!
-  load_resource
+  load_and_authorize_resource :role
   # helper_method :sort_column, :sort_direction
   def new
   end
@@ -12,7 +12,7 @@ class RolesController < ApplicationController
   def create
     respond_to do |format|
       if @role.save
-        format.html { redirect_to({ action: :show }, notice: "角色创建成功") }
+        format.html { redirect_to(role_path(@role), notice: "角色创建成功") }
       else
         format.html { render :new }
       end
@@ -42,11 +42,5 @@ class RolesController < ApplicationController
         :name,:pri,:description
     )
   end
-  # def sort_column(c = "created_at")
-  #   Project.column_names.include?(params[:sort]) ? params[:sort] : c
-  # end
-  #
-  # def sort_direction(d = "desc")
-  #   %w[asc desc].include?(params[:direction]) ? params[:direction] : d
-  # end
+
 end

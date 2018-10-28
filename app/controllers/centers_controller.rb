@@ -1,7 +1,7 @@
 class CentersController < ApplicationController
   layout 'systems'
   before_action :authenticate_user!
-  load_resource
+  load_and_authorize_resource :center
   # helper_method :sort_column, :sort_direction
   def new
   end

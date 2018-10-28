@@ -1,8 +1,8 @@
 class CourseMonitorsController < ApplicationController
   layout 'patients'
   before_action :authenticate_user!
-  load_resource :patient
-  load_resource :course_monitor, :through => :patient, :singleton => true
+  load_and_authorize_resource :patient
+  load_and_authorize_resource :course_monitor, :through => :patient, :singleton => true
 
   def edit
   end
