@@ -1,5 +1,6 @@
 class WelcomeController < ApplicationController
   before_action :authenticate_user!
+  before_action :authenticate_project
   def new
   end
 

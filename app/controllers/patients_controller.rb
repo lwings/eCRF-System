@@ -1,6 +1,7 @@
 class PatientsController < ApplicationController
   layout 'application', only: [:index]
   before_action :authenticate_user!
+  before_action :authenticate_project
   load_and_authorize_resource :patient
   before_action :loadAvailableCenters,only:[:new,:edit]
 

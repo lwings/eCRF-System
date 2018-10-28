@@ -18,7 +18,9 @@ class ProjectsessionsController < ApplicationController
   end
 
   def destroy
-
+    session.delete(:project_id)
+    session.delete(:project_name)
+    redirect_to project_login_path,notice: "已退出项目"
   end
 
   def exception

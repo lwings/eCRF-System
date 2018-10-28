@@ -1,6 +1,7 @@
 class ReserachCompletionsController < ApplicationController
   layout 'patients'
   before_action :authenticate_user!
+  before_action :authenticate_project
   load_and_authorize_resource :patient
   load_and_authorize_resource :reserach_completion, :through => :patient, :singleton => true
 

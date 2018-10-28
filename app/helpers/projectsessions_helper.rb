@@ -19,4 +19,12 @@ module ProjectsessionsHelper
   def current_project
     Project.find(current_project_id)
   end
+
+  def authenticate_project
+    if session[:project_id].nil? || session[:project_name].nil?
+      redirect_to project_login_path,alert: "必须先登录中心"
+    end
+  end
+
+
 end

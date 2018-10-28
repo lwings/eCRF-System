@@ -1,6 +1,7 @@
 class FollowupMonitorsController < ApplicationController
     layout 'patients'
     before_action :authenticate_user!
+    before_action :authenticate_project
     load_and_authorize_resource :patient
     load_and_authorize_resource :followup_monitor, :through => :patient, :singleton => true
 

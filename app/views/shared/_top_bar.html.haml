@@ -31,9 +31,11 @@
               %span= current_user.realname
             %ul.dropdown
               %li
-                = link_to  t(:edit_profile), edit_user_registration_path
+                = link_to  "编辑个人信息", edit_user_registration_path
               %li
-                = link_to t(:sign_out), destroy_user_session_path, method: :delete
+                = link_to "注销项目", '/project_logout', method: :delete
+              %li
+                = link_to "注销用户", destroy_user_session_path, method: :delete
         - else
           %li
             = link_to t(:sign_in), new_user_session_path
