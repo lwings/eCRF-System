@@ -4,10 +4,10 @@ class WelcomeController < ApplicationController
   end
 
   def guide
-    @all_center=""
-    current_user.centers.all.each{|center|
-      @all_center+=(center.name+"\\")
-    }
+    # @all_center=""
+    # current_user.centers.all.each{|center|
+    #   @all_center+=(center.name+"\\")
+    # }
 
     @available_centers=""
     current_user.relationships.where(project_id:current_project.id).each{|re|

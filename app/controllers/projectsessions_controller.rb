@@ -4,7 +4,7 @@ class ProjectsessionsController < ApplicationController
   def new
 
     if current_user.any_accessable_projects?
-      @available_projects=current_user.projects.all
+      @available_projects=current_user.projects.all.distinct
     else
       redirect_to action: :exception
     end

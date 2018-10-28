@@ -19,16 +19,16 @@
   %fieldset
     %legend 角色与中心
     .row
-      = f.association :role, label: "角色",as: :select, required: true,include_blank: false
+      = f.association :role,collection:@available_roles, label: "角色",as: :select, required: true,include_blank: false
       = f.association :centers,collection:Center.all, label: "中心",
        as: :check_boxes, required: true,value_method: :id, input_html: {disabled: :disabled}
 
 
-    .row
-      = f.simple_fields_for :relationships do |relationships|
-        = render 'fields_relationships', f: relationships
-    - if writable
-      .links
-        = link_to_add_association "添加记录", f, :relationships, partial: 'fields_relationships'
+    -#.row
+    -#  = f.simple_fields_for :relationships do |relationships|
+    -#    = render 'fields_relationships', f: relationships
+    -#- if writable
+    -#  .links
+    -#    = link_to_add_association "添加记录", f, :relationships, partial: 'fields_relationships'
   - if writable
     = f.button :submit, class: [:tiny, :radius]

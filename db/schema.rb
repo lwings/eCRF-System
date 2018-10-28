@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181027074017) do
+ActiveRecord::Schema.define(version: 20181028055534) do
 
   create_table "adverse_events", force: :cascade do |t|
     t.integer  "patient_id",          limit: 4
@@ -393,10 +393,11 @@ ActiveRecord::Schema.define(version: 20181027074017) do
   add_index "patients", ["user_id"], name: "index_patients_on_user_id", using: :btree
 
   create_table "projects", force: :cascade do |t|
-    t.string   "name",       limit: 255,   null: false
-    t.text     "remark",     limit: 65535
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.string   "name",         limit: 255,   null: false
+    t.text     "remark",       limit: 65535
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.integer  "initiator_id", limit: 4
   end
 
   create_table "radiation_therapies", force: :cascade do |t|

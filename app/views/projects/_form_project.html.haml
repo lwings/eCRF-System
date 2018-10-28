@@ -6,7 +6,8 @@
     %legend
       基本信息
     .row
-
+      -if @project.new_record?
+        = f.hidden_field :initiator_id, value: current_user.id
       = f.input :name
       = f.input :remark
 

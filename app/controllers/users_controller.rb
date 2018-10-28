@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   layout 'systems'
   before_action :authenticate_user!
   load_and_authorize_resource :user
-
+  before_action :get_available_roles,only: [:new,:edit,:show]
   # helper_method :sort_column, :sort_direction
 
   def index
@@ -61,11 +61,13 @@ class UsersController < ApplicationController
         relationships_attributes: [:id,:project_id,:enter_id,:_destroy])
   end
 
-  # def sort_column(c = "created_at")
-  #   User.column_names.include?(params[:sort]) ? params[:sort] : c
-  # end
-  #
-  # def sort_direction(d = "desc")
-  #   %w[asc desc].include?(params[:direction]) ? params[:direction] : d
-  # end/
+  def get_available_roles
+    if current_user.role.pri=0
+      @available_roles=Role.all
+    else
+      @available_roles=Role.where('pri>?',current_user.role.pri)
+    end
+
+  end
+
 end

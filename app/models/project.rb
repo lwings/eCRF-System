@@ -1,7 +1,7 @@
 class Project < ActiveRecord::Base
 
 
-
+  belongs_to :initiator,class:"User",foreign_key: "initiator_id"
   has_many :patients, dependent: :destroy
   has_many :users, through:  :relationships
   has_many :relationships, dependent: :destroy
