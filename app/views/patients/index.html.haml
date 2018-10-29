@@ -16,9 +16,17 @@
         %span.radius.secondary.label
           %b= "#{@project_total_patients}"
       %li
-        本项目已授权各中心计划入组病例数：
+        授权中心计划入组病例数：
       %ul.square
         -@center_planned_patients.each do |center,pcount|
+          %li
+            %b="#{center}"
+            %span.radius.secondary.label
+              %b= "#{pcount}"
+      %li
+        授权中心实际入组病例数：
+      %ul.square
+        -@center_patients.each do |center,pcount|
           %li
             %b="#{center}"
             %span.radius.secondary.label
@@ -29,12 +37,12 @@
     %ul.square
       %li
         %span 截止今日需进行研究干预的患者数：
-        %a{:href => '#'}
+        %a{:href => research_queue_patients_path}
           %i.fi-clipboard-pencil
-          %b= 0
+          %b= "#{@research_queue_size}"
       %li
         %span 截止今日需进行随访的患者数：
-        %a{:href => '#'}
+        %a{:href => followup_queue_patients_path}
           %i.fi-clipboard-pencil
-          %b= 0
+          %b= "#{@followup_queue_size}"
 
