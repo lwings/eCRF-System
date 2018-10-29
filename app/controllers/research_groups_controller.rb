@@ -3,6 +3,7 @@ class ResearchGroupsController < ApplicationController
   before_action :authenticate_user!
   load_and_authorize_resource :research_group
   helper_method :sort_column, :sort_direction
+  before_action :get_available_projects,only:[:new,:edit]
   def new
     @research_group.course_schedules.new
   end
@@ -55,5 +56,13 @@ class ResearchGroupsController < ApplicationController
 
   def sort_direction(d = "desc")
     %w[asc desc].include?(params[:direction]) ? params[:direction] : d
+  end
+
+  def get_available_projects
+    if current_user.role.pri==0
+      @available_projects=Project.all
+    else
+      @available_projects=current_user.self_projects.all
+    end
   end
 end

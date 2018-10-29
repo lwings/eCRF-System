@@ -17,7 +17,11 @@ module ProjectsessionsHelper
   end
 
   def current_project
-    Project.find(current_project_id)
+    if project_signed_in?
+      Project.find(current_project_id)
+    else
+      nil
+    end
   end
 
   def authenticate_project

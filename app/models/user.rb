@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   belongs_to :role
   # has_and_belongs_to_many :centers
   has_many :relationships
+  has_many :self_projects,class_name:"Project",foreign_key: "initiator_id"
   has_many :projects , through:  :relationships
   has_many :centers, through: :relationships
 
@@ -40,7 +41,7 @@ class User < ActiveRecord::Base
     if self.centers.size==0
       "无"
     else
-      self.centers.each{|c|
+      self.centers.distinct.each{|c|
         self.center_name+=(c.name+"\\")
       }
     end

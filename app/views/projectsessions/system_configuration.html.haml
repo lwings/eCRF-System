@@ -17,33 +17,36 @@
 .row
 
 
-  .columns.medium-6.guide{class: nil}
-    %a{href: '#'}
+  - can = can? :read, Center
+  .columns.medium-6.guide{class: can ? nil : 'not-allowed'}
+    %a{href: can ? users_path : nil}
       %h2
         = image_tag 'guide_system.png'
         系统管理
-    %ul
-      %li
-        %a{href:users_path} 用户管理
-      %li
-        %a{href: roles_path} 角色和中心管理
-      %li
-        %a{href:'#'} 数据库备份
+    -#  %h2
+    -#%ul
+    -#  %li
+    -#    %a{href:users_path} 用户管理
+    -#  %li
+    -#    %a{href: roles_path} 角色和中心管理
+    -#  %li
+    -#    %a{href:'#'} 数据库备份
 
-  .columns.medium-6.guide{class: nil}
-    %a{href: '#'}
+  - can = can? :read, Project
+  .columns.medium-6.guide{class: can ? nil : 'not-allowed'}
+    %a{href: can ? projects_path : nil}
       %h2
         = image_tag 'guide_system.png'
         项目管理
-    %ul
-      %li
-        %a{href:projects_path} 项目列表
-      %li
-        %a{href: new_project_path} 新建项目
-      %li
-        %a{href:research_groups_path} 研究干预列表
-      %li
-        %a{href: new_research_group_path} 新建研究干预
+    -#%ul
+    -#  %li
+    -#    %a{href:projects_path} 项目列表
+    -#  %li
+    -#    %a{href: new_project_path} 新建项目
+    -#  %li
+    -#    %a{href:research_groups_path} 研究干预列表
+    -#  %li
+    -#    %a{href: new_research_group_path} 新建研究干预
 
   .columns.medium-6.guide{}
     %a{href: project_login_path}
@@ -51,7 +54,7 @@
         = image_tag 'guide_patient.png'
         进入项目
   .columns.medium-6.guide{}
-    %a{href: '#'}
+    %a{href: edit_user_registration_path}
       %h2
         = image_tag 'guide_system.png'
         个人资料

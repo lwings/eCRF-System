@@ -26,8 +26,9 @@ class Ability
       end
       # project relevant
       if user.role.pri==1
-        can [:create,:read,:update],Project
-        can [:create,:read,:update],ResearchGroup
+        can [:create,:read,:update],Project,initiator_id:user.id
+        can [:read,:update],ResearchGroup,:project=>{initiator_id:user.id}
+        can :create,ResearchGroup
       end
 
       if user.role.pri==0
@@ -35,7 +36,7 @@ class Ability
         can :manage,ResearchGroup
       end
 
-      #patient relevant
+      # patient relevant
       patient_model_list=[AdverseEvent,BasementAssessment,GroupInformation,ClinicalPathology,
                           Course,RadiationTherapy,ConcomitantDrug,BiologicalSampleCollection,
                           MedicationCompletion,ReserachCompletion,Followup,DeathRecord,
