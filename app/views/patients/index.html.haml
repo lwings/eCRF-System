@@ -17,21 +17,13 @@
           %b= "#{@project_total_patients}"
       %li
         本项目已授权各中心计划入组病例数：
-        %span.radius.secondary.label
-          %b= 0
       %ul.square
-        %li
-          其中未复发患者数
-          %span.radius.secondary.label
-            %b= 0
-        %li
-          其中复发患者数
-          %span.radius.secondary.label
-            -#%b= @stat[:recur]
-        %li
-          其中去世患者数
-          %span.radius.secondary.label
-            %b= 0
+        -@center_planned_patients.each do |center,pcount|
+          %li
+            %b="#{center}"
+            %span.radius.secondary.label
+              %b= "#{pcount}"
+
 
     %h3.page-header 任务表
     %ul.square

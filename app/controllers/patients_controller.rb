@@ -79,6 +79,19 @@ class PatientsController < ApplicationController
       @project_total_planned_patients+=cpr.planned_patients_count
     }
     @project_total_patients=Patient.where(project_id:current_project.id).size()
+
+
+    @center_planned_patients={}
+    current_user.relationships.where(project_id:current_project.id).each{|r|
+
+      inquire=CenterProjectRelationship.find_by(project_id: current_project.id,
+                                        center_id:r.center_id)
+      if inquire.nil?
+        @center_planned_patients[r.center.name]=0
+      else
+        @center_planned_patients[r.center.name]=inquire.planned_patients_count
+      end
+    }
   end
 
   def update
