@@ -1,8 +1,7 @@
 - required = "必填"
 .nested-fields
   %fieldset
-    %legend
-      关联用户
+    %p
       = link_to_remove_association "delete", f, data: {confirm: "Do you wanna to delete?"}
 
     - if f.object.persisted?

@@ -2,7 +2,7 @@ class ProjectsessionsController < ApplicationController
   before_action :authenticate_user!
 
   def new
-
+    # debugger
     if current_user.any_accessable_projects?
       @available_projects=current_user.projects.all.distinct
     else
@@ -20,7 +20,11 @@ class ProjectsessionsController < ApplicationController
   def destroy
     session.delete(:project_id)
     session.delete(:project_name)
-    redirect_to project_login_path,notice: "已退出项目"
+    redirect_to project_system_configuration_path,notice: "已退出项目"
+  end
+
+  def system_configuration
+
   end
 
   def exception

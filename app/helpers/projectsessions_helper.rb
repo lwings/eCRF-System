@@ -26,5 +26,8 @@ module ProjectsessionsHelper
     end
   end
 
+  def project_signed_in?
+    !session[:project_id].nil?
+  end
 
 end

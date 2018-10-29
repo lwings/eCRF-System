@@ -14,7 +14,7 @@
     %section.top-bar-section
       -# Right Nav Section
       %ul.right
-        - if user_signed_in?
+        - if user_signed_in? and project_signed_in?
           %li
             %a{:href => welcome_guide_path }= "导航页"
           %li.divider
@@ -25,7 +25,7 @@
               %ul.dropdown
                 %li
                   = link_to "注销项目", '/project_logout', method: :delete
-
+        - if user_signed_in?
           %li.divider
           %li.has-dropdown
             %a{:href => '#'}
@@ -35,6 +35,6 @@
                 = link_to  "编辑个人信息", edit_user_registration_path
               %li
                 = link_to "注销用户", destroy_user_session_path, method: :delete
-        - else
+        - if !user_signed_in?
           %li
             = link_to "注册请联系管理员", '#'

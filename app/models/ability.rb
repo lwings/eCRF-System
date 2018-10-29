@@ -3,7 +3,10 @@ class Ability
 
   def initialize(user,project)
     #must login before any action
-    if user.present? and project.present?
+    if !project.present?
+      project=Project.find(6)
+    end
+    if user.present?
       #super_intendent:
       # if user.role.pri==0
       #   can :manage,:all

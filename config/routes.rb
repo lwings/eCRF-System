@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   post '/project_login', to: 'projectsessions#create'
   delete '/project_logout', to: 'projectsessions#destroy'
   get '/project_exception', to: 'projectsessions#exception'
-
+  get '/project_system_configuration', to: 'projectsessions#system_configuration'
   get '/infringement', to: 'infringements#index'
 
   resources :patients do

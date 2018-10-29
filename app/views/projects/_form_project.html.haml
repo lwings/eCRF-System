@@ -10,24 +10,30 @@
         = f.hidden_field :initiator_id, value: current_user.id
       = f.input :name
       = f.input :remark
-
-    = f.simple_fields_for :center_project_relationships do |relationships|
-      = render 'fields_center_project_relationships', f: relationships
-    - if writable
-      .links
-        = link_to_add_association "添加中心", f, :center_project_relationships, partial: 'fields_center_project_relationships'
-
-    = f.simple_fields_for :relationships do |relationships|
-      = render 'fields_relationships', f: relationships
-    - if writable
-      .links
-        = link_to_add_association "添加用户", f, :relationships, partial: 'fields_relationships'
-
-    = f.simple_fields_for :experimental_medications do |experimental_medications|
-      = render 'fields_experimental_medications', f: experimental_medications
-    - if writable
-      .links
-        = link_to_add_association "添加药品", f, :experimental_medications, partial: 'fields_experimental_medications'
+    %legend
+      中心
+    .row
+      = f.simple_fields_for :center_project_relationships do |relationships|
+        = render 'fields_center_project_relationships', f: relationships
+      - if writable
+        .links
+          = link_to_add_association "添加中心", f, :center_project_relationships, partial: 'fields_center_project_relationships'
+    %legend
+      用户
+    .row
+      = f.simple_fields_for :relationships do |relationships|
+        = render 'fields_relationships', f: relationships
+      - if writable
+        .links
+          = link_to_add_association "添加用户", f, :relationships, partial: 'fields_relationships'
+    %legend
+      试验用药
+    .row
+      = f.simple_fields_for :experimental_medications do |experimental_medications|
+        = render 'fields_experimental_medications', f: experimental_medications
+      - if writable
+        .links
+          = link_to_add_association "添加药品", f, :experimental_medications, partial: 'fields_experimental_medications'
 
   - if writable
     = f.button :submit, class: [:small, :radius]
