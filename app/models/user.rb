@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
-         :authentication_keys => [ :username]
+         :authentication_keys => [:username]
 
   belongs_to :role
   # has_and_belongs_to_many :centers
@@ -13,8 +13,8 @@ class User < ActiveRecord::Base
   has_many :centers, through: :relationships
 
   # view
-  accepts_nested_attributes_for :relationships,
-                                reject_if: :all_blank, allow_destroy: true
+  # accepts_nested_attributes_for :relationships,
+  #                               reject_if: :all_blank, allow_destroy: true
 
   attr_accessor :projects_count
   attr_accessor :center_name

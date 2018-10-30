@@ -18,7 +18,6 @@ class UsersController < ApplicationController
   end
 
   def new
-    @user.relationships.new
   end
 
   def create
@@ -58,8 +57,7 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(
         :username, :email, :password, :password_confirmation,
-        :realname, :phone,:role_id,
-        relationships_attributes: [:id,:project_id,:enter_id,:_destroy])
+        :realname, :phone,:role_id)
   end
 
   def get_available_roles
