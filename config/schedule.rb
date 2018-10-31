@@ -5,11 +5,11 @@
 
 # Example:
 #
-set :output, "~/little_wings/monitor_log"
+set :output, "~/monitor_log"
 set :chronic_options, :hours24 => true
-
+set :environment, "development"
 # set the path of bundle, that is /usr/local/bin/, if the evironment of bundle is rvm, then comment the follwoing line command.
-job_type :rake, "cd :path && :environment_variable=:environment /usr/local/bin/bundle exec rake :task --silent :output"
+job_type :rake, "cd :path && :environment_variable=:environment exec rake :task --silent :output"
 
 #
 # every 2.hours do
@@ -25,11 +25,11 @@ job_type :rake, "cd :path && :environment_variable=:environment /usr/local/bin/b
 # Learn more: http://github.com/javan/whenever
 
 
-every 1.day, :at => '00:05' do
+every 1.day, :at => '00:01'  do
   rake "db:updatefollowupmonitor"
 end
 
-every 1.day, :at => '02:05' do
+every 1.day, :at => '03:01' do
   rake "db:updatecoursemonitor"
 end
 

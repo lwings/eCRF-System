@@ -18,6 +18,10 @@ class FollowupMonitor < ActiveRecord::Base
     if self.patient.status.value !=2
       return
     end
+    self.base_followup_days=self.research_group.base_interval
+    if self.base_followup_days==0
+      self.base_followup_days=30
+    end
     self.overdue_followup=days_till_now(self.last_followup_date)/self.base_followup_days
   end
 
