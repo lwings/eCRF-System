@@ -1,0 +1,5 @@
+%h1 监视器日志
+-@arr.each_with_index do |ar,i|
+  -if i>@arr.size()-200
+    .row
+      "#{ar}"

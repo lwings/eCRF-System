@@ -1,9 +1,26 @@
-%h2 登录
-= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-  .form-inputs
-    = f.input :username, required: true, autofocus: true
-    = f.input :password, required: true
-    = f.input :remember_me, as: :boolean if devise_mapping.rememberable?
-  .form-actions
-    = f.button :submit, "Log in"
+.row
+  .columns.medium-centered
+    .row
+      %h4.top-text-center
+        -#= image_tag 'logo_red.png', class: :logo
+        -#= image_tag 'mdt_word.png', class: :logo
+  .columns.medium-centered.medium-4.large-3.login-wrap
+    -# = link_to t(:forget_password), new_password_path(resource_name)
+
+    = simple_form_for resource, as: resource_name, url: session_path(resource_name),
+                      wrapper: :vertical_form, html: {'data-abide' => '', :novalidate => true} do |f|
+
+      .row
+        .column.login-form
+          %h4.text-center= "登录"
+          -#.small-offset-4
+          -#  %p.notice= notice
+          -#  %p.alert= flash[:alert]
+
+          = f.input :username, required: true, autofocus: true, front_error: fe(:blank)
+          = f.input :password, required: true, front_error: fe(:blank)
+          = f.input :remember_me, as: :boolean if devise_mapping.rememberable?
+
+          %div
+            = f.button :submit, "登录", class: :expanded
 

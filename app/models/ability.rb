@@ -24,6 +24,10 @@ class Ability
         can :manage,Role
         can :manage,Center
       end
+
+      if user.role.pri<=1
+        can :manage,MonitorCheckersController
+      end
       # project relevant
       if user.role.pri==1
         can [:create,:read,:update],Project,initiator_id:user.id

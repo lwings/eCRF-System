@@ -58,4 +58,6 @@ Rails.application.routes.draw do
   resources :roles
   resources :centers
 
+  get '/monitor_checker', to:'monitor_checkers#index'
+
 end
