@@ -6,4 +6,10 @@ class DeathRecord < ActiveRecord::Base
   enumerize :cause_of_death, in: DEATH_OPT
 
   belongs_to :patient
+
+  after_create :convertStatusToQuit
+
+  def convertStatusToQuit
+    self.patient.update(status:4)
+  end
 end

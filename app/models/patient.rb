@@ -48,7 +48,7 @@ class Patient < ActiveRecord::Base
     if self.status.value==1
       self.overdue_courses=self.course_monitor.overdue_course
     else
-      self.overdue_courses="未干预"
+      self.overdue_courses=self.status
     end
   end
 
@@ -56,7 +56,7 @@ class Patient < ActiveRecord::Base
     if self.status.value==2
       self.overdue_followups=self.followup_monitor.overdue_followup
     else
-      self.overdue_followups="未随访"
+      self.overdue_followups=self.status
     end
   end
 
