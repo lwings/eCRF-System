@@ -1,0 +1,16 @@
+zh-CN:
+  flag_shih_tzu:
+    radiation_therapy:
+      radiotherapy_site:
+        chest_wall: 胸壁
+        axilla: 腋窝淋巴结
+        collarbone: 锁骨上/下
+        internal_breast: 内乳区
+        whole_breast: 全乳房
+        part_of_breast: 部分乳房
+        others: 其他
+        unkown: 不详
+
+
+    
+

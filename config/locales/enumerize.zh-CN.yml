@@ -1,33 +1,235 @@
 zh-CN:
   enumerize:
-    patient:
-      is_menopause: &yes_no
-        "no": 否
-        "yes": 是
-      is_smoker:
-        <<: *yes_no
-      is_diphosphonate:
-        <<: *yes_no
-      is_fracture:
-        <<: *yes_no
-      has_tumour:
-        <<: *yes_no
-      is_ct:
-        <<: *yes_no
-      is_rt:
-        <<: *yes_no
-      is_tt:
-        <<: *yes_no
-      is_neo_adjuvant:
-        <<: *yes_no
-    
     user:
-      role:
-        user: 用户
-        admin: 护士
-        superadmin: 管理员
-        moderator: 主持人
-      status:
-        in_use: 有效
-        deprecated: 已弃用
 
+
+
+    patient:
+      status:
+        established: 已建立
+        researching: 研究干预中
+        followup: 随访中
+        followup_end: 结束随访
+        quit: 出组
+
+    adverse_event:
+      events:
+        leukopenia: 白细胞减少
+        neutropenia: 中性粒细胞减少
+        anemia: 贫血
+        thrombocytopenia: 血小板减少
+        febrile_neutropenia: 发热性中性粒细胞减少
+        infection: 感染
+        nausea: 恶心
+        vomiting: 呕吐
+        anorexia: 厌食
+        diarrhea: 腹泻
+        weak: 乏力
+        hair_loss: 脱发
+        hand_foot_syndrome: 手足综合征
+        skin_subtissue_disease: 皮肤和皮下组织疾病
+        allery: 过敏反应
+        weight_gain: 增重
+        weight_loss: 减重
+        muscle_ache: 肌肉痛
+        joint_pain: 关节痛
+        bone_pain: 骨痛
+        peripheral_neuropathy: 外周神经病变
+        fibrinase_elevation: 纤维酶升高
+        fracture: 骨折
+        death: 死亡
+        hypertension: 高血压
+        other: 其他
+      turnover:
+        not_recover: 未恢复
+        recovering: 恢复中
+        recovered: 以恢复
+        unknown: 不详
+      is_related_to_drugs:
+        relevant: 相关
+        possibly_relevant: 可能相关
+        possibly_irrelevant: 可能无关
+        irrelevant: 无关
+
+    basement_assessment:
+      pregnancy_test_result:
+        neg: 阴性
+        pos: 阳性
+        unknown: 未知
+      electrocarddiogram_diagnosis:
+        normal: 正常
+        abnormal_withsigni: 异常/有临床意义
+        abnormal_outsigni: 异常/无临床意义
+        unevaluable: 无法评估
+
+    clinical_pathology:
+      primary_lesion:
+      regional_lympth_node:
+        unknown: 未知
+      histological_type:
+        invasive_ductal_carcinoma: 浸润性导管癌
+        invasive_lobular_carcinoma: 浸润性小叶癌
+        mucinous_carcinoma: 粘液癌
+        others: 其他
+      histological_grading:
+        unknown: 未知
+      vascular_invasion:
+        yes: 是
+        no: 否
+        unknown: 不详
+      HER2_IHC:
+      HER2_FISH:
+        neg: 阴性
+        pos: 阳性
+        unknown: 未做
+
+    biological_sample_collection:
+      biological_sample:
+        serum: 血清
+        plasma: 血浆
+        blood: 全血
+        paraffin_primary: 石蜡包埋原发灶组织
+        fresh_primary: 新鲜冰冻原发灶组织
+        paraffin_meta: 石蜡包埋转移灶组织
+        fresh_mata: 新鲜冰冻转移灶组织
+
+    blood_biochemistry:
+      name:
+        alanine_aminotransferase: 谷草转氨酶
+        aspartate_aminotransferase: 谷丙转氨酶
+        alkaline_phosphatase: 碱性磷酸酶
+        total_bilirubin: 总胆红素
+        direct_bilirubin: 直接胆红素
+        creatinine: 肌酐
+        urea: 尿素氮
+        transpeptidase: 转肽酶
+        blood_sugar: 血糖
+
+    blood_biochemistry_med:
+      name:
+        alanine_aminotransferase: 谷草转氨酶
+        aspartate_aminotransferase: 谷丙转氨酶
+        alkaline_phosphatase: 碱性磷酸酶
+        total_bilirubin: 总胆红素
+        direct_bilirubin: 直接胆红素
+        creatinine: 肌酐
+        urea: 尿素氮
+        transpeptidase: 转肽酶
+        blood_sugar: 血糖
+
+    blood_biochemistry_the:
+      name:
+        alanine_aminotransferase: 谷草转氨酶
+        aspartate_aminotransferase: 谷丙转氨酶
+        alkaline_phosphatase: 碱性磷酸酶
+        total_bilirubin: 总胆红素
+        direct_bilirubin: 直接胆红素
+        creatinine: 肌酐
+        urea: 尿素氮
+        transpeptidase: 转肽酶
+        blood_glucose: 血糖
+
+    blood_routine:
+      name:
+        leukocyte: 白细胞
+        neutrophil_abs: 中性粒细胞绝对值
+        red_blood_cell: 红细胞
+        platelet: 血小板
+        hematocrit: 血细胞压积
+        hemoglobin: 血红蛋白
+
+    blood_routine_med:
+      name:
+        leukocyte: 白细胞
+        neutrophil_abs: 中性粒细胞绝对值
+        red_blood_cell: 红细胞
+        platelet: 血小板
+        hematocrit: 血细胞压积
+        hemoglobin: 血红蛋白
+
+    blood_routine_the:
+      name:
+        leukocyte: 白细胞
+        neutrophil_abs: 中性粒细胞绝对值
+        red_blood_cell: 红细胞
+        platelet: 血小板
+        hematocrit: 血细胞压积
+        hemoglobin: 血红蛋白
+
+    course_medication:
+      reason_for_delay:
+        adverse_event: 不良事件
+        others: 其他
+      reason_for_change:
+        adverse_event: 不良事件
+        err_dose: 剂量错误
+        others: 其他
+
+    death_record:
+      relation_with_medication:
+        relevant: 相关
+        possibly_relevant: 可能相关
+        possibly_irrelevant: 可能无关
+        irrelevant: 无关
+      cause_of_death:
+        die_of_breast_cancer: 乳腺癌
+        die_of_other_cancers: 非乳腺癌
+        unknown: 未知
+
+    family_history:
+      procession_of_disease:
+        alive: 存活
+        die_of_breast_cancer: 死于乳腺癌
+        die_of_other_cancers: 死于非乳腺癌
+        unknown: 未知
+
+    followup:
+      cause_of_death:
+        die_of_breast_cancer: 乳腺癌
+        die_of_other_cancers: 非乳腺癌
+        unknown: 未知
+
+    history_of_nonbreast_cancer:
+      disease_status:
+        cured: 治愈
+        drug_control: 未治愈/药物控制
+        no_drug_control: 未治愈/无药物控制
+
+    medication_completion:
+      physical_examination:
+        normal: 正常
+        abnormal: 异常
+      breast_Bultra_diagnose:
+        normal: 正常
+        abnormal_withsigni: 异常/有临床意义
+        abnormal_outsigni: 异常/无临床意义
+        unevaluable: 无法评估
+      abdo_Bultra_diagnose:
+        normal: 正常
+        abnormal_withsigni: 异常/有临床意义
+        abnormal_outsigni: 异常/无临床意义
+        unevaluable: 无法评估
+
+    radiation_therapy:
+      therapy_type:
+        adjuvant_therapy: 辅助
+        new_adjucant_therapy: 新辅助
+        therapeutic: 治疗性
+
+    resreach_completion:
+      reason_for_early_quit:
+        adverse_event: 不良反应
+        abnormal_val: 实验室检查值异常
+        abnormal_res: 仪器检测结果异常
+        relapse_meta: 疾病复发和/或转移
+        aginst_plan: 违反方案
+        withdraw: 患者撤回
+        loss_connection: 失访
+        researcher_request: 研究者要求
+        death: 死亡
+
+    tumor_maker_med:
+      name:
+        carcinoembryonic_antigen: 癌胚抗原
+        carbohydrate_antigen_125: 糖类抗原125
+        carbohydrate_antigen_153: 糖类抗原153

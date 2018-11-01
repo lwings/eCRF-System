@@ -35,6 +35,11 @@
                 class: flag ? 'fi-check' : 'fi-pencil'}
             = "基线评估"
         %li
+          -flag=@patient.clinical_pathology.try(:persisted?)
+          %a{ href: flag ? send("patient_clinical_pathology_path", @patient) :send("new_patient_clinical_pathology_path", @patient) ,
+                class: flag ? 'fi-check' : 'fi-pencil'}
+            = "临床病理"
+        %li
           -flag=@patient.medication_completion.try(:persisted?)
           %a{ href: flag ? send("patient_medication_completion_path", @patient) :send("new_patient_medication_completion_path", @patient) ,
                 class: flag ? 'fi-check' : 'fi-pencil'}
@@ -80,6 +85,11 @@
               %a{href: new_patient_adverse_event_path(@patient)}
                 %i.fi-pencil
                 = "新建不良事件"
+        %li
+          -flag=@patient.radiation_therapy.try(:persisted?)
+          %a{ href: flag ? send("patient_radiation_therapy_path", @patient) :send("new_patient_radiation_therapy_path", @patient) ,
+                class: flag ? 'fi-check' : 'fi-pencil'}
+            = "放射治疗表"
         %li
           %a.fi-check{ href: '#'}
             = "合并用药表"

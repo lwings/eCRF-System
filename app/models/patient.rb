@@ -23,6 +23,7 @@ class Patient < ActiveRecord::Base
   has_one :death_record, dependent: :destroy
   has_one :course_monitor, dependent: :destroy
   has_one :followup_monitor, dependent: :destroy
+  has_one :radiation_therapy, dependent: :destroy
   has_many :adverse_events, dependent: :destroy
   has_many :courses, dependent: :destroy
   has_many :radiation_therapies, dependent: :destroy
