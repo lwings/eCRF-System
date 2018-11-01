@@ -1,0 +1,6 @@
+development:
+  path: /home/little_wings/monitor_log
+  environment: development
+production:
+  path: /home/little_wings/monitor_log
+  environment: production

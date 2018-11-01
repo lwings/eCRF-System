@@ -23,5 +23,8 @@ module Showcase
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.time_zone = 'Beijing'
     config.active_record.raise_in_transactional_callbacks = true
+
+    #config for monitor log checker
+    config.monitor_log=config_for(:monitor_log)
   end
 end
