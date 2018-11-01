@@ -2,15 +2,266 @@ zh-CN:
   activerecord:
     models:
       user: 用户
-      attending: 主诊医生
-      nuser: 专科护士
-      switch: 功能列表
 
-    attr_common: &attr_common
-      created_at: 创建时间
-      updated_at: 更新时间
+    errors:
+          models:
+            case:
+              sides_should_conform: 患者没有讨论填写的那侧
 
     attributes:
+
+      adverse_event:
+        events: 不良事件
+        occurence_date: 发生日期
+        turnover: 转归
+        recover_date: 恢复日期
+        remark: 备注
+        NCI_CTCAE_V_4: NCI CTCAE V.4分级(最重时)
+        is_SAE: 是否SAE
+        is_related_to_drugs: 是否与研究药物有关
+
+      basement_assessment:
+        height: 身高
+        weight: 体重
+        BMI:
+        systolic_blood_pressure: 收缩压
+        diastolic_blood_pressure: 舒张压
+        physical_state_assessment: 体力状态评估
+        pregnancy_test_date: 检查日期
+        pregnancy_test_result: 结果判定
+        electrocardiogram_date: 日期
+        electrocarddiogram_diagnosis: 诊断
+        electrocarddiogram_description: 异常描述
+        breast_B_ultrasound_date: 日期
+        breast_B_ultrasound_date_diagnosis: 诊断
+        breast_B_ultrasound_date_description: 异常描述
+        Mammography_date: 日期
+        Mammography_diagnosis: 诊断
+        Mammography_description: 异常描述
+        abdominal_B_ultrasound_date: 日期
+        abdominal_B_ultrasound_date_diagnosis: 诊断
+        abdominal_B_ultrasound_date_description: 异常描述
+        breast_CT_date: 日期
+        breast_CT_diagnosis: 诊断
+        breast_CT_description: 异常描述
+        echocardiography_date: 日期
+        LVEF: LVEF%
+        echocardiography_diagnosis: 诊断
+        echocardiography_description: 异常描述
+
+      biological_sample_collection:
+        if_sample: 是否采集
+        interview: 访视
+        biological_sample: 生物样本
+        date_of_sampling: 采样日期
+        sample_number: 样本编号
+
+      blood_biochemistry:
+        name: 项
+        value: 值
+        sample_date: 采样日期
+        unit: 单位
+
+      blood_biochemistry_med:
+        name: 项
+        value: 值
+        sample_date: 采样日期
+        unit: 单位
+
+      blood_biochemistry_the:
+        name: 项
+        value: 值
+        sample_date: 采样日期
+        unit: 单位
+
+      blood_routine:
+        name: 项
+        value: 值
+        sample_date: 采样日期
+        unit: 单位
+
+      blood_routine_med:
+        name: 项
+        value: 值
+        sample_date: 采样日期
+        unit: 单位
+
+      blood_routine_the:
+        name: 项
+        value: 值
+        sample_date: 采样日期
+        unit: 单位
+
+      center:
+        name: 中心名称
+        description: 描述
+
+      center_project_relationship:
+
+      clinical_pathology:
+        primary_lesion: 原发灶
+        regional_lympth_node: 区域淋巴结
+        matastasis: 远处转移
+        histological_type: 组织学类型
+        histological_grading: 组织学分级
+        vascular_invasion: 脉管侵犯
+        ER: ER%
+        PR: PR%
+        HER2_IHC:
+        HER2_FISH:
+        Ki67: Ki67%
+        AR: AR%
+        date_of_operation: 手术日期
+
+      concomitant_drug:
+        if_concomitant: 是否合并用药
+        drugs: 药物(商品名)
+        cause_for_this_drug: 用药原因
+        daily_dose: 每日剂量
+        unit_of_dose: 单位
+        start_date: 开始日期
+        end_date: 结束日期
+
+      course:
+        interview: 方式日期
+        height: 身高
+        weight: 体重
+        body_surface_area: 体表面积
+        dose:
+        date_of_administration:
+        if_delay_administration:
+        reason_for_delay:
+        description_for_delay:
+        if_change_dose:
+        reason_for_change:
+        description_for_change:
+
+      course_medication:
+        dose: 剂量
+        date_of_administration: 给药日期
+        if_delay_administration: 是否延迟给药
+        reason_for_delay: 延迟原因
+        description_for_delay: 描述
+        if_change_dose: 死否改变剂量
+        reason_for_change: 改变原因
+        description_for_change: 描述
+
+      course_monitor:
+        record_phase_seq: 已记录阶段数
+        record_course_seq: 已记录疗程数
+        overdue_course: 超期疗程数
+        last_record_date: 最后一次记录日期
+
+      course_schedule:
+        seq: 阶段序号
+        number_of_courses: 本阶段疗程数
+        cure_span: 疗程天数
+        rest_span: 休息天数
+
+      death_record:
+        date_of_death: 死亡日期
+        cause_of_death: 死因
+        relation_with_medication: 与药物的关系
+
+      experimental_medication:
+        name: 名称
+        remark: 备注
+
+      family_history:
+        relation_with_patient: 与病人的关系
+        age_at_diagnose: 
+        treatment:procession_of_disease:
+
+      followup:
+        date_of_visit:
+        local_recurrence:
+        date_of_local_recurrence:
+        matastasis:
+        date_of_matastasis:
+        contralateral_breast_cancer:
+        date_of_contralateral_breast_cancer:second_primary_cancer:
+        date_of_second_primary_cancer:
+        death:
+        date_of_death:
+        cause_of_death:
+
+      followup_monitor:
+        base_followup_days:
+        start_date:
+        last_followup_date:
+        base_interval:
+        overdue_followup:
+
+      group_information:
+        is_meet_inclusion_criteria:
+        inform_consent_date:
+        random_groping_date:
+
+      history_of_nonbreast_cancer:
+        name:
+        diagnostic_date:
+        disease_status:
+
+      medication_completion:
+        visit_date:
+        height:
+        weight:
+        ECOG:
+        physical_examination:description:
+        if_followup:
+        breast_Bultra_date:
+        breast_Bultra_diagnose:
+        breast_abnormal:
+        abdo_Bultra_date:
+        abdo_Bultra_diagnose:
+        abdo_abnormalt:
+
+      patient:
+        name:
+        pid:
+        hosptalization_number:
+        date_of_birth:ID_number:
+        phone_number_1:
+        phone_number_2:
+
+      project:
+        name:
+        remark:
+
+      radiation_therapy:
+        is_radiation:
+        radiotherapy_site:
+        therapy_type:radiotherapy_dose:
+        radiotherapy_start_date:
+        radiotherapy_end_date:
+
+      relationship:
+
+      research_group:
+        name:remark:
+        project_id:
+        base_followup_days:
+        total_courses:
+        base_interval:
+
+      reserach_completion:
+        date_of_last_confirmation:
+        if_complete_therapy_according_to_plan:
+        reason_for_early_quit:
+        description:
+
+      role:
+        name:
+        description:
+        pri:
+
+      tumor_maker_med:
+        value:
+        sample_date:
+        is_local_hospital:
+        name:
+        unit:
+
       user:
         status: 状态
         role: "角色"
@@ -23,9 +274,4 @@ zh-CN:
         current_password: "当前密码"
         password_confirmation: "重复密码"
 
-        <<: *attr_common
 
-    errors:
-      models:
-        case:
-          sides_should_conform: 患者没有讨论填写的那侧

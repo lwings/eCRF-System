@@ -14,9 +14,11 @@
 
       = f.input :dose, front_error: required
       = f.input :date_of_administration
+    .row
       = f.input :if_delay_administration, front_error: required
       = f.input :reason_for_delay, front_error: required
       = f.input :description_for_delay, front_error: required
+    .row
       = f.input :if_change_dose, front_error: required
       = f.input :reason_for_change, front_error: required
       = f.input :description_for_change, front_error: required
