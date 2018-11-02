@@ -169,98 +169,105 @@ zh-CN:
 
       family_history:
         relation_with_patient: 与病人的关系
-        age_at_diagnose: 
-        treatment:procession_of_disease:
+        age_at_diagnose: 确诊时年龄
+        treatment: 治疗方式
+        procession_of_disease: 疾病转归
 
       followup:
-        date_of_visit:
-        local_recurrence:
-        date_of_local_recurrence:
-        matastasis:
-        date_of_matastasis:
-        contralateral_breast_cancer:
-        date_of_contralateral_breast_cancer:second_primary_cancer:
-        date_of_second_primary_cancer:
-        death:
-        date_of_death:
-        cause_of_death:
+        date_of_visit: 访视日期
+        local_recurrence: 局部区域复发
+        date_of_local_recurrence: 诊断日期
+        matastasis: 远处转移
+        date_of_matastasis: 诊断日期
+        contralateral_breast_cancer: 对侧乳腺癌
+        date_of_contralateral_breast_cancer:second_primary_cancer: 诊断日期
+        second_primary_cancer: 第二原发肿瘤
+        date_of_second_primary_cancer: 诊断日期
+        death: 死亡
+        date_of_death: 死亡日期
+        cause_of_death: 死亡原因
 
       followup_monitor:
-        base_followup_days:
-        start_date:
-        last_followup_date:
-        base_interval:
-        overdue_followup:
+        base_followup_days: 额定随访总天数
+        start_date: 随访开始日期
+        last_followup_date: 最后一次随访日期
+        base_interval: 额定随访间隔天数
+        overdue_followup: 超期随访表
 
       group_information:
-        is_meet_inclusion_criteria:
-        inform_consent_date:
-        random_groping_date:
+        is_meet_inclusion_criteria: 是否符合入组标准
+        inform_consent_date: 知情书签署时间
+        random_groping_date: 随机分组时间
 
       history_of_nonbreast_cancer:
-        name:
-        diagnostic_date:
-        disease_status:
+        name: 疾病名称
+        diagnostic_date: 诊断日期
+        disease_status: 疾病状态
 
       medication_completion:
-        visit_date:
-        height:
-        weight:
-        ECOG:
-        physical_examination:description:
-        if_followup:
-        breast_Bultra_date:
-        breast_Bultra_diagnose:
-        breast_abnormal:
-        abdo_Bultra_date:
-        abdo_Bultra_diagnose:
-        abdo_abnormalt:
+        visit_date: 访视日期
+        height: 身高
+        weight: 体重
+        ECOG: ECOG全身状态评分
+        physical_examination: 体格检查
+        description: 描述
+        if_followup: 是否参加后续生存随访
+        breast_Bultra_date: 检查日期
+        breast_Bultra_diagnose: 诊断
+        breast_abnormal: 异常描述
+        abdo_Bultra_date: 检查日期
+        abdo_Bultra_diagnose: 诊断
+        abdo_abnormalt: 异常描述
 
       patient:
-        name:
+        name: 姓名
         pid:
-        hosptalization_number:
-        date_of_birth:ID_number:
-        phone_number_1:
-        phone_number_2:
+        hosptalization_number: 住院号
+        date_of_birth: 出生日期
+        ID_number: 身份证/护照 ID
+        phone_number_1: 联系电话1
+        phone_number_2: 联系电话2
+
 
       project:
-        name:
-        remark:
-
+        name: 项目名
+        remark: 备注
+        planned_patients_count: 计划病例数
       radiation_therapy:
-        is_radiation:
-        radiotherapy_site:
-        therapy_type:radiotherapy_dose:
-        radiotherapy_start_date:
-        radiotherapy_end_date:
+        is_radiation: 是否放射治疗
+        radiotherapy_site: 照射部位
+        therapy_type: 治疗类型
+        radiotherapy_dose: 照射剂量(Gy)
+        radiotherapy_start_date: 开始治疗日期
+        radiotherapy_end_date: 结束治疗日期
 
       relationship:
-
+        planned_patients_count: 计划病例数
       research_group:
-        name:remark:
-        project_id:
-        base_followup_days:
-        total_courses:
-        base_interval:
+        name: 名称
+        remark: 备注
+        project: 所属项目
+        base_followup_days: 额定随访总天数
+        total_courses: 总疗程数
+        base_interval: 额定随访间隔天数
 
       reserach_completion:
-        date_of_last_confirmation:
-        if_complete_therapy_according_to_plan:
-        reason_for_early_quit:
-        description:
+        date_of_last_confirmation: 最后一次确定使用研究药物日期
+        if_complete_therapy_according_to_plan: 是否按试验计划完成治疗
+        reason_for_early_quit: 提前退出随访原因
+        description: 描述
 
       role:
-        name:
-        description:
-        pri:
+        name: 名称
+        description: 描述
+        pri: privilege
 
       tumor_maker_med:
-        value:
-        sample_date:
-        is_local_hospital:
+        value: 值
+        sample_date: 采样日期
+        is_local_hospital: 是否本院
         name:
-        unit:
+        unit: 单位
 
       user:
         status: 状态

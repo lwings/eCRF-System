@@ -10,7 +10,7 @@ zh-CN:
         researching: 研究干预中
         followup: 随访中
         followup_end: 结束随访
-        quit: 出组
+        quit: 已退出
 
     adverse_event:
       events:
