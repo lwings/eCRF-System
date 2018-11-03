@@ -23,6 +23,11 @@ class Project < ActiveRecord::Base
   attr_accessor :users_count
 
 
+  validates :name,presence: true,uniqueness: true
+  validates_associated :relationships
+  validates_associated :center_project_relationships
+  validates_associated :experimental_medications
+
 
   def set_groups_count
     self.groups_count=self.research_groups.size

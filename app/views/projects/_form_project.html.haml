@@ -10,6 +10,7 @@
         = f.hidden_field :initiator_id, value: current_user.id
       = f.input :name
       = f.input :remark
+  %fieldset
     %legend
       中心
     .row
@@ -18,6 +19,7 @@
       - if writable
         .links
           = link_to_add_association "添加中心", f, :center_project_relationships, partial: 'fields_center_project_relationships'
+  %fieldset
     %legend
       用户
     .row
@@ -26,6 +28,7 @@
       - if writable
         .links
           = link_to_add_association "添加用户", f, :relationships, partial: 'fields_relationships'
+  %fieldset
     %legend
       试验用药
     .row

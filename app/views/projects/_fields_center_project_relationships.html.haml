@@ -1,14 +1,11 @@
 - required = "必填"
 .nested-fields
-  %fieldset
-    %p
-      = link_to_remove_association "delete", f, data: {confirm: "Do you wanna to delete?"}
+  %b= link_to_remove_association "delete", f, data: {confirm: "Do you wanna to delete?"}
+  - if f.object.persisted?
+    = f.hidden_field :id, value: f.object.id
 
-    - if f.object.persisted?
-      = f.hidden_field :id, value: f.object.id
-
-    .row
-      = f.association :center ,label_method: :name, value_method: :id, include_blank: false
-      = f.input :planned_patients_count
+  .row
+    = f.association :center ,label_method: :name, value_method: :id, include_blank: false, label:"中心名"
+    = f.input :planned_patients_count, label:"计划录入病例数"
 
 

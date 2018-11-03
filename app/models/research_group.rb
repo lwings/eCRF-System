@@ -16,6 +16,13 @@ class ResearchGroup < ActiveRecord::Base
   attr_accessor :courses_schedules_count
 
 
+  validates_associated :course_schedules
+  validates :name, presence: true
+  validates :base_followup_days, presence: true,inclusion: { in: 1..9999,
+                                                             message: "额定随访天数须为正整数" }
+  validates :base_interval, presence: true,inclusion: { in: 1..9999,
+                                                        message: "额定随访间隔须为正整数" }
+  validates :project_id, presence: true
 
   def set_project_name_count
     self.project_name=self.project.name

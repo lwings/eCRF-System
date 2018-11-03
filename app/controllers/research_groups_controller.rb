@@ -3,7 +3,7 @@ class ResearchGroupsController < ApplicationController
   before_action :authenticate_user!
   load_and_authorize_resource :research_group
   helper_method :sort_column, :sort_direction
-  before_action :get_available_projects,only:[:new,:edit]
+  before_action :get_available_projects,only:[:new,:edit,:show]
   def new
     @research_group.course_schedules.new
   end
@@ -59,7 +59,7 @@ class ResearchGroupsController < ApplicationController
   end
 
   def get_available_projects
-    if current_user.role.pri==0
+    if current_user.role.pri==0 || current_user.role.pri==1
       @available_projects=Project.all
     else
       @available_projects=current_user.self_projects.all
