@@ -7,4 +7,8 @@ class BiologicalSampleCollection < ActiveRecord::Base
 
   belongs_to :patient
 
+  validates :biological_sample,presence: true
+  validates :date_of_sampling,presence: true
+  validates :sample_number,presence: true
+
 end

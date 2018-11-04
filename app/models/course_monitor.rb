@@ -4,6 +4,9 @@ class CourseMonitor < ActiveRecord::Base
   belongs_to :patient
   belongs_to :research_group
 
+  # validates :record_phase_seq,presence: true
+  # validates :record_course_seq,presence: true
+  # validates :last_record_datelast_record_date,presence: true
 
   before_save :set_overdue_course
 

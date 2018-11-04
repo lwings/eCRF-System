@@ -4,9 +4,10 @@ class GroupInformationsController < ApplicationController
   before_action :authenticate_project
   load_and_authorize_resource :patient
   load_and_authorize_resource :group_information, :through => :patient, :singleton => true
+  before_action :get_available_research_groups
 
   def new
-    @available_research_groups=@patient.project.research_groups.all
+
   end
 
   def create
@@ -20,12 +21,12 @@ class GroupInformationsController < ApplicationController
   end
 
   def edit
-    @available_research_groups=@patient.project.research_groups.all
+
   end
 
   def update
     respond_to do |format|
-      if @group_information.update(group_information_params)
+      if @group_information.update(update_group_information_params)
         format.html { redirect_to patient_group_information_path(@patient) }
       else
         format.html { render :edit }
@@ -33,7 +34,7 @@ class GroupInformationsController < ApplicationController
     end
   end
   def show
-    @available_research_groups=@patient.project.research_groups.all
+
   end
 
 
@@ -43,5 +44,15 @@ class GroupInformationsController < ApplicationController
         :patient_id,:research_group_id,:is_meet_inclusion_criteria,
         :inform_consent_date,:random_groping_date
     )
+  end
+  def update_group_information_params
+    params.require(:group_information).permit(
+        :patient_id,:is_meet_inclusion_criteria,
+        :inform_consent_date,:random_groping_date
+    )
+  end
+
+  def get_available_research_groups
+    @available_research_groups=@patient.project.research_groups.all
   end
 end

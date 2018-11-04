@@ -7,9 +7,14 @@ class DeathRecord < ActiveRecord::Base
 
   belongs_to :patient
 
+  validates :date_of_death,presence: true
+  validates :cause_of_death,presence: true
+
+
   after_create :convertStatusToQuit
 
   def convertStatusToQuit
     self.patient.update(status:4)
   end
+
 end

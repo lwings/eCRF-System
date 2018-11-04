@@ -19,6 +19,13 @@ class MedicationCompletion < ActiveRecord::Base
   accepts_nested_attributes_for :tumor_maker_meds,
                                 reject_if: :all_blank, allow_destroy: true
 
+
+  validates_associated :blood_biochemistry_meds
+  validates_associated :blood_routine_meds
+  validates_associated :tumor_maker_meds
+  validates :visit_date,presence: true
+
+
   after_create :convertStatusToFollowup
   after_create :initFollowupMonitor
   after_create :convertStatusToQuit

@@ -35,6 +35,11 @@ class Patient < ActiveRecord::Base
   attr_accessor :overdue_courses
   attr_accessor :overdue_followups
 
+  validates :user_id,presence: true
+  validates :center_id,presence: true
+  validates :project_id,presence: true
+  validates :hosptalization_number,presence: true
+
   before_create :convertStatusToEstablished
 
   def convertStatusToEstablished

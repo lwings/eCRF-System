@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   layout 'systems'
   before_action :authenticate_user!
   load_and_authorize_resource :user
-  before_action :get_available_roles,only: [:new,:edit,:show]
+  before_action :get_available_roles
   # helper_method :sort_column, :sort_direction
 
   def index

@@ -6,4 +6,9 @@ class BloodRoutineThe < ActiveRecord::Base
   enumerize :unit, in: BLOODRUNIT_OPT
   belongs_to :course
 
+  validates :course_id,presence: true
+  validates :name,presence: true
+  validates :value,presence: true
+  validates :sample_date,presence: true
+
 end

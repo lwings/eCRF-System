@@ -10,6 +10,9 @@ class Followup < ActiveRecord::Base
   after_create :set_followup_monitor
   before_destroy :roll_backMonitor
 
+  # validates :date_of_visit,presence: true
+
+
   def set_followup_monitor
     if self.id==self.patient.followups.last.id
       self.patient.followup_monitor.update(last_followup_date:self.date_of_visit)

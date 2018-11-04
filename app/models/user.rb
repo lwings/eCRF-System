@@ -26,8 +26,9 @@ class User < ActiveRecord::Base
 
   scope :enabled, ->{ where(status: status.find_value(:in_use).value)}
 
-   validates :username, presence: true, uniqueness: { case_insensitive: true }, length: { in: 4..20 }
-
+  validates :username, presence: true, uniqueness: { case_insensitive: true }, length: { in: 4..20 }
+  validates :realname, presence: true, uniqueness: { case_insensitive: true }, length: { in: 4..20 }
+  validates :role, presence: true
 
 
 

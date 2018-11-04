@@ -3,7 +3,7 @@ class ResearchGroupsController < ApplicationController
   before_action :authenticate_user!
   load_and_authorize_resource :research_group
   helper_method :sort_column, :sort_direction
-  before_action :get_available_projects,only:[:new,:edit,:show]
+  before_action :get_available_projects
   def new
     @research_group.course_schedules.new
   end

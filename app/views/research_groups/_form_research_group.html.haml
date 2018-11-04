@@ -10,6 +10,7 @@
       = f.input :name
       = f.input :base_followup_days
       = f.input :base_interval
+      = f.input :total_courses,disabled:true
       = f.input :remark
       = f.association :project,collection:@available_projects
   %fieldset

@@ -6,4 +6,8 @@ class FamilyHistory < ActiveRecord::Base
 
   belongs_to :clinical_pathology
 
+  validates :clinical_pathology_id,presence: true
+  validates :relation_with_patient,presence: true
+  validates :procession_of_disease,presence: true
+
 end

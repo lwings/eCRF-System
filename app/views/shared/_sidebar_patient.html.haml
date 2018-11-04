@@ -67,7 +67,7 @@
               %li
                 %a.fi-check{ href: patient_course_path(@patient, course)}
                   = "疗程"+ (i+1).to_s
-          -if (@patient.courses == nil || @patient.courses.size()<@patient.group_information.research_group.total_courses) and @patient.status.value==1
+          -if (@patient.courses == nil || @patient.courses.size()<@patient.group_information.research_group.total_courses) and @patient.status.value<=1
             %li
               %a{href: new_patient_course_path(@patient)}
                 %i.fi-pencil

@@ -46,6 +46,7 @@ class ResearchGroup < ActiveRecord::Base
   end
 
   private
+
   def set_total_courses
     res=0
 
@@ -54,6 +55,7 @@ class ResearchGroup < ActiveRecord::Base
     }
     self.total_courses=res
   end
+
   def setLastScheduleRestSpan
     # debugger
     self.course_schedules.all.last.update(rest_span:0)

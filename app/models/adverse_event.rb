@@ -8,4 +8,8 @@ class AdverseEvent < ActiveRecord::Base
 
   belongs_to :patient
 
+  validates :patient_id,presence: true
+  validates :events,presence: true
+  validates :occurence_date,presence: true
+
 end

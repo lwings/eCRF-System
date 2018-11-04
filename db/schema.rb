@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181028115630) do
+ActiveRecord::Schema.define(version: 20181104070817) do
 
   create_table "adverse_events", force: :cascade do |t|
     t.integer  "patient_id",          limit: 4
@@ -245,17 +245,15 @@ ActiveRecord::Schema.define(version: 20181028115630) do
   add_index "course_schedules", ["research_group_id"], name: "index_course_schedules_on_research_group_id", using: :btree
 
   create_table "courses", force: :cascade do |t|
-    t.integer  "patient_id",                 limit: 4
-    t.integer  "experimental_medication_id", limit: 4
+    t.integer  "patient_id",        limit: 4
     t.date     "interview"
-    t.float    "height",                     limit: 24
-    t.float    "weight",                     limit: 24
-    t.float    "body_surface_area",          limit: 24
-    t.datetime "created_at",                            null: false
-    t.datetime "updated_at",                            null: false
+    t.float    "height",            limit: 24
+    t.float    "weight",            limit: 24
+    t.float    "body_surface_area", limit: 24
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
   end
 
-  add_index "courses", ["experimental_medication_id"], name: "index_courses_on_experimental_medication_id", using: :btree
   add_index "courses", ["patient_id"], name: "index_courses_on_patient_id", using: :btree
 
   create_table "death_records", force: :cascade do |t|
@@ -375,7 +373,6 @@ ActiveRecord::Schema.define(version: 20181028115630) do
     t.integer  "status",                limit: 4,   default: 0
     t.integer  "project_id",            limit: 4
     t.integer  "user_id",               limit: 4
-    t.integer  "research_group_id",     limit: 4
     t.string   "name",                  limit: 255,             null: false
     t.string   "pid",                   limit: 255
     t.string   "hosptalization_number", limit: 255
@@ -390,7 +387,6 @@ ActiveRecord::Schema.define(version: 20181028115630) do
 
   add_index "patients", ["center_id"], name: "index_patients_on_center_id", using: :btree
   add_index "patients", ["project_id"], name: "index_patients_on_project_id", using: :btree
-  add_index "patients", ["research_group_id"], name: "index_patients_on_research_group_id", using: :btree
   add_index "patients", ["user_id"], name: "index_patients_on_user_id", using: :btree
 
   create_table "projects", force: :cascade do |t|

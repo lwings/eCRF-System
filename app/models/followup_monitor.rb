@@ -5,6 +5,10 @@ class FollowupMonitor < ActiveRecord::Base
 
   before_save :update_overdue_followup
 
+  validates :base_followup_days,presence: true
+  validates :last_followup_date,presence: true
+  validates :base_interval,presence: true
+
   def check_if_terminate
     if self.patient.status.value !=2
       return

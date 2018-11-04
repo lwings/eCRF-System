@@ -7,4 +7,9 @@ class BloodBiochemistry < ActiveRecord::Base
 
   belongs_to :basement_assessment
 
+  validates :basement_assessment_id,presence: true
+  validates :name,presence: true
+  validates :value,presence: true
+  validates :sample_date,presence: true
+
 end

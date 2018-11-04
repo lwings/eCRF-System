@@ -4,13 +4,13 @@ class CoursesController < ApplicationController
   before_action :authenticate_project
   load_and_authorize_resource :patient
   load_and_authorize_resource :course, :through => :patient
+  before_action :get_available_experimental_medication
 
   def new
     @course.blood_biochemistry_thes.new
     @course.blood_routine_thes.new
     @course.course_medications.new
 
-    @available_experimental_medication=@patient.project.experimental_medications.all
   end
 
   def create
@@ -25,7 +25,6 @@ class CoursesController < ApplicationController
   end
 
   def edit
-    @available_experimental_medication=@patient.project.experimental_medications.all
   end
 
   def update
@@ -39,7 +38,6 @@ class CoursesController < ApplicationController
   end
 
   def show
-    @available_experimental_medication=@patient.project.experimental_medications.all
   end
 
   def destroy
@@ -48,6 +46,7 @@ class CoursesController < ApplicationController
   end
 
   private
+
   def course_params
     params.require(:course).permit(
         :interview,:height,:weight,:body_surface_area,
@@ -59,6 +58,7 @@ class CoursesController < ApplicationController
                                         :description_for_change,:_destroy]
     )
   end
+
   def course_update_params
     params.require(:course).permit(
         :height,:weight,:body_surface_area,
@@ -70,4 +70,9 @@ class CoursesController < ApplicationController
                                         :description_for_change,:_destroy]
     )
   end
+
+  def get_available_experimental_medication
+    @available_experimental_medication=@patient.project.experimental_medications.all
+  end
+
 end

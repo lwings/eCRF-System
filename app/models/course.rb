@@ -20,6 +20,10 @@ class Course < ActiveRecord::Base
   after_create :setCourseMonitor
   before_destroy :rollBackMonitor
 
+  validates :patient_id, presence: true
+  validates :interview, presence: true
+
+
   def setCourseMonitor
     numOfCourses=self.patient.courses.size()
     self.patient.course_monitor.setRecord numOfCourses , self.interview

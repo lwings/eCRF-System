@@ -4,7 +4,7 @@ class PatientsController < ApplicationController
   before_action :authenticate_user!
   before_action :authenticate_project
   load_and_authorize_resource :patient
-  before_action :load_available_centers,only:[:new,:edit]
+  before_action :load_available_centers
 
   def followup_queue
     @patients=Patient.joins(:followup_monitor).accessible_by(current_ability,:read).where(status:2).where(
