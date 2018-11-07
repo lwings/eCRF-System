@@ -221,6 +221,7 @@ zh-CN:
 
       patient:
         name: 姓名
+        status: 状态
         pid:
         hosptalization_number: 住院号
         date_of_birth: 出生日期
@@ -280,5 +281,6 @@ zh-CN:
         is_reminded: 开启弹窗推荐提醒
         current_password: "当前密码"
         password_confirmation: "重复密码"
+        center_name: 授权中心
 
 

@@ -15,7 +15,7 @@
         %li
           %a= "姓名: #{@patient.name}"
         %li
-          %a= "病人状态: #{@patient.status}"
+          %a= "病人状态: #{t @patient.status}"
 
       -if !@patient.group_information.nil? and !@patient.group_information.research_group.nil?
         %li

@@ -13,6 +13,10 @@
     %ul
       %li 第#{current_user.sign_in_count || 0}次登录
       %li 上次登录时间：#{ l(current_user.last_sign_in_at) }
+    %li.divider
+
+      %a{ href: '/monitor_checker' }
+        = "监视器日志"
 
 .row
 
@@ -47,12 +51,12 @@
     -#    %a{href:research_groups_path} 研究干预列表
     -#  %li
     -#    %a{href: new_research_group_path} 新建研究干预
-  - can = can? :read, MonitorCheckersController
-  .columns.medium-6.guide{class: can ? nil : 'not-allowed'}
-    %a{href: can ? '/monitor_checker' : nil}
-      %h2
-        = image_tag 'guide_system.png'
-        监视器日志
+  -#- can = can? :read, MonitorCheckersController
+  -#.columns.medium-6.guide{class: can ? nil : 'not-allowed'}
+  -#  %a{href: can ? '/monitor_checker' : nil}
+  -#    %h2
+  -#      = image_tag 'guide_system.png'
+  -#      监视器日志
   .columns.medium-6.guide{}
     %a{href: project_login_path}
       %h2

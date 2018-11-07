@@ -21,6 +21,7 @@ class Project < ActiveRecord::Base
   attr_accessor :groups_count
   attr_accessor :drugs_count
   attr_accessor :users_count
+  attr_accessor :authorized_centers
 
 
   validates :name,presence: true,uniqueness: true
@@ -45,5 +46,14 @@ class Project < ActiveRecord::Base
     self.set_drugs_count
     self.set_groups_count
     self.set_users_count
+  end
+
+  def set_authorized_centers(current_user)
+    centerList=[]
+    current_user.relationships.where(project_id:self.id).each{|re|
+      # debugger
+      centerList.append(re.center.name)
+    }
+    self.authorized_centers=centerList.join('/')
   end
 end

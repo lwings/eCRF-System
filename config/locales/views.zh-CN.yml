@@ -97,3 +97,18 @@ zh-CN:
   Unknown_method: 未知错误
   Invalid_file: 文件无效
   Successfully_imported: 导入成功
+
+  #index_page
+  center_name: 授权中心
+  projects_count: 授权项目
+  overdue_courses: 超期疗程
+  overdue_followups: 超期随访
+  status: 状态
+  authorized_centers: 已授权中心
+
+  #patient_status
+  established:  以建立
+  researching:  研究干预中
+  followup:  随访中
+  followup_end: 随访结束
+  quit: 已退出

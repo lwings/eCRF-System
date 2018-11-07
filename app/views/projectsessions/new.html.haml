@@ -1,5 +1,17 @@
 %h3 选择已授权项目
-= simple_form_for :project do |f|
+.row
 
-   = f.input :project, label: Project.model_name.human, collection: @available_projects, as: :select, required: true,include_blank: false
-   = f.button :submit,"Enter this project", class: [:tiny, :radius]
+  = simple_form_for :project do |f|
+
+    = f.input :project, label: "项目", collection: @available_projects, as: :select, required: true,include_blank: false
+    = f.button :submit,"进入项目", class: [:tiny, :radius]
+
+%h3 授权项目列表，共有#{@available_projects.size()}个
+.row
+
+  - operations = {view:{ }}
+
+  = render partial: 'shared/projectsession_table', locals: { columns: [:name,:authorized_centers], collection: @available_projects, operations: operations,
+                                          url_method: {} }
+
+

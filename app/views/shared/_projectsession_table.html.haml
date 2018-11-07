@@ -4,10 +4,13 @@
   %thead
     %tr
       - columns.each do |column|
-        %th
-          = t column
+        -if column==:name
+          %th
+            = "名称"
+        -else
+          %th
+            = t column
 
-      %th{ colspan: operations.size}= "相关操作"
 
   %tbody
     - collection.each do |row|
@@ -23,8 +26,4 @@
             - else
               %td= val
 
-        - operations.each do |key, value|
-          %td
-            %a{:href => url_method[key].call(row), class: icon_map[key], :data => value, :target => defined?(tar).nil?? :_self : tar }
-              = t key
 

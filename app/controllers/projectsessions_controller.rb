@@ -5,6 +5,10 @@ class ProjectsessionsController < ApplicationController
     # debugger
     if current_user.any_accessable_projects?
       @available_projects=current_user.projects.all.distinct
+      # @available_projects.order(:created_at).page(10)
+      @available_projects.each{|project|
+        project.set_authorized_centers(current_user)
+      }
     else
       redirect_to action: :exception
     end
