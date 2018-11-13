@@ -123,7 +123,7 @@ zh-CN:
         end_date: 结束日期
 
       course:
-        interview: 方式日期
+        interview: 访视日期
         height: 身高
         weight: 体重
         body_surface_area: 体表面积
@@ -142,7 +142,7 @@ zh-CN:
         if_delay_administration: 是否延迟给药
         reason_for_delay: 延迟原因
         description_for_delay: 描述
-        if_change_dose: 死否改变剂量
+        if_change_dose: 是否改变剂量
         reason_for_change: 改变原因
         description_for_change: 描述
 

@@ -9,7 +9,7 @@ class CourseMedication < ActiveRecord::Base
 
   has_many :experimental_medications
 
-  validates :experimental_medication_id, presence: true
+  # validates :experimental_medication_id, presence: true
   # validates :course_id, presence: true
   validates :dose, presence: true
 

@@ -6,7 +6,7 @@ class BloodBiochemistryThe < ActiveRecord::Base
   enumerize :unit, in: BLOODCUNIT_OPT
   belongs_to :course
 
-  validates :course_id,presence: true
+
   validates :name,presence: true
   validates :value,presence: true
   validates :sample_date,presence: true

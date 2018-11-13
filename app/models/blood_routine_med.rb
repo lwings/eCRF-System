@@ -6,7 +6,7 @@ class BloodRoutineMed < ActiveRecord::Base
   enumerize :unit, in: BLOODRUNIT_OPT
   belongs_to :medication_completion
 
-  validates :medication_completion_id,presence: true
+
   validates :name,presence: true
   validates :value,presence: true
   validates :sample_date,presence: true

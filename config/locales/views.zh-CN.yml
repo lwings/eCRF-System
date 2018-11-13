@@ -105,9 +105,14 @@ zh-CN:
   overdue_followups: 超期随访
   status: 状态
   authorized_centers: 已授权中心
+  groups_count: 组数量
+  drugs_count:  药品数量
+  users_count: 用户数量
+  project_name: 所属项目
+  courses_schedules_count: 疗程阶段数
 
   #patient_status
-  established:  以建立
+  established:  已建立
   researching:  研究干预中
   followup:  随访中
   followup_end: 随访结束

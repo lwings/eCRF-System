@@ -11,11 +11,11 @@
         %li
           %a= "ID: #{@patient.pid}"
         %li
-          %a= "中心: #{@patient.center_id}"
+          %a= "中心: #{@patient.center.name}"
         %li
           %a= "姓名: #{@patient.name}"
         %li
-          %a= "病人状态: #{t @patient.status}"
+          %a= "状态: #{t @patient.status}"
 
       -if !@patient.group_information.nil? and !@patient.group_information.research_group.nil?
         %li

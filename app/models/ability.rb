@@ -47,7 +47,7 @@ class Ability
                           FollowupMonitor,CourseMonitor]
       user.relationships.where(project_id:project.id).each{|re|
         center_id=re.center_id
-        privelege={:user_id => user.id, :center_id => center_id,:project_id=>project.id}
+        privelege={:center_id => center_id,:project_id=>project.id}
         can :manage,Patient,privelege
         can :manage,patient_model_list,:patient=>privelege
       }

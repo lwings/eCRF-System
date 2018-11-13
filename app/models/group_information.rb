@@ -5,7 +5,7 @@ class GroupInformation < ActiveRecord::Base
   after_create :set_course_monitor
   after_create :set_followup_monitor
 
-  validates :research_group_id,presence: true
+
 
   # private
   def set_course_monitor

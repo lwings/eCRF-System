@@ -6,7 +6,7 @@ class HistoryOfNonbreastCancer < ActiveRecord::Base
 
   belongs_to :clinical_pathology
 
-  validates :clinical_pathology_id,presence: true
+
   validates :name,presence: true
   validates :diagnostic_date,presence: true
   validates :disease_status,presence: true
