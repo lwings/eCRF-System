@@ -86,10 +86,18 @@
                 %i.fi-pencil
                 = "新建不良事件"
         %li
-          -flag=@patient.radiation_therapy.try(:persisted?)
-          %a{ href: flag ? send("patient_radiation_therapy_path", @patient) :send("new_patient_radiation_therapy_path", @patient) ,
-                class: flag ? 'fi-check' : 'fi-pencil'}
-            = "放射治疗表"
+          %a.fi-check{ href: '#'}
+            = "放射治疗"
+          %ul
+            - @patient.radiation_therapies.each_with_index do |radiation_therapy, i|
+              - if radiation_therapy.persisted?
+                %li
+                  %a.fi-check{ href: patient_radiation_therapy_path(@patient, radiation_therapy)}
+                    = "放射治疗"+ (i+1).to_s
+            %li
+              %a{href: new_patient_radiation_therapy_path(@patient)}
+                %i.fi-pencil
+                = "新建放射治疗"
         %li
           %a.fi-check{ href: '#'}
             = "合并用药表"

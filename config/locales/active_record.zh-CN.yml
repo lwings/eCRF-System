@@ -274,8 +274,9 @@ zh-CN:
         status: 状态
         role: "角色"
         employee_no: "工号"
-        username: "用户名"
+        username: 用户名(登录名)
         name: "姓名"
+        realname: 真实姓名
         phone: "手机号"
         email: "邮箱"
         is_reminded: 开启弹窗推荐提醒

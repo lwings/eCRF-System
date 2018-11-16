@@ -1,6 +1,6 @@
 %h3
   = "查看"+"放射治疗表"
-  = render 'shared/edit_link', ob: @patient, path: edit_radiation_therapy_path(@patient,@radiation_therapy)
+  = render 'shared/edit_link', ob: @patient, path: edit_patient_radiation_therapy_path(@patient,@radiation_therapy)
   %small
     %a.fi-x{href: patient_radiation_therapy_path, data: {method: 'delete', confirm: t('delete_confirm')}}
       删除

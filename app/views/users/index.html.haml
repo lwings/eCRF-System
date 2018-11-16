@@ -7,7 +7,7 @@
 
 - operations = {view:{ }}
 
-= render partial: 'shared/table', locals: { columns: [:username,:realname,:projects_count,:center_name,:created_at], collection: @users, operations: operations,
+= render partial: 'shared/table', locals: { columns: [:username,:realname,:projects_count,:center_name], collection: @users, operations: operations,
                                         url_method: {view: (method :user_path)} }
 
 = paginate @users
