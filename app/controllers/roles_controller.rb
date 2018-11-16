@@ -2,7 +2,7 @@ class RolesController < ApplicationController
   layout 'systems'
   before_action :authenticate_user!
   load_and_authorize_resource :role
-  # helper_method :sort_column, :sort_direction
+  helper_method :sort_column, :sort_direction
   def new
   end
 
@@ -32,7 +32,7 @@ class RolesController < ApplicationController
   end
 
   def index
-    @roles = @roles.order(:created_at).page(params[:page])
+    @roles = @roles.order("#{sort_column} #{sort_direction}").page(params[:page])
 
   end
 
@@ -43,4 +43,11 @@ class RolesController < ApplicationController
     )
   end
 
+  def sort_column(c = "created_at")
+    c
+  end
+
+  def sort_direction(d = "asc")
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : d
+  end
 end

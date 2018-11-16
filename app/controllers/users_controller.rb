@@ -3,11 +3,11 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
   load_and_authorize_resource :user
   before_action :get_available_roles
-  # helper_method :sort_column, :sort_direction
+  helper_method :sort_column, :sort_direction
 
   def index
     @users = User.accessible_by(current_ability,:read)
-    @users = @users.order(:created_at).page(params[:page])
+    @users = @users.order("#{sort_column} #{sort_direction}").page(params[:page])
     @users.each{|user|
       user.set_all_count
     }
@@ -69,4 +69,11 @@ class UsersController < ApplicationController
 
   end
 
+  def sort_column(c = "created_at")
+    c
+  end
+
+  def sort_direction(d = "asc")
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : d
+  end
 end

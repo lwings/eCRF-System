@@ -2,7 +2,7 @@ class CentersController < ApplicationController
   layout 'systems'
   before_action :authenticate_user!
   load_and_authorize_resource :center
-  # helper_method :sort_column, :sort_direction
+  helper_method :sort_column, :sort_direction
   def new
   end
 
@@ -32,7 +32,7 @@ class CentersController < ApplicationController
   end
 
   def index
-    @centers = @centers.order(:created_at).page(params[:page])
+    @centers = @centers.order("#{sort_column} #{sort_direction}").page(params[:page])
 
   end
 
@@ -42,11 +42,11 @@ class CentersController < ApplicationController
         :name,:description
     )
   end
-  # def sort_column(c = "created_at")
-  #   Project.column_names.include?(params[:sort]) ? params[:sort] : c
-  # end
-  #
-  # def sort_direction(d = "desc")
-  #   %w[asc desc].include?(params[:direction]) ? params[:direction] : d
-  # end
+  def sort_column(c = "created_at")
+    c
+  end
+
+  def sort_direction(d = "desc")
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : d
+  end
 end

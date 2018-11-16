@@ -3,6 +3,11 @@ zh-CN:
     models:
       user: 用户
 
+    attributes_common: &common
+      remarks: "备注"
+      created_at: "创建时间"
+      updated_at: "更新时间"
+
     errors:
           models:
             case:
@@ -95,6 +100,7 @@ zh-CN:
       center:
         name: 中心名称
         description: 描述
+        created_at: "创建时间"
 
       center_project_relationship:
 
@@ -228,12 +234,21 @@ zh-CN:
         ID_number: 身份证/护照 ID
         phone_number_1: 联系电话1
         phone_number_2: 联系电话2
+        center_name: 中心
+        overdue_courses: 超期疗程
+        overdue_followups: 超期随访
+        created_at: "更新时间"
 
 
       project:
         name: 项目名
         remark: 备注
         planned_patients_count: 计划病例数
+        created_at: "创建时间"
+        groups_count: 研究组数
+        drugs_count: 药品数
+        users_count: 用户数
+
       radiation_therapy:
         is_radiation: 是否放射治疗
         radiotherapy_site: 照射部位
@@ -251,6 +266,9 @@ zh-CN:
         base_followup_days: 额定随访总天数
         total_courses: 总疗程数
         base_interval: 额定随访间隔天数
+        created_at: "创建时间"
+        project_name: 所属项目
+        courses_schedules_count: 疗程阶段数
 
       reserach_completion:
         date_of_last_confirmation: 最后一次确定使用研究药物日期
@@ -262,6 +280,7 @@ zh-CN:
         name: 名称
         description: 描述
         pri: privilege
+        created_at: "创建时间"
 
       tumor_maker_med:
         value: 值
@@ -274,14 +293,15 @@ zh-CN:
         status: 状态
         role: "角色"
         employee_no: "工号"
-        username: 用户名(登录名)
+        username: 用户名
         name: "姓名"
-        realname: 真实姓名
+        realname: 姓名
         phone: "手机号"
         email: "邮箱"
         is_reminded: 开启弹窗推荐提醒
         current_password: "当前密码"
         password_confirmation: "重复密码"
         center_name: 授权中心
+        projects_count: 项目数
 
 

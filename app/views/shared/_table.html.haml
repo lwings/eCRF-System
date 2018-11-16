@@ -5,9 +5,9 @@
     %tr
       - columns.each do |column|
         %th
-          = t column
+          = sort_link column, collection
 
-      %th{ colspan: operations.size}= "相关操作"
+      %th{ colspan: operations.size}= "操作"
 
   %tbody
     - collection.each do |row|

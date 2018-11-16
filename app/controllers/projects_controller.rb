@@ -3,7 +3,7 @@ class ProjectsController < ApplicationController
   before_action :authenticate_user!
   load_resource :except=>[:destroy]
   authorize_resource
-  # helper_method :sort_column, :sort_direction
+  helper_method :sort_column, :sort_direction
   def new
     @project.relationships.new
     @project.experimental_medications.new
@@ -36,7 +36,7 @@ class ProjectsController < ApplicationController
   end
 
   def index
-    @projects = @projects.order(:created_at).page(params[:page])
+    @projects = @projects.order("#{sort_column} #{sort_direction}").page(params[:page])
     @projects.each{|project|
       project.set_all_count
     }
@@ -51,11 +51,11 @@ class ProjectsController < ApplicationController
         center_project_relationships_attributes: [:id,:center_id,:planned_patients_count,:_destroy]
     )
   end
-  # def sort_column(c = "created_at")
-  #   Project.column_names.include?(params[:sort]) ? params[:sort] : c
-  # end
-  #
-  # def sort_direction(d = "desc")
-  #   %w[asc desc].include?(params[:direction]) ? params[:direction] : d
-  # end
+  def sort_column(c = "id")
+    c
+  end
+
+  def sort_direction(d = "asc")
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : d
+  end
 end

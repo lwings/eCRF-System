@@ -3,10 +3,12 @@ class RelationshipsController < ApplicationController
   before_action :authenticate_user!
   load_and_authorize_resource  :project
   load_and_authorize_resource :relationship
+  before_action :get_relationships,only:[:new,:index]
+  helper_method :sort_column, :sort_direction
   # load_resource :relationship,:through => :project
   # load_and_authorize_resource  :project,:through => :project, only: [:create]
   def new
-    # debugger
+
   end
   def create
     @relationship.project_id=@project.id
@@ -20,12 +22,7 @@ class RelationshipsController < ApplicationController
     end
   end
   def index
-    @relationships=Relationship.where(project_id:@project.id).order(:user_id).page(params[:page])
-    @relationships.each{|r|
-      r.set_username
-      r.set_realname
-      r.set_centername
-    }
+
   end
   def destroy
 
@@ -38,5 +35,24 @@ class RelationshipsController < ApplicationController
     params.require(:relationship).permit(
         :id,:user_id,:center_id
     )
+  end
+
+  def get_relationships
+    @relationships=Relationship.where(project_id:@project.id).order("#{sort_column} #{sort_direction}").page(params[:page])
+    @relationships.each{|r|
+      r.set_username
+      r.set_realname
+      r.set_centername
+    }
+  end
+
+  private
+  def sort_column(c = "user_id")
+    dbname=Relationship.transfer_col_name(params[:sort])
+    dbname.nil? ? c:dbname
+  end
+
+  def sort_direction(d = "asc")
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : d
   end
 end

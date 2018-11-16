@@ -56,4 +56,6 @@ class Project < ActiveRecord::Base
     }
     self.authorized_centers=centerList.join('/')
   end
+
+
 end

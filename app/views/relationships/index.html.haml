@@ -13,5 +13,5 @@
 
 = paginate @relationships
 
-%a.fi-plus{ href: new_project_relationship_path(@project) }
+%a.fi-plus{ href: new_project_relationship_path(@project),collection: @relationships }
   = "添加用户关系"

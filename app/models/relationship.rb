@@ -23,5 +23,9 @@ class Relationship < ActiveRecord::Base
     self.centername=self.center.name
   end
 
+  def self.transfer_col_name(name)
+    dbname={"username"=>"user_id","centername"=>"center_id","realname"=>"user_id"}
+    dbname[name]
+  end
 
 end

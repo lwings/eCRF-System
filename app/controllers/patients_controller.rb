@@ -5,10 +5,10 @@ class PatientsController < ApplicationController
   before_action :authenticate_project
   load_and_authorize_resource :patient
   before_action :load_available_centers
-
+  helper_method :sort_column, :sort_direction
   def followup_queue
     @patients=Patient.joins(:followup_monitor).accessible_by(current_ability,:read).where(status:2).where(
-        'overdue_followup>0').order(:created_at).page(params[:page])
+        'overdue_followup>0').order("#{sort_column} #{sort_direction}").page(params[:page])
     @patients.each{|patient|
       patient.set_center_name
       patient.set_overdue_courses
@@ -18,7 +18,7 @@ class PatientsController < ApplicationController
 
   def research_queue
     @patients=Patient.joins(:course_monitor).accessible_by(current_ability,:read).where(status:1).where(
-    'overdue_course>0').order(:created_at).page(params[:page])
+    'overdue_course>0').order("#{sort_column} #{sort_direction}").page(params[:page])
     @patients.each{|patient|
       patient.set_center_name
       patient.set_overdue_courses
@@ -28,7 +28,7 @@ class PatientsController < ApplicationController
 
   def all_patients
     @patients=Patient.accessible_by current_ability,:read
-    @patients = @patients.order(:created_at).page(params[:page])
+    @patients = @patients.order("#{sort_column} #{sort_direction}").page(params[:page])
     @patients.each{|patient|
       patient.set_center_name
       patient.set_overdue_courses
@@ -38,7 +38,7 @@ class PatientsController < ApplicationController
 
   def under_research
     @patients=Patient.accessible_by(current_ability,:read).where('
-    status=1').order(:created_at).page(params[:page])
+    status=1').order("#{sort_column} #{sort_direction}").page(params[:page])
     @patients.each{|patient|
       patient.set_center_name
       patient.set_overdue_courses
@@ -48,7 +48,7 @@ class PatientsController < ApplicationController
 
   def under_followup
     @patients=Patient.accessible_by(current_ability,:read).where('
-    status=2').order(:created_at).page(params[:page])
+    status=2').order("#{sort_column} #{sort_direction}").page(params[:page])
     @patients.each{|patient|
       patient.set_center_name
       patient.set_overdue_courses
@@ -58,7 +58,7 @@ class PatientsController < ApplicationController
 
   def quit_followup
     @patients=Patient.accessible_by(current_ability,:read).where('
-    status=3').order(:created_at).page(params[:page])
+    status=3').order("#{sort_column} #{sort_direction}").page(params[:page])
     @patients.each{|patient|
       patient.set_center_name
       patient.set_overdue_courses
@@ -68,7 +68,7 @@ class PatientsController < ApplicationController
 
   def quited
     @patients=Patient.accessible_by(current_ability,:read).where('
-    status=4').order(:created_at).page(params[:page])
+    status=4').order("#{sort_column} #{sort_direction}").page(params[:page])
     @patients.each{|patient|
       patient.set_center_name
       patient.set_overdue_courses
@@ -171,5 +171,13 @@ class PatientsController < ApplicationController
   def get_research_queue_size
     @patients=Patient.joins(:course_monitor).accessible_by(current_ability,:read).where(status:1).where(
         'overdue_course>0').order(:created_at).page(params[:page]).size
+  end
+
+  def sort_column(c = "created_at")
+    c
+  end
+
+  def sort_direction(d = "asc")
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : d
   end
 end
