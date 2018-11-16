@@ -53,10 +53,14 @@ Rails.application.routes.draw do
     resources :followups
   end
 
-  resources :projects
+  resources :projects do
+    resources :relationships
+  end
+
   resources :research_groups
   resources :roles
   resources :centers
+  resources :relationships
 
   get '/monitor_checker', to:'monitor_checkers#index'
 

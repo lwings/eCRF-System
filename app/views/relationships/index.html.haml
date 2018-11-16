@@ -1,0 +1,17 @@
+-#- content_for :side_bar do
+-#  = render 'shared/sidebar_project'
+
+%h2
+  用户与授权中心
+
+-#  %small 共有#{@projects.total_count}个
+-#
+- operations = {delete: {method: :delete}}
+-#
+= render partial: 'shared/table', locals: { columns: [:username,:realname,:centername], collection: @relationships, operations: operations,
+                                        url_method: {delete: (method :relationship_path)} }
+
+= paginate @relationships
+
+%a.fi-plus{ href: new_project_relationship_path(@project) }
+  = "添加用户关系"

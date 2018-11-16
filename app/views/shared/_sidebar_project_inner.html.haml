@@ -1,0 +1,22 @@
+%ul.side-nav
+
+  %li
+    %ul
+    %li
+      %a= "项目名: #{@project.name}"
+      %a{ href: project_path(@project) }
+        = "基本信息"
+      %a{ href: project_relationships_path(@project) }
+        = "用户组管理"
+    %li.divider
+      %li
+        %a.fi-list-thumbnails{href: projects_path }
+          返回项目列表
+      -#%li
+      -#  %a.fi-plus{href: new_project_path }
+      -#    新建项目
+    -#%li.divider
+    -#  %li
+    -#    %a{href: projects_path }
+    -#      返回项目列表
+

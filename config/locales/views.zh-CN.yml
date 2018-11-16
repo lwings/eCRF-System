@@ -110,6 +110,7 @@ zh-CN:
   users_count: 用户数量
   project_name: 所属项目
   courses_schedules_count: 疗程阶段数
+  centername: 授权中心
 
   #patient_status
   established:  已建立

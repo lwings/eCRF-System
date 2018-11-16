@@ -17,12 +17,14 @@ class Ability
         can :manage,User,:role=>{pri:2..5}
         can :read,Role
         can :manage,Center
+
       end
 
       if user.role.pri==0
         can :manage,User
         can :manage,Role
         can :manage,Center
+
       end
 
       if user.role.pri<=1
@@ -33,11 +35,13 @@ class Ability
         can [:create,:read,:update],Project,initiator_id:user.id
         can [:read,:update],ResearchGroup,:project=>{initiator_id:user.id}
         can :create,ResearchGroup
+        can :manage,Relationship
       end
 
       if user.role.pri==0
         can :manage,Project
         can :manage,ResearchGroup
+        can :manage,Relationship
       end
 
       # patient relevant

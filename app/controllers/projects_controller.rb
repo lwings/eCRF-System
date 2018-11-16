@@ -1,4 +1,5 @@
 class ProjectsController < ApplicationController
+  layout 'project_inner',only: [:show,:edit]
   before_action :authenticate_user!
   load_resource :except=>[:destroy]
   authorize_resource

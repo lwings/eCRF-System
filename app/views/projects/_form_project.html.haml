@@ -12,22 +12,22 @@
       = f.input :remark
   %fieldset
     %legend
-      中心
+      中心计划
     .row
       = f.simple_fields_for :center_project_relationships do |relationships|
         = render 'fields_center_project_relationships', f: relationships
       - if writable
         .links
           = link_to_add_association "添加中心", f, :center_project_relationships, partial: 'fields_center_project_relationships'
-  %fieldset
-    %legend
-      用户
-    .row
-      = f.simple_fields_for :relationships do |relationships|
-        = render 'fields_relationships', f: relationships
-      - if writable
-        .links
-          = link_to_add_association "添加用户", f, :relationships, partial: 'fields_relationships'
+  -#%fieldset
+  -#  %legend
+  -#    用户
+  -#  .row
+  -#    = f.simple_fields_for :relationships do |relationships|
+  -#      = render 'fields_relationships', f: relationships
+  -#    - if writable
+  -#      .links
+  -#        = link_to_add_association "添加用户", f, :relationships, partial: 'fields_relationships'
   %fieldset
     %legend
       试验用药
