@@ -14,7 +14,7 @@
       %li 第#{current_user.sign_in_count || 0}次登录
       %li 上次登录时间：#{ l(current_user.last_sign_in_at) }
     %li.divider
-
+    -if can? :read, MonitorCheckersController
       %a{ href: '/monitor_checker' }
         = "监视器日志"
 

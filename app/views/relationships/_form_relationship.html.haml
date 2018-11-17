@@ -1,7 +1,8 @@
 
 = simple_form_for [@project,@relationship] do |f|
   %fieldset
-    %legend添加用户
-    = f.input :user_id,collection:User.all,label_method: :realname, label:"用户名"
-    = f.input :center_id,collection:Center.all, label:"授权中心"
-    = f.button :submit, class: [:small, :radius]
+    %legend添加用户关系
+    .row
+      = f.input :user_id,collection:User.all,label_method: :realname, label:"姓名"
+      = f.input :center_id,collection:Center.all, label:"授权中心"
+    = f.button :submit,"添加", class: [:small, :radius]

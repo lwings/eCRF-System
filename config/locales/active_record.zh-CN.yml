@@ -259,6 +259,10 @@ zh-CN:
 
       relationship:
         planned_patients_count: 计划病例数
+        username: 用户名
+        realname: 姓名
+        centername: 授权中心
+
       research_group:
         name: 名称
         remark: 备注
