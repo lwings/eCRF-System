@@ -3,12 +3,12 @@
   %head
     %meta{ :charset => 'utf-8' }
     %meta{ :name => 'viewport', :content => 'width=device-width, initial-scale=1.0' }
-    %title="eCRF System-welcome"
+    %title="eCRF System"
 
     = stylesheet_link_tag    'application', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tag
-    -#= favicon_link_tag "apple-touch-icon.png", rel: "apple-touch-icon"
+    = favicon_link_tag "apple-touch-icon.png", rel: "apple-touch-icon"
 
   %body{class: controller_name}
     = yield
