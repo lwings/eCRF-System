@@ -32,25 +32,26 @@ class MedicationCompletion < ActiveRecord::Base
 
   def convertStatusToFollowup
     if self.if_followup
-      self.patient.update(status:3)
+      self.patient.update(status:2)
     end
   end
 
   def convertStatusToQuit
     if self.if_followup==false
-      self.patient.update(status:4)
+      self.patient.update(status:3)
     end
   end
 
   def initFollowupMonitor
     if self.if_followup
       if self.patient.followup_monitor==nil
-        self.patient.followup_monitor.create(research_group:self.patient.group_information.research_group_id)
+        self.patient.create_followup_monitor()
       end
       self.patient.followup_monitor.update(base_followup_days:self.patient.group_information.research_group.base_followup_days,
                                            start_date:self.visit_date,
                                            base_interval:self.patient.group_information.research_group.base_interval,
-                                           last_followup_date:self.visit_date)
+                                           last_followup_date:self.visit_date,
+                                           research_group_id:self.patient.group_information.research_group_id)
     end
   end
 

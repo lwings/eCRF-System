@@ -111,8 +111,15 @@ class PatientsController < ApplicationController
   end
 
   def destroy
-    @patient.destroy
-    redirect_to welcome_guide_path, notice: t('delete_succeed')
+    respond_to do |format|
+      if @patient.courses.size != 0 || @patient.followups.size!=0
+        format.html { redirect_to patient_path(@patient), alert: "必须先删除所有疗程以及随访记录" }
+      else
+        @patient.destroy
+        format.html { redirect_to patients_path, notice: "删除成功"}
+      end
+    end
+
   end
 
   private

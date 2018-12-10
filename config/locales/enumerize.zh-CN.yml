@@ -43,7 +43,7 @@ zh-CN:
       turnover:
         not_recover: 未恢复
         recovering: 恢复中
-        recovered: 以恢复
+        recovered: 已恢复
         unknown: 不详
       is_related_to_drugs:
         relevant: 相关
@@ -216,7 +216,7 @@ zh-CN:
         new_adjucant_therapy: 新辅助
         therapeutic: 治疗性
 
-    resreach_completion:
+    reserach_completion:
       reason_for_early_quit:
         adverse_event: 不良反应
         abnormal_val: 实验室检查值异常

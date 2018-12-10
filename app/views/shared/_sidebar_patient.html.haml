@@ -132,7 +132,7 @@
               = "生存随访表"
             %ul
 
-              - if @patient.status.value==2 and @patient.followups.size>0
+              - if @patient.status.value==2
                 %li
                   -flag=@patient.followup_monitor.try(:persisted?)
                   %a{ href: flag ? send("patient_followup_monitor_path", @patient) :'#',

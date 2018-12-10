@@ -12,8 +12,8 @@ class Project < ActiveRecord::Base
 
 
   # view
-  accepts_nested_attributes_for :relationships,
-                                reject_if: :all_blank, allow_destroy: true
+  # accepts_nested_attributes_for :relationships,
+  #                               reject_if: :all_blank, allow_destroy: true
   accepts_nested_attributes_for :experimental_medications,
                                 reject_if: :all_blank, allow_destroy: true
   accepts_nested_attributes_for :center_project_relationships,
@@ -24,10 +24,10 @@ class Project < ActiveRecord::Base
   attr_accessor :authorized_centers
 
 
-  validates :name,presence: true,uniqueness: true
-  validates_associated :relationships
-  validates_associated :center_project_relationships
-  validates_associated :experimental_medications
+  validates :name,presence: true, uniqueness: true
+  # validates_associated :relationships
+  # validates_associated :center_project_relationships
+  # validates_associated :experimental_medications
 
 
   def set_groups_count

@@ -5,7 +5,7 @@ class ProjectsController < ApplicationController
   authorize_resource
   helper_method :sort_column, :sort_direction
   def new
-    @project.relationships.new
+    # @project.relationships.new
     @project.experimental_medications.new
     @project.center_project_relationships.new
   end
