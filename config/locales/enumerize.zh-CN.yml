@@ -61,6 +61,33 @@ zh-CN:
         abnormal_withsigni: 异常/有临床意义
         abnormal_outsigni: 异常/无临床意义
         unevaluable: 无法评估
+      breast_B_ultrasound_date_diagnosis:
+        normal: 正常
+        abnormal_withsigni: 异常/有临床意义
+        abnormal_outsigni: 异常/无临床意义
+        unevaluable: 无法评估
+      Mammography_diagnosis:
+        normal: 正常
+        abnormal_withsigni: 异常/有临床意义
+        abnormal_outsigni: 异常/无临床意义
+        unevaluable: 无法评估
+      abdominal_B_ultrasound_date_diagnosis:
+        normal: 正常
+        abnormal_withsigni: 异常/有临床意义
+        abnormal_outsigni: 异常/无临床意义
+        unevaluable: 无法评估
+      breast_CT_diagnosis:
+        normal: 正常
+        abnormal_withsigni: 异常/有临床意义
+        abnormal_outsigni: 异常/无临床意义
+        unevaluable: 无法评估
+      echocardiography_diagnosis:
+        normal: 正常
+        abnormal_withsigni: 异常/有临床意义
+        abnormal_outsigni: 异常/无临床意义
+        unevaluable: 无法评估
+
+
 
     clinical_pathology:
       primary_lesion:

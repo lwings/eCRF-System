@@ -26,12 +26,12 @@ zh-CN:
         is_related_to_drugs: 是否与研究药物有关
 
       basement_assessment:
-        height: 身高
-        weight: 体重
-        BMI:
-        systolic_blood_pressure: 收缩压
-        diastolic_blood_pressure: 舒张压
-        physical_state_assessment: 体力状态评估
+        height: 身高(m)
+        weight: 体重(kg)
+        BMI: BMI
+        systolic_blood_pressure: 收缩压mmHg
+        diastolic_blood_pressure: 舒张压mmHg
+        physical_state_assessment: 体力状态评估(ECOG)
         pregnancy_test_date: 检查日期
         pregnancy_test_result: 结果判定
         electrocardiogram_date: 日期
@@ -105,16 +105,16 @@ zh-CN:
       center_project_relationship:
 
       clinical_pathology:
-        primary_lesion: 原发灶
-        regional_lympth_node: 区域淋巴结
+        primary_lesion: 原发灶(T)
+        regional_lympth_node: 区域淋巴结(N)
         matastasis: 远处转移
         histological_type: 组织学类型
         histological_grading: 组织学分级
         vascular_invasion: 脉管侵犯
         ER: ER%
         PR: PR%
-        HER2_IHC:
-        HER2_FISH:
+        HER2_IHC: HER2 IHC
+        HER2_FISH: HER2 FISH
         Ki67: Ki67%
         AR: AR%
         date_of_operation: 手术日期
@@ -130,9 +130,9 @@ zh-CN:
 
       course:
         interview: 访视日期
-        height: 身高
-        weight: 体重
-        body_surface_area: 体表面积
+        height: 身高(m)
+        weight: 体重(kg)
+        body_surface_area: 体表面积(m^2)
         dose:
         date_of_administration:
         if_delay_administration:
@@ -143,7 +143,7 @@ zh-CN:
         description_for_change:
 
       course_medication:
-        dose: 剂量
+        dose: 剂量(mg)
         date_of_administration: 给药日期
         if_delay_administration: 是否延迟给药
         reason_for_delay: 延迟原因
@@ -186,7 +186,8 @@ zh-CN:
         matastasis: 远处转移
         date_of_matastasis: 诊断日期
         contralateral_breast_cancer: 对侧乳腺癌
-        date_of_contralateral_breast_cancer:second_primary_cancer: 诊断日期
+        date_of_contralateral_breast_cancer: 诊断日期
+        second_primary_cancer: 诊断日期
         second_primary_cancer: 第二原发肿瘤
         date_of_second_primary_cancer: 诊断日期
         death: 死亡

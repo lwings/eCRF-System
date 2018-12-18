@@ -7,23 +7,28 @@
       基本信息
     .row
       -if action_name=='edit'
-        = f.input :date_of_visit
+        = f.input :date_of_visit, input_html: {disabled: :disabled}
       -else
         = f.input :date_of_visit
+    .row
       = f.input :local_recurrence
 
       = f.input :date_of_local_recurrence
+
+    .row
       = f.input :matastasis
-
       = f.input :date_of_matastasis
+
+    .row
       = f.input :contralateral_breast_cancer
-
       = f.input :date_of_contralateral_breast_cancer
+
+    .row
       = f.input :second_primary_cancer
-
       = f.input :date_of_second_primary_cancer
-      = f.input :death
 
+    .row
+      = f.input :death
       = f.input :date_of_death
       = f.input :cause_of_death
 

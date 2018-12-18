@@ -4,6 +4,12 @@ class BasementAssessment < ActiveRecord::Base
 
   enumerize :pregnancy_test_result, in:TRIPLET_OPT_II
   enumerize :electrocarddiogram_diagnosis, in:DIAGNOSE_OPT
+  enumerize :breast_B_ultrasound_date_diagnosis, in:DIAGNOSE_OPT
+  enumerize :Mammography_diagnosis, in:DIAGNOSE_OPT
+  enumerize :abdominal_B_ultrasound_date_diagnosis, in:DIAGNOSE_OPT
+  enumerize :breast_CT_diagnosis, in:DIAGNOSE_OPT
+  enumerize :echocardiography_diagnosis, in:DIAGNOSE_OPT
+
 
   belongs_to :patient
 

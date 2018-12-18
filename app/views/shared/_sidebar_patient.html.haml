@@ -39,16 +39,6 @@
           %a{ href: flag ? send("patient_clinical_pathology_path", @patient) :send("new_patient_clinical_pathology_path", @patient) ,
                 class: flag ? 'fi-check' : 'fi-pencil'}
             = "临床病理"
-        %li
-          -flag=@patient.medication_completion.try(:persisted?)
-          %a{ href: flag ? send("patient_medication_completion_path", @patient) :send("new_patient_medication_completion_path", @patient) ,
-                class: flag ? 'fi-check' : 'fi-pencil'}
-            = "用药完成/终止访视表"
-        %li
-          -flag=@patient.reserach_completion.try(:persisted?)
-          %a{ href: flag ? send("patient_reserach_completion_path", @patient) :send("new_patient_reserach_completion_path", @patient) ,
-                class: flag ? 'fi-check' : 'fi-pencil'}
-            = "研究完成/终止访视表"
 
         %li
           %a.fi-check{ href: '#'}
@@ -72,6 +62,19 @@
               %a{href: new_patient_course_path(@patient)}
                 %i.fi-pencil
                 = "新建疗程"
+
+        %li
+          -flag=@patient.medication_completion.try(:persisted?)
+          %a{ href: flag ? send("patient_medication_completion_path", @patient) :send("new_patient_medication_completion_path", @patient) ,
+                class: flag ? 'fi-check' : 'fi-pencil'}
+            = "用药完成/终止访视表"
+        %li
+          -flag=@patient.reserach_completion.try(:persisted?)
+          %a{ href: flag ? send("patient_reserach_completion_path", @patient) :send("new_patient_reserach_completion_path", @patient) ,
+                class: flag ? 'fi-check' : 'fi-pencil'}
+            = "研究完成/终止访视表"
+
+
         %li
           %a.fi-check{ href: '#'}
             = "不良事件报告"

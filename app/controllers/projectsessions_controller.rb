@@ -24,7 +24,7 @@ class ProjectsessionsController < ApplicationController
   def destroy
     session.delete(:project_id)
     session.delete(:project_name)
-    redirect_to project_system_configuration_path,notice: "已退出项目"
+    redirect_to project_system_configuration_path,notice: "项目已退出"
   end
 
   def system_configuration

@@ -12,9 +12,13 @@
         %span.radius.secondary.label
           %b= "#{@project_total_planned_patients}"
       %li
-        本研究实际入组病例数：
+        本研究实际入组病例数(全中心)：
         %span.radius.secondary.label
           %b= "#{@project_total_patients}"
+      %li
+        本研究实际入组病例数(当前已授权)：
+        %span.radius.secondary.label
+          %b= "#{@project_totalauthorized_center_patients}"
       %li
         授权中心计划入组病例数：
       %ul.square

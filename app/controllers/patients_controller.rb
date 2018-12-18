@@ -88,6 +88,8 @@ class PatientsController < ApplicationController
 
   def index
 
+    get_total_authorized_center_patients
+
     get_center_planned_patients
 
     get_project_total_planned_patients
@@ -161,6 +163,10 @@ class PatientsController < ApplicationController
       @project_total_planned_patients+=cpr.planned_patients_count
     }
     @project_total_patients=Patient.where(project_id:current_project.id).size()
+  end
+
+  def get_total_authorized_center_patients
+    @project_totalauthorized_center_patients=Patient.accessible_by(current_ability,:read).size()
   end
 
   def get_center_patients

@@ -52,8 +52,14 @@ class Ability
       user.relationships.where(project_id:project.id).each{|re|
         center_id=re.center_id
         privelege={:center_id => center_id,:project_id=>project.id}
-        can :manage,Patient,privelege
-        can :manage,patient_model_list,:patient=>privelege
+        if user.role.pri==5
+          can :read,Patient,privelege
+          can :read,patient_model_list,:patient=>privelege
+        else
+          can :manage,Patient,privelege
+          can :manage,patient_model_list,:patient=>privelege
+        end
+
       }
 
     end
