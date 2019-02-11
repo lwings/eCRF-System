@@ -10,6 +10,6 @@
 
     .row
       = f.input :name, front_error: required
-      = f.input :diagnostic_date, front_error: required,as: :date, start_year: Date.today.year - 10,
+      = f.input :diagnostic_date, front_error: required,as: :date, start_year: Date.today.year - 40,
                               end_year: Date.today.year
       = f.input :disease_status, front_error: required

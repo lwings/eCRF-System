@@ -3,10 +3,10 @@ module Constant
   TRIPLET_OPT_I={yes:0,no:1,unknown:2}
   TRIPLET_OPT_II={neg:0,pos:1,unknown:2}
   DIAGNOSE_OPT={normal:0,abnormal_withsigni:1,abnormal_outsigni:2,unevaluable:3}
-  PRILESION_OPT={"1a":0,"1b":1,"1c":2,"2":3,"3":4,"4":5,"is":6,"x":7}
+  PRILESION_OPT={"1a":0,"1b":1,"1c":2,"2":3,"3":4,"4":5,"is":6,"x":7,"1":8}
   LYMNODE_OPT={"0":0,"1":1,"2":2,"3":3,unknown:4}
   HISTYPE_OPT={invasive_ductal_carcinoma:0,invasive_lobular_carcinoma:1,
-               mucinous_carcinoma:2,others:3}
+               mucinous_carcinoma:2,IDC_DCIS:3,others:4}
   HISGRAD_OPT={"I":0,"I~II":1,"II":2,"II~III":3,"III":4,unknown:5}
   HER2IHC_OPT={"0":0,"+":1,"+~++":2,"++":3,"++~+++":4,"+++":5}
   DIEASESTAT_OPT={cured:0,drug_control:1,no_drug_control:2}
@@ -33,7 +33,7 @@ module Constant
   BLOODRNAME_OPT={leukocyte:0,neutrophil_abs:1,red_blood_cell:2,platelet:3,hematocrit:4,hemoglobin:5}
   BLOODCNAME_OPT={alanine_aminotransferase:0,aspartate_aminotransferase:1,
                  alkaline_phosphatase:2,total_bilirubin:3,direct_bilirubin:4,creatinine:5,
-                  urea:6,transpeptidase:7,blood_glucose:8}
+                  urea:6,transpeptidase:7,blood_glucose:8,albumin:9}
   BLOODRUNIT_OPT={"X10^9/L":0,"g/L":1,"X10^12/L":2}
   BLOODCUNIT_OPT={"IU/L":0,"umol/L":1,"mmol/L":2}
   TUMORNAME_OPT={carcinoembryonic_antigen:0,carbohydrate_antigen_125:1,carbohydrate_antigen_153:2}

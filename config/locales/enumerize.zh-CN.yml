@@ -97,6 +97,7 @@ zh-CN:
         invasive_ductal_carcinoma: 浸润性导管癌
         invasive_lobular_carcinoma: 浸润性小叶癌
         mucinous_carcinoma: 粘液癌
+        IDC_DCIS: IDC伴DCIS
         others: 其他
       histological_grading:
         unknown: 未知
@@ -130,7 +131,8 @@ zh-CN:
         creatinine: 肌酐
         urea: 尿素氮
         transpeptidase: 转肽酶
-        blood_sugar: 血糖
+        blood_glucose: 血糖
+        albumin: 总白蛋白
 
     blood_biochemistry_med:
       name:
@@ -155,6 +157,7 @@ zh-CN:
         urea: 尿素氮
         transpeptidase: 转肽酶
         blood_glucose: 血糖
+        albumin: 总白蛋白
 
     blood_routine:
       name:

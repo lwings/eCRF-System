@@ -34,7 +34,7 @@ class ConcomitantDrugsController < ApplicationController
   def concomitant_drug_params
     params.require(:concomitant_drug).permit(
     :drugs,:cause_for_this_drug,
-    :daily_dose,:unit_of_dose,:tart_date,:end_date
+    :daily_dose,:unit_of_dose,:start_date,:end_date
     )
   end
 end
