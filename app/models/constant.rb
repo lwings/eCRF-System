@@ -35,7 +35,7 @@ module Constant
                  alkaline_phosphatase:2,total_bilirubin:3,direct_bilirubin:4,creatinine:5,
                   urea:6,transpeptidase:7,blood_glucose:8,albumin:9}
   BLOODRUNIT_OPT={"X10^9/L":0,"g/L":1,"X10^12/L":2}
-  BLOODCUNIT_OPT={"IU/L":0,"umol/L":1,"mmol/L":2}
+  BLOODCUNIT_OPT={"IU/L":0,"umol/L":1,"mmol/L":2,"g/L":2}
   TUMORNAME_OPT={carcinoembryonic_antigen:0,carbohydrate_antigen_125:1,carbohydrate_antigen_153:2}
   TUMORUNIT_OPT={"U/mL":0,others:1}
 end

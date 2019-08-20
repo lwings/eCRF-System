@@ -1,5 +1,5 @@
 GEM
-  remote: https://ruby.taobao.org/
+  remote: https://gems.ruby-china.com/
   specs:
     actionmailer (4.2.0)
       actionpack (= 4.2.0)
@@ -299,3 +299,6 @@ DEPENDENCIES
   web-console (~> 2.0)
   whenever (= 0.9.7)
   wkhtmltoimage-binary
+
+BUNDLED WITH
+   1.17.3
