@@ -4,6 +4,7 @@ class ClinicalPathology < ActiveRecord::Base
 
   enumerize :primary_lesion, in: PRILESION_OPT
   enumerize :regional_lympth_node, in: LYMNODE_OPT
+  enumerize :op_breast_mode, in: BREAST_MODE_OPT
   enumerize :histological_type, in: HISTYPE_OPT
   enumerize :histological_grading, in: HISGRAD_OPT
   enumerize :vascular_invasion, in: TRIPLET_OPT_I

@@ -110,6 +110,11 @@ zh-CN:
         neg: 阴性
         pos: 阳性
         unknown: 未做
+      op_breast_mode:
+        conserve: 保乳
+        mastectomy: 单切
+
+
 
     biological_sample_collection:
       biological_sample:

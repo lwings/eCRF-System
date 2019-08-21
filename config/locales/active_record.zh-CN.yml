@@ -117,6 +117,7 @@ zh-CN:
         HER2_FISH: HER2 FISH
         Ki67: Ki67%
         AR: AR%
+        op_breast_mode: 乳房手术方式
         date_of_operation: 手术日期
 
       concomitant_drug:
