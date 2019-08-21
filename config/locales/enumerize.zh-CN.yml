@@ -102,8 +102,8 @@ zh-CN:
       histological_grading:
         unknown: 未知
       vascular_invasion:
-        yes: 是
-        no: 否
+        "yes": 是
+        "no": 否
         unknown: 不详
       HER2_IHC:
       HER2_FISH:
