@@ -129,7 +129,7 @@ class PatientsController < ApplicationController
     params.require(:patient).permit(
         :center_id, :user_id, :project_id,
 
-        :pid, :name, :ID_number, :phone_number_1,:phone_number_2,
+        :pid, :name, :ID_number, :phone_number_1,:phone_number_2,:date_of_birth,
 
         :hosptalization_number,:followup_left
     )
