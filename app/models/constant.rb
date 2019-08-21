@@ -38,5 +38,6 @@ module Constant
   BLOODCUNIT_OPT={"IU/L":0,"umol/L":1,"mmol/L":2,"g/L":2}
   TUMORNAME_OPT={carcinoembryonic_antigen:0,carbohydrate_antigen_125:1,carbohydrate_antigen_153:2}
   TUMORUNIT_OPT={"U/mL":0,others:1}
-  BREAST_MODE_OPT={conserve:0, mastectomy:1}
+  OP_BREAST_MODE_OPT={conserve:0, mastectomy:1}
+  OP_ARMPIT_MODE_OPT={axilla:0, sentinel:1}
 end

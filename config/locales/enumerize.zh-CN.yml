@@ -113,6 +113,9 @@ zh-CN:
       op_breast_mode:
         conserve: 保乳
         mastectomy: 单切
+      op_armpit_mode:
+        axilla: 腋窝淋巴结清扫术
+        sentinel: 前哨淋巴结活检术
 
 
 
