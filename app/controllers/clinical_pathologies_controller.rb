@@ -37,7 +37,7 @@ class ClinicalPathologiesController < ApplicationController
   private
   def clinical_pathology_params
     params.require(:clinical_pathology).permit(
-        :patient_id,:primary_lesion,:regional_lympth_node,:op_breast_mode,:op_armpit_mode,
+        :patient_id,:primary_lesion,:regional_lympth_node,:op_breast_mode,:op_armpit_mode,:comment,
         :matastasis,:histological_type,:histological_grading,
         :vascular_invasion, :ER,:PR,:HER2_IHC,:HER2_FISH,
         :Ki67, :AR,:date_of_operation,

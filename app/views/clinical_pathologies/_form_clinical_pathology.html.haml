@@ -23,6 +23,7 @@
       = f.input :op_armpit_mode
       = f.input :date_of_operation,as: :date, start_year: Date.today.year - 10,
                               end_year: 2025
+      = f.input :comment
 
 
   = f.simple_fields_for :history_of_nonbreast_cancers do |history_of_nonbreast_cancers|

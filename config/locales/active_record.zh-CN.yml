@@ -120,6 +120,7 @@ zh-CN:
         op_breast_mode: 乳房手术方式
         op_armpit_mode: 腋窝手术方式
         date_of_operation: 手术日期
+        comment: 备注
 
       concomitant_drug:
         if_concomitant: 是否合并用药
