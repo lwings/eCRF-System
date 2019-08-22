@@ -1,14 +1,15 @@
 class SearchController < ApplicationController
   # before_action :authenticate_user!
   helper_method :sort_column, :sort_direction
-
+  # before_action :get_available_research_groups
   def index
     # authorize! :read, Patient
 
     @q = Patient.ransack(params[:q])
     return unless params[:q].present?
-
     #@q.sorts = 'updated_at desc' if @q.sorts.empty?
+    # @research_groups = @project.research_groups.all
+    # p @research_groups
     @patients = @q.result(distinct: true)
     # @patients = @q.result.accessible_by(current_ability, :read).uniq
     respond_to do |format|
@@ -99,6 +100,12 @@ class SearchController < ApplicationController
       end
     end
   end
+
+  def get_available_research_groups
+    p :project_name
+    @available_research_groups = @project.research_groups.all
+  end
+
   def value_fields
     @selected = {option:params[:selected_id],id:params[:v_id],name:params[:v_name],object_name:params[:v_name][0..-14]}
     respond_to do |format|
