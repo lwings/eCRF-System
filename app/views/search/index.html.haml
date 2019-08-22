@@ -41,12 +41,12 @@
     .columns.medium-4.large-3
       = f.label :date_of_birth_gteq
       .date
-        = f.date_select :date_of_birth_gteq, as: :date
+        = f.date_select :date_of_birth_gteq, as: :date, start_year: Date.today.year - 60
 
     .columns.medium-4.large-3
       = f.label :date_of_birth_lteq
       .date
-        = f.date_select :date_of_birth_lteq, as: :date
+        = f.date_select :date_of_birth_lteq, as: :date, start_year: Date.today.year - 60
 
     .columns.medium-4.large-3
       = f.label :hosptalization_number_eq
@@ -54,7 +54,7 @@
 
     -#.columns.medium-4.large-3
       = f.label :group_information_research_group_id_eq
-      = f.select :group_information_research_group_id_eq, @available_research_groups
+      = f.select :group_information_research_group_id_eq, @research_groups
       -#= f.search_field :group_information_research_group_id_eq
 
     .columns.medium-4.large-3

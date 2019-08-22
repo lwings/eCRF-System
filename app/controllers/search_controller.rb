@@ -1,7 +1,7 @@
 class SearchController < ApplicationController
   # before_action :authenticate_user!
   helper_method :sort_column, :sort_direction
-  # before_action :get_available_research_groups
+  before_action :get_available_research_groups
   def index
     # authorize! :read, Patient
 
@@ -102,8 +102,10 @@ class SearchController < ApplicationController
   end
 
   def get_available_research_groups
-    p :project_name
-    @available_research_groups = @project.research_groups.all
+    # p :project_name
+    sql = "select distinct(research_groups.name) from group_informations inner join patients on (group_informations.patient_id = patients.id) inner join research_groups on (research_groups.id = group_informations.research_group_id);"
+    @research_groups = ActiveRecord::Base.connection.exec_query(sql)
+    # @available_research_groups = @project.research_groups.all
   end
 
   def value_fields
