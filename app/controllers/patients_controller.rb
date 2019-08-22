@@ -193,4 +193,13 @@ class PatientsController < ApplicationController
   def sort_direction(d = "asc")
     %w[asc desc].include?(params[:direction]) ? params[:direction] : d
   end
+
+  # TODO
+  # def self.ransackable_scopes(auth_object = nil)
+  #   %i(bmis ages has_operation_lesions_op_axilla_mode has_operation_lesions_op_breast_mode has_twenty_one_gene_mode)
+  # end
+  # RANSACKABLE_ATTRIBUTES = %w( center_id pid hosptalization_number name gender age weight height bmi identity attend_doctor status )
+  # def self.ransackable_attributes(auth_object = nil)
+  #   RANSACKABLE_ATTRIBUTES  + _ransackers.keys
+  # end
 end

@@ -1,0 +1,68 @@
+.search-nav
+  %a.active{href: search_path} 基本查询
+  %a{href: '#'} 高级查询
+  %a{href: '#'} 自定义查询
+- scope = { scope: [:activerecord, :attributes] }
+
+= search_form_for @q, url: search_path, method: :get do |f|
+  -#%ul.accordion{"data-accordion" => "", :role => "tablist"}
+  -#  %li.accordion-navigation
+  -#    %a#patient-heading{"aria-controls" => "patient", :href => "#patient", :role => "tab"}
+  -#      = Patient.model_name.human
+  -#    #patient.content.active{"aria-labelledby" => "patient-heading", :role => "tabpanel"}
+  -#      .row
+  -#        = f.search_field :name_cont, label: t('patient.name', scope)
+          -#= f.input :age_lteq, label: t('patient.age', scope) + " <="
+          -#= f.input :created_at_gteq, label: t('patient.created_at', scope) + " >=", as: :date
+          -#= f.input :created_at_lteq, label: t('patient.created_at', scope) + " <=", as: :date
+
+          -#= f.input :attend_doctor_cont, label: t('patient.attend_doctor'.freeze, scope)
+          -#= f.input :is_in_clinical_research_eq, collection: Patient.is_in_clinical_research.value_options, label: t('patient.is_in_clinical_research', scope)
+
+    -#%li.accordion-navigation
+    -#  %a#center-heading{"aria-controls" => "center", :href => "#center", :role => "tab"}
+    -#    = Center.model_name.human
+    -#  #center.content.active{"aria-labelledby" => "center-heading", :role => "tabpanel"}
+    -#    .row
+    -#      = f.search_field :name_cont, label: t('center.name', scope)
+          -#= f.input :history_cancer_history_present, as: :select, label: t('history.has_cancer_history'.freeze, scope)
+          -#= f.input :history_family_breast_cancer_present, as: :select, label: t('history.has_family_breast_cancer'.freeze, scope)
+          -#= f.input :history_family_ovarian_cancer_present, as: :select, label: t('history.has_family_ovarian_cancer'.freeze, scope)
+
+  .row
+    .columns.medium-4.large-3
+      = f.label :name_cont
+      = f.search_field :name_cont
+
+    .columns.medium-4.large-3
+      = f.label :pid_start
+      = f.search_field :pid_start
+
+    .columns.medium-4.large-3
+      = f.label :hosptalization_number_eq
+      = f.search_field :hosptalization_number_eq
+
+  -#.row
+  -#  .columns.medium-4.large-3
+  -#    = f.label :age_gteq
+  -#    = f.search_field :age_gteq
+  -#
+  -#  .columns.medium-4.large-3
+  -#    = f.label :age_lteq
+  -#    = f.search_field :age_lteq
+  -#
+  -#  .columns.medium-4.large-3
+  -#    = f.label t('operation.surgery_date', scope)+ ' >='
+  -#    .date
+  -#      = f.date_select :operation_surgery_date_gteq, as: :date
+  -#
+  -#  .columns.medium-4.large-3
+  -#    = f.label t('operation.surgery_date', scope)+ ' <='
+  -#    .date
+  -#      = f.date_select :operation_surgery_date_lteq, as: :date
+  = f.submit class: [:button, :tiny, :radius]
+
+%hr
+
+= render 'result'
+

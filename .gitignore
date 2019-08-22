@@ -76,3 +76,5 @@ stop_ruleEng.sh
 restart_wf.sh
 restart_wf_mq.sh
 config/unicorn.rb
+
+**/.DS_Store
