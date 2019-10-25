@@ -2,7 +2,10 @@ source 'https://gems.ruby-china.com'
 
 ## rails
 ## {{
-gem 'rails', '4.2.0'
+# gem 'rails', '4.2.0'
+gem 'rails', '~> 4.2.4', git: "git://github.com/rails/rails.git", branch: '4-2-stable'
+gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw] #-> Rails 4.1+
+
 gem 'sass-rails', '~> 5.0'                  # css
 gem 'uglifier', '>= 1.3.0'                  # javascript
 gem 'coffee-rails', '~> 4.1.0'              # coffeescript
@@ -15,7 +18,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc         # `rake doc:rails` -- generate API u
 
 ## database
 ## {{
-gem 'mysql2', '~> 0.3.18'                   # mysql adapter
+gem 'mysql2', '~> 0.4.10'                   # mysql adapter
 gem 'enumerize', '~> 0.10.1'                # enum type
 gem 'flag_shih_tzu', '~> 0.3.13'            # bit field
 # gem 'paperclip', '~> 4.2.1'                 # file attach
