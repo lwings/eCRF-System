@@ -1,0 +1,43 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  clinical_pathology_id: 
+  op_position: 1
+  op_date: 2019-10-27
+  op_breast_mode: 1
+  op_armpit_mode: 1
+  tumor_size: 1.5
+  lympth_matastasis_cnt: 1
+  histological_type: 1
+  histological_grading: 1
+  ER: 1
+  ER_strength: 1
+  PR: 1
+  PR_strength: 1
+  HER2_IHC: 1
+  HER2_FISH: 1
+  Ki67: 1
+  AR: 1
+  AR_strength: 1
+  comment: MyString
+
+two:
+  clinical_pathology_id: 
+  op_position: 1
+  op_date: 2019-10-27
+  op_breast_mode: 1
+  op_armpit_mode: 1
+  tumor_size: 1.5
+  lympth_matastasis_cnt: 1
+  histological_type: 1
+  histological_grading: 1
+  ER: 1
+  ER_strength: 1
+  PR: 1
+  PR_strength: 1
+  HER2_IHC: 1
+  HER2_FISH: 1
+  Ki67: 1
+  AR: 1
+  AR_strength: 1
+  comment: MyString

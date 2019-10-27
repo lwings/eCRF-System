@@ -214,6 +214,51 @@ zh-CN:
         diagnostic_date: 诊断日期
         disease_status: 疾病状态
 
+
+      first_diagnosis_clinical_phase:
+        primary_lesion: 原发灶(T)
+        regional_lympth_node: 区域淋巴结(cN)
+        matastasis: 远处转移
+
+      biopsy_clinical_info:
+        biopsy_position: 活检位置
+        biopsy_position_remark: 活检位置备注
+        biopsy_date: 活检时间
+        biopsy_mode: 活检方式
+        histological_type: 组织学类型
+        histological_grading: 组织学分级
+        ER: ER%
+        ER_strength: ER强度
+        PR: PR%
+        PR_strength: PR强度
+        HER2_IHC: HER2 IHC
+        HER2_FISH: HER2 FISH
+        Ki67: Ki67%
+        AR: AR%
+        AR_strength: AR强度
+        comment: 备注
+
+      operation_clinical_info:
+        op_position: 手术位置
+        op_date: 手术时间
+        op_breast_mode: 乳房手术方式
+        op_armpit_mode: 腋窝手术方式
+        tumor_size: 肿瘤大小(cm)
+        lympth_matastasis_cnt: 淋巴结转移个数
+        histological_type: 组织学类型
+        histological_grading: 组织学分级
+        ER: ER%
+        ER_strength: ER强度
+        PR: PR%
+        PR_strength: PR强度
+        HER2_IHC: HER2 IHC
+        HER2_FISH: HER2 FISH
+        Ki67: Ki67%
+        AR: AR%
+        AR_strength: AR强度
+        comment: 备注
+
+
       medication_completion:
         visit_date: 访视日期
         height: 身高

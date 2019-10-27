@@ -25,6 +25,23 @@
                               end_year: 2025
       = f.input :comment
 
+  = f.simple_fields_for :first_diagnosis_clinical_phases do |first_diagnosis_clinical_phases|
+    = render 'fields_first_diagnosis_clinical_phase', f:first_diagnosis_clinical_phases
+  - if writable
+    .links
+      = link_to_add_association "添加初诊临床分期记录", f, :first_diagnosis_clinical_phases, partial: 'fields_first_diagnosis_clinical_phase'
+
+  = f.simple_fields_for :biopsy_clinical_infos do |biopsy_clinical_infos|
+    = render 'fields_biopsy_clinical_info', f:biopsy_clinical_infos
+  - if writable
+    .links
+      = link_to_add_association "添加活检临床病理信息记录", f, :biopsy_clinical_infos, partial: 'fields_biopsy_clinical_info'
+
+  = f.simple_fields_for :operation_clinical_infos do |operation_clinical_infos|
+    = render 'fields_operation_clinical_info', f:operation_clinical_infos
+  - if writable
+    .links
+      = link_to_add_association "添加手术临床病理信息记录", f, :operation_clinical_infos, partial: 'fields_operation_clinical_info'
 
   = f.simple_fields_for :history_of_nonbreast_cancers do |history_of_nonbreast_cancers|
     = render 'fields_history_of_nonbreast_cancer', f: history_of_nonbreast_cancers
@@ -32,7 +49,7 @@
 
   - if writable
     .links
-      = link_to_add_association "添加记录", f, :history_of_nonbreast_cancers, partial: 'fields_history_of_nonbreast_cancer'
+      = link_to_add_association "添加既往非乳腺癌病史记录", f, :history_of_nonbreast_cancers, partial: 'fields_history_of_nonbreast_cancer'
 
 
   = f.simple_fields_for :family_histories do |family_histories|
@@ -41,7 +58,7 @@
 
   - if writable
     .links
-      = link_to_add_association "添加记录", f, :family_histories, partial: 'fields_family_history'
+      = link_to_add_association "添加家族史记录", f, :family_histories, partial: 'fields_family_history'
 
 
     = f.button :submit, class: [:small, :radius]

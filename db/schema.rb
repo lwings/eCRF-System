@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190821125521) do
+ActiveRecord::Schema.define(version: 20191027075318) do
 
   create_table "adverse_events", force: :cascade do |t|
     t.integer  "patient_id",          limit: 4
@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 20190821125521) do
     t.date     "recover_date"
     t.text     "remark",              limit: 65535
     t.integer  "NCI_CTCAE_V_4",       limit: 4
-    t.boolean  "is_SAE",              limit: 1
+    t.boolean  "is_SAE"
     t.integer  "is_related_to_drugs", limit: 4
     t.datetime "created_at",                        null: false
     t.datetime "updated_at",                        null: false
@@ -74,6 +74,30 @@ ActiveRecord::Schema.define(version: 20190821125521) do
   end
 
   add_index "biological_sample_collections", ["patient_id"], name: "index_biological_sample_collections_on_patient_id", using: :btree
+
+  create_table "biopsy_clinical_infos", force: :cascade do |t|
+    t.integer  "clinical_pathology_id",  limit: 4
+    t.integer  "biopsy_position",        limit: 4
+    t.string   "biopsy_position_remark", limit: 255
+    t.date     "biopsy_date"
+    t.integer  "biopsy_mode",            limit: 4
+    t.integer  "histological_type",      limit: 4
+    t.integer  "histological_grading",   limit: 4
+    t.integer  "ER",                     limit: 4
+    t.integer  "ER_strength",            limit: 4
+    t.integer  "PR",                     limit: 4
+    t.integer  "PR_strength",            limit: 4
+    t.integer  "HER2_IHC",               limit: 4
+    t.integer  "HER2_FISH",              limit: 4
+    t.integer  "Ki67",                   limit: 4
+    t.integer  "AR",                     limit: 4
+    t.integer  "AR_strength",            limit: 4
+    t.string   "comment",                limit: 255
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+  end
+
+  add_index "biopsy_clinical_infos", ["clinical_pathology_id"], name: "index_biopsy_clinical_infos_on_clinical_pathology_id", using: :btree
 
   create_table "blood_biochemistries", force: :cascade do |t|
     t.integer  "basement_assessment_id", limit: 4
@@ -169,7 +193,7 @@ ActiveRecord::Schema.define(version: 20190821125521) do
     t.integer  "patient_id",           limit: 4
     t.integer  "primary_lesion",       limit: 4
     t.integer  "regional_lympth_node", limit: 4
-    t.boolean  "matastasis",           limit: 1
+    t.boolean  "matastasis"
     t.integer  "histological_type",    limit: 4
     t.integer  "histological_grading", limit: 4
     t.integer  "vascular_invasion",    limit: 4
@@ -207,10 +231,10 @@ ActiveRecord::Schema.define(version: 20190821125521) do
     t.integer  "course_id",                  limit: 4
     t.float    "dose",                       limit: 24
     t.date     "date_of_administration"
-    t.boolean  "if_delay_administration",    limit: 1
+    t.boolean  "if_delay_administration"
     t.integer  "reason_for_delay",           limit: 4
     t.text     "description_for_delay",      limit: 65535
-    t.boolean  "if_change_dose",             limit: 1
+    t.boolean  "if_change_dose"
     t.integer  "reason_for_change",          limit: 4
     t.text     "description_for_change",     limit: 65535
     t.datetime "created_at",                               null: false
@@ -292,6 +316,17 @@ ActiveRecord::Schema.define(version: 20190821125521) do
 
   add_index "family_histories", ["clinical_pathology_id"], name: "index_family_histories_on_clinical_pathology_id", using: :btree
 
+  create_table "first_diagnosis_clinical_phases", force: :cascade do |t|
+    t.integer  "clinical_pathology_id", limit: 4
+    t.integer  "primary_lesion",        limit: 4
+    t.integer  "regional_lympth_node",  limit: 4
+    t.boolean  "matastasis"
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+  end
+
+  add_index "first_diagnosis_clinical_phases", ["clinical_pathology_id"], name: "index_first_diagnosis_clinical_phases_on_clinical_pathology_id", using: :btree
+
   create_table "followup_monitors", force: :cascade do |t|
     t.integer  "patient_id",         limit: 4
     t.integer  "research_group_id",  limit: 4
@@ -310,15 +345,15 @@ ActiveRecord::Schema.define(version: 20190821125521) do
   create_table "followups", force: :cascade do |t|
     t.integer  "patient_id",                          limit: 4
     t.date     "date_of_visit"
-    t.boolean  "local_recurrence",                    limit: 1
+    t.boolean  "local_recurrence"
     t.date     "date_of_local_recurrence"
-    t.boolean  "matastasis",                          limit: 1
+    t.boolean  "matastasis"
     t.date     "date_of_matastasis"
-    t.boolean  "contralateral_breast_cancer",         limit: 1
+    t.boolean  "contralateral_breast_cancer"
     t.date     "date_of_contralateral_breast_cancer"
-    t.boolean  "second_primary_cancer",               limit: 1
+    t.boolean  "second_primary_cancer"
     t.date     "date_of_second_primary_cancer"
-    t.boolean  "death",                               limit: 1
+    t.boolean  "death"
     t.date     "date_of_death"
     t.integer  "cause_of_death",                      limit: 4
     t.datetime "created_at",                                    null: false
@@ -330,7 +365,7 @@ ActiveRecord::Schema.define(version: 20190821125521) do
   create_table "group_informations", force: :cascade do |t|
     t.integer  "patient_id",                 limit: 4
     t.integer  "research_group_id",          limit: 4
-    t.boolean  "is_meet_inclusion_criteria", limit: 1
+    t.boolean  "is_meet_inclusion_criteria"
     t.date     "inform_consent_date"
     t.date     "random_groping_date"
     t.datetime "created_at",                           null: false
@@ -359,7 +394,7 @@ ActiveRecord::Schema.define(version: 20190821125521) do
     t.integer  "ECOG",                   limit: 4
     t.integer  "physical_examination",   limit: 4
     t.text     "description",            limit: 65535
-    t.boolean  "if_followup",            limit: 1
+    t.boolean  "if_followup"
     t.date     "breast_Bultra_date"
     t.integer  "breast_Bultra_diagnose", limit: 4
     t.string   "breast_abnormal",        limit: 255
@@ -371,6 +406,32 @@ ActiveRecord::Schema.define(version: 20190821125521) do
   end
 
   add_index "medication_completions", ["patient_id"], name: "index_medication_completions_on_patient_id", using: :btree
+
+  create_table "operation_clinical_infos", force: :cascade do |t|
+    t.integer  "clinical_pathology_id", limit: 4
+    t.integer  "op_position",           limit: 4
+    t.date     "op_date"
+    t.integer  "op_breast_mode",        limit: 4
+    t.integer  "op_armpit_mode",        limit: 4
+    t.float    "tumor_size",            limit: 24
+    t.integer  "lympth_matastasis_cnt", limit: 4
+    t.integer  "histological_type",     limit: 4
+    t.integer  "histological_grading",  limit: 4
+    t.integer  "ER",                    limit: 4
+    t.integer  "ER_strength",           limit: 4
+    t.integer  "PR",                    limit: 4
+    t.integer  "PR_strength",           limit: 4
+    t.integer  "HER2_IHC",              limit: 4
+    t.integer  "HER2_FISH",             limit: 4
+    t.integer  "Ki67",                  limit: 4
+    t.integer  "AR",                    limit: 4
+    t.integer  "AR_strength",           limit: 4
+    t.string   "comment",               limit: 255
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+  end
+
+  add_index "operation_clinical_infos", ["clinical_pathology_id"], name: "index_operation_clinical_infos_on_clinical_pathology_id", using: :btree
 
   create_table "patients", force: :cascade do |t|
     t.integer  "status",                limit: 4,   default: 0
@@ -402,7 +463,7 @@ ActiveRecord::Schema.define(version: 20190821125521) do
 
   create_table "radiation_therapies", force: :cascade do |t|
     t.integer  "patient_id",              limit: 4
-    t.boolean  "is_radiation",            limit: 1
+    t.boolean  "is_radiation"
     t.integer  "radiotherapy_site",       limit: 4
     t.integer  "therapy_type",            limit: 4
     t.float    "radiotherapy_dose",       limit: 24
@@ -452,7 +513,7 @@ ActiveRecord::Schema.define(version: 20190821125521) do
   create_table "reserach_completions", force: :cascade do |t|
     t.integer  "patient_id",                            limit: 4
     t.date     "date_of_last_confirmation"
-    t.boolean  "if_complete_therapy_according_to_plan", limit: 1
+    t.boolean  "if_complete_therapy_according_to_plan"
     t.integer  "reason_for_early_quit",                 limit: 4
     t.text     "description",                           limit: 65535
     t.datetime "created_at",                                          null: false
@@ -473,7 +534,7 @@ ActiveRecord::Schema.define(version: 20190821125521) do
     t.integer  "medication_completion_id", limit: 4
     t.float    "value",                    limit: 24
     t.date     "sample_date"
-    t.boolean  "is_local_hospital",        limit: 1
+    t.boolean  "is_local_hospital"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.integer  "name",                     limit: 4,  null: false
@@ -506,7 +567,10 @@ ActiveRecord::Schema.define(version: 20190821125521) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["role_id"], name: "index_users_on_role_id", using: :btree
 
+  add_foreign_key "biopsy_clinical_infos", "clinical_pathologies"
   add_foreign_key "course_medications", "experimental_medications"
+  add_foreign_key "first_diagnosis_clinical_phases", "clinical_pathologies"
+  add_foreign_key "operation_clinical_infos", "clinical_pathologies"
   add_foreign_key "patients", "centers"
   add_foreign_key "researches", "projects"
 end
