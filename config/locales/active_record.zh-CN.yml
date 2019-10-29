@@ -243,6 +243,8 @@ zh-CN:
         op_date: 手术时间
         op_breast_mode: 乳房手术方式
         op_armpit_mode: 腋窝手术方式
+        primary_lesion: 原发灶(pT)
+        regional_lympth_node: 区域淋巴结(pN)
         tumor_size: 肿瘤大小(cm)
         lympth_matastasis_cnt: 淋巴结转移个数
         histological_type: 组织学类型

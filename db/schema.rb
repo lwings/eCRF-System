@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20191027075318) do
+ActiveRecord::Schema.define(version: 20191029061838) do
 
   create_table "adverse_events", force: :cascade do |t|
     t.integer  "patient_id",          limit: 4
@@ -320,7 +320,7 @@ ActiveRecord::Schema.define(version: 20191027075318) do
     t.integer  "clinical_pathology_id", limit: 4
     t.integer  "primary_lesion",        limit: 4
     t.integer  "regional_lympth_node",  limit: 4
-    t.boolean  "matastasis"
+    t.integer  "matastasis",            limit: 4
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
   end
@@ -429,6 +429,8 @@ ActiveRecord::Schema.define(version: 20191027075318) do
     t.string   "comment",               limit: 255
     t.datetime "created_at",                        null: false
     t.datetime "updated_at",                        null: false
+    t.integer  "primary_lesion",        limit: 4
+    t.integer  "regional_lympth_node",  limit: 4
   end
 
   add_index "operation_clinical_infos", ["clinical_pathology_id"], name: "index_operation_clinical_infos_on_clinical_pathology_id", using: :btree

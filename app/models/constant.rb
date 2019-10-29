@@ -6,7 +6,7 @@ module Constant
   PRILESION_OPT={"1a":0,"1b":1,"1c":2,"2":3,"3":4,"4":5,"is":6,"x":7,"1":8}
   LYMNODE_OPT={"0":0,"1":1,"2":2,"3":3,unknown:4,"x":5}
   HISTYPE_OPT={invasive_ductal_carcinoma:0,invasive_lobular_carcinoma:1,
-               mucinous_carcinoma:2,IDC_DCIS:3,others:4}
+               mucinous_carcinoma:2,DCIS:3,IDC_DCIS:4,MBC:5,others:6}
   HISGRAD_OPT={"I":0,"I~II":1,"II":2,"II~III":3,"III":4,unknown:5}
   HER2IHC_OPT={"0":0,"+":1,"+~++":2,"++":3,"++~+++":4,"+++":5,unknown:6}
   DIEASESTAT_OPT={cured:0,drug_control:1,no_drug_control:2}
@@ -38,13 +38,14 @@ module Constant
   BLOODCUNIT_OPT={"IU/L":0,"umol/L":1,"mmol/L":2,"g/L":2}
   TUMORNAME_OPT={carcinoembryonic_antigen:0,carbohydrate_antigen_125:1,carbohydrate_antigen_153:2}
   TUMORUNIT_OPT={"U/mL":0,others:1}
-  OP_BREAST_MODE_OPT={conserve:0, mastectomy:1}
+  OP_BREAST_MODE_OPT={conserve:0, mastectomy:1, NSM:2}
   OP_ARMPIT_MODE_OPT={axilla:0, sentinel:1}
 
   BIOPSY_POSITION_OPT={left:0, right:1, liver:2, lung:3, bone:4, brain:5, chest_wall_soft_tissue:6, skin:7, lymph:8}
   BIOPSY_MODE_OPT={thick_needle:0, fine_needle:1, Mammotome:2, cut:3, resection:4}
   STRENGTH_OPT={neg:0, weak:1, weak_mid:2, mid:3, strength_mid:4, strength:5}
   OP_POSITION_OPT={left:0, right:1}
+  MATASTASIS_OPT={"0":0, "1":1}
 
 
 end

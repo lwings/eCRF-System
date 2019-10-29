@@ -12,6 +12,8 @@ class OperationClinicalInfo < ActiveRecord::Base
   enumerize :HER2_IHC, in: HER2IHC_OPT
   enumerize :HER2_FISH, in: TRIPLET_OPT_II
   enumerize :AR_strength, in: STRENGTH_OPT
+  enumerize :regional_lympth_node, in: LYMNODE_OPT
+  enumerize :primary_lesion, in: PRILESION_OPT
   belongs_to :clinical_pathology
 
   # validates :op_position, presence: true

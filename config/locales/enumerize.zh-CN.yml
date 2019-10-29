@@ -97,7 +97,9 @@ zh-CN:
         invasive_ductal_carcinoma: 浸润性导管癌
         invasive_lobular_carcinoma: 浸润性小叶癌
         mucinous_carcinoma: 粘液癌
-        IDC_DCIS: IDC伴DCIS
+        DCIS: 导管原位癌
+        IDC_DCIS: 浸润性导管癌伴导管原位癌
+        MBS: 化生性癌
         others: 其他
       histological_grading:
         unknown: 未知
@@ -114,6 +116,7 @@ zh-CN:
       op_breast_mode:
         conserve: 保乳
         mastectomy: 单切
+        NSM: NSM
       op_armpit_mode:
         axilla: 腋窝淋巴结清扫术
         sentinel: 前哨淋巴结活检术
@@ -144,7 +147,9 @@ zh-CN:
         invasive_ductal_carcinoma: 浸润性导管癌
         invasive_lobular_carcinoma: 浸润性小叶癌
         mucinous_carcinoma: 粘液癌
-        IDC_DCIS: IDC伴DCIS
+        DCIS: 导管原位癌
+        IDC_DCIS: 浸润性导管癌伴导管原位癌
+        MBC: 化生性癌
         others: 其他
       histological_grading:
         unknown: 未知
@@ -183,6 +188,7 @@ zh-CN:
       op_breast_mode:
         conserve: 保乳
         mastectomy: 单切
+        NSM: NSM
       op_armpit_mode:
         axilla: 腋窝淋巴结清扫术
         sentinel: 前哨淋巴结活检术
@@ -190,7 +196,9 @@ zh-CN:
         invasive_ductal_carcinoma: 浸润性导管癌
         invasive_lobular_carcinoma: 浸润性小叶癌
         mucinous_carcinoma: 粘液癌
-        IDC_DCIS: IDC伴DCIS
+        DCIS: 导管原位癌
+        IDC_DCIS: 浸润性导管癌伴导管原位癌
+        MBS: 化生性癌
         others: 其他
       histological_grading:
         unknown: 未知
@@ -221,7 +229,9 @@ zh-CN:
         mid: 中
         strength_mid: 中强
         strength: 强
-
+      regional_lympth_node:
+        unknown: 未知
+      primary_lesion:
 
     biological_sample_collection:
       biological_sample:

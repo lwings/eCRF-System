@@ -55,7 +55,8 @@ class ClinicalPathologiesController < ApplicationController
                                       :HER2_IHC, :HER2_FISH, :Ki67, :AR, :AR_strength, :comment, :_destroy],
         operation_clinical_infos_attributes: [:id, :op_position, :op_date, :op_breast_mode, :op_armpit_mode, :tumor_size,
                                       :lympth_matastasis_cnt, :histological_type, :histological_grading, :ER, :ER_strength,
-                                      :PR, :PR_strength, :HER2_IHC, :HER2_FISH, :Ki67, :AR, :AR_strength, :comment, :_destroy]
+                                      :PR, :PR_strength, :HER2_IHC, :HER2_FISH, :Ki67, :AR, :AR_strength, :comment,
+                                              :primary_lesion, :regional_lympth_node, :_destroy]
     )
   end
 end

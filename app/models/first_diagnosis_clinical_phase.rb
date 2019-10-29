@@ -4,6 +4,7 @@ class FirstDiagnosisClinicalPhase < ActiveRecord::Base
 
   enumerize :primary_lesion, in: PRILESION_OPT
   enumerize :regional_lympth_node, in: LYMNODE_OPT
+  enumerize :matastasis, in: MATASTASIS_OPT
   belongs_to :clinical_pathology
 
   # validates :primary_lesion, presence: true
