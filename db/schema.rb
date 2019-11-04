@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20191104131411) do
+ActiveRecord::Schema.define(version: 20191104152516) do
 
   create_table "adverse_events", force: :cascade do |t|
     t.integer  "patient_id",          limit: 4
@@ -421,7 +421,7 @@ ActiveRecord::Schema.define(version: 20191104131411) do
   create_table "no_target_lesions", force: :cascade do |t|
     t.string   "position",            limit: 255
     t.integer  "inspection_method",   limit: 4
-    t.boolean  "is_exist"
+    t.integer  "is_exist",            limit: 4
     t.integer  "tumor_evaluation_id", limit: 4
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false

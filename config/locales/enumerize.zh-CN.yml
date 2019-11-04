@@ -265,6 +265,10 @@ zh-CN:
         US: US
         physical_examination: 体格检查
         bone_scan: 骨扫描
+      is_exist:
+        "yes": 是
+        "no": 否
+        unknown: 未知
 
     new_lesion:
       inspection_method:

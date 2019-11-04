@@ -98,8 +98,8 @@ class TumorEvaluationsController < ApplicationController
       end
     end
     if @tumor_evaluation.base_line_diameter != 0
-      @tumor_evaluation.cmp_base_line_diameter = (@tumor_evaluation.sum_diameter -
-            @tumor_evaluation.base_line_diameter) / @tumor_evaluation.base_line_diameter
+      @tumor_evaluation.cmp_base_line_diameter = ((@tumor_evaluation.sum_diameter -
+            @tumor_evaluation.base_line_diameter) / @tumor_evaluation.base_line_diameter).round(4)
       if -1e-6 < @tumor_evaluation.cmp_base_line_diameter and @tumor_evaluation.cmp_base_line_diameter < 1e-6
         @tumor_evaluation.cmp_base_line_diameter = 0
       end
@@ -117,7 +117,7 @@ class TumorEvaluationsController < ApplicationController
     end
     @tumor_evaluation.min_diameter = min_sum_size
     if min_sum_size != 0
-      @tumor_evaluation.cmp_min_diameter = (sum_size - min_sum_size) / min_sum_size
+      @tumor_evaluation.cmp_min_diameter = ((sum_size - min_sum_size) / min_sum_size).round(4)
       if -1e-6 < @tumor_evaluation.cmp_min_diameter and @tumor_evaluation.cmp_min_diameter < 1e-6
         @tumor_evaluation.cmp_min_diameter = 0
       end

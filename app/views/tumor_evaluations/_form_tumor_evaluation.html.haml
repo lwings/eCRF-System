@@ -24,15 +24,18 @@
       .links
         = link_to_add_association "添加靶病灶", f, :target_lesions, partial: 'fields_target_lesions'
 
+    %legend
+      %strong
+        统计信息
     .row
       = f.input :sum_diameter, input_html: {disabled: :disabled}
       = f.input :target_lesion_evaluation
 
     .row
       = f.input :base_line_diameter, input_html: {disabled: :disabled}
-      = f.input :cmp_base_line_diameter, input_html: {disabled: :disabled}
+      = f.input :cmp_base_line_diameter, input_html: {disabled: :disabled, precision: 2}
       = f.input :min_diameter, input_html: {disabled: :disabled}
-      = f.input :cmp_min_diameter, input_html: {disabled: :disabled}
+      = f.input :cmp_min_diameter, input_html: {disabled: :disabled, precision: 2}
 
     = f.simple_fields_for :no_target_lesions do |no_target_lesion|
       = render 'fields_no_target_lesions', f: no_target_lesion
@@ -51,7 +54,9 @@
     - if writable
       .links
         = link_to_add_association "添加新病灶", f, :new_lesions, partial: 'fields_new_lesions'
-
+    %legend
+      %strong
+        评估信息
     .row
       = f.input :lesion_evaluation
       = f.input :comment
