@@ -233,6 +233,47 @@ zh-CN:
         unknown: 未知
       primary_lesion:
 
+    tumor_evaluation:
+      interview:
+        extra: 额外访视
+      target_lesion_evaluation:
+        SD: SD
+        PD: PD
+        PR: PR
+        CR: CR
+      no_target_lesion_evaluation:
+        PD: PD
+        CR: CR
+        no_PDCR: 非PD非CR
+      lesion_evaluation:
+        SD: SD
+        PD: PD
+        PR: PR
+        CR: CR
+
+    target_lesion:
+      inspection_method:
+        CT: CT
+        MRI: MRI
+        US: US
+        vernier_scale: 游标卡尺
+
+    no_target_lesion:
+      inspection_method:
+        CT: CT
+        MRI: MRI
+        US: US
+        physical_examination: 体格检查
+        bone_scan: 骨扫描
+
+    new_lesion:
+      inspection_method:
+        CT: CT
+        MRI: MRI
+        US: US
+        physical_examination: 体格检查
+        bone_scan: 骨扫描
+
     biological_sample_collection:
       biological_sample:
         serum: 血清

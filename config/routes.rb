@@ -47,6 +47,7 @@ Rails.application.routes.draw do
     resource :course_monitor
     resources :radiation_therapies
     resources :courses
+    resources :tumor_evaluations
     resources :adverse_events
     resources :concomitant_drugs
     resources :biological_sample_collections

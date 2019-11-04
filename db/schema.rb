@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20191029061838) do
+ActiveRecord::Schema.define(version: 20191104131411) do
 
   create_table "adverse_events", force: :cascade do |t|
     t.integer  "patient_id",          limit: 4
@@ -407,6 +407,28 @@ ActiveRecord::Schema.define(version: 20191029061838) do
 
   add_index "medication_completions", ["patient_id"], name: "index_medication_completions_on_patient_id", using: :btree
 
+  create_table "new_lesions", force: :cascade do |t|
+    t.string   "position",            limit: 255
+    t.integer  "inspection_method",   limit: 4
+    t.date     "date"
+    t.integer  "tumor_evaluation_id", limit: 4
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+  end
+
+  add_index "new_lesions", ["tumor_evaluation_id"], name: "index_new_lesions_on_tumor_evaluation_id", using: :btree
+
+  create_table "no_target_lesions", force: :cascade do |t|
+    t.string   "position",            limit: 255
+    t.integer  "inspection_method",   limit: 4
+    t.boolean  "is_exist"
+    t.integer  "tumor_evaluation_id", limit: 4
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+  end
+
+  add_index "no_target_lesions", ["tumor_evaluation_id"], name: "index_no_target_lesions_on_tumor_evaluation_id", using: :btree
+
   create_table "operation_clinical_infos", force: :cascade do |t|
     t.integer  "clinical_pathology_id", limit: 4
     t.integer  "op_position",           limit: 4
@@ -532,6 +554,36 @@ ActiveRecord::Schema.define(version: 20191029061838) do
     t.datetime "updated_at",                null: false
   end
 
+  create_table "target_lesions", force: :cascade do |t|
+    t.string   "position",            limit: 255
+    t.integer  "inspection_method",   limit: 4
+    t.float    "max_diameter",        limit: 24
+    t.integer  "tumor_evaluation_id", limit: 4
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+  end
+
+  add_index "target_lesions", ["tumor_evaluation_id"], name: "index_target_lesions_on_tumor_evaluation_id", using: :btree
+
+  create_table "tumor_evaluations", force: :cascade do |t|
+    t.date     "date"
+    t.integer  "interview",                   limit: 4
+    t.integer  "patient_id",                  limit: 4
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
+    t.float    "sum_diameter",                limit: 24
+    t.float    "base_line_diameter",          limit: 24
+    t.float    "cmp_base_line_diameter",      limit: 24
+    t.float    "min_diameter",                limit: 24
+    t.float    "cmp_min_diameter",            limit: 24
+    t.integer  "target_lesion_evaluation",    limit: 4
+    t.integer  "no_target_lesion_evaluation", limit: 4
+    t.integer  "lesion_evaluation",           limit: 4
+    t.string   "comment",                     limit: 255
+  end
+
+  add_index "tumor_evaluations", ["patient_id"], name: "index_tumor_evaluations_on_patient_id", using: :btree
+
   create_table "tumor_maker_meds", force: :cascade do |t|
     t.integer  "medication_completion_id", limit: 4
     t.float    "value",                    limit: 24
@@ -572,7 +624,11 @@ ActiveRecord::Schema.define(version: 20191029061838) do
   add_foreign_key "biopsy_clinical_infos", "clinical_pathologies"
   add_foreign_key "course_medications", "experimental_medications"
   add_foreign_key "first_diagnosis_clinical_phases", "clinical_pathologies"
+  add_foreign_key "new_lesions", "tumor_evaluations"
+  add_foreign_key "no_target_lesions", "tumor_evaluations"
   add_foreign_key "operation_clinical_infos", "clinical_pathologies"
   add_foreign_key "patients", "centers"
   add_foreign_key "researches", "projects"
+  add_foreign_key "target_lesions", "tumor_evaluations"
+  add_foreign_key "tumor_evaluations", "patients"
 end

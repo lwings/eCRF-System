@@ -1,0 +1,59 @@
+- writable = @tumor_evaluation.new_record? || action_name == 'edit' || @tumor_evaluation.errors.any?
+
+= simple_form_for [@patient,@tumor_evaluation], html: {'data-abide': '', class: writable ? nil : 'disabled'} do |f|
+  - required = "必填"
+  %fieldset
+    %legend
+      基本信息
+    .row
+      -#-if action_name=='edit'
+      -#  = f.input :interview, input_html: {disabled: :disabled}
+      -#-else
+      -#  = f.input :interview
+      -#= f.input :height
+      = f.input :date
+      = f.input :interview
+
+
+
+    = f.simple_fields_for :target_lesions do |target_lesion|
+      = render 'fields_target_lesions', f: target_lesion
+
+
+    - if writable
+      .links
+        = link_to_add_association "添加靶病灶", f, :target_lesions, partial: 'fields_target_lesions'
+
+    .row
+      = f.input :sum_diameter, input_html: {disabled: :disabled}
+      = f.input :target_lesion_evaluation
+
+    .row
+      = f.input :base_line_diameter, input_html: {disabled: :disabled}
+      = f.input :cmp_base_line_diameter, input_html: {disabled: :disabled}
+      = f.input :min_diameter, input_html: {disabled: :disabled}
+      = f.input :cmp_min_diameter, input_html: {disabled: :disabled}
+
+    = f.simple_fields_for :no_target_lesions do |no_target_lesion|
+      = render 'fields_no_target_lesions', f: no_target_lesion
+
+
+    - if writable
+      .links
+        = link_to_add_association "添加非靶病灶", f, :no_target_lesions, partial: 'fields_no_target_lesions'
+    .row
+      = f.input :no_target_lesion_evaluation
+
+    = f.simple_fields_for :new_lesions do |new_lesion|
+      = render 'fields_new_lesions', f: new_lesion
+
+
+    - if writable
+      .links
+        = link_to_add_association "添加新病灶", f, :new_lesions, partial: 'fields_new_lesions'
+
+    .row
+      = f.input :lesion_evaluation
+      = f.input :comment
+  - if writable
+    = f.button :submit, class: [:small, :radius]

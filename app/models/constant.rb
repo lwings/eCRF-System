@@ -47,5 +47,9 @@ module Constant
   OP_POSITION_OPT={left:0, right:1}
   MATASTASIS_OPT={"0":0, "1":1}
 
+  INSPECTIONMETHOD_OPT={CT:0, MRI:1, US:2, vernier_scale:3}
+  INSPECTIONMETHOD_OPT2={CT:0, MRI:1, US:2, physical_examination:3, bone_scan:4}
 
+  EVALUATION_OPT={SD:0, PD:1, PR:2, CR:3}
+  EVALUATION_OPT2={PD:1, CR:2, no_PDCR: 4}
 end

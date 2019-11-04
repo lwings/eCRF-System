@@ -131,6 +131,41 @@ zh-CN:
         start_date: 开始日期
         end_date: 结束日期
 
+      tumor_evaluation:
+        date: 评估日期
+        interview: 访视
+
+        sum_diameter: 靶病灶总径(mm)
+        base_line_diameter: 基线总径(mm)
+        cmp_base_line_diameter: 较基线%
+        min_diameter: 最小总径(mm)
+        cmp_min_diameter: 较最小经%
+
+        target_lesion_evaluation: 靶病灶疗效评估
+
+        no_target_lesion_evaluation: 非靶病灶疗效评估
+
+        lesion_evaluation: 总体疗效评估
+
+        comment: 备注
+
+
+      target_lesion:
+        position: 位置
+        inspection_method: 检查方法
+        max_diameter: 最长径(mm)
+
+      no_target_lesion:
+        position: 位置
+        inspection_method: 检查方法
+        is_exist: 是否存在
+
+      new_lesion:
+        position: 位置
+        inspection_method: 检查方法
+        date: 诊断时间
+
+
       course:
         interview: 访视日期
         height: 身高(m)
