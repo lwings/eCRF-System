@@ -25,8 +25,7 @@
         = link_to_add_association "添加靶病灶", f, :target_lesions, partial: 'fields_target_lesions'
 
     %legend
-      %strong
-        统计信息
+      靶病灶评估
     .row
       = f.input :sum_diameter, input_html: {disabled: :disabled}
       = f.input :target_lesion_evaluation
@@ -55,8 +54,7 @@
       .links
         = link_to_add_association "添加新病灶", f, :new_lesions, partial: 'fields_new_lesions'
     %legend
-      %strong
-        评估信息
+      总体评估
     .row
       = f.input :lesion_evaluation
       = f.input :comment
