@@ -8,6 +8,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw] #-> Rails 4.1+
 
 gem 'sass-rails', '~> 5.0'                  # css
 gem 'uglifier', '>= 1.3.0'                  # javascript
+gem 'nokogiri', '~> 1.9.1'
 gem 'coffee-rails', '~> 4.1.0'              # coffeescript
 gem 'jquery-rails'                          # jquery
 gem 'turbolinks'                            # generate links
@@ -57,12 +58,13 @@ gem 'web-console', '~> 2.0', group: :development
 #IMGKig
 gem 'imgkit', '~> 1.6.1'
 gem 'wkhtmltoimage-binary'
-
+gem 'execjs'
+gem 'therubyracer'
 ## group
 group :development, :test do
   gem 'minitest-reporters'
-  gem 'byebug'
-  gem 'spring'                              # dev server
+  gem 'byebug', '~> 10.0.2'
+  gem 'spring', '~> 2.0.2'                              # dev server
   gem 'pry-rails', '~> 0.3.4'               # pry debug
   gem 'timecop', '~> 0.7.3'                 # time travel control
 end
