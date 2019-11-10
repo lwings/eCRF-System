@@ -59,7 +59,7 @@ gem 'web-console', '~> 2.0', group: :development
 gem 'imgkit', '~> 1.6.1'
 gem 'wkhtmltoimage-binary'
 gem 'execjs'
-gem 'therubyracer'
+# gem 'therubyracer'
 ## group
 group :development, :test do
   gem 'minitest-reporters'
