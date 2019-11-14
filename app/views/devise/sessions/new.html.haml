@@ -1,8 +1,8 @@
-.row
+.row.head_top
   .columns.medium-centered
     .row
       %h4.top-text-center
-        = image_tag 'ecrf_logo.png',class: :logo
+        = image_tag 'login_logo.png',class: :logo
   .columns.medium-centered.medium-4.large-3.login-wrap
     -# = link_to t(:forget_password), new_password_path(resource_name)
 
@@ -20,6 +20,7 @@
           = f.input :password, required: true, front_error: fe(:blank)
           = f.input :remember_me, as: :boolean if devise_mapping.rememberable?
 
-          %div
+          .btn-box
+            -#= f.button :submit, "登录", class: :expanded
             = f.button :submit, "登录", class: :expanded
 
