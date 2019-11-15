@@ -2,28 +2,28 @@
 
 = simple_form_for @clinical_pathology, url: patient_clinical_pathology_path(@patient), html: {'data-abide': '', class: writable ? nil : 'disabled'} do |f|
   - required = "必填"
-  %fieldset
-    %legend
-      基本临床病理信息
-    .row
-
-      = f.input :primary_lesion
-      = f.input :regional_lympth_node
-      = f.input :matastasis
-      = f.input :histological_type
-      = f.input :histological_grading
-      = f.input :vascular_invasion
-      = f.input :ER
-      = f.input :PR
-      = f.input :HER2_IHC
-      = f.input :HER2_FISH
-      = f.input :Ki67
-      = f.input :AR
-      = f.input :op_breast_mode
-      = f.input :op_armpit_mode
-      = f.input :date_of_operation,as: :date, start_year: Date.today.year - 10,
-                              end_year: 2025
-      = f.input :comment
+  -#%fieldset
+    -#%legend
+    -#  基本临床病理信息
+    -#.row
+    -#
+    -#  = f.input :primary_lesion
+    -#  = f.input :regional_lympth_node
+    -#  = f.input :matastasis
+    -#  = f.input :histological_type
+    -#  = f.input :histological_grading
+    -#  = f.input :vascular_invasion
+    -#  = f.input :ER
+    -#  = f.input :PR
+    -#  = f.input :HER2_IHC
+    -#  = f.input :HER2_FISH
+    -#  = f.input :Ki67
+    -#  = f.input :AR
+    -#  = f.input :op_breast_mode
+    -#  = f.input :op_armpit_mode
+    -#  = f.input :date_of_operation,as: :date, start_year: Date.today.year - 10,
+    -#                          end_year: 2025
+    -#  = f.input :comment
 
   = f.simple_fields_for :first_diagnosis_clinical_phases do |first_diagnosis_clinical_phases|
     = render 'fields_first_diagnosis_clinical_phase', f:first_diagnosis_clinical_phases
