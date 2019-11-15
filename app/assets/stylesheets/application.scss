@@ -30,7 +30,7 @@ html.turbolinks-progress-bar::before {
 body {
   //background: #f7f4f1;
   //background: #fff8dc;
-  background: image-url('background');
+  //background: image-url('background_new');
   background-size: 100% 110%;
 }
 
@@ -54,8 +54,8 @@ body {
 .main, .footer-wrap{
   background: #ffffff;
   padding: 30px 200px 0 20px;
-  border-left: 6px solid #eee;
-  border-right: 6px solid #eee;
+  //border-left: 6px solid #eee;
+  //border-right: 6px solid #eee;
   opacity: 0.9;
   //box-shadow: 10px 10px 10px #ddd;
   a:not([href]){
