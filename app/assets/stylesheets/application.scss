@@ -605,6 +605,9 @@ footer {
 .checkbox{
   margin-top: 30px;
 }
+table tr th, table tr td{
+  font-size:11px;
+}
 /* TODO ? make no sense when putting require at the bottom
 * require_tree .
 * require_self
