@@ -30,6 +30,7 @@ class Patient < ActiveRecord::Base
   has_many :concomitant_drugs, dependent: :destroy
   has_many :biological_sample_collections, dependent: :destroy
   has_many :followups, dependent: :destroy
+  has_many :research_monitors, dependent: :destroy
 
   attr_accessor :center_name
   attr_accessor :overdue_courses
