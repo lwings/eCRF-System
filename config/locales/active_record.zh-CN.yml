@@ -139,7 +139,7 @@ zh-CN:
         base_line_diameter: 基线总径(mm)
         cmp_base_line_diameter: 较基线%
         min_diameter: 最小总径(mm)
-        cmp_min_diameter: 较最小经%
+        cmp_min_diameter: 较最小径%
 
         target_lesion_evaluation: 靶病灶疗效评估
 
