@@ -611,8 +611,11 @@ table tr th, table tr td{
 label{
   font-size:11px;
 }
-.medium-6{
-  width:99%;
+.row .medium-6{
+  width: 99%;
+}
+.guide{
+  width: 50%!important;
 }
 /* TODO ? make no sense when putting require at the bottom
 * require_tree .
