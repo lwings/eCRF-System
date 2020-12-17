@@ -1,10 +1,14 @@
-source 'https://ruby.taobao.org'
+source 'https://gems.ruby-china.com'
 
 ## rails
 ## {{
-gem 'rails', '4.2.0'
+# gem 'rails', '4.2.0'
+gem 'rails', '~> 4.2.4', git: "git://github.com/rails/rails.git", branch: '4-2-stable'
+gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw] #-> Rails 4.1+
+
 gem 'sass-rails', '~> 5.0'                  # css
 gem 'uglifier', '>= 1.3.0'                  # javascript
+gem 'nokogiri', '~> 1.9.1'
 gem 'coffee-rails', '~> 4.1.0'              # coffeescript
 gem 'jquery-rails'                          # jquery
 gem 'turbolinks'                            # generate links
@@ -15,7 +19,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc         # `rake doc:rails` -- generate API u
 
 ## database
 ## {{
-gem 'mysql2', '~> 0.3.18'                   # mysql adapter
+gem 'mysql2', '~> 0.4.10'                   # mysql adapter
 gem 'enumerize', '~> 0.10.1'                # enum type
 gem 'flag_shih_tzu', '~> 0.3.13'            # bit field
 # gem 'paperclip', '~> 4.2.1'                 # file attach
@@ -54,12 +58,13 @@ gem 'web-console', '~> 2.0', group: :development
 #IMGKig
 gem 'imgkit', '~> 1.6.1'
 gem 'wkhtmltoimage-binary'
-
+gem 'execjs'
+# gem 'therubyracer'
 ## group
 group :development, :test do
   gem 'minitest-reporters'
-  gem 'byebug'
-  gem 'spring'                              # dev server
+  gem 'byebug', '~> 10.0.2'
+  gem 'spring', '~> 2.0.2'                              # dev server
   gem 'pry-rails', '~> 0.3.4'               # pry debug
   gem 'timecop', '~> 0.7.3'                 # time travel control
 end

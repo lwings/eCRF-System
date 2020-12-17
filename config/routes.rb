@@ -47,6 +47,7 @@ Rails.application.routes.draw do
     resource :course_monitor
     resources :radiation_therapies
     resources :courses
+    resources :tumor_evaluations
     resources :adverse_events
     resources :concomitant_drugs
     resources :biological_sample_collections
@@ -63,5 +64,11 @@ Rails.application.routes.draw do
   resources :relationships
 
   get '/monitor_checker', to:'monitor_checkers#index'
+
+  # TODO
+  match 'search' => 'search#index', via: [:get, :post], :as => 'search'
+  match 'search/advance' => 'search#advance', via: [:get, :post], :as => 'search_advance'
+  match 'search/new_advance' => 'search#new_advance', via: [:get, :post], :as => 'search_new_advance'
+  get 'search/value_fields', to: 'search#value_fields'
 
 end

@@ -1,0 +1,12 @@
+.search-nav
+  %a{href: search_path} 基本查询
+  %a{href: search_advance_path} 高级查询
+  %a.active{href: search_new_advance_path} 自定义查询
+
+= search_form_for @q, url: search_new_advance_path, method: :post, html: {target: :_blank} do |f|
+  - setup_search_form f
+  = f.grouping_fields do |g|
+    =render 'grouping_fields', f: g
+  = button_to_add_fields "添加条件组",f,:grouping
+  = f.submit class: [:button, :tiny, :radius]
+=render 'new_advance_help'

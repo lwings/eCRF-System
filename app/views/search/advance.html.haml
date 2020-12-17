@@ -1,0 +1,186 @@
+.search-nav
+  %a{href: search_path} 基本查询
+  %a.active{href: search_advance_path} 高级查询
+  %a{href: search_new_advance_path} 自定义查询
+
+- scope = { scope: [:activerecord, :attributes] }
+- pos_or_neg = [["阴性", 0], ["阳性", 1]]
+
+= search_form_for @q, url: search_advance_path, method: :post, html: {target: :_blank} do |f|
+      
+      
+  %ul.accordion{"data-accordion" => "", :role => "tablist"}
+    %li.accordion-navigation
+      %a#patient-heading{"aria-controls" => "patient", :href => "#patient", :role => "tab"}  
+        = Patient.model_name.human
+      #patient.content.active{"aria-labelledby" => "patient-heading", :role => "tabpanel"}
+        .row
+          = f.input :age_gteq, label: t('patient.age', scope) + " >="
+          = f.input :age_lteq, label: t('patient.age', scope) + " <="
+          -#= f.input :created_at_gteq, label: t('patient.created_at', scope) + " >=", as: :date
+          -#= f.input :created_at_lteq, label: t('patient.created_at', scope) + " <=", as: :date
+
+          = f.input :attend_doctor_cont, label: t('patient.attend_doctor'.freeze, scope)
+          -#= f.input :is_in_clinical_research_eq, collection: Patient.is_in_clinical_research.value_options, label: t('patient.is_in_clinical_research', scope)
+
+    %li.accordion-navigation
+      %a#history-heading{"aria-controls" => "history", :href => "#history", :role => "tab"}
+        = History.model_name.human
+      #history.content.active{"aria-labelledby" => "history-heading", :role => "tabpanel"}
+        .row
+          = f.input :history_menopause_status_eq, collection: History.menopause_status.value_options, as: :select, label: t('history.is_menopause'.freeze, scope)
+          = f.input :history_cancer_history_present, as: :select, label: t('history.has_cancer_history'.freeze, scope)
+          = f.input :history_family_breast_cancer_present, as: :select, label: t('history.has_family_breast_cancer'.freeze, scope)
+          = f.input :history_family_ovarian_cancer_present, as: :select, label: t('history.has_family_ovarian_cancer'.freeze, scope)
+
+    %li.accordion-navigation
+      %a#clinical-heading{"aria-controls" => "clinical", :href => "#clinical", :role => "tab"}
+        = Clinical.model_name.human
+      #clinical.content.active{"aria-labelledby" => "clinical-heading", :role => "tabpanel"}
+        -#= f.label :clinical_initial_symptom_in，t('clinical.initial_symptom', scope)
+        -#= f.input :clinical_initial_symptom_in, as: :check_boxes
+        -# TODO:
+        -#.row
+        -#  = f.input :clinical_is_bilateral_eq, as: :select, label: t('clinical.is_bilateral', scope)
+        .row
+          = f.input :clinical_tumor_phase_in, as: :check_boxes, collection: Clinical.tumor_phase.value_options, label: t('clinical.tumor_phase'.freeze, scope)
+          = f.input :clinical_node_phase_in, as: :check_boxes, collection: Clinical.node_phase.value_options, label: t('clinical.node_phase'.freeze, scope)
+          = f.input :clinical_metastasis_phase_in, as: :check_boxes, collection: Clinical.metastasis_phase.value_options, label: t('clinical.metastasis_phase'.freeze, scope)
+
+    %li.accordion-navigation
+      %a#imaging-heading{"aria-controls" => "imaging", :href => "#imaging", :role => "tab"}
+        = Imaging.model_name.human
+      #imaging.content.active{"aria-labelledby" => "imaging-heading", :role => "tabpanel"}
+        .row
+          = f.input :imaging_imaging_sides_img_us_lesions_bi_rads_in, as: :check_boxes, collection: ImagingLesion.bi_rads.value_options, label: 'US ' + t('imaging_lesion.bi_rads'.freeze, scope)
+          = f.input :imaging_imaging_sides_img_mmg_lesions_bi_rads_in, as: :check_boxes, collection: ImagingLesion.bi_rads.value_options, label: 'MMG ' + t('imaging_lesion.bi_rads'.freeze, scope)
+          = f.input :imaging_imaging_sides_img_mri_lesions_bi_rads_in, as: :check_boxes, collection: ImagingLesion.bi_rads.value_options, label: 'MRI '+ t('imaging_lesion.bi_rads'.freeze, scope)
+
+    %li.accordion-navigation
+      %a#pathology-heading{"aria-controls" => "pathology", :href => "#pathology", :role => "tab"}
+        = Pathology.model_name.human
+      #pathology.content.active{"aria-labelledby" => "pathology-heading", :role => "tabpanel"}
+        .row
+          = f.input :pathology_pathology_lesions_cnb_type_in, as: :check_boxes, collection: PathologyLesion.cnb_type.value_options, label: t('pathology_lesion.cnb_type'.freeze, scope)
+          = f.input :pathology_pathology_lesions_cnb_level_in, as: :check_boxes, collection: PathologyLesion.cnb_level.value_options, label: t('pathology_lesion.cnb_level'.freeze, scope)
+          = f.input :pathology_pathology_lesions_cnb_er_value_not_false, as: :select, collection: pos_or_neg, label: 'ER'.freeze
+          = f.input :pathology_pathology_lesions_cnb_pr_value_not_false, as: :select, collection: pos_or_neg, label: 'PR'.freeze
+          = f.input :pathology_pathology_lesions_cnb_cerbb_2_in, as: :check_boxes, collection: PathologyLesion.cnb_cerbb_2.value_options, label: t('pathology_lesion.cnb_cerbb_2'.freeze, scope)
+          = f.input :pathology_pathology_lesions_cnb_ki67_value_not_false, as: :select, collection: pos_or_neg, label: 'Ki67'.freeze
+          = f.input :pathology_pathology_lesions_cnb_her2_fish_eq, as: :select, collection: PathologyLesion.cnb_her2_fish.value_options, label: t('pathology_lesion.cnb_her2_fish'.freeze, scope)
+          = f.input :pathology_has_pathology_eq, as: :select, label: t('pathology.has_pathology'.freeze, scope)
+          = f.input :pathology_has_fna_eq, as: :select, label: t('pathology.has_fna'.freeze, scope)
+    %li.accordion-navigation
+      %a#neoadjuvant-heading{"aria-controls" => "neoadjuvant", :href => "#neoadjuvant", :role => "tab"}
+        = Neoadjuvant.model_name.human
+      #neoadjuvant.content.active{"aria-labelledby" => "neoadjuvant-heading", :role => "tabpanel"}
+        .row
+          = f.input :neoadjuvant_has_adjuvant_not_false, as: :select, label: t('neoadjuvant.has_adjuvant'.freeze, scope)
+          = f.input :neoadjuvant_c_efficacy_eq, as: :select, collection: Neoadjuvant.c_efficacy.value_options, label: t('neoadjuvant.c_efficacy'.freeze, scope)
+          = f.input :neoadjuvant_mmg_efficacy_eq, as: :select, collection: Neoadjuvant.mmg_efficacy.value_options, label: t('neoadjuvant.mmg_efficacy'.freeze, scope)
+          = f.input :neoadjuvant_mri_efficacy_eq, as: :select, collection: Neoadjuvant.mri_efficacy.value_options, label: t('neoadjuvant.mri_efficacy'.freeze, scope)
+
+    %li.accordion-navigation
+      %a#operation-heading{"aria-controls" => "operation", :href => "#operation", :role => "tab"}
+        = Operation.model_name.human
+      #operation.content.active{"aria-labelledby" => "operation-heading", :role => "tabpanel"}
+        .row
+          = f.input :operation_surgery_date_gteq, label: t('operation.surgery_date'.freeze, scope) + ' >=', as: :date
+          = f.input :operation_surgery_date_lteq, label: t('operation.surgery_date'.freeze, scope) + ' <=', as: :date
+          = f.input :operation_cancer_count_eq, label: t('operation.cancer_count'.freeze, scope), collection: 1..6, as: :select
+
+          - l = OperationLesion.new
+          = f.input :has_operation_lesions_op_breast_mode, as: :select, collection: l.options('op_breast_mode').unshift(["无",:none]), label: t('operation_lesion.op_breast_mode'.freeze, scope)
+          = f.input :operation_lesions_pathological_type_in, as: :check_boxes, collection: OperationLesion.pathological_type.value_options, label: t('operation_lesion.pathological_type'.freeze, scope)
+          = f.input :operation_lesions_molecular_type_in, as: :check_boxes, collection: OperationLesion.molecular_type.value_options, label: t('operation_lesion.molecular_type'.freeze, scope)
+
+          = f.input :operation_lesions_histological_grade_in, as: :check_boxes, collection: OperationLesion.histological_grade.value_options, label: t('operation_lesion.histological_grade'.freeze, scope)
+          = f.input :operation_lesions_cerbb_2_in, as: :check_boxes, collection: OperationLesion.cerbb_2.value_options, label: t('operation_lesion.cerbb_2'.freeze, scope)
+
+          = f.input :operation_lesions_er_value_not_false, as: :select, collection: pos_or_neg, label: 'ER'.freeze
+          = f.input :has_operation_lesions_op_axilla_mode, as: :select, collection: l.options('op_axilla_mode')[0..3].unshift(["无",:none]), label: t('operation_lesion.op_axilla_mode'.freeze, scope)
+
+          = f.input :operation_lesions_pr_value_not_false, as: :select, collection: pos_or_neg, label: 'PR'.freeze
+
+          = f.input :operation_lesions_ki67_value_lteq, as: :select, collection: [['<14%', 13], ['>=14%', 14]], label: 'Ki67'.freeze
+          = f.input :operation_lesions_her2_fish_eq, as: :select, collection: OperationLesion.her2_fish.value_options, label: t('operation_lesion.her2_fish'.freeze, scope)
+          = f.input :operation_lesions_is_skin_involved_eq, as: :select, label: t('operation_lesion.is_skin_involved'.freeze, scope)
+          = f.input :operation_lesions_is_nerve_violated_eq, as: :select, label: t('operation_lesion.is_nerve_violated'.freeze, scope)
+          = f.input :operation_rs_21_gene_gteq, label: t('operation.rs_21_gene'.freeze, scope) + " >="
+          = f.input :operation_rs_21_gene_lteq, label: t('operation.rs_21_gene'.freeze, scope) + " <="
+          = f.input :operation_lesions_her2_fish_copy_gteq, collection: [['<4', -1], ['4~6', 4],['>=6',6]],label: t('operation_lesion.her2_fish_copy'.freeze, scope)
+          = f.hidden_field :operation_lesions_her2_fish_copy_lt
+          = f.input :operation_lesions_her2_fish_ratio_gteq, collection: [['<2', 1.999], ['>=2', 2]],label: t('operation_lesion.her2_fish_ratio'.freeze, scope)
+
+        .row
+          = f.input :operation_lesions_tumor_phase_in, as: :check_boxes, collection: OperationLesion.tumor_phase.value_options, label: t('operation_lesion.tumor_phase'.freeze, scope)
+          = f.input :operation_lesions_node_phase_in, as: :check_boxes, collection: OperationLesion.node_phase.value_options, label: t('operation_lesion.node_phase'.freeze, scope)
+          = f.input :operation_lesions_metastasis_phase_in, as: :check_boxes, collection: OperationLesion.metastasis_phase.value_options, label: t('operation_lesion.metastasis_phase'.freeze, scope)
+    %li.accordion-navigation
+      %a#adjuvant-heading{"aria-controls" => "adjuvant", :href => "#adjuvant", :role => "tab"}
+        = Adjuvant.model_name.human
+      #adjuvant.content.active{"aria-labelledby" => "adjuvant-heading", :role => "tabpanel"}
+        .row
+          = f.input :adjuvant_is_ct_eq, as: :select, label: t('adjuvant.is_chemotherapy'.freeze, scope)
+          = f.input :adjuvant_ct_scheme_in, as: :check_boxes, collection: Adjuvant.ct_scheme.value_options, label: t('adjuvant.ct_scheme'.freeze, scope)
+          = f.input :adjuvant_is_rt_eq, as: :select, label: t('adjuvant.is_radiotherapy'.freeze, scope)
+
+          = f.input :adjuvant_is_et_eq, as: :select, label: t('adjuvant.is_endocrinotherapy'.freeze, scope)
+          -#= f.input :adjuvant_is_tam_used_eq, as: :select, label: t('adjuvant.is_tam_used', scope)
+          -#= f.input :adjuvant_is_ai_used_eq, as: :select, label: t('adjuvant.is_ai_used', scope)
+
+          = f.input :adjuvant_is_tt_eq, as: :select, label: t('adjuvant.is_target_therapy'.freeze, scope)
+          -#= f.input :adjuvant_is_tras_used_eq, as: :select, label: t('adjuvant.is_tras_used', scope)
+          -#= f.input :adjuvant_is_per_used_eq, as: :select, label: t('adjuvant.is_per_used', scope)
+
+    %li.accordion-navigation
+      %a#followup-heading{"aria-controls" => "followup", :href => "#followup", :role => "tab"}
+        = Followup.model_name.human
+      #followup.content.active{"aria-labelledby" => "followup-heading", :role => "tabpanel"}
+        .row
+          = f.input :status_eq, as: :select, collection: [:norecur, :recur, :dead].map{ |s| [Patient.status.find_value(s).text, Patient.status.find_value(s).value] }, label: t('patient.status'.freeze, scope)
+
+    %li.accordion-navigation
+      %a#twenty_one_gene-heading{"aria-controls" => "twenty_one_gene", :href => "#twenty_one_gene", :role => "tab"}
+        = TwentyOneGene.model_name.human
+      #twenty_one_gene.content.active{"aria-labelledby" => "twenty_one_gene-heading", :role => "tabpanel"}
+        .row
+          = f.input :has_twenty_one_gene_mode, as: :select, collection: {"是"=>2, "否"=>3}, label: t('twenty_one_gene.has_twenty_one_gene'.freeze, scope)
+          -#= f.input :twenty_one_gene_has_twenty_eight_gene_eq, as: :select, label: t('twenty_one_gene.has_twenty_eight_gene'.freeze, scope)
+          -#= f.input :twenty_one_gene_has_twenty_one_and_seven_gene_eq, as: :select, label: t('twenty_one_gene.has_twenty_one_and_seven_gene'.freeze, scope)
+    %br
+  = f.submit class: [:button, :tiny, :radius]
+
+  :javascript
+    $('#q_operation_lesions_ki67_value_lteq').change(function () {
+        var val = $(this).val();
+        if( val == "13") {
+          $(this).attr('name', 'q[operation_lesions_ki67_value_lteq]');
+        } else {
+          $(this).attr('name', 'q[operation_lesions_ki67_value_gteq]');
+        }
+    }).trigger('change');
+    $('#q_operation_lesions_her2_fish_ratio_gteq').change(function () {
+        var val = $(this).val();
+        if( val == "1.999") {
+          $(this).attr('name', 'q[operation_lesions_her2_fish_ratio_lt]');
+        } else {
+          $(this).attr('name', 'q[operation_lesions_her2_fish_ratio_gteq]');
+        }
+    }).trigger('change');
+    $('#q_operation_lesions_her2_fish_copy_gteq').change(function () {
+        var val = $(this).val();
+        if( val == "-1") {
+          $('#q_operation_lesions_her2_fish_copy_lt').val(4);
+        }
+        else if( val == "4") {
+          $('#q_operation_lesions_her2_fish_copy_lt').val(6);
+        }
+        else if( val == "6") {
+          $('#q_operation_lesions_her2_fish_copy_lt').val(1000);
+        }
+        else {
+          $('#q_operation_lesions_her2_fish_copy_lt').val("");
+        }
+    }).trigger('change');
+

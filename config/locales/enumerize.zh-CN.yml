@@ -35,7 +35,7 @@ zh-CN:
         joint_pain: 关节痛
         bone_pain: 骨痛
         peripheral_neuropathy: 外周神经病变
-        fibrinase_elevation: 纤维酶升高
+        fibrinase_elevation: 肝酶升高
         fracture: 骨折
         death: 死亡
         hypertension: 高血压
@@ -97,19 +97,186 @@ zh-CN:
         invasive_ductal_carcinoma: 浸润性导管癌
         invasive_lobular_carcinoma: 浸润性小叶癌
         mucinous_carcinoma: 粘液癌
-        IDC_DCIS: IDC伴DCIS
+        DCIS: 导管原位癌
+        IDC_DCIS: 浸润性导管癌伴导管原位癌
+        MBS: 化生性癌
         others: 其他
       histological_grading:
         unknown: 未知
       vascular_invasion:
-        yes: 是
-        no: 否
+        "yes": 是
+        "no": 否
         unknown: 不详
       HER2_IHC:
+        unknown: 未做
       HER2_FISH:
         neg: 阴性
         pos: 阳性
         unknown: 未做
+      op_breast_mode:
+        conserve: 保乳
+        mastectomy: 单切
+        NSM: NSM
+      op_armpit_mode:
+        axilla: 腋窝淋巴结清扫术
+        sentinel: 前哨淋巴结活检术
+
+    first_diagnosis_clinical_phase:
+      primary_lesion:
+      regional_lympth_node:
+        unknown: 未知
+
+    biopsy_clinical_info:
+      biopsy_position:
+        left: 左乳
+        right: 右乳
+        liver: 肝
+        lung: 肺
+        bone: 骨
+        brain: 脑
+        chest_wall_soft_tissue: 胸壁软组织
+        skin: 皮肤
+        lymph: 淋巴结
+      biopsy_mode:
+        thick_needle: 细针穿刺
+        fine_needle: 粗针穿刺
+        Mammotome: 麦默通穿刺
+        cut: 切取活检
+        resection: 切除活检
+      histological_type:
+        invasive_ductal_carcinoma: 浸润性导管癌
+        invasive_lobular_carcinoma: 浸润性小叶癌
+        mucinous_carcinoma: 粘液癌
+        DCIS: 导管原位癌
+        IDC_DCIS: 浸润性导管癌伴导管原位癌
+        MBC: 化生性癌
+        others: 其他
+      histological_grading:
+        unknown: 未知
+      ER_strength:
+        neg: 阴性
+        weak: 弱
+        weak_mid: 弱-中
+        mid: 中
+        strength_mid: 中强
+        strength: 强
+      PR_strength:
+        neg: 阴性
+        weak: 弱
+        weak_mid: 弱-中
+        mid: 中
+        strength_mid: 中强
+        strength: 强
+      HER2_IHC:
+        unknown: 未做
+      HER2_FISH:
+        neg: 阴性
+        pos: 阳性
+        unknown: 未做
+      AR_strength:
+        neg: 阴性
+        weak: 弱
+        weak_mid: 弱-中
+        mid: 中
+        strength_mid: 中强
+        strength: 强
+
+    operation_clinical_info:
+      op_position:
+        left: 左乳
+        right: 右乳
+      op_breast_mode:
+        conserve: 保乳
+        mastectomy: 单切
+        NSM: NSM
+      op_armpit_mode:
+        axilla: 腋窝淋巴结清扫术
+        sentinel: 前哨淋巴结活检术
+      histological_type:
+        invasive_ductal_carcinoma: 浸润性导管癌
+        invasive_lobular_carcinoma: 浸润性小叶癌
+        mucinous_carcinoma: 粘液癌
+        DCIS: 导管原位癌
+        IDC_DCIS: 浸润性导管癌伴导管原位癌
+        MBS: 化生性癌
+        others: 其他
+      histological_grading:
+        unknown: 未知
+      ER_strength:
+        neg: 阴性
+        weak: 弱
+        weak_mid: 弱-中
+        mid: 中
+        strength_mid: 中强
+        strength: 强
+      PR_strength:
+        neg: 阴性
+        weak: 弱
+        weak_mid: 弱-中
+        mid: 中
+        strength_mid: 中强
+        strength: 强
+      HER2_IHC:
+        unknown: 未做
+      HER2_FISH:
+        neg: 阴性
+        pos: 阳性
+        unknown: 未做
+      AR_strength:
+        neg: 阴性
+        weak: 弱
+        weak_mid: 弱-中
+        mid: 中
+        strength_mid: 中强
+        strength: 强
+      regional_lympth_node:
+        unknown: 未知
+      primary_lesion:
+
+    tumor_evaluation:
+      interview:
+        extra: 额外访视
+      target_lesion_evaluation:
+        SD: SD
+        PD: PD
+        PR: PR
+        CR: CR
+      no_target_lesion_evaluation:
+        PD: PD
+        CR: CR
+        no_PDCR: 非PD非CR
+      lesion_evaluation:
+        SD: SD
+        PD: PD
+        PR: PR
+        CR: CR
+
+    target_lesion:
+      inspection_method:
+        CT: CT
+        MRI: MRI
+        US: US
+        vernier_scale: 游标卡尺
+
+    no_target_lesion:
+      inspection_method:
+        CT: CT
+        MRI: MRI
+        US: US
+        physical_examination: 体格检查
+        bone_scan: 骨扫描
+      is_exist:
+        "yes": 是
+        "no": 否
+        unknown: 未知
+
+    new_lesion:
+      inspection_method:
+        CT: CT
+        MRI: MRI
+        US: US
+        physical_examination: 体格检查
+        bone_scan: 骨扫描
 
     biological_sample_collection:
       biological_sample:

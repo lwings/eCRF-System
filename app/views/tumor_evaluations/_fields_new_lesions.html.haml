@@ -1,0 +1,15 @@
+- required = "必填"
+.nested-fields
+  %fieldset
+    %legend
+      新病灶
+      = link_to_remove_association "delete", f, data: {confirm: "Do you wanna to delete?"}
+
+    - if f.object.persisted?
+      = f.hidden_field :id, value: f.object.id
+
+    .row
+      = f.input :position, front_error: required
+      = f.input :inspection_method, front_error: required
+      = f.input :date, front_error: required, as: :date, start_year: Date.today.year - 10,
+                              end_year: Date.today.year

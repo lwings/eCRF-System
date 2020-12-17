@@ -33,6 +33,7 @@ config/database.yml
 
 # these should all be checked in to normalise the environment:
 # Gemfile.lock, .ruby-version, .ruby-gemset
+Gemfile.lock
 
 # unless supporting rvm < 1.11.0 or doing something fancy, ignore this:
 .rvmrc
@@ -75,3 +76,5 @@ stop_ruleEng.sh
 restart_wf.sh
 restart_wf_mq.sh
 config/unicorn.rb
+
+**/.DS_Store

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  position: MyString
+  inspection_method: 1
+  date: 2019-11-03
+  tumor_evaluation_id: 
+
+two:
+  position: MyString
+  inspection_method: 1
+  date: 2019-11-03
+  tumor_evaluation_id: 

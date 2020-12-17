@@ -46,7 +46,7 @@ class Ability
 
       # patient relevant
       patient_model_list=[AdverseEvent,BasementAssessment,GroupInformation,ClinicalPathology,
-                          Course,RadiationTherapy,ConcomitantDrug,BiologicalSampleCollection,
+                          Course, TumorEvaluation, RadiationTherapy,ConcomitantDrug,BiologicalSampleCollection,
                           MedicationCompletion,ReserachCompletion,Followup,DeathRecord,
                           FollowupMonitor,CourseMonitor]
       user.relationships.where(project_id:project.id).each{|re|
