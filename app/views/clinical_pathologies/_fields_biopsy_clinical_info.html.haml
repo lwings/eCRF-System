@@ -1,0 +1,28 @@
+- required = "必填"
+.nested-fields
+  %fieldset
+    %legend
+      活检临床病理信息
+      = link_to_remove_association "delete", f, data: {confirm: "Do you wanna to delete?"}
+
+    - if f.object.persisted?
+      = f.hidden_field :id, value: f.object.id
+
+    .row
+      = f.input :biopsy_position, front_error: required
+      = f.input :biopsy_position_remark, front_error: required
+      = f.input :biopsy_date, front_error: required, as: :date, start_year: Date.today.year - 40,
+                              end_year: Date.today.year
+      = f.input :biopsy_mode, front_error: required
+      = f.input :histological_type, front_error: required
+      = f.input :histological_grading, front_error: required
+      = f.input :ER, front_error: required
+      = f.input :ER_strength, front_error: required
+      = f.input :PR, front_error: required
+      = f.input :PR_strength, front_error: required
+      = f.input :HER2_IHC, front_error: required
+      = f.input :HER2_FISH, front_error: required
+      = f.input :Ki67, front_error: required
+      = f.input :AR, front_error: required
+      = f.input :AR_strength, front_error: required
+      = f.input :comment, front_error: required

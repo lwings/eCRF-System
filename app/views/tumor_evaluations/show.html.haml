@@ -1,0 +1,9 @@
+%h3
+  = "查看"+"疗程表"
+  = render 'shared/edit_link', ob: @patient, path: edit_patient_tumor_evaluation_path(@patient,@tumor_evaluation)
+  %small
+    -if @tumor_evaluation.id==@patient.tumor_evaluations.all.last.id
+      %a.fi-x{href: patient_tumor_evaluation_path, data: {method: 'delete', confirm: "危险操作！是否确认删除？"}}
+        删除
+
+= render partial: 'form_tumor_evaluation'

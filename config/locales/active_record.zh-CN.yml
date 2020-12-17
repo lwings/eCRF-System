@@ -117,7 +117,10 @@ zh-CN:
         HER2_FISH: HER2 FISH
         Ki67: Ki67%
         AR: AR%
+        op_breast_mode: 乳房手术方式
+        op_armpit_mode: 腋窝手术方式
         date_of_operation: 手术日期
+        comment: 备注
 
       concomitant_drug:
         if_concomitant: 是否合并用药
@@ -127,6 +130,41 @@ zh-CN:
         unit_of_dose: 单位
         start_date: 开始日期
         end_date: 结束日期
+
+      tumor_evaluation:
+        date: 评估日期
+        interview: 访视
+
+        sum_diameter: 靶病灶总径(mm)
+        base_line_diameter: 基线总径(mm)
+        cmp_base_line_diameter: 较基线%
+        min_diameter: 最小总径(mm)
+        cmp_min_diameter: 较最小经%
+
+        target_lesion_evaluation: 靶病灶疗效评估
+
+        no_target_lesion_evaluation: 非靶病灶疗效评估
+
+        lesion_evaluation: 总体疗效评估
+
+        comment: 备注
+
+
+      target_lesion:
+        position: 位置
+        inspection_method: 检查方法
+        max_diameter: 最长径(mm)
+
+      no_target_lesion:
+        position: 位置
+        inspection_method: 检查方法
+        is_exist: 是否存在
+
+      new_lesion:
+        position: 位置
+        inspection_method: 检查方法
+        date: 诊断时间
+
 
       course:
         interview: 访视日期
@@ -210,6 +248,53 @@ zh-CN:
         name: 疾病名称
         diagnostic_date: 诊断日期
         disease_status: 疾病状态
+
+
+      first_diagnosis_clinical_phase:
+        primary_lesion: 原发灶(T)
+        regional_lympth_node: 区域淋巴结(cN)
+        matastasis: 远处转移
+
+      biopsy_clinical_info:
+        biopsy_position: 活检位置
+        biopsy_position_remark: 活检位置备注
+        biopsy_date: 活检时间
+        biopsy_mode: 活检方式
+        histological_type: 组织学类型
+        histological_grading: 组织学分级
+        ER: ER%
+        ER_strength: ER强度
+        PR: PR%
+        PR_strength: PR强度
+        HER2_IHC: HER2 IHC
+        HER2_FISH: HER2 FISH
+        Ki67: Ki67%
+        AR: AR%
+        AR_strength: AR强度
+        comment: 备注
+
+      operation_clinical_info:
+        op_position: 手术位置
+        op_date: 手术时间
+        op_breast_mode: 乳房手术方式
+        op_armpit_mode: 腋窝手术方式
+        primary_lesion: 原发灶(pT)
+        regional_lympth_node: 区域淋巴结(pN)
+        tumor_size: 肿瘤大小(cm)
+        lympth_matastasis_cnt: 淋巴结转移个数
+        histological_type: 组织学类型
+        histological_grading: 组织学分级
+        ER: ER%
+        ER_strength: ER强度
+        PR: PR%
+        PR_strength: PR强度
+        HER2_IHC: HER2 IHC
+        HER2_FISH: HER2 FISH
+        Ki67: Ki67%
+        AR: AR%
+        AR_strength: AR强度
+        comment: 备注
+
 
       medication_completion:
         visit_date: 访视日期

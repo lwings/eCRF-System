@@ -1,0 +1,93 @@
+-#= content_tag(:span, f.input(:value,as: :select, collection: OperationLesion.tumor_phase.value_options), { class: 'fields value large-4 small-4 columns', 'data-object-name' => f.object_name }, false)
+- scope = { scope: [:activerecord, :attributes] }
+- pos_or_neg = [["阴性", 0], ["阳性", 1]]
+- true_or_false = [["是",true],["否",false]]
+- l = OperationLesion.new
+- c = Clinical.new
+- v_id = @selected[:id]
+- v_name = @selected[:name]
+- v_o_name = @selected[:object_name]
+- case @selected[:option]
+  -when 'status'
+    = content_tag(:span, select_tag(:value,options_for_select([:norecur, :recur, :dead].map{ |s| [Patient.status.find_value(s).text, Patient.status.find_value(s).value] }),{'id'=>@selected[:id], 'name'=>@selected[:name]}), { class: 'fields value large-4 small-4 columns','data-object-name' => @selected[:object_name]}, false)
+  -when 'history_cancer_history'
+    = content_tag(:span, select_tag(:value,options_for_select(true_or_false),{'id'=>@selected[:id], 'name'=>@selected[:name]}), { class: 'fields value large-4 small-4 columns','data-object-name' => @selected[:object_name]}, false)
+  -when 'history_family_breast_cancer'
+    = content_tag(:span, select_tag(:value,options_for_select(true_or_false),{'id'=>v_id, 'name'=>v_name}), { class: 'fields value large-4 small-4 columns large-4 small-4 columns', 'data-object-name' => v_o_name}, false)
+  -when 'history_is_breastfed'
+    = content_tag(:span, select_tag(:value,options_for_select(true_or_false),{'id'=>v_id, 'name'=>v_name}), { class: 'fields value large-4 small-4 columns large-4 small-4 columns', 'data-object-name' => v_o_name}, false)
+  -when 'has_operation_lesions_op_axilla_mode_ransack'
+    = content_tag(:span, select_tag(:value,options_for_select(l.options('op_axilla_mode')),{'id'=>v_id, 'name'=>v_name}), { class: 'fields value large-4 small-4 columns large-4 small-4 columns', 'data-object-name' => v_o_name}, false)
+  -when 'history_menopause_status'
+    = content_tag(:span, select_tag(:value,options_for_select(History.menopause_status.value_options),{'id'=>v_id, 'name'=>v_name}), { class: 'fields value large-4 small-4 columns large-4 small-4 columns', 'data-object-name' => v_o_name}, false)
+  -when 'history_family_ovarian_cancer'
+    = content_tag(:span, select_tag(:value,options_for_select(true_or_false),{'id'=>v_id, 'name'=>v_name}), { class: 'fields value large-4 small-4 columns', 'data-object-name' => v_o_name}, false)
+  -when 'clinical_tumor_phase'
+    = content_tag(:span, select_tag(:value,options_for_select(Clinical.tumor_phase.value_options),{'id'=>v_id, 'name'=>v_name}), { class: 'fields value large-4 small-4 columns', 'data-object-name' => v_o_name}, false)
+  -when 'clinical_node_phase'
+    = content_tag(:span, select_tag(:value,options_for_select(Clinical.node_phase.value_options),{'id'=>v_id, 'name'=>v_name}), { class: 'fields value large-4 small-4 columns', 'data-object-name' => v_o_name}, false)
+  -when 'clinical_has_initial_symptom'
+    = content_tag(:span, select_tag(:value,options_for_select(true_or_false),{'id'=>v_id, 'name'=>v_name}), { class: 'fields value large-4 small-4 columns', 'data-object-name' => v_o_name}, false)
+  -when 'clinical_initial_symptom'
+    = content_tag(:span, select_tag(:value,options_for_select(c.options('initial_symptom')),{'id'=>v_id, 'name'=>v_name}), { class: 'fields value large-4 small-4 columns', 'data-object-name' => v_o_name}, false)
+
+  -when 'clinical_metastasis_phase'
+    = content_tag(:span, select_tag(:value,options_for_select(Clinical.metastasis_phase.value_options),{'id'=>v_id, 'name'=>v_name}), { class: 'fields value large-4 small-4 columns', 'data-object-name' => v_o_name}, false)
+  -when 'imaging_imaging_sides_img_us_lesions_bi_rads'
+    = content_tag(:span, select_tag(:value,options_for_select(ImagingLesion.bi_rads.value_options),{'id'=>v_id, 'name'=>v_name}), { class: 'fields value large-4 small-4 columns', 'data-object-name' => v_o_name}, false)
+  -when 'imaging_imaging_sides_img_mmg_lesions_bi_rads'
+    = content_tag(:span, select_tag(:value,options_for_select(ImagingLesion.bi_rads.value_options),{'id'=>v_id, 'name'=>v_name}), { class: 'fields value large-4 small-4 columns', 'data-object-name' => v_o_name}, false)
+  -when 'imaging_imaging_sides_img_mri_lesions_bi_rads'
+    = content_tag(:span, select_tag(:value,options_for_select(ImagingLesion.bi_rads.value_options),{'id'=>v_id, 'name'=>v_name}), { class: 'fields value large-4 small-4 columns', 'data-object-name' => v_o_name}, false)
+  -when 'pathology_pathology_lesions_cnb_level'
+    = content_tag(:span, select_tag(:value,options_for_select(PathologyLesion.cnb_level.value_options),{'id'=>v_id, 'name'=>v_name}), { class: 'fields value large-4 small-4 columns', 'data-object-name' => v_o_name}, false)
+  -when 'pathology_pathology_lesions_cnb_cerbb_2'
+    = content_tag(:span, select_tag(:value,options_for_select(PathologyLesion.cnb_cerbb_2.value_options),{'id'=>v_id, 'name'=>v_name}), { class: 'fields value large-4 small-4 columns', 'data-object-name' => v_o_name}, false)
+  -when 'pathology_pathology_lesions_cnb_her2_fish'
+    = content_tag(:span, select_tag(:value,options_for_select(PathologyLesion.cnb_her2_fish.value_options),{'id'=>v_id, 'name'=>v_name}), { class: 'fields value large-4 small-4 columns', 'data-object-name' => v_o_name}, false)
+  -when 'pathology_has_pathology'
+    = content_tag(:span, select_tag(:value,options_for_select(true_or_false),{'id'=>v_id, 'name'=>v_name}), { class: 'fields value large-4 small-4 columns', 'data-object-name' => v_o_name}, false)
+  -when 'pathology_has_fna'
+    = content_tag(:span, select_tag(:value,options_for_select(true_or_false),{'id'=>v_id, 'name'=>v_name}), { class: 'fields value large-4 small-4 columns', 'data-object-name' => v_o_name}, false)
+  -when 'neoadjuvant_has_adjuvant'
+    = content_tag(:span, select_tag(:value,options_for_select(true_or_false),{'id'=>v_id, 'name'=>v_name}), { class: 'fields value large-4 small-4 columns', 'data-object-name' => v_o_name}, false)
+  -when 'neoadjuvant_c_efficacy'
+    = content_tag(:span, select_tag(:value,options_for_select(Neoadjuvant.c_efficacy.value_options),{'id'=>v_id, 'name'=>v_name}), { class: 'fields value large-4 small-4 columns', 'data-object-name' => v_o_name}, false)
+  -when 'neoadjuvant_mmg_efficacy'
+    = content_tag(:span, select_tag(:value,options_for_select(Neoadjuvant.mmg_efficacy.value_options),{'id'=>v_id, 'name'=>v_name}), { class: 'fields value large-4 small-4 columns', 'data-object-name' => v_o_name}, false)
+  -when 'neoadjuvant_mri_efficacy'
+    = content_tag(:span, select_tag(:value,options_for_select(Neoadjuvant.mri_efficacy.value_options),{'id'=>v_id, 'name'=>v_name}), { class: 'fields value large-4 small-4 columns', 'data-object-name' => v_o_name}, false)
+  -when 'operation_lesions_pathological_type'
+    = content_tag(:span, select_tag(:value,options_for_select(OperationLesion.pathological_type.value_options),{'id'=>v_id, 'name'=>v_name}), { class: 'fields value large-4 small-4 columns', 'data-object-name' => v_o_name}, false)
+  -when 'operation_lesions_histological_grade'
+    = content_tag(:span, select_tag(:value,options_for_select(OperationLesion.histological_grade.value_options),{'id'=>v_id, 'name'=>v_name}), { class: 'fields value large-4 small-4 columns', 'data-object-name' => v_o_name}, false)
+  -when 'operation_lesions_cerbb_2'
+    = content_tag(:span, select_tag(:value,options_for_select(OperationLesion.cerbb_2.value_options),{'id'=>v_id, 'name'=>v_name}), { class: 'fields value large-4 small-4 columns', 'data-object-name' => v_o_name}, false)
+  -when 'operation_lesions_her2_fish'
+    = content_tag(:span, select_tag(:value,options_for_select(OperationLesion.her2_fish.value_options),{'id'=>v_id, 'name'=>v_name}), { class: 'fields value large-4 small-4 columns', 'data-object-name' => v_o_name}, false)
+  -when 'operation_lesions_molecular_type'
+    = content_tag(:span, select_tag(:value,options_for_select(OperationLesion.molecular_type.value_options),{'id'=>v_id, 'name'=>v_name}), { class: 'fields value large-4 small-4 columns', 'data-object-name' => v_o_name}, false)
+  -when 'operation_lesions_tumor_phase'
+    = content_tag(:span, select_tag(:value,options_for_select(OperationLesion.tumor_phase.value_options),{'id'=>v_id, 'name'=>v_name}), { class: 'fields value large-4 small-4 columns', 'data-object-name' => v_o_name}, false)
+  -when 'operation_lesions_node_phase'
+    = content_tag(:span, select_tag(:value,options_for_select(OperationLesion.node_phase.value_options),{'id'=>v_id, 'name'=>v_name}), { class: 'fields value large-4 small-4 columns', 'data-object-name' => v_o_name}, false)
+  -when 'operation_lesions_metastasis_phase'
+    = content_tag(:span, select_tag(:value,options_for_select(OperationLesion.metastasis_phase.value_options),{'id'=>v_id, 'name'=>v_name}), { class: 'fields value large-4 small-4 columns', 'data-object-name' => v_o_name}, false)
+  -when 'operation_lesions_is_skin_involved'
+    = content_tag(:span, select_tag(:value,options_for_select(true_or_false),{'id'=>v_id, 'name'=>v_name}), { class: 'fields value large-4 small-4 columns', 'data-object-name' => v_o_name}, false)
+  -when 'operation_lesions_is_nerve_violated'
+    = content_tag(:span, select_tag(:value,options_for_select(true_or_false),{'id'=>v_id, 'name'=>v_name}), { class: 'fields value large-4 small-4 columns', 'data-object-name' => v_o_name}, false)
+  -when 'adjuvant_is_ct'
+    = content_tag(:span, select_tag(:value,options_for_select(true_or_false),{'id'=>v_id, 'name'=>v_name}), { class: 'fields value large-4 small-4 columns', 'data-object-name' => v_o_name}, false)
+  -when 'adjuvant_ct_scheme'
+    = content_tag(:span, select_tag(:value,options_for_select(Adjuvant.ct_scheme.value_options,),{'id'=>v_id, 'name'=>v_name}), { class: 'fields value large-4 small-4 columns', 'data-object-name' => v_o_name}, false)
+  -when 'adjuvant_is_rt'
+    = content_tag(:span, select_tag(:value,options_for_select(true_or_false),{'id'=>v_id, 'name'=>v_name}), { class: 'fields value large-4 small-4 columns', 'data-object-name' => v_o_name}, false)
+  -when 'adjuvant_is_et'
+    = content_tag(:span, select_tag(:value,options_for_select(true_or_false),{'id'=>v_id, 'name'=>v_name}), { class: 'fields value large-4 small-4 columns', 'data-object-name' => v_o_name}, false)
+  -when 'adjuvant_is_tt'
+    = content_tag(:span, select_tag(:value,options_for_select(true_or_false),{'id'=>v_id, 'name'=>v_name}), { class: 'fields value large-4 small-4 columns', 'data-object-name' => v_o_name}, false)
+  -when 'operation_surgery_date'
+    = content_tag(:span, date_field_tag(:value,'01/01/2014',options={'id'=>v_id, 'name'=>v_name}), { class: 'fields value large-4 small-4 columns', 'data-object-name' => v_o_name}, false)
+  -else
+    = content_tag(:span, text_field_tag(:value,nil,{'id'=>v_id, 'name'=>v_name}), { class: 'fields value large-4 small-4 columns', 'data-object-name' => v_o_name}, false)

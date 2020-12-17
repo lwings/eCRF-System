@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  clinical_pathology_id: 
+  primary_lesion: 1
+  regional_lympth_node: 1
+  matastasis: false
+
+two:
+  clinical_pathology_id: 
+  primary_lesion: 1
+  regional_lympth_node: 1
+  matastasis: false

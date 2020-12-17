@@ -64,6 +64,22 @@
                 = "新建疗程"
 
         %li
+          %a.fi-check{ href: '#'}
+            = "肿瘤评估表"
+
+        %ul
+
+          - @patient.tumor_evaluations.each_with_index do |tumor_evaluation, i|
+            - if tumor_evaluation.persisted?
+              %li
+                %a.fi-check{ href: patient_tumor_evaluation_path(@patient, tumor_evaluation)}
+                  = "评估"+ (i+1).to_s
+          %li
+            %a{href: new_patient_tumor_evaluation_path(@patient)}
+              %i.fi-pencil
+                = "新建记录"
+
+        %li
           -flag=@patient.medication_completion.try(:persisted?)
           %a{ href: flag ? send("patient_medication_completion_path", @patient) :send("new_patient_medication_completion_path", @patient) ,
                 class: flag ? 'fi-check' : 'fi-pencil'}

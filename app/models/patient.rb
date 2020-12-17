@@ -26,6 +26,7 @@ class Patient < ActiveRecord::Base
   has_one :radiation_therapy, dependent: :destroy
   has_many :adverse_events, dependent: :destroy
   has_many :courses, dependent: :destroy
+  has_many :tumor_evaluations, dependent: :destroy
   has_many :radiation_therapies, dependent: :destroy
   has_many :concomitant_drugs, dependent: :destroy
   has_many :biological_sample_collections, dependent: :destroy
